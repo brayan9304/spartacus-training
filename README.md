@@ -131,7 +131,7 @@ Use the next steps to install the project. Please make sure you change all refer
 6.  Create you local configuration properties by downloading the [sample 20-local.properties](https://drive.google.com/file/d/1W2IQrjc2M5RzDah-ZzDoNTfbTzDCVVnS/view?usp=sharing), changing the values that correspond to your local machine and placing the file in ```/Users/<youruser>/clients/talos/spartacus-training-project/hybris/bin/custom/core-customize/project/env/local```
 
 7.  Install hybris code base into your folder structure by running the command
-    ```tcsproject && ant installWithExtension -Dhybris.zip.package.src=/path/to/your/CXCOMM201100P_0-70005693.ZIP -Dhybris.zip.extension.package.src=/path/to/your/CXCOMINTPK210200P_0-80005851.ZIP```
+    ```tcproject && ant installWithExtension -Dhybris.zip.package.src=/path/to/your/CXCOMM201100P_0-70005693.ZIP -Dhybris.zip.extension.package.src=/path/to/your/CXCOMINTPK210200P_0-80005851.ZIP```
 
 8.  Go to your folder ```/Users/<youruser>/clients/talos/spartacus-training-project/hybris/bin``` and run the following command to give execution permissions to all .sh files
     ```find . -iname "*.sh" -exec chmod a+rx {} \;```
