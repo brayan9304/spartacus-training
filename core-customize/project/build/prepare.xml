@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="prepare">
+
+    <description>
+           Prepare the hybris environment - Based on the existing config resources from respository.
+           First uses 'common' folder and then merges environment specific files into it.
+    </description>
+
+    <!--<import file="${platformhome}/build.xml" as="platform"/>-->
+
+    <target name="envconfig">
+        <available file="${platformhome}/build.xml" property="platformPresent"/>
+        <antcall target="prepareconfig"/>
+        <!--<antcall target="installAddons"/>-->
+        </target>
+  
+    <target name="prepareconfig" if="platformPresent"  >
+        <ant dir="${platformhome}/resources/ant" target="prepare" >
+            <property name="input.template" value="${template}"/>
+        </ant>
+        <!--create the Solr instance before copying custom Solr config files into the config folder-->
+        <!--we first need the localextensions.xml for the project so we have the createSolrInstance target-->
+        <copy todir="${HYBRIS_CONFIG_DIR}" overwrite="true" failonerror="false" verbose="true" file="${HYBRIS_COMMON_CONFIG_DIR}/localextensions.xml" />
+        <ant dir="${platformhome}" target="createSolrInstance" />
+         
+        <echo>Overwriting local config resources using ${HYBRIS_COMMON_CONFIG_DIR}</echo>
+        <copy todir="${HYBRIS_CONFIG_DIR}" overwrite="true">
+            <fileset dir="${HYBRIS_COMMON_CONFIG_DIR}">
+               <!-- this will be copied in the next step if developer prefers to use opt_config pattern -->
+               <exclude name="local.properties"/>
+            </fileset>
+            
+        </copy>
+        
+        <copy file="${HYBRIS_COMMON_CONFIG_DIR}/local.properties" tofile="${HYBRIS_CONFIG_DIR}/local.properties" overwrite="true" />
+    </target>
+
+    <target name="installAddons" description="Configures addons for hybris" if="platformPresent">
+        <!-- Install add-ons -->
+        <echo>Installing addons</echo>
+
+        <antcall target="addoninstall">
+            <param name="addonnames" value="cmsoccaddon"/>
+            <param name="addonStorefront.ycommercewebservices" value="tccommercewebservices"/>
+        </antcall>
+
+        <antcall target="addoninstall">
+            <param name="addonnames" value="acceleratorwebservicesaddon"/>
+            <param name="addonStorefront.ycommercewebservices" value="tccommercewebservices"/>
+        </antcall>
+
+        <antcall target="addoninstall">
+            <param name="addonnames" value="smarteditaddon"/>
+            <param name="addonStorefront.yacceleratorstorefront" value="tcstorefront"/>
+        </antcall>
+
+    </target>
+</project>

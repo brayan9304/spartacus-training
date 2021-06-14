@@ -1,0 +1,63 @@
+<project name="production">
+<taskdef resource="net/sf/antcontrib/antlib.xml">
+      <classpath>
+         <pathelement location="${platformhome}/lib/ant-contrib-1.0b3.jar" />
+      </classpath>
+</taskdef>
+
+<target name="production" description="Creates production environment zip's and config for each environment for hybris Server and packages Solr server and Solr configuration; Packages production license separatelly">
+
+        <!--Additionally create Solr config.zip and full Solr zip files-->
+        <!--Creates solr config files --> 
+        <zip destfile="${HYBRIS_TEMP_DIR}/hybrisServer/solrConfigOnly.zip" basedir="${HYBRIS_CONFIG_DIR}/solr/instances/default" />
+        <!-- Pushes the configs inside the solr server extension to be able to package the solrserver extension separately as part of ant production target-->
+        <copy todir="${HYBRIS_BIN_DIR}/modules/search-and-navigation/solrserver/resources/solr/${SOLR_VERSION}/server/server/solr" overwrite="yes" failonerror="false" verbose="true">
+                <fileset dir="${HYBRIS_CONFIG_DIR}/solr/instances/default" />
+        </copy>
+        
+       <dirset id="env.folders" dir="env" >
+          <exclude name="local" />
+          <exclude name="ci" />
+          <exclude name="common" />
+          <include name="*" />
+       </dirset>
+       <property name="prop.env.names" refid="env.folders"/>
+       <echo>Building configs for environments ${prop.env.names}</echo>
+       <for param="myenv" list="${prop.env.names}" delimiter=";">
+                  <sequential>
+                    <delete dir="${TMP_DIR}" />
+                    <delete file="${HYBRIS_TEMP_DIR}/hybrisServer/@{myenv}-opt_config.zip" />
+                    <mkdir dir="${TMP_DIR}/hybris/opt_config" />
+                    <copy todir="${TMP_DIR}/hybris/opt_config">
+                       <fileset dir="${HYBRIS_HOME}/bin/custom/core-customize/project/env/@{myenv}" />
+                    </copy>
+                    <zip destfile="${HYBRIS_TEMP_DIR}/hybrisServer/@{myenv}-opt_config.zip" basedir="${TMP_DIR}" />
+                  </sequential>
+       </for>
+
+
+       <replace file="${platformhome}/tomcat/bin/wrapper.sh" value="RUN_AS_USER=hybris">
+           <replacetoken>#RUN_AS_USER=</replacetoken>
+       </replace>
+
+        <ant dir="${platformhome}" target="production" inheritrefs="true">
+           <property name="de.hybris.platform.ant.production.skip.build" value="true" />
+           <!--<property name="ant.production.package.solrserver" value="solr" />-->
+        </ant>
+
+        <replace file="${platformhome}/tomcat/bin/wrapper.sh" value="#RUN_AS_USER=">
+             <replacetoken>RUN_AS_USER=hybris</replacetoken>
+        </replace>
+
+
+        <!-- Create license specific for prod  -->
+        
+        <delete dir="${TMP_DIR}" />
+        <delete file="{HYBRIS_TEMP_DIR}/hybrisServer/hybrisServer-prod-License.zip" />
+        <mkdir dir="${TMP_DIR}/hybris/config/licence" />
+        <copy file="env/prod/installedSaplicenses.properties" todir="${TMP_DIR}/hybris/config/licence" />
+        <zip destfile="${HYBRIS_TEMP_DIR}/hybrisServer/hybrisServer-prod-License.zip" basedir="${TMP_DIR}" />
+
+
+</target>
+</project>

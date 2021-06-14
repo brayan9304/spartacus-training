@@ -1,0 +1,24 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the Content Catalog
+#
+
+# Language
+$lang = en
+$contentCatalog = taloscommerceContentCatalog
+
+# Create Content Catalog
+UPDATE ContentCatalog; id[unique = true]; name[lang = $lang]
+                     ; $contentCatalog  ; "Talos Commerce Content Catalog"
+
+
+### Spartacus Start ###
+
+###### Site Context ######
+INSERT_UPDATE CmsSiteContext; code[unique = true]; name[lang = $lang]
+                            ; LANGUAGE           ; "language"
+                            ; CURRENCY           ; "currency"
+
+### Spartacus Ends ###

@@ -1,0 +1,25 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the Content Catalog
+#
+$contentCatalog = taloscommerceContentCatalog
+$languages = en
+
+# Content catalog for CMS contents
+INSERT_UPDATE ContentCatalog; id[unique = true]
+                            ; $contentCatalog
+
+# Catalog versions for content catalogs
+INSERT_UPDATE CatalogVersion; catalog(id)[unique = true]; version[unique = true]; active; languages(isoCode); writePrincipals(usergroup.uid)[mode = append]; readPrincipals(usergroup.uid)[mode = append]
+                            ; $contentCatalog           ; Staged                ; false ; $languages        ; cmsmanagergroup
+                            ; $contentCatalog           ; Online                ; true  ; $languages        ;                                              ; cmsmanagergroup
+
+### Spartacus Start ###
+
+###### Site Context ######
+INSERT_UPDATE CmsSiteContext; code[unique = true]; name
+                            ; LANGUAGE           ; "language"
+                            ; CURRENCY           ; "currency"
+### Spartacus Ends ###

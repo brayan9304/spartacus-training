@@ -1,0 +1,76 @@
+<project name="install_upgrade">
+  
+  <condition property="hybrisZipFileIsKnown">
+     <isset property="hybris.zip.package.src" />
+  </condition>
+
+  <target name="install" description="Unpacks a specific commerce suite version in the workspace from a specified location" unless="platformPresent" >
+      <echo>Unzipping Hybris platform from ${hybris.zip.package.src}</echo>
+         <antcall target="failIfHybrisZipNotPresent" />
+         <unzip src="${hybris.zip.package.src}" dest="../../../../..">
+                <patternset>
+                      <include name="hybris/**/*"/>
+                </patternset>
+         </unzip>
+         <echo>Unzipping done!</echo>
+         <antcall target="prepareconfig" />
+  </target>      
+    
+  <target name="installWithExtension" description="Unpacks a specific commerce suite version in the workspace from a specified location" unless="platformPresent">
+    <echo>Unzipping Hybris platform from ${hybris.zip.package.src}</echo>
+    <antcall target="failIfHybrisZipNotPresentWithExtension" />
+    <unzip src="${hybris.zip.package.src}" dest="../../../../..">
+      <patternset>
+        <include name="hybris/**/*"/>
+      </patternset>
+    </unzip>
+
+    <echo>Unzipping Extension pack! ${hybris.zip.extension.package.src}</echo>
+    <unzip src="${hybris.zip.extension.package.src}" dest="../../../../..">
+      <patternset>
+        <include name="hybris/**/*"/>
+      </patternset>
+    </unzip>
+    <echo>Unzipping done!</echo>
+    <antcall target="prepareconfig" />
+  </target>
+
+  <target name="cleanworkspace" description="Gets rid of hybris/config hybris/bin/platform and hybris/bin/ext-* folders; typically you do this when you want to upgrade to a new platform version, followed by an install target called separately in a subsequent command">
+      <sequential>    
+         <echo>Deleting platform folder binaries</echo> 
+         <delete dir="${platformhome}" />
+          <echo>Deleting ext-* folders</echo>
+         <delete includeemptydirs="true">
+            <fileset dir="${HYBRIS_BIN_DIR}" defaultexcludes="false">
+                <include name="ext*/**" />
+            </fileset>
+         </delete>
+         <echo>Deleting config</echo>
+         <delete dir="${HYBRIS_CONFIG_DIR}" />
+      </sequential>
+  </target>
+
+  <target name="upgrade" description="cleans workspace, then upgrades" >
+  <sequential>
+    <antcall target="cleanworkspace" inheritAll="false"/>
+    <antcall target="install" inheritAll="false" />
+  </sequential>
+  </target>
+
+  <target name="failIfHybrisZipNotPresent" unless="hybrisZipPresent">
+    <fail>
+        ********** CANNOT INSTALL ********************
+        Missing Hybris zip file ${hybris.zip.package.src}. Download it locally first.
+        **********************************************
+    </fail>
+  </target>
+
+  <target name="failIfHybrisZipNotPresentWithExtension" depends="failIfHybrisZipNotPresent" unless="hybrisExtensionZipPresent">
+    <fail>
+        ********** CANNOT INSTALL ********************
+        Missing Hybris zip file ${hybris.zip.package.src} and ExtensionZip ${hybris.zip.extension.package.src}. Download it locally first.
+        **********************************************
+    </fail>
+  </target>
+
+</project>

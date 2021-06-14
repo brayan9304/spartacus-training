@@ -1,0 +1,110 @@
+<hybrisconfig xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../bin/platform/resources/schemas/extensions.xsd'>
+  <extensions>
+    <path dir='${HYBRIS_BIN_DIR}' autoload='false' />
+
+    <!-- Adaptive Search Module -->
+    <extension name='adaptivesearch' />
+    <extension name='adaptivesearchbackoffice' />
+    <extension name='adaptivesearchfacades' />
+    <extension name='adaptivesearchsolr' />
+    <extension name='adaptivesearchwebservices' />
+
+    <!-- Backoffice Module -->
+    <extension name='backoffice' />
+    <extension name='platformbackoffice' />
+    <extension name='pcmbackoffice' />
+    <extension name='classificationgroupsservices' />
+    <extension name='mediaconversionbackoffice' />
+    <extension name='patchesbackoffice' />
+    <extension name='backofficesolrsearch' />
+
+    <!-- Commerce Services Module -->
+    <extension name='commercefacades' />
+    <extension name='commerceservices' />
+    <extension name='commerceservicesbackoffice' />
+    <extension name='commercewebservicescommons' />
+
+    <!-- Customer Services Module -->
+    <extension name='customersupportbackoffice' />
+    <extension name='customerticketingfacades' />
+    <extension name='ticketsystem' />
+    <extension name='ticketsystembackoffice' />
+
+    <!-- JS Built NPM Ancillary -->
+    <extension name='npmancillary' />
+
+    <!-- Platform Module -->
+    <extension name='mediaconversion' />
+    <extension name='patches' />
+
+    <!-- Promotion Engine Module & Rule Engine Module -->
+    <extension name='promotionenginebackoffice' />
+    <extension name='promotionengineservices' />
+    <extension name='droolsruleengineservices' />
+    <extension name='ordercalculation' />
+    <extension name='rulebuilderbackoffice' />
+    <extension name='ruledefinitions' />
+    <extension name='ruleengine' />
+    <extension name='ruleenginebackoffice' />
+    <extension name='ruleengineservices' />
+
+    <!-- Search and Navigation Module -->
+    <extension name='solrfacetsearch' />
+    <extension name='solrfacetsearchbackoffice' />
+    <extension name='solrserver' />
+    <extension name='searchbackoffice' />
+
+    <!-- SmartEdit Module -->
+    <extension name='cmssmartedit' />
+    <extension name='cmssmarteditwebservices' />
+    <extension name='smartedit' />
+    <extension name='smarteditwebservices' />
+    <extension name='smarteditaddon' />
+
+    <!-- WCMS Module -->
+    <extension name='cms2' />
+    <extension name='cms2lib' />
+    <extension name='cmsbackoffice' />
+    <extension name='cmscockpit' />
+    <extension name='cmsfacades' />
+    <extension name='cmsoccaddon' />
+    <extension name='cmswebservices' />
+    <extension name='previewwebservices' />
+
+    <!-- Web Services Module -->
+    <extension name='permissionsfacades' />
+    <extension name='permissionswebservices' />
+    <extension name='webservicescommons' />
+
+    <!-- Base Commerce Module -->
+    <extension name='basecommerce' />
+    <extension name='basecommercebackoffice' />
+    <extension name='customerreview' />
+    <extension name='payment' />
+    <extension name='promotions' />
+    <extension name='promotionsbackoffice' />
+
+    <!-- Cockpit Module -->
+    <extension name='cockpit' />
+
+    <!-- Accelerator Code Module -->
+    <extension name='acceleratorbackoffice' />
+    <extension name='acceleratorcms' />
+    <extension name='acceleratorfacades' />
+    <extension name='acceleratorservices' />
+    <extension name='acceleratorstorefrontcommons' />
+    <extension name='addonsupport' />
+    <extension name='acceleratorwebservicesaddon' />
+
+    <!-- Custom Modules -->
+    <extension name='tccore'/>
+    <extension name='tcbackoffice'/>
+    <extension name='tcfacades'/>
+    <extension name='tcinitialdata'/>
+    <extension name='tcfulfilmentprocess'/>
+    <extension name='tcstorefront'/>
+    <extension name='tccommercewebservices'/>
+    
+
+  </extensions>
+</hybrisconfig>
