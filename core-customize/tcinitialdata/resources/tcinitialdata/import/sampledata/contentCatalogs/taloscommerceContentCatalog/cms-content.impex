@@ -575,9 +575,9 @@ INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true] 
 ###### Account Order Details
 
 # ContentSlot
-INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]      ; name                                           ; active; cmsComponents(&componentRef); ; ;
-                         ;                          ; SideContent-orderdetail ; Side Content Slot for My Account Order Details ; true  ;                             ; ; ;
-                         ;                          ; BodyContent-orderdetail ; Body Content Slot for My Account Order Details ; true  ;                             ; ; ;
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]      ; name                                           ; active; cmsComponents(&componentRef)                                                                                                                                                                                            ; ; ;
+                         ;                          ; SideContent-orderdetail ; Side Content Slot for My Account Order Details ; true  ;                                                                                                                                                                                                                         ; ; ;
+                         ;                          ; BodyContent-orderdetail ; Body Content Slot for My Account Order Details ; true  ; AccountOrderDetailsOverviewComponent,AccountOrderDetailsShippingComponent,AccountOrderDetailsItemsComponent,AccountOrderDetailsTotalsComponent,AccountOrderDetailsShippingComponent,AccountOrderDetailsActionsComponent ; ; ;
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]      ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'order']; contentSlot(uid, $contentCV)[unique = true]; ; ;
@@ -661,9 +661,9 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]    ; na
                          ;                          ; SearchResultsGridSlot ; Search Result Grid Slot for Search List ; true  ; SearchResultsGrid           ; ; ;
 
 ### Customer Login
-INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]     ; name                                  ; active; cmsComponents(&componentRef)    ; ; ;
-                         ;                          ; LeftContentSlot-login  ; Left Content Slot for Customer Login  ; true  ; ReturningCustomerLoginComponent ; ; ;
-                         ;                          ; RightContentSlot-login ; Right Content Slot for Customer Login ; true  ;                                 ; ; ;
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]     ; name                                  ; active; cmsComponents(&componentRef)                                       ; ; ;
+                         ;                          ; LeftContentSlot-login  ; Left Content Slot for Customer Login  ; true  ; ReturningCustomerLoginComponent,ReturningCustomerRegisterComponent ; ; ;
+                         ;                          ; RightContentSlot-login ; Right Content Slot for Customer Login ; true  ;                                                                    ; ; ;
 
 INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]     ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'login']; contentSlot(uid, $contentCV)[unique = true]; ; ;
                                 ;                          ; LeftContentSlot-login  ; LeftContentSlot        ;                                                        ; LeftContentSlot-login                      ; ; ;
@@ -752,8 +752,8 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]  ; name
                          ;                          ; TopContent-cartPage ; Top Slot for Cart Page ; true  ; CartComponent
 
 # Site Logo
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                      ; realfilename               ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText            ; folder(qualifier)[default = 'images']
-                   ;                          ; /images/theme/logo_hybris_responsive.svg ; logo_hybris_responsive.svg ; $siteResource/images/theme/logo_hybris_responsive.svg                       ; image/svg+xml                  ; hybris Accelerator ;
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                     ; realfilename              ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText            ; folder(qualifier)[default = 'images']
+                   ;                          ; /images/theme/logo_talos_responsive.svg ; logo_talos_responsive.svg ; $siteResource/images/theme/logo_talos_responsive.svg                        ; image/svg+xml                  ; hybris Accelerator ;
 
 ###  Responsive Error page #######
 
