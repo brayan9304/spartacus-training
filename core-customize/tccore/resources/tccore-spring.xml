@@ -503,4 +503,11 @@
     <bean id="defaultDocumentTypeService" class="com.taloscommerce.core.user.impl.DefaultDocumentTypeService">
         <constructor-arg name="documentTypeDao" ref="documentTypeDao"/>
     </bean>
+
+    <alias name="customTCCustomerService" alias="customerService"/>
+    <bean id="customTCCustomerService" class="com.taloscommerce.core.customer.impl.CustomTCCustomerService">
+        <constructor-arg ref="customerDao"/>
+        <constructor-arg type="java.lang.String" value="^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"/>
+        <constructor-arg name="modelService" ref="modelService"/>
+    </bean>
 </beans>

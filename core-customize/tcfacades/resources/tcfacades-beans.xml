@@ -23,6 +23,6 @@
     </bean>
 
     <bean class="com.taloscommerce.facades.user.data.ReferredCustomerDataList">
-        <property name="documentTypes" type="java.util.List&lt;com.taloscommerce.facades.user.data.ReferredCustomerData>"/>
+        <property name="referredCustomers" type="java.util.List&lt;com.taloscommerce.facades.user.data.ReferredCustomerData>"/>
     </bean>
 </beans>

@@ -50,6 +50,20 @@
         </property>
     </bean>
 
+    <bean parent="fieldSetLevelMapping" id="referredCustomerListWsDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.taloscommerce.webservices.dto.user.ReferredCustomerListWsDto"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="referredCustomers"/>
+                <entry key="DEFAULT"
+                       value="referredCustomers(DEFAULT)"/>
+                <entry key="FULL"
+                       value="referredCustomers(FULL)"/>
+            </map>
+        </property>
+    </bean>
+
     <bean parent="fieldSetLevelMapping" id="memberListWsDTOFieldSetLevelMapping">
         <property name="dtoClass"
                   value="de.hybris.platform.commercewebservicescommons.dto.user.MemberListWsDTO"/>
@@ -161,6 +175,21 @@
                        value="lastName,title,titleCode,displayUid,defaultAddress(DEFAULT),language(DEFAULT),firstName,currency(DEFAULT),uid,name,customerId,deactivationDate"/>
                 <entry key="FULL"
                        value="lastName,title,titleCode,displayUid,defaultAddress(FULL),language(FULL),firstName,currency(FULL),uid,name,customerId,deactivationDate"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean parent="fieldSetLevelMapping" id="referredCustomerWsDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC"
+                       value="email,documentType,documentTypeCode,documentNumber,firstName,lastName"/>
+                <entry key="DEFAULT"
+                       value="email,documentType,documentTypeCode,documentNumber,firstName,lastName"/>
+                <entry key="FULL"
+                       value="email,documentType,documentTypeCode,documentNumber,firstName,lastName"/>
             </map>
         </property>
     </bean>

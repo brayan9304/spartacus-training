@@ -196,4 +196,40 @@
 		</property>
 	</bean>
 
+	<bean class="com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO">
+		<description>Representation of an Referred Customer</description>
+		<hints>
+			<hint name="wsRelated"/>
+			<hint name="alias">ReferredCustomer</hint>
+		</hints>
+		<property name="email" type="String">
+			<description>Referred Customer email</description>
+		</property>
+		<property name="documentTypeCode" type="String">
+			<description>Referred Customer document type code</description>
+		</property>
+		<property name="documentType" type="String">
+			<description>Referred Customer document type</description>
+		</property>
+		<property name="documentNumber" type="String">
+			<description>Referred Customer document number</description>
+		</property>
+		<property name="firstName" type="String">
+			<description>Referred Customer first name</description>
+		</property>
+		<property name="lastName" type="String">
+			<description>Referred Customer last name</description>
+		</property>
+	</bean>
+
+	<bean class="com.taloscommerce.webservices.dto.user.ReferredCustomerListWsDto">
+		<description>List of Referred Customers</description>
+		<hints>
+			<hint name="wsRelated"/>
+		</hints>
+		<property name="referredCustomers" type="java.util.List&lt;com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO>">
+			<description>Referred Customer List</description>
+		</property>
+	</bean>
+
 </beans>

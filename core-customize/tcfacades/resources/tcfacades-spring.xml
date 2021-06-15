@@ -174,4 +174,41 @@
 		<constructor-arg name="documentTypeConverter" ref="documentTypeConverter"/>
 		<constructor-arg name="documentTypeService" ref="documentTypeService"/>
 	</bean>
+
+	<alias name="defaultReferredCustomerReversePopulator" alias="referredCustomerReversePopulator" />
+	<bean id="defaultReferredCustomerReversePopulator" class="com.taloscommerce.facades.populators.ReferredCustomerReversePopulator" >
+		<constructor-arg name="documentTypeService" ref="documentTypeService"/>
+	</bean>
+
+	<alias name="defaultReferredCustomerReverseConverter" alias="referredCustomerReverseConverter"/>
+	<bean id="defaultReferredCustomerReverseConverter" parent="abstractPopulatingConverter" >
+		<property name="targetClass" value="com.taloscommerce.core.model.ReferredCustomerModel"/>
+		<property name="populators">
+			<list>
+				<ref bean="referredCustomerReversePopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultReferredCustomerPopulator" alias="referredCustomerPopulator" />
+	<bean id="defaultReferredCustomerPopulator" class="com.taloscommerce.facades.populators.ReferredCustomerPopulator"/>
+
+	<alias name="defaultReferredCustomerConverter" alias="referredCustomerConverter"/>
+	<bean id="defaultReferredCustomerConverter" parent="abstractPopulatingConverter" >
+		<property name="targetClass" value="com.taloscommerce.facades.user.data.ReferredCustomerData"/>
+		<property name="populators">
+			<list>
+				<ref bean="referredCustomerPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="customTCCustomerFacade" alias="customerFacade"/>
+	<bean id="customTCCustomerFacade" class="com.taloscommerce.facades.customer.impl.CustomTCCustomerFacade"
+		  parent="defaultCustomerFacade">
+		<constructor-arg name="customerService" ref="customerService"/>
+		<constructor-arg name="referredCustomerReverseConverter" ref="referredCustomerReverseConverter"/>
+		<constructor-arg name="referredCustomerConverter" ref="referredCustomerConverter"/>
+	</bean>
+
 </beans>

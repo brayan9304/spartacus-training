@@ -3,6 +3,13 @@
  */
 package com.taloscommerce.webservices.v2.controller;
 
+import com.taloscommerce.facades.customer.TCCustomerFacade;
+import com.taloscommerce.facades.user.data.ReferredCustomerData;
+import com.taloscommerce.facades.user.data.ReferredCustomerDataList;
+import com.taloscommerce.webservices.constants.YcommercewebservicesConstants;
+import com.taloscommerce.webservices.dto.user.ReferredCustomerListWsDto;
+import com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO;
+import com.taloscommerce.webservices.populator.HttpRequestCustomerDataPopulator;
 import de.hybris.platform.commercefacades.customer.CustomerFacade;
 import de.hybris.platform.commercefacades.customergroups.CustomerGroupFacade;
 import de.hybris.platform.commercefacades.user.data.CustomerData;
@@ -21,16 +28,7 @@ import de.hybris.platform.webservicescommons.cache.CacheControlDirective;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdParam;
 import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
-import com.taloscommerce.webservices.constants.YcommercewebservicesConstants;
-import com.taloscommerce.webservices.populator.HttpRequestCustomerDataPopulator;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Locale;
-
+import io.swagger.annotations.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.slf4j.Logger;
@@ -43,21 +41,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
 
 @Controller
@@ -71,6 +63,8 @@ public class UsersController extends BaseCommerceController
 
 	@Resource(name = "wsCustomerFacade")
 	private CustomerFacade customerFacade;
+	@Resource(name = "customerFacade")
+	private TCCustomerFacade tcCustomerFacade;
 	@Resource(name = "wsCustomerGroupFacade")
 	private CustomerGroupFacade customerGroupFacade;
 	@Resource(name = "httpRequestCustomerDataPopulator")
@@ -404,5 +398,32 @@ public class UsersController extends BaseCommerceController
 		final UserGroupDataList userGroupDataList = new UserGroupDataList();
 		userGroupDataList.setUserGroups(customerGroupFacade.getCustomerGroupsForUser(userId));
 		return getDataMapper().map(userGroupDataList, UserGroupListWsDTO.class, fields);
+	}
+
+	@Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
+	@PostMapping(value = "/{userId}/saveReferredCustomer", consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@ResponseStatus(HttpStatus.OK)
+	@ApiOperation(nickname = "saveReferredCustomer", value = "Saves a referred customer", notes = "Saves a referred customer for the current customer.")
+	@ApiBaseSiteIdAndUserIdParam
+	public void saveReferredCustomer(
+			@ApiParam(value = "Referred Customer's object.", required = true) @RequestBody final ReferredCustomerWsDTO referredCustomer)
+	{
+		final CustomerData customer = customerFacade.getCurrentCustomer();
+		final ReferredCustomerData referredCustomerData = getDataMapper().map(referredCustomer, ReferredCustomerData.class);
+		tcCustomerFacade.saveReferral(customer.getCustomerId(), referredCustomerData);
+	}
+
+	@Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
+	@GetMapping(value = "/{userId}/referredcustomers")
+	@ApiOperation(nickname = "getUserReferredCustomers", value = "Get all referred customers of a customer.", notes = "Returns all referred customers of a customer.")
+	@ApiBaseSiteIdAndUserIdParam
+	@ResponseBody
+	public ReferredCustomerListWsDto getUserReferredCustomers(
+			@ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
+			@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
+	{
+		final var referredCustomerDataList = new ReferredCustomerDataList();
+		referredCustomerDataList.setReferredCustomers(tcCustomerFacade.getReferredCustomers(userId));
+		return getDataMapper().map(referredCustomerDataList, ReferredCustomerListWsDto.class, fields);
 	}
 }
