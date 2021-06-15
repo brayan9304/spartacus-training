@@ -56,6 +56,13 @@ INSERT_UPDATE Title; code[unique = true]
                    ; dr
                    ; rev
 
+# Document Types
+INSERT_UPDATE DocumentType; code[unique = true]
+                          ; PP
+                          ; RC
+                          ; GC
+
+
 # Media Folders
 INSERT_UPDATE MediaFolder; qualifier[unique = true]; path[unique = true]
                          ; images                  ; images

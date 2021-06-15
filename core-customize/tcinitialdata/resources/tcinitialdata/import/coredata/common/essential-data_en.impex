@@ -1,0 +1,8 @@
+# Language
+$lang = en
+
+# Document Types
+UPDATE DocumentType; code[unique = true]; name[lang = $lang]
+                   ; PP                 ; "Passport"
+                   ; RC                 ; "Residence Card"
+                   ; GC                 ; "Green Card"

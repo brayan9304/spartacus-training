@@ -3,6 +3,9 @@
  */
 package com.taloscommerce.webservices.v2.controller;
 
+import com.taloscommerce.facades.user.DocumentTypeFacade;
+import com.taloscommerce.facades.user.data.DocumentTypeDataList;
+import com.taloscommerce.webservices.dto.user.DocumentTypeListWsDto;
 import de.hybris.platform.commercefacades.order.CheckoutFacade;
 import de.hybris.platform.commercefacades.storesession.StoreSessionFacade;
 import de.hybris.platform.commercefacades.user.UserFacade;
@@ -25,10 +28,7 @@ import javax.annotation.Resource;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -48,6 +48,8 @@ public class MiscsController extends BaseController
 	private StoreSessionFacade storeSessionFacade;
 	@Resource(name = "checkoutFacade")
 	private CheckoutFacade checkoutFacade;
+	@Resource(name = "documentTypeFacade")
+	private DocumentTypeFacade documentTypeFacade;
 
 	@RequestMapping(value = "/{baseSiteId}/languages", method = RequestMethod.GET)
 	@Cacheable(value = "miscsCache", key = "T(de.hybris.platform.commercewebservicescommons.cache.CommerceCacheKeyGenerator).generateKey(false,false,'getLanguages',#fields)")
@@ -116,5 +118,18 @@ public class MiscsController extends BaseController
 		final CardTypeDataList dataList = new CardTypeDataList();
 		dataList.setCardTypes(checkoutFacade.getSupportedCardTypes());
 		return getDataMapper().map(dataList, CardTypeListWsDTO.class, fields);
+	}
+
+	@GetMapping(value = "/{baseSiteId}/document-types")
+	@Cacheable(value = "miscsCache", key = "T(de.hybris.platform.commercewebservicescommons.cache.CommerceCacheKeyGenerator).generateKey(false,false,'getDocumentTypes',#fields)")
+	@ResponseBody
+	@ApiOperation(nickname = "getDocumentTypes", value = "Get all document types", notes = "Returns all document types")
+	@ApiBaseSiteIdParam
+	public DocumentTypeListWsDto getDocumentTypes(
+			@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
+	{
+		var response = new DocumentTypeDataList();
+		response.setDocumentTypes(documentTypeFacade.getDocumentTypes());
+		return getDataMapper().map(response, DocumentTypeListWsDto.class, fields);
 	}
 }

@@ -495,4 +495,12 @@
         <property name="itemCleanupHooks" ref="csTicketRetentionHooks"/>
         <property name="ticketBusinessService" ref="ticketBusinessService"/>
     </bean>
+
+    <alias name="defaultDocumentTypeDao" alias="documentTypeDao"/>
+    <bean id="defaultDocumentTypeDao" class="com.taloscommerce.core.user.daos.impl.DefaultDocumentTypeDao"/>
+
+    <alias name="defaultDocumentTypeService" alias="documentTypeService"/>
+    <bean id="defaultDocumentTypeService" class="com.taloscommerce.core.user.impl.DefaultDocumentTypeService">
+        <constructor-arg name="documentTypeDao" ref="documentTypeDao"/>
+    </bean>
 </beans>

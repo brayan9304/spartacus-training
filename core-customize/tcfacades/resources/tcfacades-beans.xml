@@ -4,4 +4,25 @@
 -->
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
 
+    <bean class="com.taloscommerce.facades.user.data.DocumentTypeData">
+        <property name="documentTypeCode" type="java.lang.String"/>
+        <property name="documentType" type="java.lang.String"/>
+    </bean>
+
+    <bean class="com.taloscommerce.facades.user.data.DocumentTypeDataList">
+        <property name="documentTypes" type="java.util.List&lt;com.taloscommerce.facades.user.data.DocumentTypeData>"/>
+    </bean>
+
+    <bean class="com.taloscommerce.facades.user.data.ReferredCustomerData">
+        <property name="email" type="String"/>
+        <property name="documentTypeCode" type="String"/>
+        <property name="documentType" type="String"/>
+        <property name="documentNumber" type="String"/>
+        <property name="firstName" type="String"/>
+        <property name="lastName" type="String"/>
+    </bean>
+
+    <bean class="com.taloscommerce.facades.user.data.ReferredCustomerDataList">
+        <property name="documentTypes" type="java.util.List&lt;com.taloscommerce.facades.user.data.ReferredCustomerData>"/>
+    </bean>
 </beans>

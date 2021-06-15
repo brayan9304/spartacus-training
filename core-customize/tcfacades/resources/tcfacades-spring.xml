@@ -155,4 +155,23 @@
 		<property name="pointOfServiceDistanceConverter" ref="pointOfServiceDistanceConverter"/>
 	</bean>
 
+	<!-- Document types converter-populator-facade -->
+	<alias name="defaultDocumentTypePopulator" alias="documentTypePopulator"/>
+	<bean id="defaultDocumentTypePopulator" class="com.taloscommerce.facades.populators.DefaultDocumentTypePopulator"/>
+
+	<alias name="defaultDocumentTypeConverter" alias="documentTypeConverter"/>
+	<bean id="defaultDocumentTypeConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.taloscommerce.facades.user.data.DocumentTypeData"/>
+		<property name="populators">
+			<list>
+				<ref bean="documentTypePopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultDocumentTypeFacade" alias="documentTypeFacade"/>
+	<bean id="defaultDocumentTypeFacade" class="com.taloscommerce.facades.user.impl.DefaultDocumentTypeFacade">
+		<constructor-arg name="documentTypeConverter" ref="documentTypeConverter"/>
+		<constructor-arg name="documentTypeService" ref="documentTypeService"/>
+	</bean>
 </beans>

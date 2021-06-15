@@ -172,4 +172,28 @@
 		<property name="pagination" type="de.hybris.platform.commerceservices.search.pagedata.PaginationData"/>
 	</bean>
 
+	<bean class="com.taloscommerce.webservices.dto.user.DocumentTypeWsDto">
+		<description>Representation of a Document Type</description>
+		<hints>
+			<hint name="wsRelated"/>
+			<hint name="alias">DocumentType</hint>
+		</hints>
+		<property name="documentTypeCode" type="java.lang.String">
+			<description>Document type code</description>
+		</property>
+		<property name="documentType" type="java.lang.String">
+			<description>Document type</description>
+		</property>
+	</bean>
+
+	<bean class="com.taloscommerce.webservices.dto.user.DocumentTypeListWsDto">
+		<description>List of Document types</description>
+		<hints>
+			<hint name="wsRelated"/>
+		</hints>
+		<property name="documentTypes" type="java.util.List&lt;com.taloscommerce.webservices.dto.user.DocumentTypeWsDto>">
+			<description>Document type List</description>
+		</property>
+	</bean>
+
 </beans>

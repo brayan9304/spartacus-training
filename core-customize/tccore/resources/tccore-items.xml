@@ -10,7 +10,66 @@
     <enumtypes>
     </enumtypes>
 
+    <relations>
+        <relation code="Customer2ReferredCustomerRel" localized="false">
+            <sourceElement type="Customer" qualifier="customer" cardinality="one"/>
+            <!--suppress TSVBased -->
+            <targetElement type="ReferredCustomer" qualifier="referredCustomers" cardinality="many" collectiontype="list"/>
+        </relation>
+    </relations>
+
     <itemtypes>
+
+        <typegroup name="Training Core Items">
+            <itemtype code="DocumentType">
+                <deployment table="DocumentTypes" typecode="12000"/>
+                <attributes>
+                    <attribute qualifier="code" type="java.lang.String">
+                        <modifiers unique="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="name" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+                <indexes>
+                    <index name="codeIdx" unique="true">
+                        <key attribute="code"/>
+                    </index>
+                </indexes>
+            </itemtype>
+
+            <itemtype code="ReferredCustomer">
+                <deployment table="ReferredCustomers" typecode="12001"/>
+                <attributes>
+                    <attribute qualifier="email" type="java.lang.String">
+                        <modifiers unique="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="documentType" type="DocumentType">
+                        <modifiers initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="documentNumber" type="java.lang.String">
+                        <modifiers initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="firstName" type="java.lang.String">
+                        <modifiers initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="lastName" type="java.lang.String">
+                        <modifiers initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+                <indexes>
+                    <index name="emailIdx" unique="true">
+                        <key attribute="email"/>
+                    </index>
+                </indexes>
+            </itemtype>
+        </typegroup>
 
         <typegroup name="Electronics">
             <itemtype code="ElectronicsColorVariantProduct" extends="VariantProduct"
