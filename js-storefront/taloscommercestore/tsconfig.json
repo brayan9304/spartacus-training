@@ -3,6 +3,13 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@tc-shared": ["src/app/spartacus/shared/"],
+      "@tc-core": ["src/app/spartacus/core"],
+      "@tc-model": ["src/app/spartacus/model"],
+      "@tc-configurations": ["src/app/spartacus/configurations"],
+      "@tc-env": ["src/environments/environment.ts"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

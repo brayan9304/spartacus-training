@@ -1,6 +1,6 @@
 {
   "name": "taloscommercestore",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,6 +10,7 @@
     "e2e": "ng e2e",
     "dev:ssr": "ng run taloscommercestore:serve-ssr",
     "serve:ssr": "node dist/taloscommercestore/server/main.js",
+    "serve:ssr:local": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 ng run taloscommercestore:serve-ssr",
     "build:ssr": "ng build --prod && ng run taloscommercestore:server:production",
     "prerender": "ng run taloscommercestore:prerender"
   },
@@ -54,6 +55,7 @@
     "@angular-devkit/schematics": "^10.2.1",
     "@angular/cli": "~10.2.3",
     "@angular/compiler-cli": "~10.2.4",
+    "@ngrx/store-devtools": "^12.1.0",
     "@nguniversal/builders": "^10.1.0",
     "@spartacus/schematics": "^3.4.0",
     "@types/express": "^4.17.0",
