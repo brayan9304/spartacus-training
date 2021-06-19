@@ -9,7 +9,7 @@ import {AppComponent} from './app.component';
 import {SpartacusModule} from './spartacus/spartacus.module';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import localeEn from '@angular/common/locales/en';
-import {environment} from '../environments/environment';
+import {environment} from '@tc-env';
 
 registerLocaleData(localeEn);
 
