@@ -37,6 +37,9 @@
               "src/styles.scss",
               "src/styles/spartacus/user.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles", "src/styles/scss"]
+            },
             "scripts": []
           },
           "configurations": {

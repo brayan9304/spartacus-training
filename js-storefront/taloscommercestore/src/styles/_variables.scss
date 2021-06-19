@@ -1,0 +1,10 @@
+@use '~@spartacus/styles/scss/theme' as cx;
+@forward '~@spartacus/styles/scss/theme' as cx-*;
+
+
+//
+// Icons
+//
+$icon-sm: 1rem;
+$icon-md: 1.25rem;
+$icon-lg: 1.5rem;

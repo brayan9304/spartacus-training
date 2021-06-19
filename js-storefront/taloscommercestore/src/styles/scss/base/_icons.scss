@@ -1,0 +1,19 @@
+@use 'variables' as var;
+
+.icon,
+.cx-icon {
+  svg {
+    height: var.$icon-md;
+    width: var.$icon-md;
+  }
+
+  &.icon-sm svg {
+    height: var.$icon-sm;
+    width: var.$icon-sm;
+  }
+
+  &.icon-lg svg {
+    height: var.$icon-lg;
+    width: var.$icon-lg;
+  }
+}
