@@ -17,7 +17,7 @@ import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacu
     context: {
       currency: ['USD'],
       language: ['en'],
-      baseSite: ['taloscommerce']
+      baseSite: ['taloscommerce'],
     },
   }), provideConfig(<I18nConfig>{
     i18n: {
@@ -27,7 +27,7 @@ import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacu
     },
   }), provideConfig(<FeaturesConfig>{
     features: {
-      level: '3.3'
+      level: '3.4'
     }
   })]
 })

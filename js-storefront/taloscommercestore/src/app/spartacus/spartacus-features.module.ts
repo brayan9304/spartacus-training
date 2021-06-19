@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { AnonymousConsentsModule, AuthModule, CartModule, CartOccModule, CheckoutModule, CheckoutOccModule, CostCenterOccModule, ProductModule, ProductOccModule, UserOccTransitionalModule, UserTransitionalModule } from "@spartacus/core";
+import { AnonymousConsentsModule, AuthModule, CartModule, CartOccModule, CheckoutModule, CheckoutOccModule, CostCenterOccModule, ExternalRoutesModule, ProductModule, ProductOccModule, UserOccTransitionalModule, UserTransitionalModule } from "@spartacus/core";
 import { AddressBookModule, AnonymousConsentManagementBannerModule, AnonymousConsentsDialogModule, BannerCarouselModule, BannerModule, BreadcrumbModule, CartComponentModule, CartPageEventModule, CategoryNavigationModule, CheckoutComponentModule, CheckoutLoginModule, CmsParagraphModule, ConsentManagementModule, FooterNavigationModule, HamburgerMenuModule, HomePageEventModule, LinkModule, LoginRouteModule, LogoutModule, MyCouponsModule, MyInterestsModule, NavigationEventModule, NavigationModule, NotificationPreferenceModule, OrderCancellationModule, OrderConfirmationModule, OrderDetailsModule, OrderHistoryModule, OrderReturnModule, PaymentMethodsModule, ProductCarouselModule, ProductDetailsPageModule, ProductFacetNavigationModule, ProductImagesModule, ProductIntroModule, ProductListingPageModule, ProductListModule, ProductPageEventModule, ProductReferencesModule, ProductSummaryModule, ProductTabsModule, ReplenishmentOrderConfirmationModule, ReplenishmentOrderDetailsModule, ReplenishmentOrderHistoryModule, ReturnRequestDetailModule, ReturnRequestListModule, SearchBoxModule, SiteContextSelectorModule, StockNotificationModule, TabParagraphContainerModule, WishListModule } from "@spartacus/storefront";
 import { UserFeatureModule } from './features/user/user-feature.module';
-import { StoreFinderFeatureModule } from './features/storefinder/store-finder-feature.module';
 import { SmartEditFeatureModule } from './features/smartedit/smart-edit-feature.module';
 
 @NgModule({
@@ -84,8 +83,9 @@ import { SmartEditFeatureModule } from './features/smartedit/smart-edit-feature.
     HomePageEventModule,
     CartPageEventModule,
     ProductPageEventModule,
+    // External routes,
+    ExternalRoutesModule.forRoot(),
     UserFeatureModule,
-    StoreFinderFeatureModule,
     SmartEditFeatureModule,
   ]
 })
