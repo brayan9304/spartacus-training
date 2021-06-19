@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {translationChunksConfig, translations} from '@spartacus/assets';
 import {FeaturesConfig, I18nConfig, OccConfig, provideConfig, SiteContextConfig} from '@spartacus/core';
 import {defaultCmsContentProviders, layoutConfig, mediaConfig} from '@spartacus/storefront';
+import {customI18nConfig} from './configurations/custom-i18n-config';
 
 @NgModule({
   declarations: [],
@@ -26,11 +27,11 @@ import {defaultCmsContentProviders, layoutConfig, mediaConfig} from '@spartacus/
     } as SiteContextConfig),
     provideConfig({
       i18n: {
-        resources: translations,
         chunks: translationChunksConfig,
         fallbackLang: 'en'
       },
     } as I18nConfig),
+    provideConfig(customI18nConfig),
     provideConfig({
       features: {
         level: '3.4'

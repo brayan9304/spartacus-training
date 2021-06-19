@@ -1,4 +1,4 @@
-import { registerLocaleData } from '@angular/common';
+import {registerLocaleData} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
@@ -7,7 +7,7 @@ import {StoreModule} from '@ngrx/store';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SpartacusModule} from './spartacus/spartacus.module';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import localeEn from '@angular/common/locales/en';
 import {environment} from '../environments/environment';
 

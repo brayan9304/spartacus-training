@@ -1,0 +1,9 @@
+{
+  "tcReferredCustomers": {
+    "title": "Referred Customers",
+    "actionText": "Add New Referred Customer"
+  },
+  "tcReferredCustomerDetails": {
+    "title": "Referred Customer Details"
+  }
+}
