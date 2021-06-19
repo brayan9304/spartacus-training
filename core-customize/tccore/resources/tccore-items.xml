@@ -19,6 +19,19 @@
     </relations>
 
     <itemtypes>
+        <typegroup name="CMS">
+            <itemtype code="TcSplitViewBannerComponent" extends="AbstractResponsiveBannerComponent"
+                      jaloclass="com.taloscommerce.core.jalo.TcSplitViewBannerComponent">
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="content" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
 
         <typegroup name="Training Core Items">
             <itemtype code="DocumentType">

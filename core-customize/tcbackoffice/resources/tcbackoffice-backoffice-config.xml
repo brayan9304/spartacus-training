@@ -75,6 +75,19 @@
         </editorArea:editorArea>
     </context>
 
+    <context merge-by="type" parent="AbstractResponsiveBannerComponent" type="TcSplitViewBannerComponent" component="editor-area">
+        <editorArea:editorArea>
+            <editorArea:tab name="hmc.properties">
+                <editorArea:section name="hmc.properties">
+                    <editorArea:attribute qualifier="title"/>
+                    <editorArea:attribute qualifier="content"/>
+                    <editorArea:attribute qualifier="urlLink"/>
+                    <editorArea:attribute qualifier="media"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
     <!--List views Configurations-->
     <context merge-by="type" parent="GenericItem" type="DocumentType" component="listview">
         <list:list-view refresh-after-object-creation="true">
