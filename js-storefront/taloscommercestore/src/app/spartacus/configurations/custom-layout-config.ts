@@ -10,8 +10,8 @@
  * Spartacus sample-data, you will have an aligned setup. However, if you introduce custom page
  * templates and/or slots, you most likely need to further adjust or replace this configuration.
  */
-import {LayoutConfig} from '@spartacus/storefront';
-import {DeferLoadingStrategy} from '@spartacus/core';
+import { LayoutConfig } from '@spartacus/storefront';
+import { DeferLoadingStrategy } from '@spartacus/core';
 
 export const customLayoutConfig: LayoutConfig = {
   deferredLoading: {
@@ -20,7 +20,7 @@ export const customLayoutConfig: LayoutConfig = {
   },
   layoutSlots: {
     TrainingPageTemplate: {
-      slots: ['BodyContent', 'SideContent']
-    }
+      slots: ['BodyContent', 'SideContent'],
+    },
   },
 };
