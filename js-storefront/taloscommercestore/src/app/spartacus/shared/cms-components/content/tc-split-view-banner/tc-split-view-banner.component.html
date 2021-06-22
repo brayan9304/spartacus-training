@@ -1,0 +1,11 @@
+<ng-container *ngIf="componentData$ | async as data">
+  <div class="container">
+    <div class="tc-split-view-banner d-flex" [ngClass]="'tc-split-view-banner--image-right'">
+      <div class="tc-split-view-banner-detail align-self-center" [ngClass]="{ 'text-center': !data.media }">
+        <h2 class="tc-split-view-banner-title" *ngIf="data.title">{{ data.title }}</h2>
+        <p class="tc-split-view-banner-paragraph" *ngIf="data.content">{{ data.content }}</p>
+      </div>
+      <cx-media class="tc-split-view-banner-media tc-fit-cover" *ngIf="data.media" [container]="data.media"></cx-media>
+    </div>
+  </div>
+</ng-container>

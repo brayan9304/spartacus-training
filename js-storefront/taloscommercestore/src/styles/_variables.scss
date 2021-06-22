@@ -8,3 +8,18 @@
 $icon-sm: 1rem;
 $icon-md: 1.25rem;
 $icon-lg: 1.5rem;
+
+//
+// Typography
+// https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss#L272
+// https://github.com/SAP/spartacus/blob/develop/projects/storefrontstyles/scss/theme/sparta/_variables.scss#L50
+//
+$h1-font-size: cx.$font-size-base * 3; //48px
+$h2-font-size: cx.$font-size-base * 2.125; //34px
+$h3-font-size: cx.$font-size-base * 1.75; //28px
+$h4-font-size: cx.$font-size-base * 1.5; //24px
+$h5-font-size: cx.$font-size-base * 1.25; //20px
+$h6-font-size: cx.$font-size-base * 1.125; //18px
+$font-size-md: cx.$font-size-base * 0.875; //14px
+$font-size-sm: cx.$font-size-base * 0.75; //12px
+$font-size-xs: cx.$font-size-base * 0.6875; //11px

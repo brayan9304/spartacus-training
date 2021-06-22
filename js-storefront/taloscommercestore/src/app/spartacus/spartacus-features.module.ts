@@ -68,6 +68,7 @@ import {
 } from '@spartacus/storefront';
 import { UserFeatureModule } from './features/user/user-feature.module';
 import { SmartEditFeatureModule } from './features/smartedit/smart-edit-feature.module';
+import { TcSplitViewBannerModule } from '@tc-shared';
 
 @NgModule({
   declarations: [],
@@ -152,6 +153,9 @@ import { SmartEditFeatureModule } from './features/smartedit/smart-edit-feature.
     ExternalRoutesModule.forRoot(),
     UserFeatureModule,
     SmartEditFeatureModule,
+
+    // Custom CMS Components
+    TcSplitViewBannerModule,
   ],
 })
 export class SpartacusFeaturesModule {}

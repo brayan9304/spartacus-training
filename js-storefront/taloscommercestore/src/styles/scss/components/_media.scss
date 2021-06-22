@@ -1,0 +1,12 @@
+@use 'mixins';
+
+cx-media.tc-fit-cover img {
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  width: 100%;
+
+  @include mixins.cx-media-breakpoint-up(md) {
+    position: absolute;
+  }
+}
