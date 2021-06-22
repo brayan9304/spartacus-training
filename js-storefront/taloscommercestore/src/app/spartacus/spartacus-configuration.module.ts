@@ -1,9 +1,15 @@
-import {NgModule} from '@angular/core';
-import {translationChunksConfig} from '@spartacus/assets';
-import {FeaturesConfig, I18nConfig, OccConfig, provideConfig, SiteContextConfig} from '@spartacus/core';
-import {customI18nConfig} from '@tc-configurations';
-import {defaultCmsContentProviders, ImageLoadingStrategy, layoutConfig, MediaConfig, mediaConfig} from '@spartacus/storefront';
-import {environment} from '@tc-env';
+import { NgModule } from '@angular/core';
+import { translationChunksConfig } from '@spartacus/assets';
+import { FeaturesConfig, I18nConfig, OccConfig, provideConfig, SiteContextConfig } from '@spartacus/core';
+import {
+  defaultCmsContentProviders,
+  ImageLoadingStrategy,
+  layoutConfig,
+  MediaConfig,
+  mediaConfig,
+} from '@spartacus/storefront';
+import { environment } from '@tc-env';
+import { customI18nConfig } from '@tc-configurations';
 
 const occConfig: OccConfig = { backend: { occ: {} } };
 
@@ -39,7 +45,7 @@ if (environment.prefix) {
     provideConfig({
       i18n: {
         chunks: translationChunksConfig,
-        fallbackLang: 'en'
+        fallbackLang: 'en',
       },
     } as I18nConfig),
     provideConfig(customI18nConfig),
@@ -48,9 +54,9 @@ if (environment.prefix) {
     } as MediaConfig),
     provideConfig({
       features: {
-        level: '3.4'
-      }
-    } as FeaturesConfig)]
+        level: '3.4',
+      },
+    } as FeaturesConfig),
+  ],
 })
-export class SpartacusConfigurationModule {
-}
+export class SpartacusConfigurationModule {}
