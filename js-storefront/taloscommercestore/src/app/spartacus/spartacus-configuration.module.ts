@@ -1,9 +1,23 @@
 import {NgModule} from '@angular/core';
 import {translationChunksConfig} from '@spartacus/assets';
 import {FeaturesConfig, I18nConfig, OccConfig, provideConfig, SiteContextConfig} from '@spartacus/core';
-import {defaultCmsContentProviders, layoutConfig, mediaConfig} from '@spartacus/storefront';
-import {customI18nConfig, customIconsConfig, customRoutingConfig} from '@tc-configurations';
-import {customLayoutConfig} from './configurations/custom-layout-config';
+import {customI18nConfig, customIconsConfig, customRoutingConfig, customLayoutConfig} from '@tc-configurations';
+import {defaultCmsContentProviders, ImageLoadingStrategy, layoutConfig, MediaConfig, mediaConfig} from '@spartacus/storefront';
+import {environment} from '@tc-env';
+
+const occConfig: OccConfig = {backend: {occ: {}}};
+
+// only provide the `occ.baseUrl` key if it is explicitly configured, otherwise the value of
+// <meta name="occ-backend-base-url" > is ignored.
+// This in turn breaks the call to the API aspect in public cloud environments
+if (environment.occBaseUrl) {
+  occConfig.backend.occ.baseUrl = environment.occBaseUrl;
+}
+if (environment.prefix) {
+  occConfig.backend.occ.prefix = environment.prefix;
+} else {
+  occConfig.backend.occ.prefix = '/occ/v2/';
+}
 
 @NgModule({
   declarations: [],
@@ -13,11 +27,7 @@ import {customLayoutConfig} from './configurations/custom-layout-config';
     provideConfig(mediaConfig),
     ...defaultCmsContentProviders,
     provideConfig({
-      backend: {
-        occ: {
-          baseUrl: 'https://localhost:9002',
-        }
-      },
+      backend: occConfig.backend,
     } as OccConfig),
     provideConfig({
       context: {
@@ -36,6 +46,9 @@ import {customLayoutConfig} from './configurations/custom-layout-config';
     provideConfig(customI18nConfig),
     provideConfig(customIconsConfig),
     provideConfig(customRoutingConfig),
+    provideConfig({
+      imageLoadingStrategy: ImageLoadingStrategy.LAZY,
+    } as MediaConfig),
     provideConfig({
       features: {
         level: '3.4'
