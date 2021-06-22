@@ -1,5 +1,5 @@
-import {CUSTOM_ICON_TYPE} from '@tc-model';
-import {IconConfig, IconResourceType, ICON_TYPE} from '@spartacus/storefront';
+import { CUSTOM_ICON_TYPE } from '@tc-model';
+import { IconConfig, IconResourceType, ICON_TYPE } from '@spartacus/storefront';
 
 export const customIconsConfig: IconConfig = {
   icon: {
