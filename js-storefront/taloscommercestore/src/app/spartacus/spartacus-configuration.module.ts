@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
-import {translationChunksConfig, translations} from '@spartacus/assets';
+import {translationChunksConfig} from '@spartacus/assets';
 import {FeaturesConfig, I18nConfig, OccConfig, provideConfig, SiteContextConfig} from '@spartacus/core';
 import {defaultCmsContentProviders, layoutConfig, mediaConfig} from '@spartacus/storefront';
-import {customI18nConfig} from './configurations/custom-i18n-config';
-import {customIconsConfig} from './configurations/custom-icons-config';
+import {customI18nConfig, customIconsConfig, customRoutingConfig} from '@tc-configurations';
+import {customLayoutConfig} from './configurations/custom-layout-config';
 
 @NgModule({
   declarations: [],
@@ -32,8 +32,10 @@ import {customIconsConfig} from './configurations/custom-icons-config';
         fallbackLang: 'en'
       },
     } as I18nConfig),
+    provideConfig(customLayoutConfig),
     provideConfig(customI18nConfig),
     provideConfig(customIconsConfig),
+    provideConfig(customRoutingConfig),
     provideConfig({
       features: {
         level: '3.4'

@@ -1098,10 +1098,3 @@ INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]     ; n
 ## Return Request Details page ##
 INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]       ; name                        ; masterTemplate(uid, $contentCV); label; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
                          ;                          ; ReturnRequestDetailsPage ; Return Request Details Page ; AccountPageTemplate            ; /my-account/return-request
-
-
-
-
-
-$contentCatalog = taloscommerceContentCatalog
-$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
