@@ -1,15 +1,15 @@
-import {registerLocaleData} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
-import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
-import {EffectsModule} from '@ngrx/effects';
-import {StoreModule} from '@ngrx/store';
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {SpartacusModule} from './spartacus/spartacus.module';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SpartacusModule } from './spartacus/spartacus.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import localeEn from '@angular/common/locales/en';
-import {environment} from '@tc-env';
+import { environment } from '@tc-env';
 
 registerLocaleData(localeEn);
 
@@ -19,11 +19,9 @@ if (!environment.production) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
@@ -34,7 +32,6 @@ if (!environment.production) {
     ...devImports,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

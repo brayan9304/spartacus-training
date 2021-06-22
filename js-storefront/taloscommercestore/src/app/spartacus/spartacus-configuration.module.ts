@@ -1,11 +1,17 @@
-import {NgModule} from '@angular/core';
-import {translationChunksConfig} from '@spartacus/assets';
-import {FeaturesConfig, I18nConfig, OccConfig, provideConfig, SiteContextConfig} from '@spartacus/core';
-import {customI18nConfig, customIconsConfig, customRoutingConfig, customLayoutConfig} from '@tc-configurations';
-import {defaultCmsContentProviders, ImageLoadingStrategy, layoutConfig, MediaConfig, mediaConfig} from '@spartacus/storefront';
-import {environment} from '@tc-env';
+import { NgModule } from '@angular/core';
+import { translationChunksConfig } from '@spartacus/assets';
+import { FeaturesConfig, I18nConfig, OccConfig, provideConfig, SiteContextConfig } from '@spartacus/core';
+import {
+  defaultCmsContentProviders,
+  ImageLoadingStrategy,
+  layoutConfig,
+  MediaConfig,
+  mediaConfig,
+} from '@spartacus/storefront';
+import { environment } from '@tc-env';
+import { customI18nConfig, customIconsConfig, customLayoutConfig, customRoutingConfig } from '@tc-configurations';
 
-const occConfig: OccConfig = {backend: {occ: {}}};
+const occConfig: OccConfig = { backend: { occ: {} } };
 
 // only provide the `occ.baseUrl` key if it is explicitly configured, otherwise the value of
 // <meta name="occ-backend-base-url" > is ignored.
@@ -39,7 +45,7 @@ if (environment.prefix) {
     provideConfig({
       i18n: {
         chunks: translationChunksConfig,
-        fallbackLang: 'en'
+        fallbackLang: 'en',
       },
     } as I18nConfig),
     provideConfig(customLayoutConfig),
@@ -51,9 +57,9 @@ if (environment.prefix) {
     } as MediaConfig),
     provideConfig({
       features: {
-        level: '3.4'
-      }
-    } as FeaturesConfig)]
+        level: '3.4',
+      },
+    } as FeaturesConfig),
+  ],
 })
-export class SpartacusConfigurationModule {
-}
+export class SpartacusConfigurationModule {}
