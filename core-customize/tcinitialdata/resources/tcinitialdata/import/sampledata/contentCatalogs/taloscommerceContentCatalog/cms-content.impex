@@ -195,7 +195,7 @@ INSERT_UPDATE CMSFlexComponent; $contentCV[unique = true]; uid[unique = true]   
                               ;                          ; UpdateProfileComponent                   ; Update Profile Component                       ; UpdateProfileComponent                   ; UpdateProfileComponent
                               ;                          ; CartApplyCouponComponent                 ; Cart Apply Coupon Component                    ; CartApplyCouponComponent                 ; CartApplyCouponComponent
                               ;                          ; SaveForLaterComponent                    ; SaveForLater Component                         ; SaveForLaterComponent                    ; SaveForLaterComponent
-                              ;                          ; AccountReferralsComponent                ; Account Referrals Component                    ; AccountReferralsComponent                ; AccountReferralsComponent
+                              ;                          ; AccountReferredCustomersComponent        ; Account Referred Customers Component           ; AccountReferredCustomersComponent        ; AccountReferredCustomersComponent
 
 ###### SiteContext Slot and Components ######
 INSERT_UPDATE CMSSiteContextComponent; $contentCV[unique = true]; uid[unique = true]; name            ; context(code); &componentRef
@@ -529,26 +529,26 @@ INSERT_UPDATE ViewStoreAction; $contentCV[unique = true]; uid[unique = true]; ur
 INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; active; cmsComponents(&componentRef)[mode = append]
                          ;                          ; TopHeaderSlot     ; true  ;
 
-###### Account Referrals
-INSERT_UPDATE Media; code[unique = true]                ; $contentCV[unique = true]; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; realfilename                       ; mediaFormat(qualifier); altText    ; mime[default = 'image/jpeg']; folder(qualifier)[default = images]
-                   ; splitview-referrals-mobile.jpg     ;                          ; $siteResource/images/splitview-banners/splitview-referrals-mobile.jpg                          ; splitview-referrals-mobile.jpg     ; mobile                ; "Training" ;                             ;
-                   ; splitview-referrals-tablet.jpg     ;                          ; $siteResource/images/splitview-banners/splitview-referrals-tablet.jpg                          ; splitview-referrals-tablet.jpg     ; tablet                ; "Training" ;                             ;
-                   ; splitview-referrals-desktop.jpg    ;                          ; $siteResource/images/splitview-banners/splitview-referrals-desktop.jpg                         ; splitview-referrals-desktop.jpg    ; desktop               ; "Training" ;                             ;
-                   ; splitview-referrals-widescreen.jpg ;                          ; $siteResource/images/splitview-banners/splitview-referrals-widescreen.jpg                      ; splitview-referrals-widescreen.jpg ; widescreen            ; "Training" ;                             ;
+###### Account Referred Customers
+INSERT_UPDATE Media; code[unique = true]                         ; $contentCV[unique = true]; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; realfilename                                ; mediaFormat(qualifier); altText    ; mime[default = 'image/jpeg']; folder(qualifier)[default = images]
+                   ; splitview-referred-customers-mobile.jpg     ;                          ; $siteResource/images/splitview-banners/splitview-referred-customers-mobile.jpg                 ; splitview-referred-customers-mobile.jpg     ; mobile                ; "Training" ;                             ;
+                   ; splitview-referred-customers-tablet.jpg     ;                          ; $siteResource/images/splitview-banners/splitview-referred-customers-tablet.jpg                 ; splitview-referred-customers-tablet.jpg     ; tablet                ; "Training" ;                             ;
+                   ; splitview-referred-customers-desktop.jpg    ;                          ; $siteResource/images/splitview-banners/splitview-referred-customers-desktop.jpg                ; splitview-referred-customers-desktop.jpg    ; desktop               ; "Training" ;                             ;
+                   ; splitview-referred-customers-widescreen.jpg ;                          ; $siteResource/images/splitview-banners/splitview-referred-customers-widescreen.jpg             ; splitview-referred-customers-widescreen.jpg ; widescreen            ; "Training" ;                             ;
 
 
-INSERT_UPDATE TcSplitViewBannerComponent; $contentCV[unique = true]; uid[unique = true]   ; &componentRef
-                                        ;                          ; SplitBannerReferrals ; SplitBannerReferrals
+INSERT_UPDATE TcSplitViewBannerComponent; $contentCV[unique = true]; uid[unique = true]           ; &componentRef
+                                        ;                          ; SplitBannerReferredCustomers ; SplitBannerReferredCustomers
 
 # ContentSlot
-INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]    ; name                                    ; active; cmsComponents(&componentRef)                    ; ; ;
-                         ;                          ; SideContent-referrals ; Side Content Slot for Account Referrals ; true  ;                                                 ; ; ;
-                         ;                          ; BodyContent-referrals ; Body Content Slot for Account Referrals ; true  ; SplitBannerReferrals, AccountReferralsComponent ; ; ;
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]             ; name                                             ; active; cmsComponents(&componentRef)                                    ; ; ;
+                         ;                          ; SideContent-referred-customers ; Side Content Slot for Account Referred Customers ; true  ;                                                                 ; ; ;
+                         ;                          ; BodyContent-referred-customers ; Body Content Slot for Account Referred Customers ; true  ; SplitBannerReferredCustomers, AccountReferredCustomersComponent ; ; ;
 
 # ContentSlotForPage
-INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]    ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'referrals']; contentSlot(uid, $contentCV)[unique = true]; ; ;
-                                ;                          ; SideContent-referrals ; SideContent            ;                                                            ; SideContent-referrals                      ; ; ;
-                                ;                          ; BodyContent-referrals ; BodyContent            ;                                                            ; BodyContent-referrals                      ; ; ;
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]             ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'referred-customers']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; SideContent-referred-customers ; SideContent            ;                                                                     ; SideContent-referred-customers             ; ; ;
+                                ;                          ; BodyContent-referred-customers ; BodyContent            ;                                                                     ; BodyContent-referred-customers             ; ; ;
 
 ###### Account Address Book
 # ContentSlot
@@ -845,17 +845,17 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]        
                          ;                          ; CenterContentSlot-checkout-login ; Center Content Slot for Checkout Login ; true  ;                             ; ; ;
 
 # create cms link components for my account pages
-INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; name                  ; url                         ; &linkRef              ; target(code)[default = 'sameWindow']
-                              ;                          ; PersonalDetailsLink   ; PersonalDetailsLink   ; /my-account/update-profile  ; PersonalDetailsLink   ;
-                              ;                          ; UpdateEmailLink       ; UpdateEmailLink       ; /my-account/update-email    ; UpdateEmailLink       ;
-                              ;                          ; UpdatePasswordLink    ; UpdatePasswordLink    ; /my-account/update-password ; UpdatePasswordLink    ;
-                              ;                          ; AddressBookLink       ; AddressBookLink       ; /my-account/address-book    ; AddressBookLink       ;
-                              ;                          ; ReferralsLink         ; ReferralsLink         ; /my-account/referrals       ; ReferralsLink         ;
-                              ;                          ; PaymentDetailsLink    ; PaymentDetailsLink    ; /my-account/payment-details ; PaymentDetailsLink    ;
-                              ;                          ; OrderHistoryLink      ; OrderHistoryLink      ; /my-account/orders          ; OrderHistoryLink      ;
-                              ;                          ; SavedCartsLink        ; SavedCartsLink        ; /my-account/saved-carts     ; SavedCartsLink        ;
-                              ;                          ; ConsentManagementLink ; ConsentManagementLink ; /my-account/consents        ; ConsentManagementLink ;
-                              ;                          ; CloseAccountLink      ; CloseAccountLink      ; /my-account/close-account   ; CloseAccountLink      ;
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; name                  ; url                            ; &linkRef              ; target(code)[default = 'sameWindow']
+                              ;                          ; PersonalDetailsLink   ; PersonalDetailsLink   ; /my-account/update-profile     ; PersonalDetailsLink   ;
+                              ;                          ; UpdateEmailLink       ; UpdateEmailLink       ; /my-account/update-email       ; UpdateEmailLink       ;
+                              ;                          ; UpdatePasswordLink    ; UpdatePasswordLink    ; /my-account/update-password    ; UpdatePasswordLink    ;
+                              ;                          ; AddressBookLink       ; AddressBookLink       ; /my-account/address-book       ; AddressBookLink       ;
+                              ;                          ; ReferredCustomersLink ; ReferredCustomersLink ; /my-account/referred-customers ; ReferredCustomersLink ;
+                              ;                          ; PaymentDetailsLink    ; PaymentDetailsLink    ; /my-account/payment-details    ; PaymentDetailsLink    ;
+                              ;                          ; OrderHistoryLink      ; OrderHistoryLink      ; /my-account/orders             ; OrderHistoryLink      ;
+                              ;                          ; SavedCartsLink        ; SavedCartsLink        ; /my-account/saved-carts        ; SavedCartsLink        ;
+                              ;                          ; ConsentManagementLink ; ConsentManagementLink ; /my-account/consents           ; ConsentManagementLink ;
+                              ;                          ; CloseAccountLink      ; CloseAccountLink      ; /my-account/close-account      ; CloseAccountLink      ;
 
 # create navigation root node for my account & child nodes for the root node
 INSERT_UPDATE CMSNavigationNode; uid[unique = true]       ; $contentCV[unique = true]; name               ; parent(uid, $contentCV); links(&linkRef); &nodeRef
@@ -866,7 +866,7 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]       ; $contentCV[unique = 
                                ; PaymentDetailsNavNode    ;                          ; Payment Details    ; MyAccountNavNode       ;                ; PaymentDetailsNavNode
                                ; ChangePasswordNavNode    ;                          ; Change Password    ; MyAccountNavNode       ;                ; ChangePasswordNavNode
                                ; OrderHistoryNavNode      ;                          ; Order History      ; MyAccountNavNode       ;                ; OrderHistoryNavNode
-                               ; ReferralsNavNode         ;                          ; Referrals          ; MyAccountNavNode       ;                ; ReferralsNavNode
+                               ; ReferredCustomersNavNode ;                          ; ReferredCustomers  ; MyAccountNavNode       ;                ; ReferredCustomersNavNode
                                ; AddressBookNavNode       ;                          ; Address Book       ; MyAccountNavNode       ;                ; AddressBookNavNode
                                ; SavedCartsNavNode        ;                          ; Saved Carts        ; MyAccountNavNode       ;                ; SavedCartsNavNode
                                ; ConsentManagementNavNode ;                          ; Consent Management ; MyAccountNavNode       ;                ; ConsentManagementNavNode
@@ -877,7 +877,7 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]            ; $contentCV[uni
                                 ; PersonalDetailsNavNodeEntry   ;                          ; PersonalDetailsNavNodeEntry   ; PersonalDetailsNavNode   ; PersonalDetailsLink   ;
                                 ; UpdateEmailNavNodeEntry       ;                          ; UpdateEmailNavNodeEntry       ; UpdateEmailNavNode       ; UpdateEmailLink       ;
                                 ; ChangePasswordNavNodeEntry    ;                          ; ChangePasswordNavNodeEntry    ; ChangePasswordNavNode    ; UpdatePasswordLink    ;
-                                ; ReferralsNavNodeEntry         ;                          ; ReferralsNavNodeEntry         ; ReferralsNavNode         ; ReferralsLink         ;
+                                ; ReferredCustomersNavNodeEntry ;                          ; ReferredCustomersNavNodeEntry ; ReferredCustomersNavNode ; ReferredCustomersLink ;
                                 ; AddressBookNavNodeEntry       ;                          ; AddressBookNavNodeEntry       ; AddressBookNavNode       ; AddressBookLink       ;
                                 ; PaymentDetailsNavNodeEntry    ;                          ; PaymentDetailsNavNodeEntry    ; PaymentDetailsNavNode    ; PaymentDetailsLink    ;
                                 ; OrderHistoryNavNodeEntry      ;                          ; OrderHistoryNavNodeEntry      ; OrderHistoryNavNode      ; OrderHistoryLink      ;
@@ -1216,7 +1216,7 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]                 ; $contentC
 
 # Set the order or the items in the My Account Menu
 UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; children(uid, $contentCV)
-                        ; MyAccountNavNode  ;                          ; OrderHistoryNavNode,WishListNavNode,SavedCartsNavNode,ReferralsNavNode,AddressBookNavNode,PaymentDetailsNavNode,PersonalDetailsNavNode,ChangePasswordNavNode,UpdateEmailNavNode,ConsentManagementNavNode,CloseAccountNavNode,MyInterestsNavNode,NotificationPreferenceNavNode,MyCouponsNavNode,SignOutNavNode
+                        ; MyAccountNavNode  ;                          ; OrderHistoryNavNode,WishListNavNode,SavedCartsNavNode,ReferredCustomersNavNode,AddressBookNavNode,PaymentDetailsNavNode,PersonalDetailsNavNode,ChangePasswordNavNode,UpdateEmailNavNode,ConsentManagementNavNode,CloseAccountNavNode,MyInterestsNavNode,NotificationPreferenceNavNode,MyCouponsNavNode,SignOutNavNode
 
 ###### Create Forgot/Reset Password Pages and Components ######
 INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]             ; name                                  ; active; cmsComponents(&componentRef)
