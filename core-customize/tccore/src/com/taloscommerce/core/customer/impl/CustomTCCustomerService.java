@@ -27,7 +27,7 @@ public class CustomTCCustomerService extends DefaultCustomerService implements T
 	}
 
 	@Override
-	public void saveReferral(String customerId, ReferredCustomerModel referredCustomer)
+	public void saveReferredCustomer(String customerId, ReferredCustomerModel referredCustomer)
 	{
 		Optional.ofNullable(getCustomerByCustomerId(customerId)).ifPresent(referredCustomer::setCustomer);
 		getModelService().save(referredCustomer);
