@@ -947,7 +947,7 @@ INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]        
                          ;                          ; orderConfirmationPage        ; Order Confirmation Page        ; OrderConfirmationPageTemplate        ; /order-confirmation
                          ;                          ; cartPage                     ; Cart Page                      ; CartPageTemplate                     ; /cart
                          ;                          ; search                       ; Search Results Page            ; SearchResultsListPageTemplate        ; search
-                         ;                          ; referrals                    ; Referrals Page                 ; TrainingPageTemplate                 ; /my-account/referrals
+                         ;                          ; referred-customers           ; Referred Customers Page        ; TrainingPageTemplate                 ; /my-account/referred-customers
                          ;                          ; address-book                 ; Address Book Page              ; AccountPageTemplate                  ; /my-account/address-book
                          ;                          ; payment-details              ; Payment Details Page           ; AccountPageTemplate                  ; /my-account/payment-details
                          ;                          ; order                        ; Order Details Page             ; AccountPageTemplate                  ; /my-account/order

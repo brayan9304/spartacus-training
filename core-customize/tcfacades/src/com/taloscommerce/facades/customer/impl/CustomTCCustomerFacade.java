@@ -29,9 +29,9 @@ public class CustomTCCustomerFacade extends DefaultCustomerFacade implements TCC
 	}
 
 	@Override
-	public void saveReferral(String customerId, ReferredCustomerData referredCustomer)
+	public void saveReferredCustomer(String customerId, ReferredCustomerData referredCustomer)
 	{
-		getCustomerService().saveReferral(customerId, getReferredCustomerReverseConverter().convert(referredCustomer));
+		getCustomerService().saveReferredCustomer(customerId, getReferredCustomerReverseConverter().convert(referredCustomer));
 	}
 
 	@Override
