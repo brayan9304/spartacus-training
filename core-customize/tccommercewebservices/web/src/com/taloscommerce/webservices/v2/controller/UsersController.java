@@ -410,7 +410,7 @@ public class UsersController extends BaseCommerceController
 	{
 		final CustomerData customer = customerFacade.getCurrentCustomer();
 		final ReferredCustomerData referredCustomerData = getDataMapper().map(referredCustomer, ReferredCustomerData.class);
-		tcCustomerFacade.saveReferral(customer.getCustomerId(), referredCustomerData);
+		tcCustomerFacade.saveReferredCustomer(customer.getCustomerId(), referredCustomerData);
 	}
 
 	@Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })

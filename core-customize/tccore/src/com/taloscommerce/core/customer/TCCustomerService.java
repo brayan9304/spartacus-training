@@ -12,12 +12,12 @@ import java.util.List;
 public interface TCCustomerService extends CustomerService
 {
 	/**
-	 * Saves a referral for the given customer
+	 * Saves a referred customer for the given customer
 	 *
 	 * @param customerId       customer id
 	 * @param referredCustomer referred customer
 	 */
-	void saveReferral(String customerId, ReferredCustomerModel referredCustomer);
+	void saveReferredCustomer(String customerId, ReferredCustomerModel referredCustomer);
 
 	/**
 	 * Get all the referred customers for the given customer
