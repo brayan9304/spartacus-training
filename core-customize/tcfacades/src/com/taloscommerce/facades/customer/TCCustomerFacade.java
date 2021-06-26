@@ -12,12 +12,12 @@ import java.util.List;
 public interface TCCustomerFacade extends CustomerFacade
 {
 	/**
-	 * Saves a referral for the given customer
+	 * Saves a referred customer for the given customer
 	 *
 	 * @param customerId       customer id
 	 * @param referredCustomer referred customer
 	 */
-	void saveReferral(String customerId, ReferredCustomerData referredCustomer);
+	void saveReferredCustomer(String customerId, ReferredCustomerData referredCustomer);
 
 	/**
 	 * Get all the referred customers for the given customer

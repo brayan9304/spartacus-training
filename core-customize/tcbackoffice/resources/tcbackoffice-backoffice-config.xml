@@ -67,7 +67,7 @@
 
     <context merge-by="type" parent="User" type="Customer" component="editor-area">
         <editorArea:editorArea>
-            <editorArea:tab name="hmc.referrals">
+            <editorArea:tab name="hmc.referredCustomers">
                 <editorArea:section name="hmc.properties">
                     <editorArea:attribute qualifier="referredCustomers"/>
                 </editorArea:section>
