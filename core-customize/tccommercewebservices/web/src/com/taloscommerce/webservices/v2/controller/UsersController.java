@@ -419,11 +419,11 @@ public class UsersController extends BaseCommerceController
 	@ApiBaseSiteIdAndUserIdParam
 	@ResponseBody
 	public ReferredCustomerListWsDto getUserReferredCustomers(
-			@ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
 			@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
 	{
+		final CustomerData customer = customerFacade.getCurrentCustomer();
 		final var referredCustomerDataList = new ReferredCustomerDataList();
-		referredCustomerDataList.setReferredCustomers(tcCustomerFacade.getReferredCustomers(userId));
+		referredCustomerDataList.setReferredCustomers(tcCustomerFacade.getReferredCustomers(customer.getCustomerId()));
 		return getDataMapper().map(referredCustomerDataList, ReferredCustomerListWsDto.class, fields);
 	}
 }
