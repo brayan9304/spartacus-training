@@ -1,0 +1,33 @@
+<ng-container *ngIf="referredCustomers$ | async as referredCustomers">
+  <ng-container *ngIf="referredCustomers?.length > 0; else emptyReferredCustomers">
+    <div class="container mb-5">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th scope="col">{{ 'tcReferredCustomerList.email' | cxTranslate }}</th>
+          <th scope="col">{{ 'tcReferredCustomerList.firstName' | cxTranslate }}</th>
+          <th scope="col">{{ 'tcReferredCustomerList.lastName' | cxTranslate }}</th>
+          <th scope="col">{{ 'tcReferredCustomerList.documentType' | cxTranslate }}</th>
+          <th scope="col">{{ 'tcReferredCustomerList.documentNumber' | cxTranslate }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let referredCustomer of referredCustomers">
+          <td>{{referredCustomer.email}}</td>
+          <td>{{referredCustomer.firstName}}</td>
+          <td>{{referredCustomer.lastName}}</td>
+          <td>{{referredCustomer.documentType}}</td>
+          <td>{{referredCustomer.documentNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  <ng-template #emptyReferredCustomers>
+    <div class="container mb-5">
+      <div class="alert alert-info" role="alert">
+        {{ 'tcReferredCustomerList.noReferredCustomers' | cxTranslate }}
+      </div>
+    </div>
+  </ng-template>
+</ng-container>

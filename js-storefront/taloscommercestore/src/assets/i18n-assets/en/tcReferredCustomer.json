@@ -1,0 +1,11 @@
+{
+  "tcReferredCustomerList": {
+    "title": "Referred Customers",
+    "email": "Email",
+    "firstName": "Firstname",
+    "lastName": "Lastname",
+    "documentType": "Doc. Type",
+    "documentNumber": "Doc. Number",
+    "noReferredCustomers": "No referred customers have been found"
+  }
+}

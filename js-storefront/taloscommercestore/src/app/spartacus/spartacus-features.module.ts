@@ -69,6 +69,7 @@ import {
 import { UserFeatureModule } from './features/user/user-feature.module';
 import { SmartEditFeatureModule } from './features/smartedit/smart-edit-feature.module';
 import { TcSplitViewBannerModule } from '@tc-shared';
+import { TcReferredCustomerFeatureModule } from './features/tc-referred-customer/tc-referred-customer-feature.module';
 
 @NgModule({
   declarations: [],
@@ -156,6 +157,7 @@ import { TcSplitViewBannerModule } from '@tc-shared';
 
     // Custom CMS Components
     TcSplitViewBannerModule,
+    TcReferredCustomerFeatureModule,
   ],
 })
 export class SpartacusFeaturesModule {}
