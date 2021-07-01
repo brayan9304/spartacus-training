@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { TcReferredCustomerFacade } from '../../root';
 import { Observable } from 'rxjs';
-import { ReferredCustomer } from '../../core/model';
+import { ReferredCustomer } from '../../core';
 
 @Component({
   selector: 'tc-referred-customer-list',
@@ -10,7 +10,9 @@ import { ReferredCustomer } from '../../core/model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TcReferredCustomerListComponent implements OnInit {
-  referredCustomers$: Observable<ReferredCustomer[]> = this.tcReferredCustomerFacade.getReferredCustomers();
+  referredCustomers$: Observable<ReferredCustomer[]> = this.tcReferredCustomerFacade.getReferredCustomers(true);
+  loading$: Observable<boolean> = this.tcReferredCustomerFacade.getReferredCustomersResultLoading();
+  success$: Observable<boolean> = this.tcReferredCustomerFacade.getReferredCustomersResultSuccess();
 
   constructor(protected tcReferredCustomerFacade: TcReferredCustomerFacade) {}
 

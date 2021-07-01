@@ -10,7 +10,27 @@ export const getReferredCustomersState: MemoizedSelector<
   LoaderState<ReferredCustomer[]>
 > = createSelector(getStateWithReferredCustomers, (state: ReferredCustomersState) => state.referredCustomers);
 
-export const getReferredCustomers: MemoizedSelector<StateWithReferredCustomers, ReferredCustomer[]> = createSelector(
+export const getReferredCustomersValue: MemoizedSelector<StateWithReferredCustomers, ReferredCustomer[]> =
+  createSelector(getReferredCustomersState, StateUtils.loaderValueSelector);
+
+export const getReferredCustomerByEmail = (
+  email: string
+): MemoizedSelector<StateWithReferredCustomers, ReferredCustomer> =>
+  createSelector(getReferredCustomersValue, (referredCustomers) =>
+    referredCustomers.find((referredCustomer) => referredCustomer.email === email)
+  );
+
+export const getReferredCustomersLoading: MemoizedSelector<StateWithReferredCustomers, boolean> = createSelector(
   getReferredCustomersState,
-  (state: LoaderState<ReferredCustomer[]>) => StateUtils.loaderValueSelector(state)
+  StateUtils.loaderLoadingSelector
+);
+
+export const getReferredCustomersSuccess: MemoizedSelector<StateWithReferredCustomers, boolean> = createSelector(
+  getReferredCustomersState,
+  StateUtils.loaderSuccessSelector
+);
+
+export const getReferredCustomersError: MemoizedSelector<StateWithReferredCustomers, boolean> = createSelector(
+  getReferredCustomersState,
+  StateUtils.loaderErrorSelector
 );

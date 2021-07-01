@@ -1,27 +1,40 @@
 import { Injectable } from '@angular/core';
 import { TcReferredCustomerFacade } from '../../root';
-import { Observable } from 'rxjs';
+import { iif, Observable } from 'rxjs';
 import { ReferredCustomer } from '../model';
 import { StateWithReferredCustomers, TcReferredCustomerActions, TcReferredCustomerSelectors } from '../store';
 import { select, Store } from '@ngrx/store';
-import { map, tap } from 'rxjs/operators';
+import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
 import { UserIdService } from '@spartacus/core';
 
 @Injectable()
 export class TcReferredCustomerService implements TcReferredCustomerFacade {
   constructor(protected store: Store<StateWithReferredCustomers>, protected userIdService: UserIdService) {}
 
-  getReferredCustomers(): Observable<ReferredCustomer[]> {
-    return this.store.pipe(
-      select(TcReferredCustomerSelectors.getReferredCustomersState),
-      tap((referredCustomersState) => {
-        const attemptedLoad =
-          referredCustomersState.loading || referredCustomersState.success || referredCustomersState.error;
-        if (!attemptedLoad) {
-          this.loadReferredCustomers();
-        }
-      }),
-      map((referredCustomersState) => referredCustomersState.value)
+  /**
+   * Returns all referred customers. If `loadIfMissing` parameter is set to `true`, the method triggers the load if referred customers.
+   * @param loadIfMissing is set to `true`, the method will load referred customers if those are not already present.
+   * The default value is `false`.
+   */
+  getReferredCustomers(loadIfMissing = true): Observable<ReferredCustomer[]> {
+    return iif(
+      () => loadIfMissing,
+      this.store.pipe(
+        select(TcReferredCustomerSelectors.getReferredCustomersValue),
+        withLatestFrom(this.getReferredCustomersResultLoading(), this.getReferredCustomersResultSuccess()),
+        filter(([, loading]) => !loading),
+        tap(([referredCustomers, , success]) => {
+          if (!referredCustomers || referredCustomers.length === 0) {
+            // avoid infinite loop - if we've already attempted to load referred customers and we got an empty array as the response
+            if (!success) {
+              this.loadReferredCustomers();
+            }
+          }
+        }),
+        filter(([referredCustomers]) => Boolean(referredCustomers)),
+        map(([referredCustomers]) => referredCustomers)
+      ),
+      this.store.pipe(select(TcReferredCustomerSelectors.getReferredCustomersValue))
     );
   }
 
@@ -30,5 +43,26 @@ export class TcReferredCustomerService implements TcReferredCustomerFacade {
       (userId) => this.store.dispatch(new TcReferredCustomerActions.LoadReferredCustomers(userId)),
       () => {}
     );
+  }
+
+  /**
+   * Returns the referred customers loading flag
+   */
+  getReferredCustomersResultLoading(): Observable<boolean> {
+    return this.store.pipe(select(TcReferredCustomerSelectors.getReferredCustomersLoading));
+  }
+
+  /**
+   * Returns the referred customers success flag
+   */
+  getReferredCustomersResultSuccess(): Observable<boolean> {
+    return this.store.pipe(select(TcReferredCustomerSelectors.getReferredCustomersSuccess));
+  }
+
+  /**
+   * Returns the referred customers error flag
+   */
+  getReferredCustomersResultError(): Observable<boolean> {
+    return this.store.pipe(select(TcReferredCustomerSelectors.getReferredCustomersError));
   }
 }
