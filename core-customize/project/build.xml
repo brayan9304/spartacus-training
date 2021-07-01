@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<project name="build" default="all">
+    <property name="platformhome" location="../../../platform"/>
+    <property name="HYBRIS_HOME" location="../../../../../hybris"/>
+    <property name="HYBRIS_BIN_DIR" location="${HYBRIS_HOME}/bin" />
+    <property name="HYBRIS_DATA_DIR" location="${HYBRIS_HOME}/data" />
+    <property name="HYBRIS_CONFIG_DIR" location="${HYBRIS_HOME}/config" />
+    <property name="HYBRIS_TEMP_DIR" location="${HYBRIS_HOME}/temp/hybris" />
+    <property name="TMP_DIR" location="${HYBRIS_HOME}/temp/tmp" />
+    <property name="environment" value="local"/>
+    <property name="HYBRIS_ENV_CONFIG_DIR" location="${HYBRIS_HOME}/bin/custom/core-customize/project/env/${environment}"/>
+    <property name="HYBRIS_COMMON_CONFIG_DIR" location="${HYBRIS_HOME}/bin/custom/core-customize/project/env/common"/>
+    <property name="template" value="develop"/>
+    <property name="hybris.zip.package.src" location="/SAPDevelop/yapps/y-suite-versions/CXCOMM201100P_0-70005693.ZIP" />
+    <property name="SOLR_VERSION" value="7.5"/><!-- verify in folder solrserver/resources/solr -->
+    <available file="${platformhome}/build.xml" property="platformPresent"/>
+    <echo>-------------------------------------------------------------------------------</echo>
+    <echo>ENVIRONMENT: ${environment}</echo>
+    <echo>platformhome: ${platformhome}</echo>
+    <echo>-------------------------------------------------------------------------------</echo>
+
+    <macrodef name="config" description="Updates the configuration" >
+      <sequential>
+             <available file="${hybris.zip.package.src}" property="hybrisZipPresent" />
+             <ant dir="build" antfile="prepare.xml" target="envconfig"  />
+      </sequential>
+    </macrodef>
+    
+    <config />
+    
+    <import file="build/prepare.xml" /> 
+    <import file="build/install_upgrade.xml" />
+    <import file="build/production.xml" />
+    <import file="build/hybris_build_targets.xml" />
+</project>
