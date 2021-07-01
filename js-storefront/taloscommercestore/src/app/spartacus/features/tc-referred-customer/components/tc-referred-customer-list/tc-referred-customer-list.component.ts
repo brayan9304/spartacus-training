@@ -13,6 +13,7 @@ export class TcReferredCustomerListComponent implements OnInit {
   referredCustomers$: Observable<ReferredCustomer[]> = this.tcReferredCustomerFacade.getReferredCustomers(true);
   loading$: Observable<boolean> = this.tcReferredCustomerFacade.getReferredCustomersResultLoading();
   success$: Observable<boolean> = this.tcReferredCustomerFacade.getReferredCustomersResultSuccess();
+  error$: Observable<boolean> = this.tcReferredCustomerFacade.getReferredCustomersResultError();
 
   constructor(protected tcReferredCustomerFacade: TcReferredCustomerFacade) {}
 
