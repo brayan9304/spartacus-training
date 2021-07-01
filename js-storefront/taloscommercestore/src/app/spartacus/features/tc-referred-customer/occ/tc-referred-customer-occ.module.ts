@@ -4,8 +4,8 @@ import { provideConfig } from '@spartacus/core';
 import { OccTcReferredCustomerAdapter } from './adapters';
 import { tcOccReferredCustomerConfig } from './config';
 import { TcReferredCustomerNormalizer } from './converters';
-import { TcReferredCustomerAdapter } from '../core/connectors';
-import { REFERRED_CUSTOMER_NORMALIZER } from '../core/connectors/tc-referred-customer/converters';
+import { TcReferredCustomerAdapter } from '../core';
+import { REFERRED_CUSTOMER_NORMALIZER } from '../core';
 
 @NgModule({
   declarations: [],
