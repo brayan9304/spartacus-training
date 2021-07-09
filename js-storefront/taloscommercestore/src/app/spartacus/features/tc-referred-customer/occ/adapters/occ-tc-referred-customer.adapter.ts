@@ -1,9 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConverterService, normalizeHttpError, OccEndpointsService } from '@spartacus/core';
 import { Observable, throwError } from 'rxjs';
 import { OccReferredCustomerList } from '../model';
-import { REFERRED_CUSTOMER_NORMALIZER, ReferredCustomer, TcReferredCustomerAdapter } from '../../core';
+import {
+  REFERRED_CUSTOMER_NORMALIZER,
+  REFERRED_CUSTOMER_SERIALIZER,
+  ReferredCustomer,
+  TcReferredCustomerAdapter,
+} from '../../core';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
@@ -26,5 +31,17 @@ export class OccTcReferredCustomerAdapter implements TcReferredCustomerAdapter {
 
   private getEndpoint(endpoint: string, userId: string): string {
     return this.occEndpoints.getUrl(endpoint, { userId });
+  }
+
+  addReferredCustomer(userId: string, referredCustomer: ReferredCustomer): Observable<{}> {
+    const url = this.occEndpoints.buildUrl('saveReferredCustomer', {
+      urlParams: { userId },
+    });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    referredCustomer = this.converter.convert(referredCustomer, REFERRED_CUSTOMER_SERIALIZER);
+
+    return this.http.post(url, referredCustomer, { headers }).pipe(catchError((error: any) => throwError(error)));
   }
 }

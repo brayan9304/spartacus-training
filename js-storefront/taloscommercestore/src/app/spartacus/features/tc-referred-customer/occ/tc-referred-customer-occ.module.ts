@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { provideConfig } from '@spartacus/core';
 import { OccTcReferredCustomerAdapter } from './adapters';
 import { tcOccReferredCustomerConfig } from './config';
-import { TcReferredCustomerNormalizer } from './converters';
-import { TcReferredCustomerAdapter } from '../core';
+import { TcReferredCustomerNormalizer, TcReferredCustomerSerializer } from './converters';
+import { REFERRED_CUSTOMER_SERIALIZER, TcReferredCustomerAdapter } from '../core';
 import { REFERRED_CUSTOMER_NORMALIZER } from '../core';
 
 @NgModule({
@@ -14,6 +14,7 @@ import { REFERRED_CUSTOMER_NORMALIZER } from '../core';
     provideConfig(tcOccReferredCustomerConfig),
     { provide: TcReferredCustomerAdapter, useClass: OccTcReferredCustomerAdapter },
     { provide: REFERRED_CUSTOMER_NORMALIZER, useExisting: TcReferredCustomerNormalizer, multi: true },
+    { provide: REFERRED_CUSTOMER_SERIALIZER, useExisting: TcReferredCustomerSerializer, multi: true },
   ],
 })
 export class TcReferredCustomerOccModule {}

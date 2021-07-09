@@ -10,4 +10,8 @@ export class TcReferredCustomerConnector {
   public getReferredCustomers(userId: string): Observable<ReferredCustomer[]> {
     return this.adapter.getReferredCustomers(userId);
   }
+
+  public addReferredCustomer(userId: string, referredCustomer: ReferredCustomer): Observable<{}> {
+    return this.adapter.addReferredCustomer(userId, referredCustomer);
+  }
 }

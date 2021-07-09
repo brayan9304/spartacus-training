@@ -1,0 +1,124 @@
+<form (ngSubmit)="verifyReferredCustomer()" [formGroup]="referredCustomerForm">
+  <div class="row">
+    <ng-container *ngIf="documentTypes$ | async as documentTypes">
+      <ng-container *ngIf="documentTypes.length !== 0">
+        <div class="col-12 col-md-4">
+          <div class="form-group">
+            <label>
+              <span class="label-content required">{{
+                'referredCustomerForm.documentType' | cxTranslate
+                }}</span>
+              <ng-select
+                class="document-type-select"
+                formControlName="documentTypeCode"
+                [searchable]="true"
+                [clearable]="false"
+                [items]="documentTypes"
+                bindLabel="name"
+                bindValue="code"
+                placeholder="{{ 'referredCustomerForm.selectOne' | cxTranslate }}"
+              >
+              </ng-select>
+              <cx-form-errors
+                [control]="referredCustomerForm.get('documentTypeCode')"
+              ></cx-form-errors>
+            </label>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <div class="col-12 col-md-4">
+      <div class="form-group">
+        <label>
+          <span class="label-content required">{{
+            'referredCustomerForm.documentNumber.label' | cxTranslate
+            }}</span>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="{{
+              'referredCustomerForm.documentNumber.placeholder' | cxTranslate
+            }}"
+            formControlName="documentNumber"
+          />
+          <cx-form-errors
+            [control]="referredCustomerForm.get('documentNumber')"
+          ></cx-form-errors>
+        </label>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="form-group">
+        <label>
+          <span class="label-content required">{{
+            'referredCustomerForm.email.label' | cxTranslate
+            }}</span>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="{{ 'referredCustomerForm.email.placeholder' | cxTranslate }}"
+            formControlName="email"
+          />
+          <cx-form-errors
+            [control]="referredCustomerForm.get('email')"
+          ></cx-form-errors>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <div class="form-group">
+        <label>
+          <span class="label-content required">{{
+            'referredCustomerForm.firstName.label' | cxTranslate
+            }}</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'referredCustomerForm.firstName.placeholder' | cxTranslate }}"
+            formControlName="firstName"
+          />
+          <cx-form-errors
+            [control]="referredCustomerForm.get('firstName')"
+          ></cx-form-errors>
+        </label>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="form-group">
+        <label>
+          <span class="label-content required">{{
+            'referredCustomerForm.lastName.label' | cxTranslate
+            }}</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'referredCustomerForm.lastName.placeholder' | cxTranslate }}"
+            formControlName="lastName"
+          />
+          <cx-form-errors
+            [control]="referredCustomerForm.get('lastName')"
+          ></cx-form-errors>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-12 col-lg-6" *ngIf="showCancelBtn">
+      <button class="btn btn-block btn-action" (click)="back()">
+        {{ cancelBtnLabel }}
+      </button>
+    </div>
+    <div class="col-md-12 col-lg-6">
+      <button class="btn btn-block btn-primary" type="submit">
+        {{ actionBtnLabel }}
+      </button>
+    </div>
+  </div>
+</form>

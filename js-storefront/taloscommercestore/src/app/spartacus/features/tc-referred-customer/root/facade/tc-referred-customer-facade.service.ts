@@ -14,6 +14,7 @@ export function tcReferredCustomerFacadeFactory(): TcReferredCustomerFacade {
       'getReferredCustomersResultLoading',
       'getReferredCustomersResultSuccess',
       'getReferredCustomersResultError',
+      'addReferredCustomer',
     ],
   });
 }
@@ -49,4 +50,10 @@ export abstract class TcReferredCustomerFacade {
    * Returns the referred customers error flag
    */
   abstract getReferredCustomersResultError(): Observable<boolean>;
+
+  /**
+   * Adds a referred customer
+   * @param referredCustomer referred customer
+   */
+  abstract addReferredCustomer(referredCustomer: ReferredCustomer): void;
 }

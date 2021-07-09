@@ -65,4 +65,11 @@ export class TcReferredCustomerService implements TcReferredCustomerFacade {
   getReferredCustomersResultError(): Observable<boolean> {
     return this.store.pipe(select(TcReferredCustomerSelectors.getReferredCustomersError));
   }
+
+  addReferredCustomer(referredCustomer: ReferredCustomer): void {
+    this.userIdService.takeUserId(true).subscribe(
+      (userId) => this.store.dispatch(new TcReferredCustomerActions.AddReferredCustomer({ userId, referredCustomer })),
+      () => {}
+    );
+  }
 }

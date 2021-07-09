@@ -1,1 +1,2 @@
-export * from './tc-referred-customer-normalizer.service';
+export * from './tc-referred-customer.normalizer';
+export * from './tc-referred-customer.serializer';

@@ -6,5 +6,10 @@ declare module '@spartacus/core' {
      * Get referred customers endpoint
      */
     referredCustomers?: string | OccEndpoint;
+
+    /**
+     * Saves a referred customer
+     */
+    saveReferredCustomer?: string | OccEndpoint;
   }
 }
