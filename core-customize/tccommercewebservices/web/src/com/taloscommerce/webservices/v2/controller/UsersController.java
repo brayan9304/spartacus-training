@@ -3,12 +3,7 @@
  */
 package com.taloscommerce.webservices.v2.controller;
 
-import com.taloscommerce.facades.customer.TCCustomerFacade;
-import com.taloscommerce.facades.user.data.ReferredCustomerData;
-import com.taloscommerce.facades.user.data.ReferredCustomerDataList;
 import com.taloscommerce.webservices.constants.YcommercewebservicesConstants;
-import com.taloscommerce.webservices.dto.user.ReferredCustomerListWsDto;
-import com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO;
 import com.taloscommerce.webservices.populator.HttpRequestCustomerDataPopulator;
 import de.hybris.platform.commercefacades.customer.CustomerFacade;
 import de.hybris.platform.commercefacades.customergroups.CustomerGroupFacade;
@@ -63,8 +58,6 @@ public class UsersController extends BaseCommerceController
 
 	@Resource(name = "wsCustomerFacade")
 	private CustomerFacade customerFacade;
-	@Resource(name = "customerFacade")
-	private TCCustomerFacade tcCustomerFacade;
 	@Resource(name = "wsCustomerGroupFacade")
 	private CustomerGroupFacade customerGroupFacade;
 	@Resource(name = "httpRequestCustomerDataPopulator")
@@ -400,30 +393,4 @@ public class UsersController extends BaseCommerceController
 		return getDataMapper().map(userGroupDataList, UserGroupListWsDTO.class, fields);
 	}
 
-	@Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
-	@PostMapping(value = "/{userId}/saveReferredCustomer", consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	@ResponseStatus(HttpStatus.OK)
-	@ApiOperation(nickname = "saveReferredCustomer", value = "Saves a referred customer", notes = "Saves a referred customer for the current customer.")
-	@ApiBaseSiteIdAndUserIdParam
-	public void saveReferredCustomer(
-			@ApiParam(value = "Referred Customer's object.", required = true) @RequestBody final ReferredCustomerWsDTO referredCustomer)
-	{
-		final CustomerData customer = customerFacade.getCurrentCustomer();
-		final ReferredCustomerData referredCustomerData = getDataMapper().map(referredCustomer, ReferredCustomerData.class);
-		tcCustomerFacade.saveReferredCustomer(customer.getCustomerId(), referredCustomerData);
-	}
-
-	@Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
-	@GetMapping(value = "/{userId}/referredcustomers")
-	@ApiOperation(nickname = "getUserReferredCustomers", value = "Get all referred customers of a customer.", notes = "Returns all referred customers of a customer.")
-	@ApiBaseSiteIdAndUserIdParam
-	@ResponseBody
-	public ReferredCustomerListWsDto getUserReferredCustomers(
-			@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
-	{
-		final CustomerData customer = customerFacade.getCurrentCustomer();
-		final var referredCustomerDataList = new ReferredCustomerDataList();
-		referredCustomerDataList.setReferredCustomers(tcCustomerFacade.getReferredCustomers(customer.getCustomerId()));
-		return getDataMapper().map(referredCustomerDataList, ReferredCustomerListWsDto.class, fields);
-	}
 }
