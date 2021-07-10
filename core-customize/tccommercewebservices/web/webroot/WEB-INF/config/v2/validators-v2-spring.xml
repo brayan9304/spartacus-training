@@ -225,6 +225,10 @@
 		</property>
 	</bean>
 
+	<alias name="defaultReferredCustomerDTOValidator" alias="referredCustomerDTOValidator"/>
+	<bean id="defaultReferredCustomerDTOValidator"
+		  class="com.taloscommerce.webservices.validator.ReferredCustomerDTOValidator"/>
+
 	<alias name="defaultPaymentDetailsDTOValidator" alias="paymentDetailsDTOValidator"/>
 	<bean id="defaultPaymentDetailsDTOValidator"
 	      class="com.taloscommerce.webservices.validator.PaymentDetailsDTOValidator">
