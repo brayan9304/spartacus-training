@@ -8,6 +8,9 @@ import de.hybris.platform.commercefacades.customer.impl.DefaultCustomerFacade;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.List;
+import java.util.Optional;
+
+import static de.hybris.platform.servicelayer.util.ServicesUtil.validateParameterNotNullStandardMessage;
 
 
 /**
@@ -29,15 +32,42 @@ public class CustomTCCustomerFacade extends DefaultCustomerFacade implements TCC
 	}
 
 	@Override
-	public void saveReferredCustomer(String customerId, ReferredCustomerData referredCustomer)
+	public void addReferredCustomer(String customerId, ReferredCustomerData referredCustomer)
 	{
-		getCustomerService().saveReferredCustomer(customerId, getReferredCustomerReverseConverter().convert(referredCustomer));
+		validateParameterNotNullStandardMessage("referredCustomer", referredCustomer);
+		getCustomerService().addReferredCustomer(customerId, getReferredCustomerReverseConverter().convert(referredCustomer));
+	}
+
+	@Override
+	public void updateReferredCustomer(String customerId, ReferredCustomerData referredCustomer)
+	{
+		validateParameterNotNullStandardMessage("referredCustomer", referredCustomer);
+		getCustomerService()
+				.getReferredCustomerForEmail(referredCustomer.getEmail()).ifPresent(referredCustomerModel -> {
+			getReferredCustomerReverseConverter().convert(referredCustomer, referredCustomerModel);
+			getCustomerService().addReferredCustomer(customerId, referredCustomerModel);
+		});
 	}
 
 	@Override
 	public List<ReferredCustomerData> getReferredCustomers(String customerId)
 	{
 		return getReferredCustomerConverter().convertAll(getCustomerService().getReferredCustomers(customerId));
+	}
+
+	@Override
+	public Optional<ReferredCustomerData> getReferredCustomerForEmail(String email)
+	{
+		return getCustomerService().getReferredCustomerForEmail(email).map(referredCustomerConverter::convert);
+	}
+
+	@Override
+	public void removeReferredCustomer(ReferredCustomerData referredCustomer)
+	{
+		validateParameterNotNullStandardMessage("referredCustomer", referredCustomer);
+		getCustomerService()
+				.getReferredCustomerForEmail(referredCustomer.getEmail())
+				.ifPresent(referredCustomerModel -> getCustomerService().removeReferredCustomer(referredCustomerModel));
 	}
 
 	public TCCustomerService getCustomerService()
