@@ -37,6 +37,8 @@
     "referredCustomerAddSuccess": "Referred customer added",
     "referredCustomerAddFail": "An error occurred. Please try again later",
     "referredCustomerUpdateSuccess": "Referred customer updated",
-    "referredCustomerUpdateFail": "An error occurred. Please try again later"
+    "referredCustomerUpdateFail": "An error occurred. Please try again later",
+    "referredCustomerDeleteSuccess": "Referred customer deleted",
+    "referredCustomerDeleteFail": "An error occurred. Please try again later"
   }
 }

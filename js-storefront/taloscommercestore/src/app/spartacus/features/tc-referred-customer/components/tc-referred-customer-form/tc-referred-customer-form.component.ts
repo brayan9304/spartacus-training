@@ -24,6 +24,9 @@ export class TcReferredCustomerFormComponent implements OnInit {
   @Input()
   showCancelBtn = true;
 
+  @Input()
+  emailReadOnly = false;
+
   @Output()
   submitReferredCustomer = new EventEmitter<any>();
 
@@ -46,7 +49,6 @@ export class TcReferredCustomerFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.referredCustomerData && Object.keys(this.referredCustomerData).length !== 0) {
       this.referredCustomerForm.patchValue(this.referredCustomerData);
-      this.referredCustomerForm.get('email').disable({ onlySelf: true });
     }
   }
 

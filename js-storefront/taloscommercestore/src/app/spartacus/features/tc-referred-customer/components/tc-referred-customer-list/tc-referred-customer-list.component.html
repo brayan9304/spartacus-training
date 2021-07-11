@@ -12,53 +12,54 @@
         <ng-container *ngIf='success$ | async'>
           <ng-container
             *ngIf='referredCustomers?.length > 0; else emptyReferredCustomers'>
-            <table class='table table-bordered mb-5'>
-              <thead>
-              <tr>
-                <th scope='col'>{{ 'tcReferredCustomerList.email' | cxTranslate }}</th>
-                <th scope='col'>{{ 'tcReferredCustomerList.firstName' | cxTranslate }}</th>
-                <th scope='col'>{{ 'tcReferredCustomerList.lastName' | cxTranslate }}</th>
-                <th scope='col'>{{ 'tcReferredCustomerList.documentType' | cxTranslate }}</th>
-                <th scope='col'>{{ 'tcReferredCustomerList.documentNumber' | cxTranslate }}</th>
-                <th scope='col'>{{ 'tcReferredCustomerList.edit' | cxTranslate }}</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor='let referredCustomer of referredCustomers'>
-                <td>{{referredCustomer.email}}</td>
-                <td>{{referredCustomer.firstName}}</td>
-                <td>{{referredCustomer.lastName}}</td>
-                <td>{{referredCustomer.documentType}}</td>
-                <td>{{referredCustomer.documentNumber}}</td>
-                <td>
-                  <div class='btn-group' role='group'>
-                    <button type='button' class='btn btn-link'
-                            (click)='handleEditReferredCustomerAction(referredCustomer)'>
-                      <cx-icon [type]='iconTypes.PENCIL'></cx-icon>
-                    </button>
-                    <button type='button' class='btn btn-link'
-                            (click)='handleDeleteReferredCustomerAction(referredCustomer.email)'>
-                      <cx-icon [type]='iconTypes.TRASH'></cx-icon>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+            <div class="table-container">
+              <table class='table table-bordered mb-5'>
+                <thead>
+                <tr>
+                  <th scope='col'>{{ 'tcReferredCustomerList.email' | cxTranslate }}</th>
+                  <th scope='col'>{{ 'tcReferredCustomerList.firstName' | cxTranslate }}</th>
+                  <th scope='col'>{{ 'tcReferredCustomerList.lastName' | cxTranslate }}</th>
+                  <th scope='col'>{{ 'tcReferredCustomerList.documentType' | cxTranslate }}</th>
+                  <th scope='col'>{{ 'tcReferredCustomerList.documentNumber' | cxTranslate }}</th>
+                  <th scope='col'>{{ 'tcReferredCustomerList.edit' | cxTranslate }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let referredCustomer of referredCustomers'>
+                  <td>{{referredCustomer.email}}</td>
+                  <td>{{referredCustomer.firstName}}</td>
+                  <td>{{referredCustomer.lastName}}</td>
+                  <td>{{referredCustomer.documentType}}</td>
+                  <td>{{referredCustomer.documentNumber}}</td>
+                  <td>
+                    <div class='btn-group' role='group'>
+                      <button type='button' class='btn btn-link'
+                              (click)='handleEditReferredCustomerAction(referredCustomer)'>
+                        <cx-icon [type]='iconTypes.PENCIL'></cx-icon>
+                      </button>
+                      <button type='button' class='btn btn-link'
+                              (click)='handleDeleteReferredCustomerAction(referredCustomer.email)'>
+                        <cx-icon [type]='iconTypes.TRASH'></cx-icon>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class='row mb-5'>
+              <div class='col-md-6'>
+                <button class='btn btn-block btn-action' (click)='handleAddReferredCustomerAction()'>
+                  {{ 'tcReferredCustomerList.addNewReferredCustomer' | cxTranslate }}
+                </button>
+              </div>
+            </div>
           </ng-container>
           <ng-template #emptyReferredCustomers>
             <div class='alert alert-info mb-5' role='alert'>
               {{ 'tcReferredCustomerList.noReferredCustomers' | cxTranslate }}
             </div>
           </ng-template>
-
-          <div class='row mb-5'>
-            <div class='col-md-6'>
-              <button class='btn btn-block btn-action' (click)='handleAddReferredCustomerAction()'>
-                {{ 'tcReferredCustomerList.addNewReferredCustomer' | cxTranslate }}
-              </button>
-            </div>
-          </div>
         </ng-container>
       </ng-container>
 
@@ -91,6 +92,7 @@
           </h2>
           <tc-referred-customer-form
             class='cx-form'
+            [emailReadOnly]='true'
             [showCancelBtn]='!(referredCustomers.length === 0)'
             [referredCustomerData]='currentReferredCustomer'
             actionBtnLabel="{{ 'tcReferredCustomerList.updateReferredCustomer' | cxTranslate }}"
