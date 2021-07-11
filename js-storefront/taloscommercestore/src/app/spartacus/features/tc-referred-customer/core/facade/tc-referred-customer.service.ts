@@ -9,7 +9,8 @@ import { UserIdService } from '@spartacus/core';
 
 @Injectable()
 export class TcReferredCustomerService implements TcReferredCustomerFacade {
-  constructor(protected store: Store<StateWithReferredCustomers>, protected userIdService: UserIdService) {}
+  constructor(protected store: Store<StateWithReferredCustomers>, protected userIdService: UserIdService) {
+  }
 
   /**
    * Returns all referred customers. If `loadIfMissing` parameter is set to `true`, the method triggers the load if referred customers.
@@ -32,16 +33,17 @@ export class TcReferredCustomerService implements TcReferredCustomerFacade {
           }
         }),
         filter(([referredCustomers]) => Boolean(referredCustomers)),
-        map(([referredCustomers]) => referredCustomers)
+        map(([referredCustomers]) => referredCustomers),
       ),
-      this.store.pipe(select(TcReferredCustomerSelectors.getReferredCustomersValue))
+      this.store.pipe(select(TcReferredCustomerSelectors.getReferredCustomersValue)),
     );
   }
 
   loadReferredCustomers(): void {
     this.userIdService.takeUserId(true).subscribe(
       (userId) => this.store.dispatch(new TcReferredCustomerActions.LoadReferredCustomers(userId)),
-      () => {}
+      () => {
+      },
     );
   }
 
@@ -69,7 +71,24 @@ export class TcReferredCustomerService implements TcReferredCustomerFacade {
   addReferredCustomer(referredCustomer: ReferredCustomer): void {
     this.userIdService.takeUserId(true).subscribe(
       (userId) => this.store.dispatch(new TcReferredCustomerActions.AddReferredCustomer({ userId, referredCustomer })),
-      () => {}
+      () => {
+      },
+    );
+  }
+
+  updateReferredCustomer(email: string, referredCustomer: ReferredCustomer): void {
+    this.userIdService.takeUserId(true).subscribe(
+      (userId) => this.store.dispatch(new TcReferredCustomerActions.UpdateReferredCustomer({ userId, email, referredCustomer })),
+      () => {
+      },
+    );
+  }
+
+  deleteReferredCustomer(email: string): void {
+    this.userIdService.takeUserId(true).subscribe(
+      (userId) => this.store.dispatch(new TcReferredCustomerActions.DeleteReferredCustomer({ userId, email })),
+      () => {
+      },
     );
   }
 }

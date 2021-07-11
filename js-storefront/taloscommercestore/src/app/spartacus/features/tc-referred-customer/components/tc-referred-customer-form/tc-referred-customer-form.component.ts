@@ -12,16 +12,6 @@ import { ReferredCustomer } from '@col-features/tc-referred-customer';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TcReferredCustomerFormComponent implements OnInit {
-  documentTypes$: Observable<DocumentIdentityType[]> = this.tcMiscFacade.getDocumentTypes();
-
-  referredCustomerForm: FormGroup = this.fb.group({
-    documentTypeCode: ['', Validators.required],
-    documentNumber: ['', Validators.required],
-    email: ['', [Validators.required, CustomFormValidators.emailValidator]],
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-  });
-
   @Input()
   referredCustomerData: ReferredCustomer;
 
@@ -40,11 +30,23 @@ export class TcReferredCustomerFormComponent implements OnInit {
   @Output()
   backToReferredCustomer = new EventEmitter<any>();
 
-  constructor(protected fb: FormBuilder, protected tcMiscFacade: TcMiscFacade) {}
+  documentTypes$: Observable<DocumentIdentityType[]> = this.tcMiscFacade.getDocumentTypes();
+
+  referredCustomerForm: FormGroup = this.fb.group({
+    documentTypeCode: ['', Validators.required],
+    documentNumber: ['', Validators.required],
+    email: ['', [Validators.required, CustomFormValidators.emailValidator]],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+  });
+
+  constructor(protected fb: FormBuilder, protected tcMiscFacade: TcMiscFacade) {
+  }
 
   ngOnInit(): void {
     if (this.referredCustomerData && Object.keys(this.referredCustomerData).length !== 0) {
       this.referredCustomerForm.patchValue(this.referredCustomerData);
+      this.referredCustomerForm.get('email').disable({ onlySelf: true });
     }
   }
 

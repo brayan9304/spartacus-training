@@ -11,8 +11,9 @@ export class OccTcReferredCustomerAdapter implements TcReferredCustomerAdapter {
   constructor(
     protected http: HttpClient,
     protected occEndpoints: OccEndpointsService,
-    protected converter: ConverterService
-  ) {}
+    protected converter: ConverterService,
+  ) {
+  }
 
   getReferredCustomers(userId: string): Observable<ReferredCustomer[]> {
     const url = this.getEndpoint('referredCustomers', userId);
@@ -20,7 +21,7 @@ export class OccTcReferredCustomerAdapter implements TcReferredCustomerAdapter {
     return this.http.get<OccReferredCustomerList>(url).pipe(
       catchError((error) => throwError(normalizeHttpError(error))),
       map((referredCustomerList) => referredCustomerList?.referredCustomers ?? []),
-      this.converter.pipeableMany(REFERRED_CUSTOMER_NORMALIZER)
+      this.converter.pipeableMany(REFERRED_CUSTOMER_NORMALIZER),
     );
   }
 
@@ -38,5 +39,27 @@ export class OccTcReferredCustomerAdapter implements TcReferredCustomerAdapter {
     referredCustomer = this.converter.convert(referredCustomer, REFERRED_CUSTOMER_SERIALIZER);
 
     return this.http.post(url, referredCustomer, { headers }).pipe(catchError((error: any) => throwError(error)));
+  }
+
+  updateReferredCustomer(userId: string, email: string, referredCustomer: ReferredCustomer): Observable<{}> {
+    const url = this.occEndpoints.buildUrl('referredCustomerDetail', {
+      urlParams: { userId, email },
+    });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    referredCustomer = this.converter.convert(referredCustomer, REFERRED_CUSTOMER_SERIALIZER);
+
+    return this.http.patch(url, referredCustomer, { headers }).pipe(catchError((error: any) => throwError(error)));
+  }
+
+  deleteReferredCustomer(userId: string, email: string): Observable<{}> {
+    const url = this.occEndpoints.buildUrl('referredCustomerDetail', {
+      urlParams: { userId, email },
+    });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.delete(url, { headers }).pipe(catchError((error: any) => throwError(error)));
   }
 }

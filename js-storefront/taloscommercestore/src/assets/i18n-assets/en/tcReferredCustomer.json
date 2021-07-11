@@ -35,6 +35,8 @@
       "placeholder": "Enter Lastname"
     },
     "referredCustomerAddSuccess": "Referred customer added",
-    "referredCustomerAddFail": "An error occurred. Please try again later"
+    "referredCustomerAddFail": "An error occurred. Please try again later",
+    "referredCustomerUpdateSuccess": "Referred customer updated",
+    "referredCustomerUpdateFail": "An error occurred. Please try again later"
   }
 }

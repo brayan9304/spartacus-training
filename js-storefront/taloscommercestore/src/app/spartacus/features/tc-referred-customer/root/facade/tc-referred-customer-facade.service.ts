@@ -15,6 +15,8 @@ export function tcReferredCustomerFacadeFactory(): TcReferredCustomerFacade {
       'getReferredCustomersResultSuccess',
       'getReferredCustomersResultError',
       'addReferredCustomer',
+      'updateReferredCustomer',
+      'deleteReferredCustomer',
     ],
   });
 }
@@ -56,4 +58,17 @@ export abstract class TcReferredCustomerFacade {
    * @param referredCustomer referred customer
    */
   abstract addReferredCustomer(referredCustomer: ReferredCustomer): void;
+
+  /**
+   * Updates a referred customer
+   * @param email email
+   * @param referredCustomer referred customer
+   */
+  abstract updateReferredCustomer(email: string, referredCustomer: ReferredCustomer): void;
+
+  /**
+   * deletes a referred customer
+   * @param email email
+   */
+  abstract deleteReferredCustomer(email: string): void;
 }

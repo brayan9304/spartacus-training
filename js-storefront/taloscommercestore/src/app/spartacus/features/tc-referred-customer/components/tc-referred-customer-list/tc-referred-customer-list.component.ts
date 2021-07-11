@@ -46,10 +46,14 @@ export class TcReferredCustomerListComponent implements OnInit {
 
   editReferredCustomerSubmit(referredCustomer: ReferredCustomer): void {
     this.showEditReferredCustomerForm = false;
-    /*this.service.updateReferredCustomer(this.currentReferredCustomer['email'], referredCustomer);*/
+    this.tcReferredCustomerFacade.updateReferredCustomer(this.currentReferredCustomer.email, referredCustomer);
   }
 
   editReferredCustomerCancel(): void {
     this.showEditReferredCustomerForm = false;
+  }
+
+  handleDeleteReferredCustomerAction(email: string): void {
+    this.tcReferredCustomerFacade.deleteReferredCustomer(email);
   }
 }

@@ -8,8 +8,8 @@ declare module '@spartacus/core' {
     referredCustomers?: string | OccEndpoint;
 
     /**
-     * Saves a referred customer
+     * Referred customers detail endpoint
      */
-    saveReferredCustomer?: string | OccEndpoint;
+    referredCustomerDetail?: string | OccEndpoint;
   }
 }
