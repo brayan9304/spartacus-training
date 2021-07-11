@@ -3,12 +3,7 @@ import { Injectable } from '@angular/core';
 import { ConverterService, normalizeHttpError, OccEndpointsService } from '@spartacus/core';
 import { Observable, throwError } from 'rxjs';
 import { OccReferredCustomerList } from '../model';
-import {
-  REFERRED_CUSTOMER_NORMALIZER,
-  REFERRED_CUSTOMER_SERIALIZER,
-  ReferredCustomer,
-  TcReferredCustomerAdapter,
-} from '../../core';
+import { REFERRED_CUSTOMER_NORMALIZER, REFERRED_CUSTOMER_SERIALIZER, ReferredCustomer, TcReferredCustomerAdapter } from '../../core';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
@@ -34,7 +29,7 @@ export class OccTcReferredCustomerAdapter implements TcReferredCustomerAdapter {
   }
 
   addReferredCustomer(userId: string, referredCustomer: ReferredCustomer): Observable<{}> {
-    const url = this.occEndpoints.buildUrl('saveReferredCustomer', {
+    const url = this.occEndpoints.buildUrl('referredCustomers', {
       urlParams: { userId },
     });
     const headers = new HttpHeaders({
