@@ -511,4 +511,17 @@
         <constructor-arg name="modelService" ref="modelService"/>
         <constructor-arg name="userService" ref="userService"/>
     </bean>
+    <!--Custom product list-->
+    <alias name="defaultCustomProductListDao" alias="customProductListDao"/>
+    <bean name="defaultCustomProductListDao"
+          class="com.taloscommerce.core.customproductlist.dao.impl.DefaultCustomProductListDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <alias name="defaultCustomProductListService" alias="customProductListService"/>
+    <bean name="defaultCustomProductListService"
+          class="com.taloscommerce.core.customproductlist.impl.DefaultCustomProductListService">
+        <property name="customProductListDao" ref="customProductListDao"/>
+    </bean>
+
 </beans>

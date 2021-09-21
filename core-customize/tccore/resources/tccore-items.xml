@@ -14,8 +14,21 @@
         <relation code="Customer2ReferredCustomerRel" localized="false">
             <sourceElement type="Customer" qualifier="customer" cardinality="one"/>
             <!--suppress TSVBased -->
-            <targetElement type="ReferredCustomer" qualifier="referredCustomers" cardinality="many" collectiontype="list"/>
+            <targetElement type="ReferredCustomer" qualifier="referredCustomers" cardinality="many"
+                           collectiontype="list"/>
         </relation>
+
+        <relation code="Product2CustomProductList" localized="false">
+            <deployment table="Product2CustomProductList" typecode="12003"/>
+            <sourceElement type="Product" qualifier="product" cardinality="many"/>
+            <targetElement type="CustomProductList" qualifier="customProductList" cardinality="many"/>
+        </relation>
+
+        <relation code="Customer2CustomProductList" localized="false">
+            <sourceElement type="Customer" qualifier="customer" cardinality="one"/>
+            <targetElement type="CustomProductList" qualifier="customProductList" cardinality="many"/>
+        </relation>
+
     </relations>
 
     <itemtypes>
@@ -88,13 +101,34 @@
             <itemtype code="ElectronicsColorVariantProduct" extends="VariantProduct"
                       jaloclass="com.taloscommerce.core.jalo.ElectronicsColorVariantProduct">
                 <attributes>
-                    <attribute qualifier="color" type="localized:java.lang.String" metatype="VariantAttributeDescriptor">
+                    <attribute qualifier="color" type="localized:java.lang.String"
+                               metatype="VariantAttributeDescriptor">
                         <description>Color of the product.</description>
                         <persistence type="property"/>
                     </attribute>
                 </attributes>
             </itemtype>
         </typegroup>
-
+        <typegroup name="CustomList">
+            <itemtype code="CustomProductList" extends="GenericItem">
+                <deployment table="CustomProductList" typecode="12002"/>
+                <attributes>
+                    <attribute qualifier="id" type="java.lang.String">
+                        <description>Id of the list</description>
+                        <modifiers optional="false" initial="true" unique="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="name" type="java.lang.String">
+                        <description>Name of the list</description>
+                        <modifiers initial="true" optional="false" unique="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="java.lang.String">
+                        <description>Description of the list</description>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
     </itemtypes>
 </items>
