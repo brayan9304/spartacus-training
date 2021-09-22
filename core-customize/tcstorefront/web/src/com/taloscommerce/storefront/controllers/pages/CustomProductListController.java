@@ -1,5 +1,7 @@
 package com.taloscommerce.storefront.controllers.pages;
 
+import com.taloscommerce.facades.customproductlist.CustomProductListFacade;
+import com.taloscommerce.facades.customproductlist.data.CustomProductListData;
 import com.taloscommerce.storefront.controllers.ControllerConstants;
 import com.taloscommerce.storefront.forms.CustomProductListForm;
 import com.taloscommerce.storefront.forms.validation.CustomProductListValidator;
@@ -34,7 +36,7 @@ public class CustomProductListController extends AbstractPageController {
     @Resource(name = "customProductListValidator")
     private CustomProductListValidator customProductListValidator;
 
-    @Resource(name = "CustomProductListDataUtil")
+    @Resource(name = "customProductListDataUtil")
     private CustomProductListDataUtil customProductListDataUtil;
 
     private static final String CUSTOM_PRODUCT_LIST = "customProductList";
