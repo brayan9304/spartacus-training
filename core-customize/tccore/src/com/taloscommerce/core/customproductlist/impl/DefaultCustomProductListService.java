@@ -4,6 +4,7 @@ import com.taloscommerce.core.customproductlist.CustomProductListService;
 import com.taloscommerce.core.customproductlist.dao.CustomProductListDao;
 import com.taloscommerce.core.model.CustomProductListModel;
 import de.hybris.platform.core.model.product.ProductModel;
+import de.hybris.platform.core.model.user.CustomerModel;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -20,6 +21,11 @@ public class DefaultCustomProductListService implements CustomProductListService
     @Override
     public Collection<ProductModel>  getAllProductsForCustomList(final CustomProductListModel customProductList){
         return  getCustomProductListDao().getAllProductsForCustomList(customProductList);
+    }
+
+    @Override
+    public Collection<CustomProductListModel> getCustomProductListsForUser(final CustomerModel customer) {
+        return getCustomProductListDao().getCustomProductListsForUser(customer);
     }
 
     @Override

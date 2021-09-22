@@ -146,6 +146,7 @@ public interface ControllerConstants
 			{
 				String WriteReview = "pages/product/writeReview"; // NOSONAR
 				String OrderForm = "pages/product/productOrderFormPage"; // NOSONAR
+				String CustomProductList = "pages/product/customProductListPage"; // NOSONAR
 			}
 
 			interface QuickOrder // NOSONAR
@@ -157,6 +158,7 @@ public interface ControllerConstants
 			{
 				String ImportCSVSavedCartPage = "pages/csv/importCSVSavedCartPage"; // NOSONAR
 			}
+
 		}
 
 		interface Fragments
