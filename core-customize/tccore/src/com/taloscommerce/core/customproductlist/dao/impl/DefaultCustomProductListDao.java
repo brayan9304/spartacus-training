@@ -68,6 +68,11 @@ public class DefaultCustomProductListDao extends DefaultGenericDao<CustomProduct
     }
 
     @Override
+    public Optional<CustomProductListModel> getProductListForUserWithName(String listName, CustomerModel customer) {
+        return Optional.empty();
+    }
+
+    @Override
     public void setFlexibleSearchService(FlexibleSearchService flexibleSearchService) {
         this.flexibleSearchService = flexibleSearchService;
     }

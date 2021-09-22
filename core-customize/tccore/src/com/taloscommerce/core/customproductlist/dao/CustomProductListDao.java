@@ -34,4 +34,13 @@ public interface CustomProductListDao {
      * @return Optional<CustomProductListModel>
      */
     Optional<CustomProductListModel> getCustomProductListById(String customProductListId);
+
+    /**
+     * Returns the specified list for the customer
+     * @param listName
+     * @param customer
+     * @return Optional<ProductModel>
+     */
+    Optional<CustomProductListModel> getProductListForUserWithName(String listName, CustomerModel customer);
+
 }

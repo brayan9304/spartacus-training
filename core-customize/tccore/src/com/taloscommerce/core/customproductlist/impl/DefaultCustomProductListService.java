@@ -33,6 +33,21 @@ public class DefaultCustomProductListService implements CustomProductListService
         return getCustomProductListDao().getCustomProductListById(customProductListId);
     }
 
+    @Override
+    public Optional<CustomProductListModel> getProductListForUserWithName(String listName, CustomerModel customer) {
+        return Optional.empty();
+    }
+
+    @Override
+    public CustomProductListModel createProductListForUser(CustomProductListModel productListModel, CustomerModel customer) {
+        return null;
+    }
+
+    @Override
+    public void saveProductToList(String product, CustomerModel customer, String list) {
+
+    }
+
     public CustomProductListDao getCustomProductListDao() {
         return customProductListDao;
     }

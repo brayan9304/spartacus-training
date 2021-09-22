@@ -34,4 +34,28 @@ public interface CustomProductListService {
      * @return Optional<CustomProductListModel>
      */
     Optional<CustomProductListModel> getCustomProductListById(String customProductListId);
+
+    /**
+     * Returns the specified list for the customer
+     * @param listName
+     * @param customer
+     * @return Optional<ProductModel>
+     */
+    Optional<CustomProductListModel> getProductListForUserWithName(String listName, CustomerModel customer);
+
+    /**
+     * Creates the product list for the user
+     * @param productListModel
+     * @param customer
+     * @return CustomProductListModel
+     */
+    CustomProductListModel createProductListForUser(CustomProductListModel productListModel, CustomerModel customer);
+
+    /**
+     * Saves the product to specified list of customer
+     * @param product
+     * @param customer
+     * @param list
+     */
+    void saveProductToList(String product, CustomerModel customer, String list);
 }
