@@ -3,6 +3,7 @@ package com.taloscommerce.storefront.controllers.pages;
 import com.taloscommerce.storefront.controllers.ControllerConstants;
 import com.taloscommerce.storefront.forms.CustomProductListForm;
 import com.taloscommerce.storefront.forms.validation.CustomProductListValidator;
+import com.taloscommerce.storefront.util.customList.CustomProductListDataUtil;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.util.GlobalMessages;
 import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
@@ -24,14 +25,17 @@ import java.io.UnsupportedEncodingException;
 @Controller
 @RequestMapping(value = "/**/saved-lists")
 public class CustomProductListController extends AbstractPageController {
-    //@Resource(name= "customProductListFacade")
-    //private CustomProductListFacade customProductListFacade;
+    @Resource(name= "customProductListFacade")
+    private CustomProductListFacade customProductListFacade;
 
     @Resource(name = "customerFacade")
     private CustomerFacade customerFacade;
 
     @Resource(name = "customProductListValidator")
     private CustomProductListValidator customProductListValidator;
+
+    @Resource(name = "CustomProductListDataUtil")
+    private CustomProductListDataUtil customProductListDataUtil;
 
     private static final String CUSTOM_PRODUCT_LIST = "customProductList";
 
@@ -47,13 +51,13 @@ public class CustomProductListController extends AbstractPageController {
     }
     @RequestMapping(value = "/create",method = RequestMethod.GET)
     public String createProductList(final Model model) throws CMSItemNotFoundException {
-        //Is this final OK?
         final ContentPageModel customProductList = getContentPageForLabelOrId(CUSTOM_PRODUCT_LIST);
         model.addAttribute("customProductListForm", new CustomProductListForm());
         storeCmsPageInModel(model, customProductList);
         setUpMetaDataForContentPage(model, customProductList);
         return ControllerConstants.Views.Pages.Product.CustomProductList;
     }
+
     @RequestMapping(value= "/create", method = RequestMethod.POST)
     public String createProductList(final CustomProductListForm form,
                                    final BindingResult result, final Model model) {
@@ -68,10 +72,10 @@ public class CustomProductListController extends AbstractPageController {
         //        createProductListForUserByName(listName,customer);
 
         //Here create data util to convert form into a data
-        //final CustomProductListData customProductListData = trainingEmailDataUtil.convertToTrainingEmailData(customTrainingForm);
+        final CustomProductListData customProductListData = customProductListDataUtil.convertToCustomProductListData(form);
         // customProductListFacade.createProductList(customProductListData);
         return REDIRECT_PREFIX + CUSTOM_PRODUCT_LIST; //This redirect is better to redirect into
-        // the view all custom lists intead of the form to create
+        // the view all custom lists instead of the form to create
     }
 
     @RequestMapping(value = "/getCustomList/{listName}", method = RequestMethod.GET)
@@ -94,7 +98,7 @@ public class CustomProductListController extends AbstractPageController {
         final String product = decodeWithScheme(encodeProduct, UTF_8);
         final String list = decodeWithScheme(listName, UTF_8);
         final CustomerData customer = customerFacade.getCurrentCustomer();
-        //getCustomProductListValidator().validate(customProductListForm, bindingResult);
+        getCustomProductListValidator().validate(form, result);
 
         if (result.hasErrors()) {
             storeContentPageTitleInModel(model, getPageTitleResolver().resolveProductPageTitle(product));
@@ -102,10 +106,8 @@ public class CustomProductListController extends AbstractPageController {
             return getViewForPage(model);
         }
 
-        //final CustomProductListData customProductListData = recommendationDataUtil.convertToRecommendationData(form);
-        //final CustomProductListData newRecommendation = recommendationFacade.postRecommendation(product, recommendationData);
-
-        //model.addAttribute(CustomProductListData);
+        final CustomProductListData customProductListData =customProductListDataUtil.convertToCustomProductListData(form);
+        //final CustomProductListData newCustomProductListData =customProductListFacade.createCustomProductList(product, customProductListData);
         //I think this redirect is not necessary, this call is more like a js function to add the product where it should be
         return REDIRECT_PREFIX;
     }
