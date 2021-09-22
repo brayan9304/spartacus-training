@@ -109,7 +109,7 @@ Use the next steps to install the project. Please make sure you change all refer
 
 1.  Create the following folder structure ```/Users/<youruser>/clients/talos/spartacus-training-project/hybris/bin```
 
-2.  Go to the bin folder and clone the repository with the following command ```git clone https://github.com/talosdigital/spartacus-training.git custom```
+2.  Go to the bin folder and clone the repository with the following command ```git clone https://github.com/brayan9304/spartacus-training.git custom```
 
     * If you configured your account with Google Login and you don't have a password then you can clone your repository using an UI Tool like **SourceTree**, or create a *AppPassword* in your bitbucket account like [this](https://stackoverflow.com/a/40946844) and use it for your terminal configuration.
 
