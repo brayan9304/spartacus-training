@@ -19,7 +19,7 @@
         </relation>
 
         <relation code="Product2CustomProductList" localized="false">
-            <deployment table="Product2CustomProductList" typecode="12003"/>
+            <deployment table="Product2CustomList" typecode="12003"/>
             <sourceElement type="Product" qualifier="product" cardinality="many"/>
             <targetElement type="CustomProductList" qualifier="customProductList" cardinality="many"/>
         </relation>
