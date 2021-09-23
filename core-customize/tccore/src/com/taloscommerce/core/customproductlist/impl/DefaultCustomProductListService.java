@@ -39,17 +39,25 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public Optional<CustomProductListModel> getProductListForUserWithName(String listName, CustomerModel customer) {
-        return Optional.empty();
+    public Optional<CustomProductListModel> getProductListForUserWithName(final String listName, final CustomerModel customer) {
+        return getCustomProductListDao().getProductListForUserWithName(listName,customer);
     }
 
     @Override
-    public CustomProductListModel createProductListForUser(CustomProductListModel productListModel, CustomerModel customer) {
-        return null;
+    public CustomProductListModel createProductListForUser(final CustomProductListModel productListModel, final CustomerModel customer) {
+        if (Objects.nonNull(customer)) {
+            final Collection<CustomProductListModel> customProductListModels = customer.getCustomProductList();
+            if (getProductListForUserWithName(productListModel.getName(), customer).isEmpty()) { //If name doesn't exist, nice, we can create it
+                customProductListModels.add(productListModel);
+                customer.setCustomProductList(customProductListModels);
+                getModelService().save(customer);
+            }
+        }
+        return productListModel;
     }
 
     @Override
-    public void saveProductToList(final String product, final CustomerModel customer, final String listCodes[]) {
+    public void saveProductToList(final String product, final CustomerModel customer, final String[] listCodes) {
         final ProductModel productModel = getProductService().getProductForCode(product);
         for (final String listCode : listCodes) {
             if (getCustomProductListDao().getCustomProductListById(listCode).isPresent() && Objects.nonNull(customer)) {
