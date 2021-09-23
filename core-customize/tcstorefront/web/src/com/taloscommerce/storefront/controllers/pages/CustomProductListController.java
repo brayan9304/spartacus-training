@@ -88,15 +88,15 @@ public class CustomProductListController extends AbstractPageController {
     }
 
     //Maybe not necessary url params, but instead a JS function that obtains product and list and add them but the page is still the same.
-    @RequestMapping(value = "/addTo/{listName}/{productCode}", method = RequestMethod.POST)
-    public String addProductToList(@PathVariable final String listName, @PathVariable("productCode") final String encodeProduct,
+    @RequestMapping(value = "/addTo/{listCode}/{productCode}", method = RequestMethod.POST)
+    public String addProductToList(@PathVariable final String listCode[], @PathVariable("productCode") final String encodeProduct,
                                    final BindingResult result, final Model model, final CustomProductListForm form) {
         getCustomProductListValidator().validate(form, result);
         if (result.hasErrors()) {
             GlobalMessages.addErrorMessage(model, "Localize error adding Product to List");
             return getViewForPage(model);
         }
-        final String list = decodeWithScheme(listName, UTF_8);
+        final String[] list = listCode;
         final String product = decodeWithScheme(encodeProduct, UTF_8);
         final CustomerData customer = customerFacade.getCurrentCustomer();
         customProductListFacade.saveProductToList(product, customer,list);

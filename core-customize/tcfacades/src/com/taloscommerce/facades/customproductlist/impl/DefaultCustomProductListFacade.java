@@ -65,8 +65,9 @@ public class DefaultCustomProductListFacade implements CustomProductListFacade {
     }
 
     @Override
-    public void saveProductToList(final String product, final CustomerData customer, final String list) {
-
+    public void saveProductToList(final String product, final CustomerData customer, final String listCodes[]) {
+        final CustomerModel customerModel = customerService.getCustomerByCustomerId(customer.getCustomerId());
+        getCustomProductListService().saveProductToList(product,customerModel,listCodes);
     }
 
     public Converter<CustomProductListModel, CustomProductListData> getCustomProductListConverter() {

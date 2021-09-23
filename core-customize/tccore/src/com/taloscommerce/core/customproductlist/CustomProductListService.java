@@ -55,7 +55,7 @@ public interface CustomProductListService {
      * Saves the product to specified list of customer
      * @param product
      * @param customer
-     * @param list
+     * @param listCodes
      */
-    void saveProductToList(String product, CustomerModel customer, String list);
+    void saveProductToList(String product, CustomerModel customer, String listCodes[]);
 }
