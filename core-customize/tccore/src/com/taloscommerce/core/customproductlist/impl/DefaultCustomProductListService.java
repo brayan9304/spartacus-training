@@ -6,6 +6,7 @@ import com.taloscommerce.core.model.CustomProductListModel;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.core.model.user.CustomerModel;
 import de.hybris.platform.product.ProductService;
+import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import de.hybris.platform.servicelayer.model.ModelService;
 import de.hybris.platform.servicelayer.keygenerator.KeyGenerator;
 
@@ -24,8 +25,9 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public Collection<ProductModel> getAllProductsForCustomList(final CustomProductListModel customProductList) {
-        return getCustomProductListDao().getAllProductsForCustomList(customProductList);
+    public Collection<ProductModel> getAllProductsForCustomList(final String customProductListId) {
+        final CustomProductListModel model = getCustomProductListById(customProductListId);
+        return getCustomProductListDao().getAllProductsForCustomList(model);
     }
 
     @Override
@@ -34,8 +36,14 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public Optional<CustomProductListModel> getCustomProductListById(final String customProductListId) {
-        return getCustomProductListDao().getCustomProductListById(customProductListId);
+    public CustomProductListModel getCustomProductListById(final String customProductListId) {
+        final Optional<CustomProductListModel> model = getCustomProductListDao().getCustomProductListById(customProductListId);
+
+        if (model.isEmpty()) {
+            throw new UnknownIdentifierException("CustomProductList with customProductListId '%s' not found!");
+        }
+
+        return model.get();
     }
 
     @Override
@@ -57,15 +65,17 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public void saveProductToList(final String product, final CustomerModel customer, final String[] listCodes) {
+    public void addProductToList(final String product, final String[] listCodes) {
         final ProductModel productModel = getProductService().getProductForCode(product);
         for (final String listCode : listCodes) {
-            if (getCustomProductListDao().getCustomProductListById(listCode).isPresent() && Objects.nonNull(customer)) {
-                final CustomProductListModel productListModel = getCustomProductListDao().getCustomProductListById(listCode).get();
-                final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
-                productModelSet.add(productModel);
-                productListModel.setProduct(productModelSet);
-                getModelService().save(productListModel);
+            if (getCustomProductListDao().getCustomProductListById(listCode).isPresent()) {
+                final CustomProductListModel productListModel = getCustomProductListById(listCode);
+
+                    final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
+                    productModelSet.add(productModel);
+                    productListModel.setProduct(productModelSet);
+                    getModelService().save(productListModel);
+
             }
         }
     }
