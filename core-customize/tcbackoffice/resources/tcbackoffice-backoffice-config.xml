@@ -138,4 +138,45 @@
         </simple-search:simple-search>
     </context>
 
+    <!--Custom List Configurations-->
+    <!--Explorer Tree-->
+    <context component="explorer-tree" merge-by="type" parent="GenericItem">
+        <explorer-tree:explorer-tree>
+            <explorer-tree:navigation-node id="CustomList">
+                <explorer-tree:type-node id="CustomProductList" code="CustomProductList"/>
+            </explorer-tree:navigation-node>
+        </explorer-tree:explorer-tree>
+    </context>
+
+    <!--list View-->
+    <context component="listview" merge-by="type" parent="GenericItem" type="CustomProductList">
+        <list:list-view refresh-after-object-creation="true">
+            <list:column qualifier="id"/>
+            <list:column qualifier="name"/>
+            <list:column qualifier="description"/>
+        </list:list-view>
+    </context>
+
+    <!--editor area-->
+    <context component="editor-area" merge-by="type" parent="GenericItem" type="CustomProductList">
+        <editorArea:editorArea>
+            <editorArea:tab name="hmc.tab.common">
+                <editorArea:section name="hmc.properties">
+                    <editorArea:attribute qualifier="id"/>
+                    <editorArea:attribute qualifier="name"/>
+                    <editorArea:attribute qualifier="description"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
+    <!--Simple Search-->
+    <context component="simple-search" merge-by="type" parent="GenericItem" type="CustomProductList">
+        <simple-search:simple-search>
+            <simple-search:field name="id" />
+            <simple-search:field name="name" />
+            <simple-search:field name="description" />
+        </simple-search:simple-search>
+    </context>
+
 </config>

@@ -211,4 +211,43 @@
 		<constructor-arg name="referredCustomerConverter" ref="referredCustomerConverter"/>
 	</bean>
 
+	<!--CustomProductListPopulator-->
+	<alias name="customProductListPopulator" alias="customProductListPopulator"/>
+	<bean name="customProductListPopulator" class="com.taloscommerce.facades.populators.CustomProductListPopulator"/>
+
+	<alias name="customProductListReversePopulator" alias="customProductListReversePopulator"/>
+	<bean name="customProductListReversePopulator" class="com.taloscommerce.facades.populators.CustomProductListReversePopulator"/>
+
+	<!--CustomProductListConverter-->
+	<alias name="customProductListConverter" alias="customProductListConverter"/>
+	<bean id="customProductListConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.taloscommerce.facades.customproductlist.data.CustomProductListData"/>
+		<property name="populators">
+			<list>
+				<ref bean="customProductListPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="customProductListReverseConverter" alias="customProductListReverseConverter"/>
+	<bean id="customProductListReverseConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.taloscommerce.core.model.CustomProductListModel"/>
+		<property name="populators">
+			<list>
+				<ref bean="customProductListReversePopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<!--CustomProductListFacade-->
+	<alias name="defaultCustomProductListFacade" alias="customProductListFacade"/>
+	<bean name="defaultCustomProductListFacade"
+		  class="com.taloscommerce.facades.customproductlist.impl.DefaultCustomProductListFacade">
+		<property name="customProductListConverter" ref="customProductListConverter"/>
+		<property name="customProductListReverseConverter" ref="customProductListReverseConverter"/>
+		<property name="productConverter" ref="carouselProductConverter"/>
+		<property name="customProductListService" ref="customProductListService"/>
+		<property name="customerService" ref="customerService"/>
+	</bean>
+
 </beans>

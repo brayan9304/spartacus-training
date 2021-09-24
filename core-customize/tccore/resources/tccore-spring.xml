@@ -511,6 +511,16 @@
         <constructor-arg name="modelService" ref="modelService"/>
         <constructor-arg name="userService" ref="userService"/>
     </bean>
+    <!--Custom Product List Random Id-->
+    <bean id="customProductListIdGenerator"
+          class="de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator">
+        <property name="key" value="${keygen.custom.list.id.name}"/>
+        <property name="digits" value="${keygen.custom.list.id.digits}"/>
+        <property name="start" value="${keygen.custom.list.id.start}"/>
+        <property name="type" value="${keygen.custom.list.id.type}"/>
+        <property name="template" value="${keygen.custom.list.id.template}"/>
+    </bean>
+
     <!--Custom product list-->
     <alias name="defaultCustomProductListDao" alias="customProductListDao"/>
     <bean name="defaultCustomProductListDao"
@@ -522,6 +532,9 @@
     <bean name="defaultCustomProductListService"
           class="com.taloscommerce.core.customproductlist.impl.DefaultCustomProductListService">
         <property name="customProductListDao" ref="customProductListDao"/>
+        <property name="productService" ref="productService"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="customProductListIdGenerator" ref="customProductListIdGenerator"/>
     </bean>
 
 </beans>

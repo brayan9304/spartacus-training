@@ -25,4 +25,10 @@
     <bean class="com.taloscommerce.facades.user.data.ReferredCustomerDataList">
         <property name="referredCustomers" type="java.util.List&lt;com.taloscommerce.facades.user.data.ReferredCustomerData>"/>
     </bean>
+
+    <bean class="com.taloscommerce.facades.customproductlist.data.CustomProductListData">
+        <property name="id" type="java.lang.String"/>
+        <property name="name" type="java.lang.String"/>
+        <property name="description" type="java.lang.String"/>
+    </bean>
 </beans>
