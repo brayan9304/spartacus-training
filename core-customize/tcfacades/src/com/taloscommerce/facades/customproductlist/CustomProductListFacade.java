@@ -17,10 +17,10 @@ public interface CustomProductListFacade {
 
     /**
      * Get all products from a customProductList
-     * @param customProductListData
+     * @param customProductListId
      * @return List<ProductData>
      */
-    List<ProductData> getAllProductsForCustomList(CustomProductListData customProductListData);
+    List<ProductData> getAllProductsForCustomList(String customProductListId);
 
     /**
      * Return the product lists for user
@@ -34,7 +34,7 @@ public interface CustomProductListFacade {
      * @param customProductListId
      * @return Optional<CustomProductListData>
      */
-    Optional<CustomProductListData> getCustomProductListById(String customProductListId);
+    CustomProductListData getCustomProductListById(String customProductListId);
 
     /**
      * Returns the specified list for the customer
@@ -55,8 +55,7 @@ public interface CustomProductListFacade {
     /**
      * Saves the product to specified list of customer
      * @param product
-     * @param customer
      * @param listCode
      */
-    void saveProductToList(String product, CustomerData customer, String[] listCode);
+    void addProductToList(String product, String[] listCode);
 }

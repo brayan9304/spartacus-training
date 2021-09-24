@@ -17,10 +17,10 @@ public interface CustomProductListService {
 
     /**
      * Get all products from a customProductList
-     * @param customProductList
+     * @param customProductListId
      * @return Collection<ProductModel>
      */
-    Collection<ProductModel>  getAllProductsForCustomList(CustomProductListModel customProductList);
+    Collection<ProductModel>  getAllProductsForCustomList(String customProductListId);
 
     /** Get all product lists for the user.
      * @param customer
@@ -33,7 +33,7 @@ public interface CustomProductListService {
      * @param customProductListId
      * @return Optional<CustomProductListModel>
      */
-    Optional<CustomProductListModel> getCustomProductListById(String customProductListId);
+    CustomProductListModel getCustomProductListById(String customProductListId);
 
     /**
      * Returns the specified list for the customer
@@ -54,8 +54,7 @@ public interface CustomProductListService {
     /**
      * Saves the product to specified list of customer
      * @param product
-     * @param customer
      * @param listCodes
      */
-    void saveProductToList(String product, CustomerModel customer, String[] listCodes);
+    void addProductToList(String product, String[] listCodes);
 }

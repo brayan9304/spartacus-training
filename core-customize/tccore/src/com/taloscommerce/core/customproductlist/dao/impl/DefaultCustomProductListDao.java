@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static de.hybris.platform.servicelayer.util.ServicesUtil.validateParameterNotNull;
+
 public class DefaultCustomProductListDao extends DefaultGenericDao<CustomProductListModel> implements CustomProductListDao {
 
     private final String CUSTOM_PRODUCT_LIST_BY_ID = "select {p." + CustomProductListModel.PK + "} from {" + CustomProductListModel._TYPECODE + " as p} " +
@@ -61,6 +63,7 @@ public class DefaultCustomProductListDao extends DefaultGenericDao<CustomProduct
 
     @Override
     public Optional<CustomProductListModel> getCustomProductListById(final String customProductListId) {
+        validateParameterNotNull(customProductListId, "Parameter customProductListId must not be null");
         final FlexibleSearchQuery fsq = new FlexibleSearchQuery(CUSTOM_PRODUCT_LIST_BY_ID);
         fsq.addQueryParameter("id", customProductListId);
         final SearchResult<CustomProductListModel> searchResult = getFlexibleSearchService().search(fsq);

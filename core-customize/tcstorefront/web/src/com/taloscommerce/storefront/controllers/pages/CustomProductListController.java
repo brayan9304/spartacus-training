@@ -98,8 +98,7 @@ public class CustomProductListController extends AbstractPageController {
         }
         final String[] list = listCode; //decode first?
         final String product = decodeWithScheme(encodeProduct, UTF_8);
-        final CustomerData customer = customerFacade.getCurrentCustomer();
-        customProductListFacade.saveProductToList(product, customer,list);
+        customProductListFacade.addProductToList(product,list);
         return REDIRECT_PREFIX;
     }
 
