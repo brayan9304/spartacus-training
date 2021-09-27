@@ -44,7 +44,8 @@ public class CustomProductListController extends BaseController {
     public CustomProductListListWsDTO getCreatedLists(
             @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) throws CMSItemNotFoundException {
         final CustomerData customer = customerFacade.getCurrentCustomer();
-        final List<CustomProductListData> lists = customProductListFacade.getCustomProductListsForUser(customer);
+        final String id = customer.getCustomerId();
+        final List<CustomProductListData> lists = customProductListFacade.getCustomProductListsForUser(id);
         final CustomProductListDataList customProductListDataList = new CustomProductListDataList();
         customProductListDataList.setCustomProductLists(lists);
         return getDataMapper().map(customProductListDataList, CustomProductListListWsDTO.class, fields);    }
@@ -60,9 +61,10 @@ public class CustomProductListController extends BaseController {
     @ApiBaseSiteIdParam
     public CustomProductListWsDTO createProductList(@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,final HttpServletRequest request) {
         final CustomerData customer = customerFacade.getCurrentCustomer();
+        final String id = customer.getCustomerId();
         final CustomProductListData productListData = new CustomProductListData();
         httpRequestCustomProductListDataPopulator.populate(request, productListData);
-        customProductListFacade.createProductListForUser(productListData, customer);
+        customProductListFacade.createProductListForUser(productListData, id);
         return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
     }
 
@@ -73,7 +75,8 @@ public class CustomProductListController extends BaseController {
     public CustomProductListWsDTO getCustomListProducts(@PathVariable("listName") final String listName,
                                         @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final CustomerData customer = customerFacade.getCurrentCustomer();
-        final Optional<CustomProductListData> productListData = customProductListFacade.getProductListForUserWithName(listName, customer);
+        final String id = customer.getCustomerId();
+        final Optional<CustomProductListData> productListData = customProductListFacade.getProductListForUserWithName(listName,id);
         return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
     }
 
@@ -105,7 +108,7 @@ public class CustomProductListController extends BaseController {
 
     @RequestMapping(value = "/removeFrom/{listId}/{productCode}", method = RequestMethod.DELETE)
     @ResponseBody
-    @ApiOperation(nickname = "removeFromList", value = "Delete custom product list.", notes = "Calls a method to delete a product from a list using the list id and product id")
+    @ApiOperation(nickname = "removeFromList", value = "Delete product from custom product list.", notes = "Calls a method to delete a product from a list using the list id and product id")
     @ApiBaseSiteIdParam
     public void deleteCustomProductList(@ApiParam(value = "List identifier", required = true) @PathVariable final String listId,
                                         @ApiParam(value = "Product identifier", required = true) @PathVariable final String productCode,
