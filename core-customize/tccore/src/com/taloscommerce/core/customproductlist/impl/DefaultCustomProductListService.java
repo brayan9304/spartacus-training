@@ -3,6 +3,7 @@ package com.taloscommerce.core.customproductlist.impl;
 import com.taloscommerce.core.customproductlist.CustomProductListService;
 import com.taloscommerce.core.customproductlist.dao.CustomProductListDao;
 import com.taloscommerce.core.model.CustomProductListModel;
+import de.hybris.platform.commerceservices.customer.CustomerService;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.core.model.user.CustomerModel;
 import de.hybris.platform.product.ProductService;
@@ -16,6 +17,7 @@ public class DefaultCustomProductListService implements CustomProductListService
 
     private CustomProductListDao customProductListDao;
     private ProductService productService;
+    private CustomerService customerService;
     private ModelService modelService;
     private KeyGenerator customProductListIdGenerator;
 
@@ -31,8 +33,9 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public Collection<CustomProductListModel> getCustomProductListsForUser(final CustomerModel customer) {
-        return getCustomProductListDao().getCustomProductListsForUser(customer);
+    public Collection<CustomProductListModel> getCustomProductListsForUser(final String customerId) {
+        final CustomerModel customerModel = getCustomerService().getCustomerByCustomerId(customerId);
+        return getCustomProductListDao().getCustomProductListsForUser(customerModel);
     }
 
     @Override
@@ -47,18 +50,19 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public Optional<CustomProductListModel> getProductListForUserWithName(final String listName, final CustomerModel customer) {
-        return getCustomProductListDao().getProductListForUserWithName(listName,customer);
+    public Optional<CustomProductListModel> getProductListForUserWithName(final String listName, final String customerId) {
+        final CustomerModel customerModel = getCustomerService().getCustomerByCustomerId(customerId);
+        return getCustomProductListDao().getProductListForUserWithName(listName,customerModel);
     }
 
     @Override
-    public CustomProductListModel createProductListForUser(final CustomProductListModel productListModel, final CustomerModel customer) {
+    public CustomProductListModel createProductListForUser(final CustomProductListModel productListModel, final String customerId) {
+        final CustomerModel customer = getCustomerService().getCustomerByCustomerId(customerId);
         if (Objects.nonNull(customer)) {
-            final Collection<CustomProductListModel> customProductListModels = customer.getCustomProductList();
-            if (getProductListForUserWithName(productListModel.getName(), customer).isEmpty()) { //If name doesn't exist, nice, we can create it
-                customProductListModels.add(productListModel);
-                customer.setCustomProductList(customProductListModels);
-                getModelService().save(customer);
+            if (getProductListForUserWithName(productListModel.getName(), customerId).isEmpty()) { //If name doesn't exist, nice, we can create it
+                productListModel.setId(getCustomProductListIdGenerator().generate().toString());
+                productListModel.setCustomer(customer);
+                getModelService().save(productListModel);
             }
         }
         return productListModel;
@@ -70,12 +74,31 @@ public class DefaultCustomProductListService implements CustomProductListService
         for (final String listCode : listCodes) {
             if (getCustomProductListDao().getCustomProductListById(listCode).isPresent()) {
                 final CustomProductListModel productListModel = getCustomProductListById(listCode);
+                final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
+                productModelSet.add(productModel);
+                productListModel.setProduct(productModelSet);
+                getModelService().save(productListModel);
+            }
+        }
+    }
 
-                    final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
-                    productModelSet.add(productModel);
-                    productListModel.setProduct(productModelSet);
-                    getModelService().save(productListModel);
+    @Override
+    public void deleteCustomProductList(final String customProductListId){
+        final CustomProductListModel model = getCustomProductListById(customProductListId);
+        getModelService().remove(model);
+    }
 
+    @Override
+    public void removeProductFromList(final String productCode, final String customProductListId){
+        final ProductModel productModel = getProductService().getProductForCode(productCode);
+        final CustomProductListModel productListModel = getCustomProductListById(customProductListId);
+
+        if (Objects.nonNull(productListModel)){
+            final Set<ProductModel> productModels = new HashSet<>((productListModel.getProduct()));
+            if (productModels.contains(productModel)){
+                productModels.remove(productModel);
+                productListModel.setProduct(productModels);
+                getModelService().save(productListModel);
             }
         }
     }
@@ -94,6 +117,14 @@ public class DefaultCustomProductListService implements CustomProductListService
 
     public void setProductService(ProductService productService) {
         this.productService = productService;
+    }
+
+    public CustomerService getCustomerService() {
+        return customerService;
+    }
+
+    public void setCustomerService(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
     public ModelService getModelService() {

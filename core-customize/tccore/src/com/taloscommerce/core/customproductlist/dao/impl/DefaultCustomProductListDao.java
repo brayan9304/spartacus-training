@@ -30,8 +30,7 @@ public class DefaultCustomProductListDao extends DefaultGenericDao<CustomProduct
     private final String CUSTOM_LIST_WITH_NAME_FOR_USER = "SELECT {p." + CustomProductListModel.PK + "} "
             + " FROM {" + CustomProductListModel._TYPECODE + " as p JOIN " + CustomerModel._TYPECODE + " as c ON "
             + " {c." + CustomerModel.PK + " } = { p." + CustomProductListModel.CUSTOMER + "} " //Maybe this last p.customer is not okay. and is instead p.typecode
-            + " } where {p." + CustomerModel._TYPECODE + "} = ?customer "
-            + " and {p."+CustomProductListModel.NAME+"} = ?withName ";
+            + " } where {c." + CustomerModel.CUSTOMERID + "} = ?customer and {p." + CustomProductListModel.NAME + "} = ?withName ";
 
 
     private FlexibleSearchService flexibleSearchService;
@@ -53,36 +52,52 @@ public class DefaultCustomProductListDao extends DefaultGenericDao<CustomProduct
     @Override
     public Collection<CustomProductListModel> getCustomProductListsForUser(final CustomerModel customer) {
         if (Objects.nonNull(customer)) {
-            FlexibleSearchQuery fsq = new FlexibleSearchQuery(CUSTOM_PRODUCTS_FOR_CUSTOMER);
-            fsq.addQueryParameter("customer", customer.getCustomerID());
-            SearchResult<CustomProductListModel> result = getFlexibleSearchService().search(fsq);
-            return result.getResult();
+            return List.of();
         }
-        return List.of();
+
+        FlexibleSearchQuery fsq = new FlexibleSearchQuery(CUSTOM_PRODUCTS_FOR_CUSTOMER);
+        fsq.addQueryParameter("customer", customer.getCustomerID());
+        SearchResult<CustomProductListModel> result = getFlexibleSearchService().search(fsq);
+
+        if (CollectionUtils.isEmpty(result.getResult())){
+            return List.of();
+        }
+        return result.getResult();
+
     }
 
     @Override
     public Optional<CustomProductListModel> getCustomProductListById(final String customProductListId) {
         validateParameterNotNull(customProductListId, "Parameter customProductListId must not be null");
+
         final FlexibleSearchQuery fsq = new FlexibleSearchQuery(CUSTOM_PRODUCT_LIST_BY_ID);
         fsq.addQueryParameter("id", customProductListId);
         final SearchResult<CustomProductListModel> searchResult = getFlexibleSearchService().search(fsq);
+
         if (CollectionUtils.isEmpty(searchResult.getResult())) {
             return Optional.empty();
         }
+
         return Optional.ofNullable(searchResult.getResult().get(0));
     }
 
     @Override
     public Optional<CustomProductListModel> getProductListForUserWithName(final String listName, final CustomerModel customer) {
-        if (Objects.nonNull(customer)) {
-            FlexibleSearchQuery fsq = new FlexibleSearchQuery(CUSTOM_LIST_WITH_NAME_FOR_USER);
-            fsq.addQueryParameter("customer", customer.getCustomerID());
-            fsq.addQueryParameter("withName", listName);
-            SearchResult<CustomProductListModel> result = getFlexibleSearchService().search(fsq);
-            return Optional.ofNullable(result.getResult().get(0));
+        if (Objects.isNull(customer)) {
+            return Optional.empty();
         }
-        return Optional.empty();
+
+        FlexibleSearchQuery fsq = new FlexibleSearchQuery(CUSTOM_LIST_WITH_NAME_FOR_USER);
+        fsq.addQueryParameter("customer", customer.getCustomerID());
+        fsq.addQueryParameter("withName", listName);
+        SearchResult<CustomProductListModel> result = getFlexibleSearchService().search(fsq);
+
+        if (CollectionUtils.isEmpty(result.getResult())) {
+            return Optional.empty();
+        }
+
+        return Optional.ofNullable(result.getResult().get(0));
+
     }
 
     @Override

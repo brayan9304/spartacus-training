@@ -120,7 +120,7 @@
                     </attribute>
                     <attribute qualifier="name" type="java.lang.String">
                         <description>Name of the list</description>
-                        <modifiers initial="true" optional="false" unique="true"/>
+                        <modifiers initial="true" optional="false"/>
                         <persistence type="property"/>
                     </attribute>
                     <attribute qualifier="description" type="java.lang.String">

@@ -12,9 +12,7 @@ import de.hybris.platform.core.model.user.CustomerModel;
 import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DefaultCustomProductListFacade implements CustomProductListFacade {
@@ -23,7 +21,6 @@ public class DefaultCustomProductListFacade implements CustomProductListFacade {
     private Converter<CustomProductListData, CustomProductListModel> customProductListReverseConverter;
     private Converter<ProductModel, ProductData> productConverter;
     private CustomProductListService customProductListService;
-    private CustomerService customerService;
 
     @Override
     public List<CustomProductListData> getAllCustomProductLists() {
@@ -40,10 +37,8 @@ public class DefaultCustomProductListFacade implements CustomProductListFacade {
     }
 
     @Override
-    public List<CustomProductListData> getCustomProductListsForUser(final CustomerData customer) {
-        final String id = customer.getCustomerId();
-        final CustomerModel customerModel = getCustomerService().getCustomerByCustomerId(id);
-        final Collection<CustomProductListModel> customProductList = getCustomProductListService().getCustomProductListsForUser(customerModel);
+    public List<CustomProductListData> getCustomProductListsForUser(final String customerId) {
+        final Collection<CustomProductListModel> customProductList = getCustomProductListService().getCustomProductListsForUser(customerId);
         return customProductList.stream().map(getCustomProductListConverter()::convert).collect(Collectors.toList());
     }
 
@@ -55,21 +50,31 @@ public class DefaultCustomProductListFacade implements CustomProductListFacade {
     }
 
     @Override
-    public Optional<CustomProductListData> getProductListForUserWithName(final String listName, final CustomerData customer) {
-        return Optional.empty();
+    public Optional<CustomProductListData> getProductListForUserWithName(final String listName, final String customerId) {
+        final Optional<CustomProductListModel> customProductListModel = getCustomProductListService().getProductListForUserWithName(listName,customerId);
+        return customProductListModel.map(customProductListData -> getCustomProductListConverter().convert(customProductListData));
     }
 
     @Override
-    public CustomProductListData createProductListForUser(final CustomProductListData productListData, final CustomerData customer) {
+    public CustomProductListData createProductListForUser(final CustomProductListData productListData, final String customerId) {
         final CustomProductListModel model = getCustomProductListReverseConverter().convert(productListData);
-        final CustomerModel customerModel = getCustomerService().getCustomerByCustomerId(customer.getCustomerId());
-        final CustomProductListModel recommendationModel = getCustomProductListService().createProductListForUser(model, customerModel);
-        return getCustomProductListConverter().convert(recommendationModel);
+        final CustomProductListModel customProductListModel = getCustomProductListService().createProductListForUser(model, customerId);
+        return getCustomProductListConverter().convert(customProductListModel);
     }
 
     @Override
     public void addProductToList(final String product, final String[] listCodes) {
         getCustomProductListService().addProductToList(product, listCodes);
+    }
+
+    @Override
+    public void deleteCustomProductList(final String customProductListId){
+        getCustomProductListService().deleteCustomProductList(customProductListId);
+    }
+
+    @Override
+    public void removeProductFromList(final String productCode, final String customProductListId){
+        getCustomProductListService().removeProductFromList(productCode, customProductListId);
     }
 
     public Converter<CustomProductListModel, CustomProductListData> getCustomProductListConverter() {
@@ -102,13 +107,5 @@ public class DefaultCustomProductListFacade implements CustomProductListFacade {
 
     public void setCustomProductListService(CustomProductListService customProductListService) {
         this.customProductListService = customProductListService;
-    }
-
-    public CustomerService getCustomerService() {
-        return customerService;
-    }
-
-    public void setCustomerService(CustomerService customerService) {
-        this.customerService = customerService;
     }
 }
