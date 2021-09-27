@@ -44,7 +44,7 @@ public class CustomProductListController extends AbstractPageController {
     @RequestMapping(method = RequestMethod.GET)
     public String viewCreatedLists(final Model model) throws CMSItemNotFoundException {
         final CustomerData customer = customerFacade.getCurrentCustomer();
-        final List<CustomProductListData> lists = customProductListFacade.getCustomProductListsForUser(customer);
+        final List<CustomProductListData> lists = customProductListFacade.getCustomProductListsForUser(customer.getCustomerId());
         model.addAttribute(lists);
         final ContentPageModel contentPage = getContentPageForLabelOrId(null);
         storeCmsPageInModel(model, contentPage);
@@ -71,7 +71,7 @@ public class CustomProductListController extends AbstractPageController {
         }
         final CustomerData customer = customerFacade.getCurrentCustomer();
         final CustomProductListData createdProductList = customProductListDataUtil.convertToCustomProductListData(form);
-        customProductListFacade.createProductListForUser(createdProductList, customer);
+        customProductListFacade.createProductListForUser(createdProductList, customer.getCustomerId());
 
         return REDIRECT_PREFIX + CUSTOM_PRODUCT_LIST;
     }
@@ -80,7 +80,7 @@ public class CustomProductListController extends AbstractPageController {
     public String getCustomListProducts(@PathVariable("listName") final String listName, final Model model) {
         final String customListName = decodeWithScheme(listName, UTF_8);
         final CustomerData customer = customerFacade.getCurrentCustomer();
-        final Optional<CustomProductListData> productListData = customProductListFacade.getProductListForUserWithName(customListName, customer);
+        final Optional<CustomProductListData> productListData = customProductListFacade.getProductListForUserWithName(customListName, customer.getCustomerId());
         productListData.ifPresent(customProductListData -> model.addAttribute("products", customProductListData));
         //Add products from productListData first?
         //Change view

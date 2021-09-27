@@ -24,10 +24,10 @@ public interface CustomProductListFacade {
 
     /**
      * Return the product lists for user
-     * @param customer
+     * @param customerId customer id
      * @return List <CustomProductListData>
      */
-    List<CustomProductListData> getCustomProductListsForUser(CustomerData customer);
+    List<CustomProductListData> getCustomProductListsForUser(String customerId);
 
     /**
      * Get customerProductList by ID
@@ -39,18 +39,18 @@ public interface CustomProductListFacade {
     /**
      * Returns the specified list for the customer
      * @param listName
-     * @param customer
+     * @param customerId
      * @return Optional<ProductData>
      */
-    Optional<CustomProductListData> getProductListForUserWithName(String listName, CustomerData customer);
+    Optional<CustomProductListData> getProductListForUserWithName(String listName, String customerId);
 
     /**
      * Creates the product list for the user
      * @param productListData
-     * @param customer
+     * @param customerId
      * @return CustomProductListData
      */
-    CustomProductListData createProductListForUser(CustomProductListData productListData, CustomerData customer);
+    CustomProductListData createProductListForUser(CustomProductListData productListData, String customerId);
 
     /**
      * Saves the product to specified list of customer
@@ -58,4 +58,17 @@ public interface CustomProductListFacade {
      * @param listCode
      */
     void addProductToList(String product, String[] listCode);
+
+    /**
+     * delete the product list
+     * @param customProductListId custom Product List id
+     */
+    void deleteCustomProductList(String customProductListId);
+
+    /**
+     * Remove a product from a list
+     * @param productCode product code
+     * @param customProductListId custom Product List id
+     */
+    void removeProductFromList(String productCode, String customProductListId);
 }

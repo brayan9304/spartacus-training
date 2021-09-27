@@ -23,10 +23,10 @@ public interface CustomProductListService {
     Collection<ProductModel>  getAllProductsForCustomList(String customProductListId);
 
     /** Get all product lists for the user.
-     * @param customer
+     * @param customerId customer id
      * @return Collection<CustomProductListModel>
      */
-    Collection <CustomProductListModel> getCustomProductListsForUser(CustomerModel customer);
+    Collection <CustomProductListModel> getCustomProductListsForUser(String customerId);
 
     /**
      * Get customerProductList by ID
@@ -38,18 +38,18 @@ public interface CustomProductListService {
     /**
      * Returns the specified list for the customer
      * @param listName
-     * @param customer
+     * @param customerId
      * @return Optional<ProductModel>
      */
-    Optional<CustomProductListModel> getProductListForUserWithName(String listName, CustomerModel customer);
+    Optional<CustomProductListModel> getProductListForUserWithName(String listName, String customerId);
 
     /**
      * Creates the product list for the user
      * @param productListModel
-     * @param customer
+     * @param customerId
      * @return CustomProductListModel
      */
-    CustomProductListModel createProductListForUser(CustomProductListModel productListModel, CustomerModel customer);
+    CustomProductListModel createProductListForUser(CustomProductListModel productListModel, String customerId);
 
     /**
      * Saves the product to specified list of customer
@@ -57,4 +57,17 @@ public interface CustomProductListService {
      * @param listCodes
      */
     void addProductToList(String product, String[] listCodes);
+
+    /**
+     * delete the product list
+     * @param customProductListId custom Product List id
+     */
+    void deleteCustomProductList(String customProductListId);
+
+    /**
+     * Remove a product from a list
+     * @param productCode product code
+     * @param customProductListId custom Product List id
+     */
+    void removeProductFromList(String productCode, String customProductListId);
 }
