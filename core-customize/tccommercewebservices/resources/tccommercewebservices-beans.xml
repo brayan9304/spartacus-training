@@ -4,232 +4,257 @@
 -->
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
 
-	<enum class="com.taloscommerce.webservices.populator.options.PaymentInfoOption">
-		<value>BASIC</value>
-		<value>BILLING_ADDRESS</value>
-	</enum>
+    <enum class="com.taloscommerce.webservices.populator.options.PaymentInfoOption">
+        <value>BASIC</value>
+        <value>BILLING_ADDRESS</value>
+    </enum>
 
-	<!--auth response  -->
-	<bean class="com.taloscommerce.webservices.auth.data.LogoutResponse">
-		<property name="success" type="boolean"/>
-	</bean>
+    <!--auth response  -->
+    <bean class="com.taloscommerce.webservices.auth.data.LogoutResponse">
+        <property name="success" type="boolean"/>
+    </bean>
 
-	<!-- storesession data -->
+    <!-- storesession data -->
 
-	<bean class="com.taloscommerce.webservices.storesession.data.LanguageDataList">
-		<property name="languages"
-		          type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.LanguageData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.storesession.data.LanguageDataList">
+        <property name="languages"
+                  type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.LanguageData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.storesession.data.CurrencyDataList">
-		<property name="currencies"
-		          type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.CurrencyData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.storesession.data.CurrencyDataList">
+        <property name="currencies"
+                  type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.CurrencyData>"/>
+    </bean>
 
-	<!-- order data -->
+    <!-- order data -->
 
-	<bean class="com.taloscommerce.webservices.order.data.CartDataList">
-		<property name="carts"
-		          type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CartData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.order.data.CartDataList">
+        <property name="carts"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CartData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.order.data.OrderEntryDataList">
-		<property name="orderEntries"
-		          type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.OrderEntryData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.order.data.OrderEntryDataList">
+        <property name="orderEntries"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.OrderEntryData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.order.data.CardTypeDataList">
-		<property name="cardTypes"
-		          type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CardTypeData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.order.data.CardTypeDataList">
+        <property name="cardTypes"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CardTypeData>"/>
+    </bean>
 
-	<!-- product data -->
+    <!-- product data -->
 
-	<bean class="com.taloscommerce.webservices.product.data.ProductDataList">
-		<property name="products"
-		          type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>"/>
-		<property name="catalog" type="String"/>
-		<property name="version" type="String"/>
-		<property name="totalProductCount" type="int"/>
-		<property name="totalPageCount" type="int"/>
-		<property name="currentPage" type="int"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.product.data.ProductDataList">
+        <property name="products"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>"/>
+        <property name="catalog" type="String"/>
+        <property name="version" type="String"/>
+        <property name="totalProductCount" type="int"/>
+        <property name="totalPageCount" type="int"/>
+        <property name="currentPage" type="int"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.product.data.PromotionDataList">
-		<property name="promotions"
-		          type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.product.data.PromotionDataList">
+        <property name="promotions"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.product.data.PromotionResultDataList">
-		<property name="promotions"
-		          type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionResultData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.product.data.PromotionResultDataList">
+        <property name="promotions"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionResultData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.product.data.ReviewDataList">
-		<property name="reviews" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ReviewData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.product.data.ReviewDataList">
+        <property name="reviews" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ReviewData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.product.data.SuggestionDataList">
-		<property name="suggestions"
-		          type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.SuggestionData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.product.data.SuggestionDataList">
+        <property name="suggestions"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.SuggestionData>"/>
+    </bean>
 
-	<!-- user data -->
+    <!-- user data -->
 
-	<bean class="com.taloscommerce.webservices.user.data.TitleDataList">
-		<property name="titles" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.TitleData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.user.data.TitleDataList">
+        <property name="titles" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.TitleData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.user.data.CountryDataList">
-		<property name="countries" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.CountryData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.user.data.CountryDataList">
+        <property name="countries" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.CountryData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.user.data.RegionDataList">
-		<property name="regions"
-				  type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.RegionData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.user.data.RegionDataList">
+        <property name="regions"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.RegionData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.user.data.AddressDataList">
-		<property name="addresses" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.AddressData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.user.data.AddressDataList">
+        <property name="addresses" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.AddressData>"/>
+    </bean>
 
-	<!-- voucher data -->
-	<bean class="com.taloscommerce.webservices.voucher.data.VoucherDataList">
-		<property name="vouchers"
-		          type="java.util.List&lt;de.hybris.platform.commercefacades.voucher.data.VoucherData>"/>
-	</bean>
+    <!-- voucher data -->
+    <bean class="com.taloscommerce.webservices.voucher.data.VoucherDataList">
+        <property name="vouchers"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.voucher.data.VoucherData>"/>
+    </bean>
 
-	<!-- validation data -->
-	<bean class="com.taloscommerce.webservices.validation.data.AddressValidationData">
-		<property name="errors" type="de.hybris.platform.webservicescommons.dto.error.ErrorListWsDTO"/>
-		<property name="decision" type="String"/>
-		<property name="suggestedAddressesList"
-		          type="com.taloscommerce.webservices.user.data.AddressDataList"/>
-	</bean>
+    <!-- validation data -->
+    <bean class="com.taloscommerce.webservices.validation.data.AddressValidationData">
+        <property name="errors" type="de.hybris.platform.webservicescommons.dto.error.ErrorListWsDTO"/>
+        <property name="decision" type="String"/>
+        <property name="suggestedAddressesList"
+                  type="com.taloscommerce.webservices.user.data.AddressDataList"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.validation.data.CartVoucherValidationData">
-		<property name="subject" type="String" />
-	</bean>
+    <bean class="com.taloscommerce.webservices.validation.data.CartVoucherValidationData">
+        <property name="subject" type="String"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.validation.data.CartVoucherValidationDataList">
-		<property name="CartVoucherValidationDataList"
-				  type="java.util.List&lt;com.taloscommerce.webservices.validation.data.CartVoucherValidationData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.validation.data.CartVoucherValidationDataList">
+        <property name="CartVoucherValidationDataList"
+                  type="java.util.List&lt;com.taloscommerce.webservices.validation.data.CartVoucherValidationData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.user.data.LoginChangeResponse">
-		<property name="success" type="boolean"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.user.data.LoginChangeResponse">
+        <property name="success" type="boolean"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.user.data.PasswordRestoreResponse">
-		<property name="success" type="boolean"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.user.data.PasswordRestoreResponse">
+        <property name="success" type="boolean"/>
+    </bean>
 
-	<!-- update queues -->
+    <!-- update queues -->
 
-	<bean class="com.taloscommerce.webservices.queues.data.ProductExpressUpdateElementData">
-		<property name="code" type="String"/>
-		<property name="catalogId" type="String"/>
-		<property name="catalogVersion" type="String"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.queues.data.ProductExpressUpdateElementData">
+        <property name="code" type="String"/>
+        <property name="catalogId" type="String"/>
+        <property name="catalogVersion" type="String"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.queues.data.ProductExpressUpdateElementDataList">
-		<property name="productExpressUpdateElements"
-		          type="java.util.List&lt;com.taloscommerce.webservices.queues.data.ProductExpressUpdateElementData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.queues.data.ProductExpressUpdateElementDataList">
+        <property name="productExpressUpdateElements"
+                  type="java.util.List&lt;com.taloscommerce.webservices.queues.data.ProductExpressUpdateElementData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.queues.data.OrderStatusUpdateElementData">
-		<property name="code" type="String"/>
-		<property name="status" type="String"/>
-		<property name="baseSiteId" type="String"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.queues.data.OrderStatusUpdateElementData">
+        <property name="code" type="String"/>
+        <property name="status" type="String"/>
+        <property name="baseSiteId" type="String"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.queues.data.OrderStatusUpdateElementDataList">
-		<property name="orderStatusUpdateElements"
-		          type="java.util.List&lt;com.taloscommerce.webservices.queues.data.OrderStatusUpdateElementData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.queues.data.OrderStatusUpdateElementDataList">
+        <property name="orderStatusUpdateElements"
+                  type="java.util.List&lt;com.taloscommerce.webservices.queues.data.OrderStatusUpdateElementData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.store.data.StoreCountListData">
-		<property name="countriesAndRegionsStoreCount"
-				  type="java.util.List&lt;de.hybris.platform.commercefacades.store.data.StoreCountData>"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.store.data.StoreCountListData">
+        <property name="countriesAndRegionsStoreCount"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.store.data.StoreCountData>"/>
+    </bean>
 
-	<!-- Consent management -->
-	<bean class="com.taloscommerce.webservices.consent.data.ConsentTemplateDataList">
-		<property name="consentTemplates"
-				  type="java.util.List&lt;de.hybris.platform.commercefacades.consent.data.ConsentTemplateData>"/>
-	</bean>
+    <!-- Consent management -->
+    <bean class="com.taloscommerce.webservices.consent.data.ConsentTemplateDataList">
+        <property name="consentTemplates"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.consent.data.ConsentTemplateData>"/>
+    </bean>
 
-	<!-- Base Sites -->
-	<bean class="com.taloscommerce.webservices.basesite.data.BaseSiteDataList">
-		<property name="baseSites"
-				  type="java.util.List&lt;de.hybris.platform.commercefacades.basesite.data.BaseSiteData>"/>
-	</bean>
+    <!-- Base Sites -->
+    <bean class="com.taloscommerce.webservices.basesite.data.BaseSiteDataList">
+        <property name="baseSites"
+                  type="java.util.List&lt;de.hybris.platform.commercefacades.basesite.data.BaseSiteData>"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.returns.data.ReturnRequestsData">
-		<property name="returnRequests"
-				  type="java.util.List&lt;de.hybris.platform.ordermanagementfacades.returns.data.ReturnRequestData>"/>
-		<property name="sorts" type="java.util.List&lt;de.hybris.platform.commerceservices.search.pagedata.SortData>"/>
-		<property name="pagination" type="de.hybris.platform.commerceservices.search.pagedata.PaginationData"/>
-	</bean>
+    <bean class="com.taloscommerce.webservices.returns.data.ReturnRequestsData">
+        <property name="returnRequests"
+                  type="java.util.List&lt;de.hybris.platform.ordermanagementfacades.returns.data.ReturnRequestData>"/>
+        <property name="sorts" type="java.util.List&lt;de.hybris.platform.commerceservices.search.pagedata.SortData>"/>
+        <property name="pagination" type="de.hybris.platform.commerceservices.search.pagedata.PaginationData"/>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.dto.user.DocumentTypeWsDto">
-		<description>Representation of a Document Type</description>
-		<hints>
-			<hint name="wsRelated"/>
-			<hint name="alias">DocumentType</hint>
-		</hints>
-		<property name="documentTypeCode" type="java.lang.String">
-			<description>Document type code</description>
-		</property>
-		<property name="documentType" type="java.lang.String">
-			<description>Document type</description>
-		</property>
-	</bean>
+    <bean class="com.taloscommerce.webservices.dto.user.DocumentTypeWsDto">
+        <description>Representation of a Document Type</description>
+        <hints>
+            <hint name="wsRelated"/>
+            <hint name="alias">DocumentType</hint>
+        </hints>
+        <property name="documentTypeCode" type="java.lang.String">
+            <description>Document type code</description>
+        </property>
+        <property name="documentType" type="java.lang.String">
+            <description>Document type</description>
+        </property>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.dto.user.DocumentTypeListWsDto">
-		<description>List of Document types</description>
-		<hints>
-			<hint name="wsRelated"/>
-		</hints>
-		<property name="documentTypes" type="java.util.List&lt;com.taloscommerce.webservices.dto.user.DocumentTypeWsDto>">
-			<description>Document type List</description>
-		</property>
-	</bean>
+    <bean class="com.taloscommerce.webservices.dto.user.DocumentTypeListWsDto">
+        <description>List of Document types</description>
+        <hints>
+            <hint name="wsRelated"/>
+        </hints>
+        <property name="documentTypes"
+                  type="java.util.List&lt;com.taloscommerce.webservices.dto.user.DocumentTypeWsDto>">
+            <description>Document type List</description>
+        </property>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO">
-		<description>Representation of an Referred Customer</description>
-		<hints>
-			<hint name="wsRelated"/>
-			<hint name="alias">ReferredCustomer</hint>
-		</hints>
-		<property name="email" type="String">
-			<description>Referred Customer email</description>
-		</property>
-		<property name="documentTypeCode" type="String">
-			<description>Referred Customer document type code</description>
-		</property>
-		<property name="documentType" type="String">
-			<description>Referred Customer document type</description>
-		</property>
-		<property name="documentNumber" type="String">
-			<description>Referred Customer document number</description>
-		</property>
-		<property name="firstName" type="String">
-			<description>Referred Customer first name</description>
-		</property>
-		<property name="lastName" type="String">
-			<description>Referred Customer last name</description>
-		</property>
-	</bean>
+    <bean class="com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO">
+        <description>Representation of a Referred Customer</description>
+        <hints>
+            <hint name="wsRelated"/>
+            <hint name="alias">ReferredCustomer</hint>
+        </hints>
+        <property name="email" type="String">
+            <description>Referred Customer email</description>
+        </property>
+        <property name="documentTypeCode" type="String">
+            <description>Referred Customer document type code</description>
+        </property>
+        <property name="documentType" type="String">
+            <description>Referred Customer document type</description>
+        </property>
+        <property name="documentNumber" type="String">
+            <description>Referred Customer document number</description>
+        </property>
+        <property name="firstName" type="String">
+            <description>Referred Customer first name</description>
+        </property>
+        <property name="lastName" type="String">
+            <description>Referred Customer last name</description>
+        </property>
+    </bean>
 
-	<bean class="com.taloscommerce.webservices.dto.user.ReferredCustomerListWsDto">
-		<description>List of Referred Customers</description>
-		<hints>
-			<hint name="wsRelated"/>
-		</hints>
-		<property name="referredCustomers" type="java.util.List&lt;com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO>">
-			<description>Referred Customer List</description>
-		</property>
-	</bean>
+    <bean class="com.taloscommerce.webservices.dto.user.ReferredCustomerListWsDto">
+        <description>List of Referred Customers</description>
+        <hints>
+            <hint name="wsRelated"/>
+        </hints>
+        <property name="referredCustomers"
+                  type="java.util.List&lt;com.taloscommerce.webservices.dto.user.ReferredCustomerWsDTO>">
+            <description>Referred Customer List</description>
+        </property>
+    </bean>
 
+    <bean class="com.taloscommerce.webservices.dto.productList.CustomProductListWsDTO">
+        <description>Representation of a Custom Product List </description>
+        <property name="id" type="String">
+            <description>Custom Product List id</description>
+        </property>
+        <property name="description" type="String">
+            <description>Custom Product List description</description>
+        </property>
+        <property name="name" type="String">
+            <description>Custom Product List name</description>
+        </property>
+    </bean>
+
+    <bean class="com.taloscommerce.webservices.dto.productList.CustomProductListListWsDTO">
+        <description>List of Custom Product List</description>
+        <property name="customProductLists" type="java.util.List&lt;CustomProductListWsDTO>">
+            <description>Custom Product Lists</description>
+        </property>
+    </bean>
+
+    <bean class="com.taloscommerce.webservices.dto.productList.CustomProductListDataList">
+        <property name="customProductLists" type="java.util.List&lt;com.taloscommerce.facades.customproductlist.data.CustomProductListData>"/>
+    </bean>
 </beans>
