@@ -249,18 +249,47 @@
 		<property name="customProductListService" ref="customProductListService"/>
 	</bean>
 
+	<!--HelloWorldEmailPopulator-->
+	<alias name="helloWorldEmailPopulator" alias="HelloWorldEmailPopulator"/>
+	<bean name="helloWorldEmailPopulator" class="com.taloscommerce.facades.populators.HelloWorldEmailPopulator"/>
+
+	<alias name="helloWorldEmailReversePopulator" alias="helloWorldEmailReversePopulator"/>
+	<bean name="helloWorldEmailReversePopulator" class="com.taloscommerce.facades.populators.HelloWorldEmailReversePopulator"/>
+
+	<!--HelloWorldEmailConverter-->
+	<alias name="helloWorldEmailConverter" alias="helloWorldEmailConverter"/>
+	<bean id="helloWorldEmailConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.taloscommerce.facades.helloworldemail.data.HelloWorldEmailData"/>
+		<property name="populators">
+			<list>
+				<ref bean="helloWorldEmailPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="helloWorldEmailReverseConverter" alias="helloWorldEmailReverseConverter"/>
+	<bean id="helloWorldEmailReverseConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.taloscommerce.core.model.process.HelloWorldEmailProcessModel"/>
+		<property name="populators">
+			<list>
+				<ref bean="helloWorldEmailReversePopulator"/>
+			</list>
+		</property>
+	</bean>
+
 	<!--HelloWorldEmailFacade-->
 	<alias name="defaultHelloWorldEmailFacade" alias="helloWorldEmailFacade"/>
 	<bean id="defaultHelloWorldEmailFacade"
 		  class="com.taloscommerce.facades.helloworldemail.impl.DefaultHelloWorldEmailFacade" scope="tenant">
 		<property name="helloWorldEmailService" ref="helloWorldEmailService"/>
 		<property name="customerFacade" ref="customerFacade"/>
+		<property name="helloWorldEmailReverseConverter" ref="helloWorldEmailReverseConverter"/>
 	</bean>
 
+	<!--HelloWorldEmailContext Email Context-->
 	<bean id="helloWorldEmailContext"
 		  class="com.taloscommerce.facades.process.email.context.HelloWorldEmailContext"
-		  parent="abstractEmailContext"
-		  scope="prototype" >
+		  parent="abstractEmailContext" scope="prototype" >
 	</bean>
 
 </beans>

@@ -4,5 +4,5 @@ import com.taloscommerce.core.model.process.HelloWorldEmailProcessModel;
 import de.hybris.platform.commercefacades.user.data.CustomerData;
 
 public interface HelloWorldEmailService {
-    void postEmail(HelloWorldEmailProcessModel helloWorldEmailProcessModel, CustomerData user);
+    void postEmail(HelloWorldEmailProcessModel helloWorldEmailProcessModel, String userId);
 }

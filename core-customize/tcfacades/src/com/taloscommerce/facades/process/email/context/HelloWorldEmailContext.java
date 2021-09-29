@@ -14,6 +14,7 @@ public class HelloWorldEmailContext extends AbstractEmailContext<HelloWorldEmail
     @Override
     public void init(final HelloWorldEmailProcessModel helloWorldEmailProcessModel, final EmailPageModel emailPageModel)
     {
+        super.init(helloWorldEmailProcessModel, emailPageModel);
         if (Objects.nonNull(getCustomer(helloWorldEmailProcessModel))) {
             put(EMAIL, getCustomerEmailResolutionService().getEmailForCustomer(getCustomer(helloWorldEmailProcessModel)));
         }
@@ -28,7 +29,7 @@ public class HelloWorldEmailContext extends AbstractEmailContext<HelloWorldEmail
         if (Objects.nonNull(helloWorldEmailProcessModel.getEmailMessage())) {
             put("emailMessage", helloWorldEmailProcessModel.getEmailMessage());
         }
-        super.init(helloWorldEmailProcessModel, emailPageModel);
+
     }
 
 

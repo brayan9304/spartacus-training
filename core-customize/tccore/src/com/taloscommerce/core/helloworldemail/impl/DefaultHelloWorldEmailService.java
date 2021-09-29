@@ -22,22 +22,22 @@ public class DefaultHelloWorldEmailService implements HelloWorldEmailService {
     private EventService eventService;
 
     @Override
-    public void postEmail(final HelloWorldEmailProcessModel helloWorldEmailProcessModel, final CustomerData user) {
+    public void postEmail(final HelloWorldEmailProcessModel helloWorldEmailProcessModel, final String userId) {
         final HelloWorldEmailEvent helloWorldEmailEvent = new HelloWorldEmailEvent();
         helloWorldEmailEvent.setHelloWorldEmailProcessModel(helloWorldEmailProcessModel);
-        setEmailProperties(helloWorldEmailEvent,user);
+        setEmailProperties(helloWorldEmailEvent,userId);
         getEventService().publishEvent(helloWorldEmailEvent);
 
         getModelService().save(helloWorldEmailProcessModel);
     }
     
     protected HelloWorldEmailEvent setEmailProperties(final HelloWorldEmailEvent helloWorldEmailEvent,
-                                                         final CustomerData user) {
+                                                         final String userId) {
         if (Objects.nonNull(getBaseSiteService().getAllBaseSites().stream().findFirst().get())) {
             helloWorldEmailEvent.setSite(getBaseSiteService().getAllBaseSites().stream().findFirst().get());
         }
-        if (Objects.nonNull(getCustomerService().getCustomerByCustomerId(user.getCustomerId()))) {
-            helloWorldEmailEvent.setCustomer(getCustomerService().getCustomerByCustomerId(user.getCustomerId()));
+        if (Objects.nonNull(getCustomerService().getCustomerByCustomerId(userId))) {
+            helloWorldEmailEvent.setCustomer(getCustomerService().getCustomerByCustomerId(userId));
         }
         if (Objects.nonNull(getCommonI18NService().getAllLanguages().stream().findFirst().get())) {
             helloWorldEmailEvent.setLanguage(getCommonI18NService().getAllLanguages().stream().findFirst().get());
