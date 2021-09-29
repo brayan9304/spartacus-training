@@ -1,5 +1,6 @@
 package com.taloscommerce.core.event;
 
+
 import com.taloscommerce.core.model.process.HelloWorldEmailProcessModel;
 import de.hybris.platform.processengine.BusinessProcessService;
 import de.hybris.platform.servicelayer.event.impl.AbstractEventListener;
@@ -19,7 +20,7 @@ public class HelloWorldEmailEventListener extends AbstractEventListener<HelloWor
     protected void onEvent(final HelloWorldEmailEvent event)
     {
         final HelloWorldEmailProcessModel helloWorldEmailProcessModel = (HelloWorldEmailProcessModel) getBusinessProcessService()
-                .createProcess("helloWorldEmail-" + event.getCustomer().getUid() + "-" + System.currentTimeMillis(),
+                .createProcess("helloWorldEmailProcess-" + event.getCustomer().getUid() + "-" + System.currentTimeMillis(),
                         "helloWorldEmailProcess");
         helloWorldEmailProcessModel.setSite(event.getSite());
         helloWorldEmailProcessModel.setCustomer(event.getCustomer());

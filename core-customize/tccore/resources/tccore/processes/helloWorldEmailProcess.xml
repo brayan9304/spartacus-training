@@ -5,7 +5,7 @@
 <process xmlns="http://www.hybris.de/xsd/processdefinition"
          start="generateHelloWorldEmail"
          name="helloWorldEmailProcess"
-         processClass="com.taloscommerce.core.jalo.process.HelloWorldEmailProcessModel"
+         processClass="com.taloscommerce.core.model.process.HelloWorldEmailProcessModel"
          onError="error">
 
     <action id="generateHelloWorldEmail" bean="generateHelloWorldEmail">

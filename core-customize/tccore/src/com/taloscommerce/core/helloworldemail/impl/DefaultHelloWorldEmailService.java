@@ -3,7 +3,6 @@ package com.taloscommerce.core.helloworldemail.impl;
 import com.taloscommerce.core.event.HelloWorldEmailEvent;
 import com.taloscommerce.core.helloworldemail.HelloWorldEmailService;
 import com.taloscommerce.core.model.process.HelloWorldEmailProcessModel;
-import de.hybris.platform.commercefacades.user.data.CustomerData;
 import de.hybris.platform.commerceservices.customer.CustomerService;
 import de.hybris.platform.servicelayer.event.EventService;
 import de.hybris.platform.servicelayer.i18n.CommonI18NService;
@@ -28,7 +27,7 @@ public class DefaultHelloWorldEmailService implements HelloWorldEmailService {
         setEmailProperties(helloWorldEmailEvent,userId);
         getEventService().publishEvent(helloWorldEmailEvent);
 
-        getModelService().save(helloWorldEmailProcessModel);
+//        getModelService().save(helloWorldEmailProcessModel);
     }
     
     protected HelloWorldEmailEvent setEmailProperties(final HelloWorldEmailEvent helloWorldEmailEvent,
