@@ -249,4 +249,18 @@
 		<property name="customProductListService" ref="customProductListService"/>
 	</bean>
 
+	<!--HelloWorldEmailFacade-->
+	<alias name="defaultHelloWorldEmailFacade" alias="helloWorldEmailFacade"/>
+	<bean id="defaultHelloWorldEmailFacade"
+		  class="com.taloscommerce.facades.helloworldemail.impl.DefaultHelloWorldEmailFacade" scope="tenant">
+		<property name="helloWorldEmailService" ref="helloWorldEmailService"/>
+		<property name="customerFacade" ref="customerFacade"/>
+	</bean>
+
+	<bean id="helloWorldEmailContext"
+		  class="com.taloscommerce.facades.process.email.context.HelloWorldEmailContext"
+		  parent="abstractEmailContext"
+		  scope="prototype" >
+	</bean>
+
 </beans>

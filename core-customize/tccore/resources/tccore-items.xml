@@ -129,6 +129,24 @@
                     </attribute>
                 </attributes>
             </itemtype>
+
+            <itemtype code="HelloWorldEmailProcess" extends="StoreFrontCustomerProcess"
+                      jaloclass="com.taloscommerce.core.jalo.process.HelloWorldEmailProcess">
+
+                <attributes>
+                    <attribute qualifier="toEmail" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="subject" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="emailMessage" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+
+                </attributes>
+
+            </itemtype>
         </typegroup>
     </itemtypes>
 </items>

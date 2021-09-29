@@ -31,4 +31,10 @@
         <property name="name" type="java.lang.String"/>
         <property name="description" type="java.lang.String"/>
     </bean>
+    <!--HelloWorldEmailData-->
+    <bean class="com.taloscommerce.facades.helloworldemail.data.HelloWorldEmailData">
+        <property name="toEmail" type="String"/>
+        <property name="subject" type="String"/>
+        <property name="emailMessage" type="String"/>
+    </bean>
 </beans>
