@@ -9,7 +9,6 @@ import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
 import de.hybris.platform.converters.Populator;
 import de.hybris.platform.webservicescommons.errors.exceptions.WebserviceValidationException;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
-import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdParam;
 import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@Api(tags = "SavedLists")
+@Api(tags = "Saved Lists")
 @RequestMapping(value = "/{baseSiteId}/users/{userId}/saved-lists")
 public class CustomProductListController extends BaseController {
 
@@ -45,7 +44,7 @@ public class CustomProductListController extends BaseController {
         return getDataMapper().map(customProductListDataList, CustomProductListListWsDTO.class, fields);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @PostMapping(value = "/create")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     @ApiOperation(value = "Creates a new custom product list", notes = "Creates a new list for current customer.")
@@ -63,7 +62,7 @@ public class CustomProductListController extends BaseController {
         return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
     }
 
-    @RequestMapping(value = "/getCustomList/{listName}", method = RequestMethod.GET)
+    @GetMapping(value = "/getCustomList/{listName}")
     @ResponseBody
     @ApiOperation(nickname = "getCustomListByName", value = "Get Custom List By Name.", notes = "Returns a custom product list by name")
     @ApiBaseSiteIdAndUserIdParam
@@ -74,7 +73,7 @@ public class CustomProductListController extends BaseController {
         return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
     }
 
-    @RequestMapping(value = "/addTo/{listCode}/{productCode}", method = RequestMethod.POST)
+    @PostMapping(value = "/addTo/{listName}/{productCode}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     @ApiOperation(value = "Adds a product to a custom product list", notes = "Adds a product to list for current user.")
@@ -92,7 +91,7 @@ public class CustomProductListController extends BaseController {
         return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
     }
 
-    @RequestMapping(value = "/remove/{listId}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/remove/{listId}")
     @ResponseBody
     @ApiOperation(nickname = "removeList", value = "Delete custom product list.", notes = "Calls a method to delete list according to its name")
     @ApiBaseSiteIdAndUserIdParam
@@ -101,7 +100,7 @@ public class CustomProductListController extends BaseController {
         customProductListFacade.deleteCustomProductList(listId);
     }
 
-    @RequestMapping(value = "/removeFrom/{listId}/{productCode}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/removeFrom/{listId}/{productCode}")
     @ResponseBody
     @ApiOperation(nickname = "removeFromList", value = "Delete product from custom product list.", notes = "Calls a method to delete a product from a list using the list id and product id")
     @ApiBaseSiteIdAndUserIdParam
