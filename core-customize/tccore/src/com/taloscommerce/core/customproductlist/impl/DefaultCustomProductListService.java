@@ -69,38 +69,48 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public void addProductToList(final String product, final String[] listCodes) {
+    public void addProductToList(final String product, final String listName, final String customerId) {
         final ProductModel productModel = getProductService().getProductForCode(product);
-        for (final String listCode : listCodes) {
-            if (getCustomProductListDao().getCustomProductListById(listCode).isPresent()) {
-                final CustomProductListModel productListModel = getCustomProductListById(listCode);
-                final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
-                productModelSet.add(productModel);
-                productListModel.setProduct(productModelSet);
-                getModelService().save(productListModel);
-            }
+        final Optional<CustomProductListModel> model = getProductListForUserWithName(listName, customerId);
+
+        if (model.isEmpty()) {
+            final CustomProductListModel newProductListModel = new CustomProductListModel();
+            newProductListModel.setName(listName);
+            final CustomProductListModel productListModel = createProductListForUser(newProductListModel, customerId);
+            addProduct(productListModel, productModel);
+        } else {
+            final CustomProductListModel productListModel = model.get();
+            addProduct(productListModel, productModel);
         }
+
     }
 
     @Override
-    public void deleteCustomProductList(final String customProductListId){
+    public void deleteCustomProductList(final String customProductListId) {
         final CustomProductListModel model = getCustomProductListById(customProductListId);
         getModelService().remove(model);
     }
 
     @Override
-    public void removeProductFromList(final String productCode, final String customProductListId){
+    public void removeProductFromList(final String productCode, final String customProductListId) {
         final ProductModel productModel = getProductService().getProductForCode(productCode);
         final CustomProductListModel productListModel = getCustomProductListById(customProductListId);
 
-        if (Objects.nonNull(productListModel)){
+        if (Objects.nonNull(productListModel)) {
             final Set<ProductModel> productModels = new HashSet<>((productListModel.getProduct()));
-            if (productModels.contains(productModel)){
+            if (productModels.contains(productModel)) {
                 productModels.remove(productModel);
                 productListModel.setProduct(productModels);
                 getModelService().save(productListModel);
             }
         }
+    }
+
+    protected void addProduct(final CustomProductListModel productListModel, final ProductModel productModel){
+        final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
+        productModelSet.add(productModel);
+        productListModel.setProduct(productModelSet);
+        getModelService().save(productListModel);
     }
 
     public CustomProductListDao getCustomProductListDao() {

@@ -53,10 +53,11 @@ public interface CustomProductListService {
 
     /**
      * Saves the product to specified list of customer
-     * @param product
-     * @param listCodes
+     * @param product product
+     * @param listName list name
+     * @param customerId customer id
      */
-    void addProductToList(String product, String[] listCodes);
+    void addProductToList(String product, String listName, String customerId);
 
     /**
      * delete the product list
