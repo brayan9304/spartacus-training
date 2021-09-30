@@ -26,26 +26,23 @@ import java.util.Optional;
 
 @Controller
 @Api(tags = "SavedLists")
-@RequestMapping(value = "/**/saved-lists")
+@RequestMapping(value = "/{baseSiteId}/users/{userId}/saved-lists")
 public class CustomProductListController extends BaseController {
 
     @Resource(name = "customProductListFacade")
     private CustomProductListFacade customProductListFacade;
 
-    @Resource(name = "customerFacade")
-    private CustomerFacade customerFacade;
     @Resource(name = "httpRequestCustomProductListDataPopulator")
     private Populator<HttpServletRequest, CustomProductListData> httpRequestCustomProductListDataPopulator;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     @ResponseBody
     @ApiOperation(nickname = "getCreatedLists", value = "Get created  custom product lists.", notes = "Returns all of the created lists for the user current")
     @ApiBaseSiteIdParam
     public CustomProductListListWsDTO getCreatedLists(
+            @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
             @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) throws CMSItemNotFoundException {
-        final CustomerData customer = customerFacade.getCurrentCustomer();
-        final String id = customer.getCustomerId();
-        final List<CustomProductListData> lists = customProductListFacade.getCustomProductListsForUser(id);
+        final List<CustomProductListData> lists = customProductListFacade.getCustomProductListsForUser(userId);
         final CustomProductListDataList customProductListDataList = new CustomProductListDataList();
         customProductListDataList.setCustomProductLists(lists);
         return getDataMapper().map(customProductListDataList, CustomProductListListWsDTO.class, fields);    }
@@ -53,18 +50,18 @@ public class CustomProductListController extends BaseController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    @ApiOperation(hidden = true, value = "Creates a new custom product list", notes = "Creates a new list for current customer.")
+    @ApiOperation(value = "Creates a new custom product list", notes = "Creates a new list for current customer.")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "id of custom product list", required = true, dataType = "String", paramType = "query"),
             @ApiImplicitParam(name = "description", value = "description of the list", dataType = "String", paramType = "query"),
             @ApiImplicitParam(name = "name", value = "name of the list", required = true, dataType = "String", paramType = "query")})
     @ApiBaseSiteIdParam
-    public CustomProductListWsDTO createProductList(@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,final HttpServletRequest request) {
-        final CustomerData customer = customerFacade.getCurrentCustomer();
-        final String id = customer.getCustomerId();
+    public CustomProductListWsDTO createProductList(
+            @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
+            @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,final HttpServletRequest request) {
         final CustomProductListData productListData = new CustomProductListData();
         httpRequestCustomProductListDataPopulator.populate(request, productListData);
-        customProductListFacade.createProductListForUser(productListData, id);
+        customProductListFacade.createProductListForUser(productListData, userId);
         return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
     }
 
@@ -73,17 +70,16 @@ public class CustomProductListController extends BaseController {
     @ApiOperation(nickname = "getCustomListByName", value = "Get Custom List By Name.", notes = "Returns a custom product list by name")
     @ApiBaseSiteIdParam
     public CustomProductListWsDTO getCustomListProducts(@PathVariable("listName") final String listName,
+                                                        @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
                                         @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
-        final CustomerData customer = customerFacade.getCurrentCustomer();
-        final String id = customer.getCustomerId();
-        final Optional<CustomProductListData> productListData = customProductListFacade.getProductListForUserWithName(listName,id);
+        final Optional<CustomProductListData> productListData = customProductListFacade.getProductListForUserWithName(listName,userId);
         return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
     }
 
     @RequestMapping(value = "/addTo/{listCode}/{productCode}", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    @ApiOperation(hidden = true, value = "Adds a product to a custom product list", notes = "Adds a product to list for current user.")
+    @ApiOperation(value = "Adds a product to a custom product list", notes = "Adds a product to list for current user.")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "listCode", value = "id of custom product list", required = true, dataType = "String", paramType = "query"),
             @ApiImplicitParam(name = "productCode", value = "description of the list", dataType = "String", paramType = "query")})
