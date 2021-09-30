@@ -51,7 +51,7 @@ public class DefaultCustomProductListDao extends DefaultGenericDao<CustomProduct
 
     @Override
     public Collection<CustomProductListModel> getCustomProductListsForUser(final CustomerModel customer) {
-        if (Objects.nonNull(customer)) {
+        if (Objects.isNull(customer)) {
             return List.of();
         }
 
