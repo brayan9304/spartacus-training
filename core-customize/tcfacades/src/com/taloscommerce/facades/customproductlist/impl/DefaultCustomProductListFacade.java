@@ -63,8 +63,8 @@ public class DefaultCustomProductListFacade implements CustomProductListFacade {
     }
 
     @Override
-    public void addProductToList(final String product, final String[] listCodes) {
-        getCustomProductListService().addProductToList(product, listCodes);
+    public void addProductToList(final String product, final String listName, final String customerId) {
+        getCustomProductListService().addProductToList(product, listName, customerId);
     }
 
     @Override

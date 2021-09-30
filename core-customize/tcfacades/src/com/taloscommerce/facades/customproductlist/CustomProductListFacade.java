@@ -55,9 +55,10 @@ public interface CustomProductListFacade {
     /**
      * Saves the product to specified list of customer
      * @param product
-     * @param listCode
+     * @param listName
+     * @param customerId
      */
-    void addProductToList(String product, String[] listCode);
+    void addProductToList(String product, String listName, String customerId);
 
     /**
      * delete the product list
