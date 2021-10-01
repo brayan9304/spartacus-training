@@ -236,6 +236,10 @@
 
     <bean class="com.taloscommerce.webservices.dto.productList.CustomProductListWsDTO">
         <description>Representation of a Custom Product List </description>
+        <hints>
+            <hint name="wsRelated"/>
+            <hint name="alias">CustomProductList</hint>
+        </hints>
         <property name="id" type="String">
             <description>Custom Product List id</description>
         </property>
@@ -249,6 +253,9 @@
 
     <bean class="com.taloscommerce.webservices.dto.productList.CustomProductListListWsDTO">
         <description>List of Custom Product List</description>
+        <hints>
+            <hint name="wsRelated"/>
+        </hints>
         <property name="customProductLists" type="java.util.List&lt;CustomProductListWsDTO>">
             <description>Custom Product Lists</description>
         </property>

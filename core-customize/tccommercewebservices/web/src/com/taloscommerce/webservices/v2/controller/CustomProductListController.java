@@ -14,6 +14,7 @@ import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam
 import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,10 +34,12 @@ public class CustomProductListController extends BaseController {
     @Resource(name = "httpRequestCustomProductListDataPopulator")
     private Populator<HttpServletRequest, CustomProductListData> httpRequestCustomProductListDataPopulator;
 
+    @Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
     @GetMapping
     @ResponseBody
     @ApiOperation(nickname = "getCreatedLists", value = "Get created  custom product lists.", notes = "Returns all of the created lists for the user current")
     @ApiBaseSiteIdAndUserIdParam
+    @ApiResponse(code = 200, message = "List of custom products list")
     public CustomProductListListWsDTO getCreatedLists(
             @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
             @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)  {
@@ -46,6 +49,7 @@ public class CustomProductListController extends BaseController {
         return getDataMapper().map(customProductListDataList, CustomProductListListWsDTO.class, fields);
     }
 
+    @Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
     @PostMapping(value = "/create")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -64,20 +68,25 @@ public class CustomProductListController extends BaseController {
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
+    @Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
     @GetMapping(value = "/getCustomList/{listName}")
     @ResponseBody
     @ApiOperation(nickname = "getCustomListByName", value = "Get Custom List By Name.", notes = "Returns a custom product list by name")
     @ApiBaseSiteIdAndUserIdParam
+    @ApiResponse(code = 200, message = "Custom list with name")
     public CustomProductListWsDTO getCustomProductList(@PathVariable("listName") final String listName,
                                                         @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
                                                         @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final Optional<CustomProductListData> customProductListData = customProductListFacade.getProductListForUserWithName(listName, userId);
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
+
+    @Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
     @GetMapping(value = "/getProductsFromList/{listId}")
     @ResponseBody
     @ApiOperation(nickname = "getProductsFromList", value = "Get Products From Custom List.", notes = "Returns the products from a custom list by id")
     @ApiBaseSiteIdAndUserIdParam
+    @ApiResponse(code = 200, message = " CustomList's products")
     public ProductListWsDTO getProductsFromList(@PathVariable("listId") final String listId,
                                                 @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final List<ProductData> products = customProductListFacade.getAllProductsForCustomList(listId);
@@ -86,6 +95,7 @@ public class CustomProductListController extends BaseController {
         return getDataMapper().map(productDataList, ProductListWsDTO.class, fields);
     }
 
+    @Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
     @PostMapping(value = "/addTo/{listName}/{productCode}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -98,23 +108,27 @@ public class CustomProductListController extends BaseController {
                                                    @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
                                                    @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields, final HttpServletRequest request)
             throws WebserviceValidationException {
-        final CustomProductListData productListData = customProductListFacade.addProductToList(product, listName, userId);
-        return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
+        final CustomProductListData customProductListData = customProductListFacade.addProductToList(product, listName, userId);
+        return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
+    @Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
     @DeleteMapping(value = "/remove/{listId}")
     @ResponseBody
     @ApiOperation(nickname = "removeList", value = "Delete custom product list.", notes = "Calls a method to delete list according to its name")
     @ApiBaseSiteIdAndUserIdParam
+    @ResponseStatus(HttpStatus.OK)
     public void deleteCustomProductList(@ApiParam(value = "List identifier", required = true) @PathVariable final String listId,
                                         @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         customProductListFacade.deleteCustomProductList(listId);
     }
 
+    @Secured({ "ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP" })
     @DeleteMapping(value = "/removeFrom/{listId}/{productCode}")
     @ResponseBody
     @ApiOperation(nickname = "removeFromList", value = "Delete product from custom product list.", notes = "Calls a method to delete a product from a list using the list id and product id")
     @ApiBaseSiteIdAndUserIdParam
+    @ResponseStatus(HttpStatus.OK)
     public void deleteCustomProductList(@ApiParam(value = "List identifier", required = true) @PathVariable final String listId,
                                         @ApiParam(value = "Product identifier", required = true) @PathVariable final String productCode,
                                         @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
