@@ -5,7 +5,9 @@ import com.taloscommerce.facades.customproductlist.data.CustomProductListData;
 import com.taloscommerce.webservices.dto.productList.CustomProductListDataList;
 import com.taloscommerce.webservices.dto.productList.CustomProductListListWsDTO;
 import com.taloscommerce.webservices.dto.productList.CustomProductListWsDTO;
-import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
+import com.taloscommerce.webservices.product.data.ProductDataList;
+import de.hybris.platform.commercefacades.product.data.ProductData;
+import de.hybris.platform.commercewebservicescommons.dto.product.ProductListWsDTO;
 import de.hybris.platform.converters.Populator;
 import de.hybris.platform.webservicescommons.errors.exceptions.WebserviceValidationException;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
@@ -37,7 +39,7 @@ public class CustomProductListController extends BaseController {
     @ApiBaseSiteIdAndUserIdParam
     public CustomProductListListWsDTO getCreatedLists(
             @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
-            @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) throws CMSItemNotFoundException {
+            @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)  {
         final List<CustomProductListData> lists = customProductListFacade.getCustomProductListsForUser(userId);
         final CustomProductListDataList customProductListDataList = new CustomProductListDataList();
         customProductListDataList.setCustomProductLists(lists);
@@ -56,21 +58,32 @@ public class CustomProductListController extends BaseController {
     public CustomProductListWsDTO createProductList(
             @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
             @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields, final HttpServletRequest request) {
-        final CustomProductListData productListData = new CustomProductListData();
-        httpRequestCustomProductListDataPopulator.populate(request, productListData);
-        customProductListFacade.createProductListForUser(productListData, userId);
-        return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
+        final CustomProductListData customProductListData = new CustomProductListData();
+        httpRequestCustomProductListDataPopulator.populate(request, customProductListData);
+        customProductListFacade.createProductListForUser(customProductListData, userId);
+        return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
     @GetMapping(value = "/getCustomList/{listName}")
     @ResponseBody
     @ApiOperation(nickname = "getCustomListByName", value = "Get Custom List By Name.", notes = "Returns a custom product list by name")
     @ApiBaseSiteIdAndUserIdParam
-    public CustomProductListWsDTO getCustomListProducts(@PathVariable("listName") final String listName,
+    public CustomProductListWsDTO getCustomProductList(@PathVariable("listName") final String listName,
                                                         @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
                                                         @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
-        final Optional<CustomProductListData> productListData = customProductListFacade.getProductListForUserWithName(listName, userId);
-        return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
+        final Optional<CustomProductListData> customProductListData = customProductListFacade.getProductListForUserWithName(listName, userId);
+        return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
+    }
+    @GetMapping(value = "/getProductsFromList/{listId}")
+    @ResponseBody
+    @ApiOperation(nickname = "getProductsFromList", value = "Get Products From Custom List.", notes = "Returns the products from a custom list by id")
+    @ApiBaseSiteIdAndUserIdParam
+    public ProductListWsDTO getProductsFromList(@PathVariable("listId") final String listId,
+                                                @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
+        final List<ProductData> products = customProductListFacade.getAllProductsForCustomList(listId);
+        final ProductDataList productDataList = new ProductDataList();
+        productDataList.setProducts(products);
+        return getDataMapper().map(productDataList, ProductListWsDTO.class, fields);
     }
 
     @PostMapping(value = "/addTo/{listName}/{productCode}")
@@ -85,10 +98,10 @@ public class CustomProductListController extends BaseController {
                                                    @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
                                                    @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields, final HttpServletRequest request)
             throws WebserviceValidationException {
-        final CustomProductListData productListData = new CustomProductListData();
-        httpRequestCustomProductListDataPopulator.populate(request, productListData);
+        final CustomProductListData customProductListData = new CustomProductListData();
+        httpRequestCustomProductListDataPopulator.populate(request, customProductListData);
         customProductListFacade.addProductToList(product, listName,userId);
-        return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
+        return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
     @DeleteMapping(value = "/remove/{listId}")
