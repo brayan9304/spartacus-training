@@ -69,20 +69,25 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public void addProductToList(final String product, final String listName, final String customerId) {
+    public CustomProductListModel addProductToList(final String product, final String listName, final String customerId) {
         final ProductModel productModel = getProductService().getProductForCode(product);
         final Optional<CustomProductListModel> model = getProductListForUserWithName(listName, customerId);
+        final CustomProductListModel productListModel;
 
         if (model.isEmpty()) {
             final CustomProductListModel newProductListModel = new CustomProductListModel();
             newProductListModel.setName(listName);
-            final CustomProductListModel productListModel = createProductListForUser(newProductListModel, customerId);
-            addProduct(productListModel, productModel);
+            productListModel = createProductListForUser(newProductListModel, customerId);
         } else {
-            final CustomProductListModel productListModel = model.get();
-            addProduct(productListModel, productModel);
+            productListModel = model.get();
         }
 
+        final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
+        productModelSet.add(productModel);
+        productListModel.setProduct(productModelSet);
+        getModelService().save(productListModel);
+
+        return productListModel;
     }
 
     @Override
@@ -104,13 +109,6 @@ public class DefaultCustomProductListService implements CustomProductListService
                 getModelService().save(productListModel);
             }
         }
-    }
-
-    protected void addProduct(final CustomProductListModel productListModel, final ProductModel productModel){
-        final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
-        productModelSet.add(productModel);
-        productListModel.setProduct(productModelSet);
-        getModelService().save(productListModel);
     }
 
     public CustomProductListDao getCustomProductListDao() {
