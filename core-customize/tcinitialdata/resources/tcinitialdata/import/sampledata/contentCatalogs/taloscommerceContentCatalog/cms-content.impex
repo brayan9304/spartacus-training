@@ -865,6 +865,7 @@ INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]   
                               ;                          ; UpdatePasswordLink    ; UpdatePasswordLink    ; /my-account/update-password    ; UpdatePasswordLink    ;
                               ;                          ; AddressBookLink       ; AddressBookLink       ; /my-account/address-book       ; AddressBookLink       ;
                               ;                          ; ReferredCustomersLink ; ReferredCustomersLink ; /my-account/referred-customers ; ReferredCustomersLink ;
+                              ;                          ; SavedListLink         ; SavedListLink         ; /my-account/saved-list         ; SavedListLink         ;
                               ;                          ; PaymentDetailsLink    ; PaymentDetailsLink    ; /my-account/payment-details    ; PaymentDetailsLink    ;
                               ;                          ; OrderHistoryLink      ; OrderHistoryLink      ; /my-account/orders             ; OrderHistoryLink      ;
                               ;                          ; SavedCartsLink        ; SavedCartsLink        ; /my-account/saved-carts        ; SavedCartsLink        ;
@@ -881,6 +882,7 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]       ; $contentCV[unique = 
                                ; ChangePasswordNavNode    ;                          ; Change Password    ; MyAccountNavNode       ;                ; ChangePasswordNavNode
                                ; OrderHistoryNavNode      ;                          ; Order History      ; MyAccountNavNode       ;                ; OrderHistoryNavNode
                                ; ReferredCustomersNavNode ;                          ; ReferredCustomers  ; MyAccountNavNode       ;                ; ReferredCustomersNavNode
+                               ; SavedListNavNode         ;                          ; SavedList          ; MyAccountNavNode       ;                ; SavedListNavNode
                                ; AddressBookNavNode       ;                          ; Address Book       ; MyAccountNavNode       ;                ; AddressBookNavNode
                                ; SavedCartsNavNode        ;                          ; Saved Carts        ; MyAccountNavNode       ;                ; SavedCartsNavNode
                                ; ConsentManagementNavNode ;                          ; Consent Management ; MyAccountNavNode       ;                ; ConsentManagementNavNode
@@ -892,6 +894,7 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]            ; $contentCV[uni
                                 ; UpdateEmailNavNodeEntry       ;                          ; UpdateEmailNavNodeEntry       ; UpdateEmailNavNode       ; UpdateEmailLink       ;
                                 ; ChangePasswordNavNodeEntry    ;                          ; ChangePasswordNavNodeEntry    ; ChangePasswordNavNode    ; UpdatePasswordLink    ;
                                 ; ReferredCustomersNavNodeEntry ;                          ; ReferredCustomersNavNodeEntry ; ReferredCustomersNavNode ; ReferredCustomersLink ;
+                                ; SavedListNavNodeEntry         ;                          ; SavedListNavNodeEntry         ; SavedListNavNode         ; SavedListLink         ;
                                 ; AddressBookNavNodeEntry       ;                          ; AddressBookNavNodeEntry       ; AddressBookNavNode       ; AddressBookLink       ;
                                 ; PaymentDetailsNavNodeEntry    ;                          ; PaymentDetailsNavNodeEntry    ; PaymentDetailsNavNode    ; PaymentDetailsLink    ;
                                 ; OrderHistoryNavNodeEntry      ;                          ; OrderHistoryNavNodeEntry      ; OrderHistoryNavNode      ; OrderHistoryLink      ;
