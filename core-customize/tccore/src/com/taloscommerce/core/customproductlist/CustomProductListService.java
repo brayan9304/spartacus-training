@@ -57,7 +57,7 @@ public interface CustomProductListService {
      * @param listName list name
      * @param customerId customer id
      */
-    void addProductToList(String product, String listName, String customerId);
+    CustomProductListModel addProductToList(String product, String listName, String customerId);
 
     /**
      * delete the product list

@@ -58,7 +58,7 @@ public interface CustomProductListFacade {
      * @param listName
      * @param customerId
      */
-    void addProductToList(String product, String listName, String customerId);
+    CustomProductListData addProductToList(String product, String listName, String customerId);
 
     /**
      * delete the product list

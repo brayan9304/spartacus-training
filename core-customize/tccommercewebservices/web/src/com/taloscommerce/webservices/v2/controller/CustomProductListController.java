@@ -85,9 +85,7 @@ public class CustomProductListController extends BaseController {
                                                    @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
                                                    @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields, final HttpServletRequest request)
             throws WebserviceValidationException {
-        final CustomProductListData productListData = new CustomProductListData();
-        httpRequestCustomProductListDataPopulator.populate(request, productListData);
-        customProductListFacade.addProductToList(product, listName,userId);
+        final CustomProductListData productListData = customProductListFacade.addProductToList(product, listName, userId);
         return getDataMapper().map(productListData, CustomProductListWsDTO.class, fields);
     }
 
