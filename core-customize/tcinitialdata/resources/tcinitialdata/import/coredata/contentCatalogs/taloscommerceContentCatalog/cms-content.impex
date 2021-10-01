@@ -32,6 +32,7 @@ INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]       
                           ;                          ; ContentPage1Template                 ; Content Page 1 Template                   ; layout/contentLayout1Page         ; ContentPage
                           ;                          ; AccountPageTemplate                  ; Account Page Template                     ; account/accountLayoutPage         ; ContentPage
                           ;                          ; TrainingPageTemplate                 ; Training Page Template                    ; training/trainingLayoutPage       ; ContentPage
+                          ;                          ; SavedListingPageTemplate             ; Saved Listing Page Template               ; training/savedListingLayoutPage   ; ContentPage
 
 # Templates without a frontendTemplateName
                           ;                          ; CartPageTemplate                     ; Cart Page Template                        ;                                   ; ContentPage              ; false ;
@@ -61,6 +62,7 @@ UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]              
                    ;                          ; CartPageTemplate                     ; $jarResourceCms/structure-view/structure_cartPageTemplate.vm
                    ;                          ; AccountPageTemplate                  ; $jarResourceCms/structure-view/structure_accountPageTemplate.vm
                    ;                          ; TrainingPageTemplate                 ; $jarResourceCms/structure-view/structure_trainingPageTemplate.vm
+                   ;                          ; SavedListingPageTemplate             ; $jarResourceCms/structure-view/structure_savedListingPageTemplate.vm
                    ;                          ; StoreFinderPageTemplate              ; $jarResourceCms/structure-view/structure_storefinderSearchTemplate.vm
                    ;                          ; ErrorPageTemplate                    ; $jarResourceCms/structure-view/structure_errorPageTemplate.vm
                    ;                          ; SearchResultsEmptyPageTemplate       ; $jarResourceCms/structure-view/structure_errorPageTemplate.vm
@@ -503,6 +505,24 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
 
 
+INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'SavedListingPageTemplate']; validComponentTypes(code); compTypeGroup(code)
+                             ; SiteLogo               ;                                                                               ;                          ; logo
+                             ; SiteContext            ;                                                                               ; CMSSiteContextComponent  ;
+                             ; SiteLinks              ;                                                                               ; CMSLinkComponent         ;
+                             ; HeaderLinks            ;                                                                               ;                          ; headerlinks
+                             ; SearchBox              ;                                                                               ;                          ; searchbox
+                             ; MiniCart               ;                                                                               ;                          ; minicart
+                             ; NavigationBar          ;                                                                               ;                          ; navigation
+                             ; TopContent             ;                                                                               ;                          ; wide
+                             ; SideContent            ;                                                                               ;                          ; narrow
+                             ; BodyContent            ;                                                                               ;                          ; wide
+                             ; BottomContent          ;                                                                               ;                          ; wide
+                             ; Footer                 ;                                                                               ;                          ; footer
+                             ; TopHeaderSlot          ;                                                                               ;                          ; wide
+                             ; BottomHeaderSlot       ;                                                                               ;                          ; wide
+                             ; PlaceholderContentSlot ;                                                                               ;                          ;
+
+
 
 # Store Finder/Locator Page Template
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'StoreFinderPageTemplate']; validComponentTypes(code); compTypeGroup(code)
@@ -899,6 +919,20 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; BottomHeaderSlot-TrainingPage       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-TrainingPage ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
 
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                      ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SavedListingPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-SavedListingPage               ; SiteLogo               ;                                                                                   ; SiteLogoSlot                               ; true
+                                    ;                          ; SiteContextSlot-SavedListingPage        ; SiteContext            ;                                                                                   ; SiteContextSlot                            ; true
+                                    ;                          ; SiteLinksSlot-SavedListingPage          ; SiteLinks              ;                                                                                   ; SiteLinksSlot                              ; true
+                                    ;                          ; HomepageLink-SavedListingPage           ; HomepageNavLink        ;                                                                                   ; HomepageNavLinkSlot                        ; true
+                                    ;                          ; NavigationBar-SavedListingPage          ; NavigationBar          ;                                                                                   ; NavigationBarSlot                          ; true
+                                    ;                          ; MiniCart-SavedListingPage               ; MiniCart               ;                                                                                   ; MiniCartSlot                               ; true
+                                    ;                          ; Footer-SavedListingPage                 ; Footer                 ;                                                                                   ; FooterSlot                                 ; true
+                                    ;                          ; HeaderLinks-SavedListingPage            ; HeaderLinks            ;                                                                                   ; HeaderLinksSlot                            ; true
+                                    ;                          ; SearchBox-SavedListingPage              ; SearchBox              ;                                                                                   ; SearchBoxSlot                              ; true
+                                    ;                          ; TopHeaderSlot-SavedListingPage          ; TopHeaderSlot          ;                                                                                   ; TopHeaderSlot                              ; true
+                                    ;                          ; BottomHeaderSlot-SavedListingPage       ; BottomHeaderSlot       ;                                                                                   ; BottomHeaderSlot                           ; true
+                                    ;                          ; PlaceholderContentSlot-SavedListingPage ; PlaceholderContentSlot ;                                                                                   ; PlaceholderContentSlot                     ; true
+
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                     ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'StoreFinderPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-StoreFinderPage               ; SiteLogo               ;                                                                                  ; SiteLogoSlot                               ; true
@@ -948,6 +982,7 @@ INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]        
                          ;                          ; cartPage                     ; Cart Page                      ; CartPageTemplate                     ; /cart
                          ;                          ; search                       ; Search Results Page            ; SearchResultsListPageTemplate        ; search
                          ;                          ; referred-customers           ; Referred Customers Page        ; TrainingPageTemplate                 ; /my-account/referred-customers
+                         ;                          ; saved-list                   ; Saved List Page                ; SavedListingPageTemplate             ; /my-account/saved-list
                          ;                          ; address-book                 ; Address Book Page              ; AccountPageTemplate                  ; /my-account/address-book
                          ;                          ; payment-details              ; Payment Details Page           ; AccountPageTemplate                  ; /my-account/payment-details
                          ;                          ; order                        ; Order Details Page             ; AccountPageTemplate                  ; /my-account/order
