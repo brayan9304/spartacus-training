@@ -196,6 +196,7 @@ INSERT_UPDATE CMSFlexComponent; $contentCV[unique = true]; uid[unique = true]   
                               ;                          ; CartApplyCouponComponent                 ; Cart Apply Coupon Component                    ; CartApplyCouponComponent                 ; CartApplyCouponComponent
                               ;                          ; SaveForLaterComponent                    ; SaveForLater Component                         ; SaveForLaterComponent                    ; SaveForLaterComponent
                               ;                          ; AccountReferredCustomersComponent        ; Account Referred Customers Component           ; AccountReferredCustomersComponent        ; AccountReferredCustomersComponent
+                              ;                          ; AccountSavedListComponent                ; Account Saved List Component                   ; AccountSavedListComponent                ; AccountSavedListComponent
 
 ###### SiteContext Slot and Components ######
 INSERT_UPDATE CMSSiteContextComponent; $contentCV[unique = true]; uid[unique = true]; name            ; context(code); &componentRef
@@ -549,6 +550,19 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]        
 INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]             ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'referred-customers']; contentSlot(uid, $contentCV)[unique = true]; ; ;
                                 ;                          ; SideContent-referred-customers ; SideContent            ;                                                                     ; SideContent-referred-customers             ; ; ;
                                 ;                          ; BodyContent-referred-customers ; BodyContent            ;                                                                     ; BodyContent-referred-customers             ; ; ;
+
+
+###### Account Saved List
+
+# ContentSlot
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]     ; name                                     ; active; cmsComponents(&componentRef); ; ;
+                         ;                          ; BodyContent-saved-list ; Body Content Slot for Account Saved List ; true  ; AccountSavedListComponent   ; ; ;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]     ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'saved-list']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; BodyContent-saved-list ; BodyContent            ;                                                             ; BodyContent-saved-list                     ; ; ;
+
+
 
 ###### Account Address Book
 # ContentSlot

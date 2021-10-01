@@ -22,5 +22,8 @@ export const customLayoutConfig: LayoutConfig = {
     TrainingPageTemplate: {
       slots: ['BodyContent', 'SideContent'],
     },
+    SavedListingPageTemplate: {
+      slots: ['BodyContent']
+    }
   },
 };
