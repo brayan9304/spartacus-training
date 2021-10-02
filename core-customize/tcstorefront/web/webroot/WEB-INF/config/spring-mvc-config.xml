@@ -363,7 +363,4 @@
 		<property name="cmsSiteService" ref="cmsSiteService"/>
 		<property name="defaultTheme" value="blue"/>
 	</bean>
-	<alias name="customProductListDataUtil" alias="customProductListDataUtil"/>
-	<bean id="customProductListDataUtil" class="com.taloscommerce.storefront.util.customList.CustomProductListDataUtil">
-	</bean>
 </beans>
