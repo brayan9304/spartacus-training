@@ -99,7 +99,7 @@ public class CustomProductListController extends BaseController {
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
-    @PostMapping(value = "/addTo/{listName}/{productCode}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PostMapping(value = "/addTo/{listName}/{productCode}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     @ApiOperation(nickname = "addToProductToList", value = "Adds a product to a custom product list", notes = "Adds a product to list for current user.")
@@ -133,7 +133,7 @@ public class CustomProductListController extends BaseController {
     public void deleteCustomProductList(@ApiParam(value = "List identifier", required = true) @PathVariable final String listId,
                                         @ApiParam(value = "Product identifier", required = true) @PathVariable final String productCode,
                                         @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
-        customProductListFacade.removeProductFromList(listId, productCode);
+        customProductListFacade.removeProductFromList(productCode, listId);
     }
 
 }
