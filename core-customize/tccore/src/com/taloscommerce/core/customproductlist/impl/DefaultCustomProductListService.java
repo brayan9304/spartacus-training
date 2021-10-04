@@ -43,7 +43,7 @@ public class DefaultCustomProductListService implements CustomProductListService
         final Optional<CustomProductListModel> model = getCustomProductListDao().getCustomProductListById(customProductListId);
 
         if (model.isEmpty()) {
-            throw new UnknownIdentifierException("CustomProductList with customProductListId '%s' not found!");
+            throw new UnknownIdentifierException("CustomProductList with customProductListId "+customProductListId+" not found!");
         }
 
         return model.get();
@@ -59,7 +59,7 @@ public class DefaultCustomProductListService implements CustomProductListService
     public CustomProductListModel createProductListForUser(final CustomProductListModel productListModel, final String customerId) {
         final CustomerModel customer = getCustomerService().getCustomerByCustomerId(customerId);
         if (Objects.nonNull(customer)) {
-            if (getProductListForUserWithName(productListModel.getName(), customerId).isEmpty()) { //If name doesn't exist, nice, we can create it
+            if (getProductListForUserWithName(productListModel.getName(), customerId).isEmpty()) {
                 productListModel.setId(getCustomProductListIdGenerator().generate().toString());
                 productListModel.setCustomer(customer);
                 getModelService().save(productListModel);

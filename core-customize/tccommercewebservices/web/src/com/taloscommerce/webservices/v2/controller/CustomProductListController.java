@@ -10,8 +10,7 @@ import de.hybris.platform.commercefacades.customer.CustomerFacade;
 import de.hybris.platform.commercefacades.product.data.ProductData;
 import de.hybris.platform.commercefacades.user.data.CustomerData;
 import de.hybris.platform.commercewebservicescommons.dto.product.ProductListWsDTO;
-import de.hybris.platform.converters.Populator;
-import de.hybris.platform.webservicescommons.errors.exceptions.WebserviceValidationException;
+import de.hybris.platform.commercewebservicescommons.errors.exceptions.RequestParameterException;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
 import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
 import io.swagger.annotations.*;
@@ -23,7 +22,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,9 +34,6 @@ public class CustomProductListController extends BaseController {
     private CustomerFacade customerFacade;
     @Resource(name = "customProductListFacade")
     private CustomProductListFacade customProductListFacade;
-
-    @Resource(name = "httpRequestCustomProductListDataPopulator")
-    private Populator<HttpServletRequest, CustomProductListData> httpRequestCustomProductListDataPopulator;
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
     @GetMapping
@@ -67,6 +62,9 @@ public class CustomProductListController extends BaseController {
         final var customProductListData = getDataMapper().map(customProductList, CustomProductListData.class);
         final CustomerData customer = customerFacade.getCurrentCustomer();
         final String userId = customer.getCustomerId();
+        if (StringUtils.isEmpty(userId)){
+            throw new RequestParameterException("Invalid user ID or anonymous user. UserId:", userId);
+        }
         customProductListFacade.createProductListForUser(customProductListData, userId);
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
@@ -77,7 +75,7 @@ public class CustomProductListController extends BaseController {
     @ApiOperation(nickname = "getCustomListByName", value = "Get Custom List By Name.", notes = "Returns a custom product list by name")
     @ApiBaseSiteIdAndUserIdParam
     @ApiResponse(code = 200, message = "Custom list with name")
-    public CustomProductListWsDTO getCustomProductList(@PathVariable("listName") final String listName,
+    public CustomProductListWsDTO getCustomProductList(@ApiParam(value = "List Name.", required = true) @PathVariable("listName") final String listName,
                                                        @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
                                                        @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final Optional<CustomProductListData> customProductListData = customProductListFacade.getProductListForUserWithName(listName, userId);
@@ -90,7 +88,7 @@ public class CustomProductListController extends BaseController {
     @ApiOperation(nickname = "getProductsFromList", value = "Get Products From Custom List.", notes = "Returns the products from a custom list by id")
     @ApiBaseSiteIdAndUserIdParam
     @ApiResponse(code = 200, message = " CustomList's products")
-    public ProductListWsDTO getProductsFromList(@PathVariable("listId") final String listId,
+    public ProductListWsDTO getProductsFromList(@ApiParam(value = "List Identifier.", required = true) @PathVariable("listId") final String listId,
                                                 @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final List<ProductData> products = customProductListFacade.getAllProductsForCustomList(listId);
         final ProductDataList productDataList = new ProductDataList();
@@ -104,11 +102,16 @@ public class CustomProductListController extends BaseController {
     @ResponseBody
     @ApiOperation(nickname = "addToProductToList", value = "Adds a product to a custom product list", notes = "Adds a product to list for current user.")
     @ApiBaseSiteIdAndUserIdParam
-    public CustomProductListWsDTO addProductToList(@PathVariable final String listName,
+    public CustomProductListWsDTO addProductToList(@ApiParam(value = "List Name.", required = true) @PathVariable final String listName,
                                                    @ApiParam(value = "productCode", required = true) @PathVariable("productCode") final String product,
                                                    @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final CustomerData customer = customerFacade.getCurrentCustomer();
         final String userId = customer.getCustomerId();
+        if (StringUtils.isEmpty(userId)) {
+            if (StringUtils.isEmpty(userId)) {
+                throw new RequestParameterException("Invalid user ID or anonymous user. UserId:", userId);
+            }
+        }
         final CustomProductListData customProductListData = customProductListFacade.addProductToList(product, listName, userId);
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
