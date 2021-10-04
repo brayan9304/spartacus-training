@@ -42,8 +42,12 @@ public class CustomProductListController extends BaseController {
     @ApiBaseSiteIdAndUserIdParam
     @ApiResponse(code = 200, message = "List of custom products list")
     public CustomProductListListWsDTO getCreatedLists(
-            @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
             @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
+        final CustomerData customer = customerFacade.getCurrentCustomer();
+        final String userId = customer.getCustomerId();
+        if (StringUtils.isEmpty(userId)){
+            throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
+        }
         final List<CustomProductListData> lists = customProductListFacade.getCustomProductListsForUser(userId);
         final CustomProductListDataList customProductListDataList = new CustomProductListDataList();
         customProductListDataList.setCustomProductLists(lists);
@@ -63,7 +67,7 @@ public class CustomProductListController extends BaseController {
         final CustomerData customer = customerFacade.getCurrentCustomer();
         final String userId = customer.getCustomerId();
         if (StringUtils.isEmpty(userId)){
-            throw new RequestParameterException("Invalid user ID or anonymous user. UserId:", userId);
+            throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
         }
         customProductListFacade.createProductListForUser(customProductListData, userId);
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
@@ -76,8 +80,12 @@ public class CustomProductListController extends BaseController {
     @ApiBaseSiteIdAndUserIdParam
     @ApiResponse(code = 200, message = "Custom list with name")
     public CustomProductListWsDTO getCustomProductList(@ApiParam(value = "List Name.", required = true) @PathVariable("listName") final String listName,
-                                                       @ApiParam(value = "User identifier.", required = true) @PathVariable final String userId,
                                                        @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
+        final CustomerData customer = customerFacade.getCurrentCustomer();
+        final String userId = customer.getCustomerId();
+        if (StringUtils.isEmpty(userId)){
+            throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
+        }
         final Optional<CustomProductListData> customProductListData = customProductListFacade.getProductListForUserWithName(listName, userId);
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
@@ -107,10 +115,8 @@ public class CustomProductListController extends BaseController {
                                                    @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final CustomerData customer = customerFacade.getCurrentCustomer();
         final String userId = customer.getCustomerId();
-        if (StringUtils.isEmpty(userId)) {
-            if (StringUtils.isEmpty(userId)) {
-                throw new RequestParameterException("Invalid user ID or anonymous user. UserId:", userId);
-            }
+        if (StringUtils.isEmpty(userId)){
+            throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
         }
         final CustomProductListData customProductListData = customProductListFacade.addProductToList(product, listName, userId);
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
