@@ -17,45 +17,58 @@ public interface CustomProductListService {
 
     /**
      * Get all products from a customProductList
-     * @param customProductList
+     * @param customProductListId
      * @return Collection<ProductModel>
      */
-    Collection<ProductModel>  getAllProductsForCustomList(CustomProductListModel customProductList);
+    Collection<ProductModel>  getAllProductsForCustomList(String customProductListId);
 
     /** Get all product lists for the user.
-     * @param customer
+     * @param customerId customer id
      * @return Collection<CustomProductListModel>
      */
-    Collection <CustomProductListModel> getCustomProductListsForUser(CustomerModel customer);
+    Collection <CustomProductListModel> getCustomProductListsForUser(String customerId);
 
     /**
      * Get customerProductList by ID
      * @param customProductListId
      * @return Optional<CustomProductListModel>
      */
-    Optional<CustomProductListModel> getCustomProductListById(String customProductListId);
+    CustomProductListModel getCustomProductListById(String customProductListId);
 
     /**
      * Returns the specified list for the customer
      * @param listName
-     * @param customer
+     * @param customerId
      * @return Optional<ProductModel>
      */
-    Optional<CustomProductListModel> getProductListForUserWithName(String listName, CustomerModel customer);
+    Optional<CustomProductListModel> getProductListForUserWithName(String listName, String customerId);
 
     /**
      * Creates the product list for the user
      * @param productListModel
-     * @param customer
+     * @param customerId
      * @return CustomProductListModel
      */
-    CustomProductListModel createProductListForUser(CustomProductListModel productListModel, CustomerModel customer);
+    CustomProductListModel createProductListForUser(CustomProductListModel productListModel, String customerId);
 
     /**
      * Saves the product to specified list of customer
-     * @param product
-     * @param customer
-     * @param listCodes
+     * @param product product
+     * @param listName list name
+     * @param customerId customer id
      */
-    void saveProductToList(String product, CustomerModel customer, String[] listCodes);
+    CustomProductListModel addProductToList(String product, String listName, String customerId);
+
+    /**
+     * delete the product list
+     * @param customProductListId custom Product List id
+     */
+    void deleteCustomProductList(String customProductListId);
+
+    /**
+     * Remove a product from a list
+     * @param productCode product code
+     * @param customProductListId custom Product List id
+     */
+    void removeProductFromList(String productCode, String customProductListId);
 }

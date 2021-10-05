@@ -534,6 +534,32 @@
     </bean>
 
     <!-- Product -->
+    <bean parent="fieldSetLevelMapping" id="customProductListListWsDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.taloscommerce.webservices.dto.productList.CustomProductListListWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="customProductLists"/>
+                <entry key="DEFAULT" value="customProductLists(DEFAULT)"/>
+                <entry key="FULL" value="customProductLists(FULL)"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean parent="fieldSetLevelMapping" id="customProductListWsDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.taloscommerce.webservices.dto.productList.CustomProductListWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC"
+                       value="id,name"/>
+                <entry key="DEFAULT"
+                       value="id,name,description"/>
+                <entry key="FULL"
+                       value="id,name,description"/>
+            </map>
+        </property>
+    </bean>
 
     <bean parent="fieldSetLevelMapping" id="productWsDTOFieldSetLevelMapping">
         <property name="dtoClass"
