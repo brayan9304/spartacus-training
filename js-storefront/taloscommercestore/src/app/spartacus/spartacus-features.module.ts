@@ -70,6 +70,7 @@ import { UserFeatureModule } from './features/user/user-feature.module';
 import { SmartEditFeatureModule } from './features/smartedit/smart-edit-feature.module';
 import { TcSplitViewBannerModule } from '@tc-shared';
 import { TcReferredCustomerFeatureModule } from './features/tc-referred-customer/tc-referred-customer-feature.module';
+import { TcSavedListModule } from './features/tc-saved-list/tc-saved-list.module';
 
 @NgModule({
   declarations: [],
@@ -158,6 +159,7 @@ import { TcReferredCustomerFeatureModule } from './features/tc-referred-customer
     // Custom CMS Components
     TcSplitViewBannerModule,
     TcReferredCustomerFeatureModule,
+    TcSavedListModule,
   ],
 })
 export class SpartacusFeaturesModule {}
