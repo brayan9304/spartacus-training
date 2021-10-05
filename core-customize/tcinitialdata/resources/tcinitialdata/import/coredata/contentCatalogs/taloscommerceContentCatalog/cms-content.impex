@@ -32,7 +32,7 @@ INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]       
                           ;                          ; ContentPage1Template                 ; Content Page 1 Template                   ; layout/contentLayout1Page         ; ContentPage
                           ;                          ; AccountPageTemplate                  ; Account Page Template                     ; account/accountLayoutPage         ; ContentPage
                           ;                          ; TrainingPageTemplate                 ; Training Page Template                    ; training/trainingLayoutPage       ; ContentPage
-                          ;                          ; SavedListPageTemplate                ; Saved List Page Template                  ; training/savedListLayoutPage      ; ContentPage
+                          ;                          ; SavedListsPageTemplate               ; Saved Lists Page Template                 ; training/savedListsLayoutPage     ; ContentPage
 
 # Templates without a frontendTemplateName
                           ;                          ; CartPageTemplate                     ; Cart Page Template                        ;                                   ; ContentPage              ; false ;
@@ -62,7 +62,7 @@ UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]              
                    ;                          ; CartPageTemplate                     ; $jarResourceCms/structure-view/structure_cartPageTemplate.vm
                    ;                          ; AccountPageTemplate                  ; $jarResourceCms/structure-view/structure_accountPageTemplate.vm
                    ;                          ; TrainingPageTemplate                 ; $jarResourceCms/structure-view/structure_trainingPageTemplate.vm
-                   ;                          ; SavedListPageTemplate                ; $jarResourceCms/structure-view/structure_savedListPageTemplate.vm
+                   ;                          ; SavedListsPageTemplate                ; $jarResourceCms/structure-view/structure_savedListsPageTemplate.vm
                    ;                          ; StoreFinderPageTemplate              ; $jarResourceCms/structure-view/structure_storefinderSearchTemplate.vm
                    ;                          ; ErrorPageTemplate                    ; $jarResourceCms/structure-view/structure_errorPageTemplate.vm
                    ;                          ; SearchResultsEmptyPageTemplate       ; $jarResourceCms/structure-view/structure_errorPageTemplate.vm
@@ -504,7 +504,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
 
-INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'SavedListPageTemplate']; validComponentTypes(code); compTypeGroup(code)
+INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'SavedListsPageTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo               ;                                                                            ;                          ; logo
                              ; SiteContext            ;                                                                            ; CMSSiteContextComponent  ;
                              ; SiteLinks              ;                                                                            ; CMSLinkComponent         ;
@@ -917,19 +917,19 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; BottomHeaderSlot-TrainingPage       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-TrainingPage ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SavedListPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; SiteLogo-SavedListPage               ; SiteLogo               ;                                                                                ; SiteLogoSlot                               ; true
-                                    ;                          ; SiteContextSlot-SavedListPage        ; SiteContext            ;                                                                                ; SiteContextSlot                            ; true
-                                    ;                          ; SiteLinksSlot-SavedListPage          ; SiteLinks              ;                                                                                ; SiteLinksSlot                              ; true
-                                    ;                          ; HomepageLink-SavedListPage           ; HomepageNavLink        ;                                                                                ; HomepageNavLinkSlot                        ; true
-                                    ;                          ; NavigationBar-SavedListPage          ; NavigationBar          ;                                                                                ; NavigationBarSlot                          ; true
-                                    ;                          ; MiniCart-SavedListPage               ; MiniCart               ;                                                                                ; MiniCartSlot                               ; true
-                                    ;                          ; Footer-SavedListPage                 ; Footer                 ;                                                                                ; FooterSlot                                 ; true
-                                    ;                          ; HeaderLinks-SavedListPage            ; HeaderLinks            ;                                                                                ; HeaderLinksSlot                            ; true
-                                    ;                          ; SearchBox-SavedListPage              ; SearchBox              ;                                                                                ; SearchBoxSlot                              ; true
-                                    ;                          ; TopHeaderSlot-SavedListPage          ; TopHeaderSlot          ;                                                                                ; TopHeaderSlot                              ; true
-                                    ;                          ; BottomHeaderSlot-SavedListPage       ; BottomHeaderSlot       ;                                                                                ; BottomHeaderSlot                           ; true
-                                    ;                          ; PlaceholderContentSlot-SavedListPage ; PlaceholderContentSlot ;                                                                                ; PlaceholderContentSlot                     ; true
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SavedListsPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-SavedListsPage               ; SiteLogo               ;                                                                                ; SiteLogoSlot                               ; true
+                                    ;                          ; SiteContextSlot-SavedListsPage        ; SiteContext            ;                                                                                ; SiteContextSlot                            ; true
+                                    ;                          ; SiteLinksSlot-SavedListsPage          ; SiteLinks              ;                                                                                ; SiteLinksSlot                              ; true
+                                    ;                          ; HomepageLink-SavedListsPage           ; HomepageNavLink        ;                                                                                ; HomepageNavLinkSlot                        ; true
+                                    ;                          ; NavigationBar-SavedListsPage          ; NavigationBar          ;                                                                                ; NavigationBarSlot                          ; true
+                                    ;                          ; MiniCart-SavedListsPage               ; MiniCart               ;                                                                                ; MiniCartSlot                               ; true
+                                    ;                          ; Footer-SavedListsPage                 ; Footer                 ;                                                                                ; FooterSlot                                 ; true
+                                    ;                          ; HeaderLinks-SavedListsPage            ; HeaderLinks            ;                                                                                ; HeaderLinksSlot                            ; true
+                                    ;                          ; SearchBox-SavedListsPage              ; SearchBox              ;                                                                                ; SearchBoxSlot                              ; true
+                                    ;                          ; TopHeaderSlot-SavedListsPage          ; TopHeaderSlot          ;                                                                                ; TopHeaderSlot                              ; true
+                                    ;                          ; BottomHeaderSlot-SavedListsPage       ; BottomHeaderSlot       ;                                                                                ; BottomHeaderSlot                           ; true
+                                    ;                          ; PlaceholderContentSlot-SavedListsPage ; PlaceholderContentSlot ;                                                                                ; PlaceholderContentSlot                     ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                     ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'StoreFinderPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -980,7 +980,7 @@ INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]        
                          ;                          ; cartPage                     ; Cart Page                      ; CartPageTemplate                     ; /cart
                          ;                          ; search                       ; Search Results Page            ; SearchResultsListPageTemplate        ; search
                          ;                          ; referred-customers           ; Referred Customers Page        ; TrainingPageTemplate                 ; /my-account/referred-customers
-                         ;                          ; saved-list                   ; Saved List Page                ; SavedListPageTemplate                ; /my-account/saved-list
+                         ;                          ; saved-lists                  ; Saved Lists Page               ; SavedListsPageTemplate               ; /my-account/saved-lists
                          ;                          ; address-book                 ; Address Book Page              ; AccountPageTemplate                  ; /my-account/address-book
                          ;                          ; payment-details              ; Payment Details Page           ; AccountPageTemplate                  ; /my-account/payment-details
                          ;                          ; order                        ; Order Details Page             ; AccountPageTemplate                  ; /my-account/order

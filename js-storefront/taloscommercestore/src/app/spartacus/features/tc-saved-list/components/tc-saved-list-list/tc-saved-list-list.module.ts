@@ -13,7 +13,7 @@ import { AuthGuard, CmsConfig, provideDefaultConfig } from '@spartacus/core';
   providers: [
     provideDefaultConfig({
       cmsComponents: {
-        AccountSavedListComponent: {
+        AccountSavedListsComponent: {
           component: TcSavedListListComponent,
           guards: [AuthGuard],
         },
