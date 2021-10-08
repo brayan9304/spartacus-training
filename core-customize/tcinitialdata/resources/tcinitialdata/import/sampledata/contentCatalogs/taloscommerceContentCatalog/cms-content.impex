@@ -196,6 +196,7 @@ INSERT_UPDATE CMSFlexComponent; $contentCV[unique = true]; uid[unique = true]   
                               ;                          ; CartApplyCouponComponent                 ; Cart Apply Coupon Component                    ; CartApplyCouponComponent                 ; CartApplyCouponComponent
                               ;                          ; SaveForLaterComponent                    ; SaveForLater Component                         ; SaveForLaterComponent                    ; SaveForLaterComponent
                               ;                          ; AccountReferredCustomersComponent        ; Account Referred Customers Component           ; AccountReferredCustomersComponent        ; AccountReferredCustomersComponent
+                              ;                          ; AccountSavedListsComponent               ; Account Saved Lists Component                  ; AccountSavedListsComponent               ; AccountSavedListsComponent
                               ;                          ; AccountSavedListDetailComponent          ; Account Saved List Detail Component            ; AccountSavedListDetailComponent          ; AccountSavedListDetailComponent
 
 ###### SiteContext Slot and Components ######
@@ -551,6 +552,18 @@ INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true] 
                                 ;                          ; SideContent-referred-customers ; SideContent            ;                                                                     ; SideContent-referred-customers             ; ; ;
                                 ;                          ; BodyContent-referred-customers ; BodyContent            ;                                                                     ; BodyContent-referred-customers             ; ; ;
 
+###### Account Saved Lists
+
+# ContentSlot
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]      ; name                                      ; active; cmsComponents(&componentRef); ; ;
+                         ;                          ; BodyContent-saved-lists ; Body Content Slot for Account Saved Lists ; true  ; AccountSavedListsComponent  ; ; ;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]      ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'saved-lists']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; BodyContent-saved-lists ; BodyContent            ;                                                              ; BodyContent-saved-lists                    ; ; ;
+
+
+
 #### Account Saved List Detail
 # ContentSlot
 INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]            ; name                                      ; active; cmsComponents(&componentRef)    ; ; ;
@@ -862,6 +875,7 @@ INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]   
                               ;                          ; UpdatePasswordLink    ; UpdatePasswordLink    ; /my-account/update-password    ; UpdatePasswordLink    ;
                               ;                          ; AddressBookLink       ; AddressBookLink       ; /my-account/address-book       ; AddressBookLink       ;
                               ;                          ; ReferredCustomersLink ; ReferredCustomersLink ; /my-account/referred-customers ; ReferredCustomersLink ;
+                              ;                          ; SavedListsLink        ; SavedListsLink        ; /my-account/saved-lists        ; SavedListsLink        ;
                               ;                          ; PaymentDetailsLink    ; PaymentDetailsLink    ; /my-account/payment-details    ; PaymentDetailsLink    ;
                               ;                          ; OrderHistoryLink      ; OrderHistoryLink      ; /my-account/orders             ; OrderHistoryLink      ;
                               ;                          ; SavedCartsLink        ; SavedCartsLink        ; /my-account/saved-carts        ; SavedCartsLink        ;
@@ -878,6 +892,7 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]       ; $contentCV[unique = 
                                ; ChangePasswordNavNode    ;                          ; Change Password    ; MyAccountNavNode       ;                ; ChangePasswordNavNode
                                ; OrderHistoryNavNode      ;                          ; Order History      ; MyAccountNavNode       ;                ; OrderHistoryNavNode
                                ; ReferredCustomersNavNode ;                          ; ReferredCustomers  ; MyAccountNavNode       ;                ; ReferredCustomersNavNode
+                               ; SavedListsNavNode        ;                          ; SavedLists         ; MyAccountNavNode       ;                ; SavedListsNavNode
                                ; AddressBookNavNode       ;                          ; Address Book       ; MyAccountNavNode       ;                ; AddressBookNavNode
                                ; SavedCartsNavNode        ;                          ; Saved Carts        ; MyAccountNavNode       ;                ; SavedCartsNavNode
                                ; ConsentManagementNavNode ;                          ; Consent Management ; MyAccountNavNode       ;                ; ConsentManagementNavNode
@@ -889,6 +904,7 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]            ; $contentCV[uni
                                 ; UpdateEmailNavNodeEntry       ;                          ; UpdateEmailNavNodeEntry       ; UpdateEmailNavNode       ; UpdateEmailLink       ;
                                 ; ChangePasswordNavNodeEntry    ;                          ; ChangePasswordNavNodeEntry    ; ChangePasswordNavNode    ; UpdatePasswordLink    ;
                                 ; ReferredCustomersNavNodeEntry ;                          ; ReferredCustomersNavNodeEntry ; ReferredCustomersNavNode ; ReferredCustomersLink ;
+                                ; SavedListsNavNodeEntry        ;                          ; SavedListsNavNodeEntry        ; SavedListsNavNode        ; SavedListsLink        ;
                                 ; AddressBookNavNodeEntry       ;                          ; AddressBookNavNodeEntry       ; AddressBookNavNode       ; AddressBookLink       ;
                                 ; PaymentDetailsNavNodeEntry    ;                          ; PaymentDetailsNavNodeEntry    ; PaymentDetailsNavNode    ; PaymentDetailsLink    ;
                                 ; OrderHistoryNavNodeEntry      ;                          ; OrderHistoryNavNodeEntry      ; OrderHistoryNavNode      ; OrderHistoryLink      ;
@@ -1227,7 +1243,7 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]                 ; $contentC
 
 # Set the order or the items in the My Account Menu
 UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; children(uid, $contentCV)
-                        ; MyAccountNavNode  ;                          ; OrderHistoryNavNode,WishListNavNode,SavedCartsNavNode,ReferredCustomersNavNode,AddressBookNavNode,PaymentDetailsNavNode,PersonalDetailsNavNode,ChangePasswordNavNode,UpdateEmailNavNode,ConsentManagementNavNode,CloseAccountNavNode,MyInterestsNavNode,NotificationPreferenceNavNode,MyCouponsNavNode,SignOutNavNode
+                        ; MyAccountNavNode  ;                          ; OrderHistoryNavNode,WishListNavNode,SavedCartsNavNode,ReferredCustomersNavNode,SavedListsNavNode,AddressBookNavNode,PaymentDetailsNavNode,PersonalDetailsNavNode,ChangePasswordNavNode,UpdateEmailNavNode,ConsentManagementNavNode,CloseAccountNavNode,MyInterestsNavNode,NotificationPreferenceNavNode,MyCouponsNavNode,SignOutNavNode
 
 ###### Create Forgot/Reset Password Pages and Components ######
 INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]             ; name                                  ; active; cmsComponents(&componentRef)
