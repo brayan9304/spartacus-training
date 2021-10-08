@@ -1,0 +1,33 @@
+import { Product } from "@spartacus/core";
+
+/**
+ *
+ * An interface representing a saved list
+ */
+ export interface OccSavedList {
+  id: number;
+  name: string;
+  description: string;
+}
+
+/**
+ *
+ * An interface representing a list of saved list
+ */
+export interface OccSavedLists {
+  customProductLists?: OccSavedList[];
+}
+
+/**
+ *
+ * An interface representing a detail of saved list
+ */
+export interface OccSavedListDetail {
+  currentPage:       number;
+  products:          Product[];
+  totalPageCount:    number;
+  totalProductCount: number;
+}
+
+
+

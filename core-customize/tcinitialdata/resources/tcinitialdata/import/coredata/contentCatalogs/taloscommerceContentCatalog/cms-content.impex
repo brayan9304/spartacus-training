@@ -15,32 +15,32 @@ $jarResourceCms = $config-jarResourceCmsValue
 # These define the layout for pages
 # "FrontendTemplateName" is used to define the JSP that should be used to render the page for pages with multiple possible layouts.
 # "RestrictedPageTypes" is used to restrict templates to page types
-INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]                   ; name                                      ; frontendTemplateName              ; restrictedPageTypes(code); active[default = true]
-                          ;                          ; ProductDetailsPageTemplate           ; Product Details Page Template             ; product/productLayout2Page        ; ProductPage
-                          ;                          ; ProductListPageTemplate              ; Product List Page Template                ; category/productListPage          ; CategoryPage
-                          ;                          ; ProductGridPageTemplate              ; Product Grid Page Template                ; category/productGridPage          ; CategoryPage
-                          ;                          ; SearchResultsListPageTemplate        ; Search Results List Page Template         ; search/searchListPage             ; ContentPage
-                          ;                          ; SearchResultsGridPageTemplate        ; Search Results Grid Page Template         ; search/searchGridPage             ; ContentPage
-                          ;                          ; SearchResultsEmptyPageTemplate       ; Search Results Empty Page Template        ; search/searchEmptyPage            ; ContentPage
-                          ;                          ; CategoryPageTemplate                 ; Category Page Template                    ; category/categoryPage             ; CategoryPage
-                          ;                          ; LandingPage1Template                 ; Landing Page 1 Template                   ; layout/landingLayout1Page         ; CategoryPage,ContentPage
-                          ;                          ; LandingPage2Template                 ; Landing Page 2 Template                   ; layout/landingLayout2Page         ; CategoryPage,ContentPage
-                          ;                          ; LandingPage3Template                 ; Landing Page 3 Template                   ; layout/landingLayout3Page         ; CategoryPage,ContentPage
-                          ;                          ; LandingPage4Template                 ; Landing Page 4 Template                   ; layout/landingLayout4Page         ; CategoryPage,ContentPage
-                          ;                          ; LandingPage5Template                 ; Landing Page 5 Template                   ; layout/landingLayout5Page         ; CategoryPage,ContentPage
-                          ;                          ; LandingPage6Template                 ; Landing Page 6 Template                   ; layout/landingLayout6Page         ; CategoryPage,ContentPage
-                          ;                          ; ContentPage1Template                 ; Content Page 1 Template                   ; layout/contentLayout1Page         ; ContentPage
-                          ;                          ; AccountPageTemplate                  ; Account Page Template                     ; account/accountLayoutPage         ; ContentPage
-                          ;                          ; TrainingPageTemplate                 ; Training Page Template                    ; training/trainingLayoutPage       ; ContentPage
-
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]                   ; name                                      ; frontendTemplateName               ; restrictedPageTypes(code); active[default = true]
+                          ;                          ; ProductDetailsPageTemplate           ; Product Details Page Template             ; product/productLayout2Page         ; ProductPage
+                          ;                          ; ProductListPageTemplate              ; Product List Page Template                ; category/productListPage           ; CategoryPage
+                          ;                          ; ProductGridPageTemplate              ; Product Grid Page Template                ; category/productGridPage           ; CategoryPage
+                          ;                          ; SearchResultsListPageTemplate        ; Search Results List Page Template         ; search/searchListPage              ; ContentPage
+                          ;                          ; SearchResultsGridPageTemplate        ; Search Results Grid Page Template         ; search/searchGridPage              ; ContentPage
+                          ;                          ; SearchResultsEmptyPageTemplate       ; Search Results Empty Page Template        ; search/searchEmptyPage             ; ContentPage
+                          ;                          ; CategoryPageTemplate                 ; Category Page Template                    ; category/categoryPage              ; CategoryPage
+                          ;                          ; LandingPage1Template                 ; Landing Page 1 Template                   ; layout/landingLayout1Page          ; CategoryPage,ContentPage
+                          ;                          ; LandingPage2Template                 ; Landing Page 2 Template                   ; layout/landingLayout2Page          ; CategoryPage,ContentPage
+                          ;                          ; LandingPage3Template                 ; Landing Page 3 Template                   ; layout/landingLayout3Page          ; CategoryPage,ContentPage
+                          ;                          ; LandingPage4Template                 ; Landing Page 4 Template                   ; layout/landingLayout4Page          ; CategoryPage,ContentPage
+                          ;                          ; LandingPage5Template                 ; Landing Page 5 Template                   ; layout/landingLayout5Page          ; CategoryPage,ContentPage
+                          ;                          ; LandingPage6Template                 ; Landing Page 6 Template                   ; layout/landingLayout6Page          ; CategoryPage,ContentPage
+                          ;                          ; ContentPage1Template                 ; Content Page 1 Template                   ; layout/contentLayout1Page          ; ContentPage
+                          ;                          ; AccountPageTemplate                  ; Account Page Template                     ; account/accountLayoutPage          ; ContentPage
+                          ;                          ; TrainingPageTemplate                 ; Training Page Template                    ; training/trainingLayoutPage        ; ContentPage
+                          ;                          ; SavedListDetailPageTemplate          ; Saved List Detail Page Template           ; training/savedListDetailLayoutPage ; ContentPage
 # Templates without a frontendTemplateName
-                          ;                          ; CartPageTemplate                     ; Cart Page Template                        ;                                   ; ContentPage              ; false ;
-                          ;                          ; LoginPageTemplate                    ; Login Page Template                       ;                                   ; ContentPage              ; false ;
-                          ;                          ; CheckoutLoginPageTemplate            ; Checkout Login Page Template              ;                                   ; ContentPage              ; false ;
-                          ;                          ; MultiStepCheckoutSummaryPageTemplate ; Multi Step Checkout Summary Page Template ;                                   ; ContentPage              ; false ;
-                          ;                          ; OrderConfirmationPageTemplate        ; Order Confirmation Page Template          ;                                   ; ContentPage              ; false ;
-                          ;                          ; StoreFinderPageTemplate              ; Store Finder Page Template                ; storeFinder/storeFinderSearchPage ; ContentPage              ; false ;
-                          ;                          ; ErrorPageTemplate                    ; Error Page Template                       ; error/errorNotFoundPage           ; ContentPage              ; false ;
+                          ;                          ; CartPageTemplate                     ; Cart Page Template                        ;                                    ; ContentPage              ; false ;
+                          ;                          ; LoginPageTemplate                    ; Login Page Template                       ;                                    ; ContentPage              ; false ;
+                          ;                          ; CheckoutLoginPageTemplate            ; Checkout Login Page Template              ;                                    ; ContentPage              ; false ;
+                          ;                          ; MultiStepCheckoutSummaryPageTemplate ; Multi Step Checkout Summary Page Template ;                                    ; ContentPage              ; false ;
+                          ;                          ; OrderConfirmationPageTemplate        ; Order Confirmation Page Template          ;                                    ; ContentPage              ; false ;
+                          ;                          ; StoreFinderPageTemplate              ; Store Finder Page Template                ; storeFinder/storeFinderSearchPage  ; ContentPage              ; false ;
+                          ;                          ; ErrorPageTemplate                    ; Error Page Template                       ; error/errorNotFoundPage            ; ContentPage              ; false ;
 
 # Add Velocity templates that are in the CMS Cockpit. These give a better layout for editing pages
 # The FileLoaderValueTranslator loads a File into a String property. The templates could also be inserted in-line in this file.
@@ -61,6 +61,7 @@ UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]              
                    ;                          ; CartPageTemplate                     ; $jarResourceCms/structure-view/structure_cartPageTemplate.vm
                    ;                          ; AccountPageTemplate                  ; $jarResourceCms/structure-view/structure_accountPageTemplate.vm
                    ;                          ; TrainingPageTemplate                 ; $jarResourceCms/structure-view/structure_trainingPageTemplate.vm
+                   ;                          ; SavedListDetailPageTemplate          ; $jarResourceCms/structure-view/structure_savedListDetailPageTemplate.vm
                    ;                          ; StoreFinderPageTemplate              ; $jarResourceCms/structure-view/structure_storefinderSearchTemplate.vm
                    ;                          ; ErrorPageTemplate                    ; $jarResourceCms/structure-view/structure_errorPageTemplate.vm
                    ;                          ; SearchResultsEmptyPageTemplate       ; $jarResourceCms/structure-view/structure_errorPageTemplate.vm
@@ -502,6 +503,22 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
 
+INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'SavedListDetailPageTemplate']; validComponentTypes(code); compTypeGroup(code)
+                             ; SiteLogo               ;                                                                                  ;                          ; logo
+                             ; SiteContext            ;                                                                                  ; CMSSiteContextComponent  ;
+                             ; SiteLinks              ;                                                                                  ; CMSLinkComponent         ;
+                             ; HeaderLinks            ;                                                                                  ;                          ; headerlinks
+                             ; SearchBox              ;                                                                                  ;                          ; searchbox
+                             ; MiniCart               ;                                                                                  ;                          ; minicart
+                             ; NavigationBar          ;                                                                                  ;                          ; navigation
+                             ; TopContent             ;                                                                                  ;                          ; wide
+                             ; SideContent            ;                                                                                  ;                          ; narrow
+                             ; BodyContent            ;                                                                                  ;                          ; wide
+                             ; BottomContent          ;                                                                                  ;                          ; wide
+                             ; Footer                 ;                                                                                  ;                          ; footer
+                             ; TopHeaderSlot          ;                                                                                  ;                          ; wide
+                             ; BottomHeaderSlot       ;                                                                                  ;                          ; wide
+                             ; PlaceholderContentSlot ;                                                                                  ;                          ;
 
 
 # Store Finder/Locator Page Template
@@ -899,6 +916,22 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; BottomHeaderSlot-TrainingPage       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-TrainingPage ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
 
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                    ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SavedListDetailPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-SaveDetailPage               ; SiteLogo               ;                                                                                      ; SiteLogoSlot                               ; true
+                                    ;                          ; SiteContextSlot-SaveDetailPage        ; SiteContext            ;                                                                                      ; SiteContextSlot                            ; true
+                                    ;                          ; SiteLinksSlot-SaveDetailPage          ; SiteLinks              ;                                                                                      ; SiteLinksSlot                              ; true
+                                    ;                          ; HomepageLink-SaveDetailPage           ; HomepageNavLink        ;                                                                                      ; HomepageNavLinkSlot                        ; true
+                                    ;                          ; NavigationBar-SaveDetailPage          ; NavigationBar          ;                                                                                      ; NavigationBarSlot                          ; true
+                                    ;                          ; MiniCart-SaveDetailPage               ; MiniCart               ;                                                                                      ; MiniCartSlot                               ; true
+                                    ;                          ; Footer-SaveDetailPage                 ; Footer                 ;                                                                                      ; FooterSlot                                 ; true
+                                    ;                          ; HeaderLinks-SaveDetailPage            ; HeaderLinks            ;                                                                                      ; HeaderLinksSlot                            ; true
+                                    ;                          ; SearchBox-SaveDetailPage              ; SearchBox              ;                                                                                      ; SearchBoxSlot                              ; true
+                                    ;                          ; TopHeaderSlot-SaveDetailPage          ; TopHeaderSlot          ;                                                                                      ; TopHeaderSlot                              ; true
+                                    ;                          ; BottomHeaderSlot-SaveDetailPage       ; BottomHeaderSlot       ;                                                                                      ; BottomHeaderSlot                           ; true
+                                    ;                          ; PlaceholderContentSlot-SaveDetailPage ; PlaceholderContentSlot ;                                                                                      ; PlaceholderContentSlot                     ; true
+
+
+
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                     ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'StoreFinderPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-StoreFinderPage               ; SiteLogo               ;                                                                                  ; SiteLogoSlot                               ; true
@@ -948,6 +981,7 @@ INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]        
                          ;                          ; cartPage                     ; Cart Page                      ; CartPageTemplate                     ; /cart
                          ;                          ; search                       ; Search Results Page            ; SearchResultsListPageTemplate        ; search
                          ;                          ; referred-customers           ; Referred Customers Page        ; TrainingPageTemplate                 ; /my-account/referred-customers
+                         ;                          ; saved-list-detail            ; Saved List Detail Page         ; SavedListDetailPageTemplate          ; /my-account/saved-lists/detail
                          ;                          ; address-book                 ; Address Book Page              ; AccountPageTemplate                  ; /my-account/address-book
                          ;                          ; payment-details              ; Payment Details Page           ; AccountPageTemplate                  ; /my-account/payment-details
                          ;                          ; order                        ; Order Details Page             ; AccountPageTemplate                  ; /my-account/order
