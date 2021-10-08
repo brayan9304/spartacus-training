@@ -456,6 +456,7 @@ UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $pi
 UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; linkName[lang = $lang]
                        ;                          ; AddressBookLink       ; "Address Book"
                        ;                          ; ReferredCustomersLink ; "Referred Customers"
+                       ;                          ; SavedListsLink        ; "Saved Lists"
                        ;                          ; CloseAccountLink      ; "Close Account"
                        ;                          ; ConsentManagementLink ; "Consent Management"
                        ;                          ; OrderHistoryLink      ; "Order History"
