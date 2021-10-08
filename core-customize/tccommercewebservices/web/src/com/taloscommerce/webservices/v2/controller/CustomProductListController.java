@@ -87,7 +87,7 @@ public class CustomProductListController extends BaseController {
             throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
         }
         final Optional<CustomProductListData> customProductListData = customProductListFacade.getProductListForUserWithName(listName, userId);
-        return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
+        return getDataMapper().map(customProductListData.get(), CustomProductListWsDTO.class, fields);
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
