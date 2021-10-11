@@ -34,10 +34,14 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/spartacus/user.scss"
+              "src/styles/spartacus/user.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/styles", "src/styles/scss"]
+              "includePaths": [
+                "src/styles",
+                "src/styles/scss"
+              ]
             },
             "scripts": []
           },
@@ -191,5 +195,8 @@
       }
     }
   },
-  "defaultProject": "taloscommercestore"
+  "defaultProject": "taloscommercestore",
+  "cli": {
+    "analytics": "367d4890-336b-4d4a-a1bd-1ba3d72d8369"
+  }
 }

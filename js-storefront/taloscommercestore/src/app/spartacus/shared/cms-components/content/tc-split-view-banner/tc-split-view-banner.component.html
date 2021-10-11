@@ -8,4 +8,60 @@
       <cx-media class="tc-split-view-banner-media tc-fit-cover" *ngIf="data.media" [container]="data.media"></cx-media>
     </div>
   </div>
+
+  <button class="btn btn-danger" (click)="openModal(modalData,list[7]['id'])">Open Modal</button>
+  <br>
+  <br>
+
+  <ng-template #modalData let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add this product to a wish list</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">
+          <cx-icon [type]='iconTypes.CLOSE' class="close-icon"></cx-icon>
+        </span>
+      </button>
+    </div>
+
+    <form [formGroup]="formWishList" (ngSubmit)="submitForm(formWishList.value)">
+      <div class="modal-body">
+        <div>
+          <label>
+            <span class="label-content">Wish List Created</span>
+            <ng-select [items]="list" placeholder="Select a List" bindLabel="name" bindValue="id" [searchable]="false"
+              [(ngModel)]="selectedList" formControlName="listId" name="listId" required style="outline: none;">
+            </ng-select>
+            <div *ngIf="listId.invalid && (listId.dirty || listId.touched)" class="error-container">
+              <div *ngIf="listId.errors.required" class="error">
+                <cx-icon [type]='iconTypes.ERROR' class="error-icon"></cx-icon>
+                <p class="message-error">List is required</p>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div *ngIf="selectedList==1">
+          <label>
+            <span class="label-content">Wish List Name</span>
+            <input class="form-control" type="email" name="listName" placeholder="Write the wish list name"
+              formControlName="listName" required/>
+            <div *ngIf="listName.invalid && (listName.dirty || listName.touched)" class="error-container">
+              <div *ngIf="listName.errors.required" class="error">
+                <cx-icon [type]='iconTypes.ERROR' class="error-icon"></cx-icon>
+                <p class="message-error">List Name is required</p>
+              </div>
+            </div>
+          </label>
+          <label>
+            <span class="label-content">Wish List Description</span>
+            <input class="form-control" type="text" name="listDescription" placeholder="Write the wish list description"
+              formControlName="listDescription" />
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info" [disabled]="formWishList.invalid">Add to list</button>
+      </div>
+    </form>
+  </ng-template>
 </ng-container>

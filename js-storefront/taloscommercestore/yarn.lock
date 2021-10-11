@@ -1179,10 +1179,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@ng-select/ng-select@^5.0.9":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-5.1.0.tgz#ef9f850e9aa58a03b9fce340e74ee1383a311e95"
-  integrity sha512-VcdZtr68PVsboUEFXfGF844qyYKPIrDNTGiLbQTEw593axCXO9GEL9YPD5QSangg+41w8F7/7ymkrrLpxfyRpw==
+"@ng-select/ng-select@^7.3.0":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-7.3.0.tgz#ebc418c83ce249ad54f6f1ac3bf2473d9fe2ae5a"
+  integrity sha512-YZCdBjhe4QDFFCxnNd/B6abWcVVop8EAYt2UE6TimTM5jR/77ankSOrfiojXv4w/OkIIq4uETHMdQn5NjDcaYQ==
   dependencies:
     tslib "^2.0.0"
 
@@ -2292,7 +2292,7 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@^4.0:
+bootstrap@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
   integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
