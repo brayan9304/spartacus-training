@@ -1,0 +1,8 @@
+{
+  "savedListForm": {
+    "savedListAddSuccess": "List added",
+    "savedListAddFail": "An error occurred. Please try again later",
+    "savedListDeleteSuccess": "List deleted",
+    "savedListDeleteFail": "An error occurred. Please try again later"
+  }
+}

@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { TcSavedListCoreModule } from './core';
 import { TcSavedListComponentsModule } from './components';
-import { TcSavedListOccModule } from './occ/tc-saved-list-occ.module';
-
-
+import { TcSavedListOccModule } from './occ';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    TcSavedListComponentsModule,
-    TcSavedListOccModule,
-  ]
+  imports: [TcSavedListComponentsModule, TcSavedListOccModule, TcSavedListCoreModule],
 })
-export class TcSavedListModule { }
+export class TcSavedListModule {}

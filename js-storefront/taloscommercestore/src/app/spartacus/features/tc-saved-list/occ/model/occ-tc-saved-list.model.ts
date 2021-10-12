@@ -5,7 +5,7 @@ import { Product } from "@spartacus/core";
  * An interface representing a saved list
  */
  export interface OccSavedList {
-  id: number;
+  id: string;
   name: string;
   description: string;
 }

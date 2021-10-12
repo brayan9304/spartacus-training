@@ -8,7 +8,7 @@ export function defaultTcSavedListComponentsConfig(): CmsConfig {
   return {
     featureModules: {
       [TC_SAVED_LIST_CORE_FEATURE]: {
-        cmsComponents: ['AccountReferredCustomersComponent'],
+        cmsComponents: ['AccountSavedListsComponent'],
       },
       // by default core is bundled together with components
       [TC_SAVED_LIST_CORE_FEATURE]: TC_SAVED_LIST_FEATURE,
@@ -24,4 +24,4 @@ export function defaultTcSavedListComponentsConfig(): CmsConfig {
     provideDefaultConfigFactory(defaultTcSavedListComponentsConfig),
   ],
 })
-export class TcReferredCustomerRootModule {}
+export class TcSavedListRootModule {}

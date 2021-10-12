@@ -7,4 +7,4 @@ import { TcSavedListConnector } from './tc-saved-list';
   imports: [CommonModule],
   providers: [TcSavedListConnector]
 })
-export class ConnectorsModule {}
+export class TcSavedListConnectorModule {}

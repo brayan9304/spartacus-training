@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TcSavedListFacade } from '../../root';
+import { Observable } from 'rxjs';
+import { SavedList } from '../../core';
 
 @Component({
   selector: 'tc-saved-list-list',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TcSavedListListComponent implements OnInit {
 
-  constructor() { }
+  savedLists$: Observable<SavedList[]> = this.tcSavedListFacade.getSavedLists(true);
+
+  constructor(protected tcSavedListFacade: TcSavedListFacade) { }
 
   ngOnInit(): void {
   }

@@ -37,12 +37,12 @@ export class OccTcSavedListAdapter implements TcSavedListAdapter {
     });
     savedList = this.converter.convert(savedList, SAVED_LIST_SERIALIZER);
 
-    return this.http.post(url, savedList, { headers }).pipe(catchError((error: any) => throwError(error)))
+    return this.http.post(url, savedList, { headers }).pipe(catchError((error: any) => throwError(error)));
   }
 
   deleteSavedList(userId: string, listId: string): Observable<{}> {
     const url = this.occEndpoints.buildUrl('savedListRemove', {
-      urlParams: {userId, listId},
+      urlParams: { userId, listId },
     });
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
