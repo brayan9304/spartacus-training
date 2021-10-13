@@ -23,4 +23,29 @@ export abstract class TcSavedListAdapter {
     * @param listId name
     */
    abstract deleteSavedList(userId: string, listId: string): Observable<{}>;
+
+   /**
+   * Get Products From Custom List.
+   * @param userId user id
+   * @param listId list id
+   */
+
+  abstract getSavedListDetail(userId: string, listId: string): Observable<SavedListDetail>;
+
+  /**
+   * Adds a product to a custom product list
+   * @param userId user id
+   * @param listName list name
+   * @param productCode product code
+   */
+   abstract addProduct(userId: string, listName: string, productCode: string): Observable<{}>;
+
+   /**
+    * Deletes a product for the list
+    * @param userId user id
+    * @param listName list name
+    * @param productCode product code
+    */
+   abstract deleteProduct(userId: string, listName: string, productCode: string): Observable<{}>;
+
 }

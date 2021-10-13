@@ -41,7 +41,7 @@ export class TcSavedListService implements TcSavedListFacade {
 
   loadSavedLists(): void {
     this.userIdService.takeUserId(true).subscribe(
-      (userId) => this.store.dispatch(new TcSavedListActions.LoadSavedLits(userId)),
+      (userId) => this.store.dispatch(new TcSavedListActions.LoadSavedLists(userId)),
       () => {
       },
     );

@@ -5,37 +5,37 @@ declare module '@spartacus/core' {
     /**
      * Get created custom product lists endpoint
      */
-    savedLists?: string | OccEndpoint;
+    getSavedLists?: string | OccEndpoint;
 
     /**
      * Adds a product to a custom product list
      */
-    productAddToList?: string | OccEndpoint;
+    addProductToSavedList?: string | OccEndpoint;
 
 
     /**
      * Creates a new custom product list
      */
-    createList?: string | OccEndpoint;
+    createSavedList?: string | OccEndpoint;
 
     /**
      * Get Custom List By Name
      */
-    savedListByName?: string | OccEndpoint;
+    getSavedListByName?: string | OccEndpoint;
 
     /**
      * Get Products From Custom List
      */
-    savedListProductsFromList?: string | OccEndpoint;
+    getDetailsFromSavedList?: string | OccEndpoint;
 
     /**
      * Delete custom product list.
      */
-    savedListRemove?: string | OccEndpoint;
+    deleteSavedList?: string | OccEndpoint;
 
     /**
      * Delete product from custom product list.
      */
-    savedListRemoveProduct?: string | OccEndpoint;
+    deleteProductFromSavedList?: string | OccEndpoint;
   }
 }

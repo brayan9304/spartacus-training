@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SavedList } from '../../model';
+import { SavedList, SavedListDetail } from '../../model';
 import { TcSavedListAdapter } from './tc-saved-list.adapter';
 
 @Injectable()
@@ -17,6 +17,18 @@ export class TcSavedListConnector {
 
   public deleteSavedList(userId: string, listId: string): Observable<{}> {
     return this.adapter.deleteSavedList(userId, listId);
+  }
+
+  public getSavedListDetail(userId: string, listId: string): Observable<SavedListDetail> {
+    return this.adapter.getSavedListDetail(userId, listId);
+  }
+
+  public addProduct(userId: string, listName: string, productCode: string): Observable<{}> {
+    return this.adapter.addProduct(userId, listName, productCode);
+  }
+
+  public deleteProduct(userId: string, listName: string, productCode: string): Observable<{}> {
+    return this.adapter.deleteProduct(userId, listName, productCode);
   }
 
 }

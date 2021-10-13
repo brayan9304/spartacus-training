@@ -4,13 +4,13 @@ export const tcOccSavedListConfig: OccConfig = {
   backend: {
     occ: {
       endpoints: {
-        savedLists: '/users/${userId}/saved-lists',
-        productAddToList: '/users/${userId}/saved-lists/addTo/${listName}/${productCode}',
-        createList: '/users/${userId}/saved-lists/create',
-        savedListByName: '/users/${userId}/saved-lists/getCustomList/${listName}',
-        savedListProductsFromList: '/users/${userId}/saved-lists/getProductsFromList/${listId}',
-        savedListRemove: '/users/${userId}/saved-lists/remove/${listId}',
-        savedListRemoveProduct: 'savedListRemoveProduct'
+        getSavedLists: '/users/${userId}/saved-lists',
+        addProductToSavedList: '/users/${userId}/saved-lists/addTo/${listName}/${productCode}',
+        createSavedList: '/users/${userId}/saved-lists/create',
+        getSavedListByName: '/users/${userId}/saved-lists/getCustomList/${listName}',
+        getDetailsFromSavedList: '/users/${userId}/saved-lists/getProductsFromList/${listId}',
+        deleteSavedList: '/users/${userId}/saved-lists/remove/${listId}',
+        deleteProductFromSavedList: 'savedListRemoveProduct'
       },
     },
   },

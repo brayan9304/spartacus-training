@@ -17,9 +17,9 @@ export class TcSavedListEffects {
     switchMap((userId) => {
       return this.tcSavedListConnector.getSavedLists(userId).pipe(
         map((savedLists) => {
-          return new TcSavedListActions.LoadSavedLitsSuccess(savedLists);
+          return new TcSavedListActions.LoadSavedListsSuccess(savedLists);
         }),
-        catchError((error) => of(new TcSavedListActions.LoadSavedLitsFail(normalizeHttpError(error)))),
+        catchError((error) => of(new TcSavedListActions.LoadSavedListsFail(normalizeHttpError(error)))),
       );
     }),
   );
@@ -45,7 +45,7 @@ export class TcSavedListEffects {
   );
 
   @Effect()
-  deleteReferredCustomer$: Observable<TcSavedListActions.TcSavedListAction> = this.actions$.pipe(
+  deleteSavedList$: Observable<TcSavedListActions.TcSavedListAction> = this.actions$.pipe(
     ofType(TcSavedListActions.DELETE_SAVED_LIST),
     map((action: TcSavedListActions.DeleteSavedList) => action.payload),
     mergeMap((payload) => {
