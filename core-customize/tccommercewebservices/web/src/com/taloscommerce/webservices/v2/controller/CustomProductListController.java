@@ -5,11 +5,8 @@ import com.taloscommerce.facades.customproductlist.data.CustomProductListData;
 import com.taloscommerce.webservices.dto.productList.CustomProductListDataList;
 import com.taloscommerce.webservices.dto.productList.CustomProductListListWsDTO;
 import com.taloscommerce.webservices.dto.productList.CustomProductListWsDTO;
-import com.taloscommerce.webservices.product.data.ProductDataList;
 import de.hybris.platform.commercefacades.customer.CustomerFacade;
-import de.hybris.platform.commercefacades.product.data.ProductData;
 import de.hybris.platform.commercefacades.user.data.CustomerData;
-import de.hybris.platform.commercewebservicescommons.dto.product.ProductListWsDTO;
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.RequestParameterException;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
 import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
@@ -23,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Controller
@@ -79,7 +77,7 @@ public class CustomProductListController extends BaseController {
     @ApiOperation(nickname = "getCustomListByName", value = "Get Custom List By Name.", notes = "Returns a custom product list by name")
     @ApiBaseSiteIdAndUserIdParam
     @ApiResponse(code = 200, message = "Custom list with name")
-    public CustomProductListWsDTO getCustomProductList(@ApiParam(value = "List Name.", required = true) @PathVariable("listName") final String listName,
+    public CustomProductListWsDTO getCustomProductList(@ApiParam(value = "List Name", required = true) @PathVariable("listName") final String listName,
                                                        @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final CustomerData customer = customerFacade.getCurrentCustomer();
         final String userId = customer.getCustomerId();
@@ -87,7 +85,11 @@ public class CustomProductListController extends BaseController {
             throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
         }
         final Optional<CustomProductListData> customProductListData = customProductListFacade.getProductListForUserWithName(listName, userId);
-        return getDataMapper().map(customProductListData.get(), CustomProductListWsDTO.class, fields);
+
+        if (customProductListData.isPresent()){
+            return getDataMapper().map(customProductListData.get(), CustomProductListWsDTO.class, fields);
+        }
+        throw new NoSuchElementException("List with name "+ listName +" not found for user " + customer.getName() );
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
@@ -96,21 +98,20 @@ public class CustomProductListController extends BaseController {
     @ApiOperation(nickname = "getProductsFromList", value = "Get Products From Custom List.", notes = "Returns the products from a custom list by id")
     @ApiBaseSiteIdAndUserIdParam
     @ApiResponse(code = 200, message = " CustomList's products")
-    public ProductListWsDTO getProductsFromList(@ApiParam(value = "List Identifier.", required = true) @PathVariable("listId") final String listId,
+    public CustomProductListWsDTO getProductsFromList(@ApiParam(value = "List Identifier", required = true) @PathVariable("listId") final String listId,
                                                 @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
-        final List<ProductData> products = customProductListFacade.getAllProductsForCustomList(listId);
-        final ProductDataList productDataList = new ProductDataList();
-        productDataList.setProducts(products);
-        return getDataMapper().map(productDataList, ProductListWsDTO.class, fields);
+        final CustomProductListData customProductListData = customProductListFacade.getAllProductsForCustomList(listId);
+
+        return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
     @PostMapping(value = "/addTo/{listName}/{productCode}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    @ApiOperation(nickname = "addToProductToList", value = "Adds a product to a custom product list", notes = "Adds a product to list for current user.")
+    @ApiOperation(nickname = "addToProductToList", value = "Adds a product to a custom product list.", notes = "Adds a product to list for current user.")
     @ApiBaseSiteIdAndUserIdParam
-    public CustomProductListWsDTO addProductToList(@ApiParam(value = "List Name.", required = true) @PathVariable final String listName,
+    public CustomProductListWsDTO addProductToList(@ApiParam(value = "List Name", required = true) @PathVariable final String listName,
                                                    @ApiParam(value = "productCode", required = true) @PathVariable("productCode") final String product,
                                                    @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final CustomerData customer = customerFacade.getCurrentCustomer();
