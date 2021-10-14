@@ -8,7 +8,9 @@
       "@tc-core": ["src/app/spartacus/core"],
       "@tc-model": ["src/app/spartacus/model"],
       "@tc-configurations": ["src/app/spartacus/configurations"],
-      "@tc-env": ["src/environments/environment.ts"]
+      "@tc-env": ["src/environments/environment.ts"],
+      "@col-features/tc-misc": ["src/app/spartacus/features/tc-misc/index"],
+      "@col-features/tc-referred-customer": ["src/app/spartacus/features/tc-referred-customer/index"],
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

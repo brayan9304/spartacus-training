@@ -13,7 +13,7 @@ export interface OccReferredCustomer {
 
 /**
  *
- * An interface representing B2bUnit list of security questions
+ * An interface representing a list of referred customers
  */
 export interface OccReferredCustomerList {
   referredCustomers?: OccReferredCustomer[];

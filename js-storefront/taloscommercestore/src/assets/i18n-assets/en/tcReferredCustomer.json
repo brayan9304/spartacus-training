@@ -6,7 +6,39 @@
     "lastName": "Lastname",
     "documentType": "Doc. Type",
     "documentNumber": "Doc. Number",
+    "edit": "Edit",
     "noReferredCustomers": "No referred customers have been found",
-    "error": "An error occurred while requesting the referred customers"
+    "error": "An error occurred while requesting the referred customers",
+    "addNewReferredCustomer": "Add Referred Customer",
+    "editReferredCustomer": "Edit Referred Customer",
+    "addReferredCustomer": "Add Referred Customer",
+    "updateReferredCustomer": "Update Referred Customer",
+    "backToReferredCustomerList": "Back to list"
+  },
+  "referredCustomerForm": {
+    "documentType": "Document Type",
+    "selectOne": "Select one",
+    "documentNumber": {
+      "label": "Document Number",
+      "placeholder": "Enter Document Number"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter Email"
+    },
+    "firstName": {
+      "label": "Firstname",
+      "placeholder": "Enter Firstname"
+    },
+    "lastName": {
+      "label": "Lastname",
+      "placeholder": "Enter Lastname"
+    },
+    "referredCustomerAddSuccess": "Referred customer added",
+    "referredCustomerAddFail": "An error occurred. Please try again later",
+    "referredCustomerUpdateSuccess": "Referred customer updated",
+    "referredCustomerUpdateFail": "An error occurred. Please try again later",
+    "referredCustomerDeleteSuccess": "Referred customer deleted",
+    "referredCustomerDeleteFail": "An error occurred. Please try again later"
   }
 }

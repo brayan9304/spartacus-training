@@ -90,6 +90,7 @@ public class CustomProductListController extends BaseController {
             return getDataMapper().map(customProductListData.get(), CustomProductListWsDTO.class, fields);
         }
         throw new NoSuchElementException("List with name "+ listName +" not found for user " + customer.getName() );
+
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})

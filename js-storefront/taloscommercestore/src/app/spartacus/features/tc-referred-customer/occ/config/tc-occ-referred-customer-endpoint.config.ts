@@ -5,6 +5,7 @@ export const tcOccReferredCustomerConfig: OccConfig = {
     occ: {
       endpoints: {
         referredCustomers: '/users/${userId}/referredcustomers',
+        referredCustomerDetail: '/users/${userId}/referredcustomers/${email}',
       },
     },
   },

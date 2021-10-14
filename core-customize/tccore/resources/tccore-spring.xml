@@ -537,5 +537,4 @@
         <property name="customProductListIdGenerator" ref="customProductListIdGenerator"/>
         <property name="customerService" ref="customerService"/>
     </bean>
-
 </beans>
