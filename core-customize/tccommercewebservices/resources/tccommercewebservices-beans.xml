@@ -249,6 +249,9 @@
         <property name="name" type="String">
             <description>Custom Product List name</description>
         </property>
+        <property name="products" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO>">
+            <description>Custom Product List products</description>
+        </property>
     </bean>
 
     <bean class="com.taloscommerce.webservices.dto.productList.CustomProductListListWsDTO">

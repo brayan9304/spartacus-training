@@ -5,11 +5,7 @@ import com.taloscommerce.core.model.CustomProductListModel;
 import com.taloscommerce.facades.customproductlist.CustomProductListFacade;
 import com.taloscommerce.facades.customproductlist.data.CustomProductListData;
 import de.hybris.platform.commercefacades.product.data.ProductData;
-import de.hybris.platform.commercefacades.user.data.CustomerData;
-import de.hybris.platform.commerceservices.customer.CustomerService;
 import de.hybris.platform.core.model.product.ProductModel;
-import de.hybris.platform.core.model.user.CustomerModel;
-import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.*;
@@ -30,10 +26,12 @@ public class DefaultCustomProductListFacade implements CustomProductListFacade {
     }
 
     @Override
-    public List<ProductData> getAllProductsForCustomList(final String customProductListId) {
+    public CustomProductListData getAllProductsForCustomList(final String customProductListId) {
         final Collection<ProductModel> products = getCustomProductListService().getAllProductsForCustomList(customProductListId);
+        final CustomProductListData customProductListData = getCustomProductListById(customProductListId);
+        customProductListData.setProducts(products.stream().map(getProductConverter()::convert).collect(Collectors.toList()));
 
-        return products.stream().map(getProductConverter()::convert).collect(Collectors.toList());
+        return customProductListData ;
     }
 
     @Override

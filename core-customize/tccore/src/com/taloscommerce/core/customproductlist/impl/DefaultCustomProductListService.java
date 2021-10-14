@@ -43,7 +43,7 @@ public class DefaultCustomProductListService implements CustomProductListService
         final Optional<CustomProductListModel> model = getCustomProductListDao().getCustomProductListById(customProductListId);
 
         if (model.isEmpty()) {
-            throw new UnknownIdentifierException("CustomProductList with customProductListId "+customProductListId+" not found!");
+            throw new UnknownIdentifierException("CustomProductList with Id "+customProductListId+" not found!");
         }
 
         return model.get();

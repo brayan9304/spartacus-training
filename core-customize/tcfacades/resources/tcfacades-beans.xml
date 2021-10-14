@@ -30,5 +30,6 @@
         <property name="id" type="java.lang.String"/>
         <property name="name" type="java.lang.String"/>
         <property name="description" type="java.lang.String"/>
+        <property name="products" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>"/>
     </bean>
 </beans>
