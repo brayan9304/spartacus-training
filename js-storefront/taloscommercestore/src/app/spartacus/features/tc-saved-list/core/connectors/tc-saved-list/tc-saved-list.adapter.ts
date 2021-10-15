@@ -46,6 +46,6 @@ export abstract class TcSavedListAdapter {
     * @param listName list name
     * @param productCode product code
     */
-   abstract deleteProduct(userId: string, listName: string, productCode: string): Observable<{}>;
+   abstract deleteProduct(userId: string, listId: string, productCode: string): Observable<{}>;
 
 }

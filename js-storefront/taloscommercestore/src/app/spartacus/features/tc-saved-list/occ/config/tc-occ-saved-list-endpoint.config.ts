@@ -10,7 +10,7 @@ export const tcOccSavedListConfig: OccConfig = {
         getSavedListByName: '/users/${userId}/saved-lists/getCustomList/${listName}',
         getDetailsFromSavedList: '/users/${userId}/saved-lists/getProductsFromList/${listId}',
         deleteSavedList: '/users/${userId}/saved-lists/remove/${listId}',
-        deleteProductFromSavedList: 'savedListRemoveProduct'
+        deleteProductFromSavedList: '/users/${userId}/saved-lists/removeFrom/${listId}/${productCode}'
       },
     },
   },

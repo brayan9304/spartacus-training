@@ -7,9 +7,11 @@ import { TcSavedListActions } from '../actions';
 import { TcSavedListConnector } from '../../connectors';
 import { TcSavedListFacade } from '../../../root';
 
-
 @Injectable()
 export class TcSavedListEffects {
+
+  getListId: string
+
   @Effect()
   loadSavedLists$: Observable<TcSavedListActions.TcSavedListAction> = this.actions$.pipe(
     ofType(TcSavedListActions.LOAD_SAVED_LISTS),
@@ -19,15 +21,15 @@ export class TcSavedListEffects {
         map((savedLists) => {
           return new TcSavedListActions.LoadSavedListsSuccess(savedLists);
         }),
-        catchError((error) => of(new TcSavedListActions.LoadSavedListsFail(normalizeHttpError(error)))),
+        catchError((error) => of(new TcSavedListActions.LoadSavedListsFail(normalizeHttpError(error))))
       );
-    }),
+    })
   );
 
   @Effect()
   clearRegistrationDataOnLogin$: Observable<TcSavedListActions.ClearSavedLists> = this.actions$.pipe(
     ofType(AuthActions.LOGOUT),
-    map(() => new TcSavedListActions.ClearSavedLists()),
+    map(() => new TcSavedListActions.ClearSavedLists())
   );
 
   @Effect()
@@ -39,9 +41,9 @@ export class TcSavedListEffects {
         map((data: any) => {
           return new TcSavedListActions.CreateSavedListSuccess(data);
         }),
-        catchError((error) => of(new TcSavedListActions.CreateSavedListFail(normalizeHttpError(error)))),
+        catchError((error) => of(new TcSavedListActions.CreateSavedListFail(normalizeHttpError(error))))
       );
-    }),
+    })
   );
 
   @Effect()
@@ -49,81 +51,172 @@ export class TcSavedListEffects {
     ofType(TcSavedListActions.DELETE_SAVED_LIST),
     map((action: TcSavedListActions.DeleteSavedList) => action.payload),
     mergeMap((payload) => {
-      return this.tcSavedListConnector
-        .deleteSavedList(payload.userId, payload.listId)
-        .pipe(
-          map((data) => {
-            return new TcSavedListActions.DeleteSavedListSuccess(data);
-          }),
-          catchError((error) =>
-            of(new TcSavedListActions.DeleteSavedListFail (normalizeHttpError(error))),
-          ),
-        );
-    }),
+      return this.tcSavedListConnector.deleteSavedList(payload.userId, payload.listId).pipe(
+        map((data) => {
+          return new TcSavedListActions.DeleteSavedListSuccess(data);
+        }),
+        catchError((error) => of(new TcSavedListActions.DeleteSavedListFail(normalizeHttpError(error))))
+      );
+    })
   );
+
+  @Effect()
+  loadSavedListDetail$: Observable<TcSavedListActions.TcSavedListAction> = this.actions$.pipe(
+    ofType(TcSavedListActions.LOAD_SAVED_LIST_DETAIL),
+    map((action: any) => action.payload),
+    mergeMap((payload) => {
+      this.getListId = payload.listId
+      return this.tcSavedListConnector.getSavedListDetail(payload.userId, payload.listId).pipe(
+        map((data) => {
+          return new TcSavedListActions.LoadSavedListDetailSuccess(data);
+        }),
+        catchError((error) => of(new TcSavedListActions.LoadSavedListDetailFail(normalizeHttpError(error))))
+      );
+    })
+  );
+
+  //TODO: listName a listId
+  @Effect()
+  addProduct$: Observable<TcSavedListActions.TcSavedListAction> = this.actions$.pipe(
+    ofType(TcSavedListActions.ADD_PRODUCT),
+    map((action: TcSavedListActions.AddProduct) => action.payload),
+    mergeMap((payload) => {
+      return this.tcSavedListConnector.addProduct(payload.userId, payload.listName, payload.productCode).pipe(
+        map((data: any) => {
+          return new TcSavedListActions.AddProductSuccess(data);
+        }),
+        catchError((error) => of(new TcSavedListActions.AddProductFail(normalizeHttpError(error))))
+      );
+    })
+  );
+
+  @Effect()
+  deleteProduct$: Observable<TcSavedListActions.TcSavedListAction> = this.actions$.pipe(
+    ofType(TcSavedListActions.DELETE_PRODUCT),
+    map((action: TcSavedListActions.DeleteProduct) => action.payload),
+    mergeMap((payload) => {
+      return this.tcSavedListConnector.deleteProduct(payload.userId, payload.listId, payload.productCode).pipe(
+        map((data) => {
+          return new TcSavedListActions.DeleteProductSuccess(data);
+        }),
+        catchError((error) => of(new TcSavedListActions.DeleteProductFail(normalizeHttpError(error))))
+      );
+    })
+  );
+
 
   /**
    *  Reload saved list and notify about add success
    */
-   @Effect({ dispatch: false })
-   showGlobalMessageOnAddSuccess$ = this.actions$.pipe(
-     ofType(TcSavedListActions.ADD_SAVED_LIST_SUCCESS),
-     tap(() => {
-       this.tcSavedListFacade.loadSavedLists();
-       this.showGlobalMessage('Add List Success');
-     }),
-   );
+  @Effect({ dispatch: false })
+  showGlobalMessageOnAddSuccess$ = this.actions$.pipe(
+    ofType(TcSavedListActions.ADD_SAVED_LIST_SUCCESS),
+    tap(() => {
+      this.tcSavedListFacade.loadSavedLists();
+      this.showGlobalMessageConfirmation('savedListForm.savedListAddSuccess');
+    })
+  );
 
 
-   /**
-    *  Reload referred customers and notify about delete success
-    */
-   @Effect({ dispatch: false })
-   showGlobalMessageOnDeleteSuccess$ = this.actions$.pipe(
-     ofType(TcSavedListActions.DELETE_SAVED_LIST_SUCCESS),
-     tap(() => {
-       this.tcSavedListFacade.loadSavedLists();
-       this.showGlobalMessage('Delete List Success');
-     }),
-   );
+  /**
+   *  Reload referred customers and notify about delete success
+   */
+  @Effect({ dispatch: false })
+  showGlobalMessageOnDeleteSuccess$ = this.actions$.pipe(
+    ofType(TcSavedListActions.DELETE_SAVED_LIST_SUCCESS),
+    tap(() => {
+      this.tcSavedListFacade.loadSavedLists();
+      this.showGlobalMessageConfirmation('savedListForm.savedListDeleteSuccess');
+    })
+  );
 
-   /**
-    *  Notify about add failure
-    */
-   @Effect({ dispatch: false })
-   showGlobalMessageOnAddFail$ = this.actions$.pipe(
-     ofType(TcSavedListActions.ADD_SAVED_LIST_FAIL),
-     tap(() => {
-       this.showGlobalMessage('Add List Fail');
-     }),
-   );
+  /**
+   *  Notify about add failure
+   */
+  @Effect({ dispatch: false })
+  showGlobalMessageOnAddFail$ = this.actions$.pipe(
+    ofType(TcSavedListActions.ADD_SAVED_LIST_FAIL),
+    tap(() => {
+      this.showGlobalMessageError('savedListForm.savedListAddFail');
+    })
+  );
+
+  /**
+   *  Notify about delete failure
+   */
+  @Effect({ dispatch: false })
+  showGlobalMessageOnDeleteFail$ = this.actions$.pipe(
+    ofType(TcSavedListActions.DELETE_SAVED_LIST_FAIL),
+    tap(() => {
+      this.showGlobalMessageError('savedListForm.savedListDeleteFail');
+    })
+  );
+
+  @Effect({ dispatch: false })
+  showGlobalMessageOnAddProduct$ = this.actions$.pipe(
+    ofType(TcSavedListActions.ADD_PRODUCT_SUCCESS),
+    tap(() => {
+      this.tcSavedListFacade.loadSavedListDetail(this.getListId);
+      this.showGlobalMessageConfirmation('savedListForm.AddProductSuccess');
+    })
+  );
 
 
-   /**
-    *  Notify about delete failure
-    */
-   @Effect({ dispatch: false })
-   showGlobalMessageOnDeleteFail$ = this.actions$.pipe(
-     ofType(TcSavedListActions.DELETE_SAVED_LIST_FAIL),
-     tap(() => {
-       this.showGlobalMessage('Delete List Fail');
-     }),
-   );
+  /**
+   *  Reload referred customers and notify about delete success
+   */
+  @Effect({ dispatch: false })
+  showGlobalMessageOnDeleteProductSuccess$ = this.actions$.pipe(
+    ofType(TcSavedListActions.DELETE_PRODUCT_SUCCESS),
+    tap(() => {
+      this.tcSavedListFacade.loadSavedListDetail(this.getListId);
+      this.showGlobalMessageConfirmation('savedListForm.DeleteProductSuccess');
+    })
+  );
+
+  /**
+   *  Notify about add failure
+   */
+  @Effect({ dispatch: false })
+  showGlobalMessageOnAddProductFail$ = this.actions$.pipe(
+    ofType(TcSavedListActions.ADD_PRODUCT_FAIL),
+    tap(() => {
+      this.showGlobalMessageError('savedListForm.AddProductFail');
+    })
+  );
+
+  /**
+   *  Notify about delete failure
+   */
+  @Effect({ dispatch: false })
+  showGlobalMessageOnDeleteProductFail$ = this.actions$.pipe(
+    ofType(TcSavedListActions.DELETE_PRODUCT_FAIL),
+    tap(() => {
+      this.showGlobalMessageError('savedListForm.DeleteProductFail');
+    })
+  );
+
 
 
   constructor(
     private actions$: Actions,
     protected tcSavedListConnector: TcSavedListConnector,
     protected tcSavedListFacade: TcSavedListFacade,
-    private messageService: GlobalMessageService,
-  ) {
-  }
+    private messageService: GlobalMessageService
+  ) {}
 
-    /**
+  /**
    * Show global confirmation message with provided text
    */
-     private showGlobalMessage(text: string): void {
-      this.messageService.add({ key: text }, GlobalMessageType.MSG_TYPE_CONFIRMATION);
-    }
+  private showGlobalMessageConfirmation(text: string): void {
+    this.messageService.add({ key: text }, GlobalMessageType.MSG_TYPE_CONFIRMATION);
+  }
+
+  /**
+   * Show global confirmation message with provided text
+   */
+  private showGlobalMessageError(text: string): void {
+    this.messageService.add({ key: text }, GlobalMessageType.MSG_TYPE_ERROR);
+  }
 
 }

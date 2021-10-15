@@ -70,13 +70,13 @@ export class OccTcSavedListAdapter implements TcSavedListAdapter {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    //TODO
+    //TODO:
     return this.http.post(url, {}, { headers }).pipe(catchError((error: any) => throwError(error)))
   }
 
-  deleteProduct(userId: string, listName: string, productCode: string): Observable<{}> {
+  deleteProduct(userId: string, listId: string, productCode: string): Observable<{}> {
     const url = this.occEndpoints.buildUrl('deleteProductFromSavedList', {
-      urlParams: { userId, listName, productCode },
+      urlParams: { userId, listId, productCode },
     });
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

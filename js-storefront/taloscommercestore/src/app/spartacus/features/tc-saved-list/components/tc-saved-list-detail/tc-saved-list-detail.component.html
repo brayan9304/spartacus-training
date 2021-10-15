@@ -1,1 +1,8 @@
 <p>tc-saved-list-detail works!</p>
+
+<ng-container *ngIf='savedlistDetail$ | async as savedlistDetail'>
+  <div *ngFor=" let product of products">
+
+    {{product.name}}
+  </div>
+</ng-container>

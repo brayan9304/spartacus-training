@@ -1,8 +1,12 @@
 {
   "savedListForm": {
-    "savedListAddSuccess": "List added",
+    "savedListAddSuccess": "Added List Success",
     "savedListAddFail": "An error occurred. Please try again later",
-    "savedListDeleteSuccess": "List deleted",
-    "savedListDeleteFail": "An error occurred. Please try again later"
+    "savedListDeleteSuccess": "Deleted List Success",
+    "savedListDeleteFail": "An error occurred. Please try again later",
+    "AddProductSuccess": "Add Product Success",
+    "AddProductFail": "Add Product Fail",
+    "DeleteProductSuccess": "Delete Product Success",
+    "DeleteProductFail": "Delete Product Fail"
   }
 }

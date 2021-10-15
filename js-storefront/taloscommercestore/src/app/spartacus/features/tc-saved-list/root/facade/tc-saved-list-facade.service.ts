@@ -1,14 +1,29 @@
 import { Injectable } from '@angular/core';
 import { facadeFactory } from '@spartacus/core';
 import { Observable } from 'rxjs';
-import { SavedList } from '../../core';
+import { SavedList, SavedListDetail } from '../../core';
 import { TC_SAVED_LIST_CORE_FEATURE } from '../feature-name';
 
 export function TcSavedListFacadeFactory(): TcSavedListFacade {
   return facadeFactory({
     facade: TcSavedListFacade,
     feature: TC_SAVED_LIST_CORE_FEATURE,
-    methods: ['getSavedLists', 'createSavedList', 'deleteSavedList'],
+    methods: [
+      'getSavedLists',
+      'loadSavedLists',
+      'getSavedListsResultLoading',
+      'getSavedListsResultSuccess',
+      'getSavedListsResultError',
+      'createSavedList',
+      'deleteSavedList',
+      'getSavedListDetail',
+      'loadSavedListDetail',
+      'getSavedListDetailResultLoading',
+      'getSavedListDetailResultSuccess',
+      'getSavedListDetailResultError',
+      'addProduct',
+      'deleteProduct'
+    ],
   });
 }
 
@@ -55,4 +70,46 @@ export abstract class TcSavedListFacade {
    * @param listId name
    */
   abstract deleteSavedList(listId: string): void;
+
+  /**
+   * Get Products From Custom List.
+   * @param listId list id
+   */
+
+  abstract getSavedListDetail(loadIfMissing: boolean, listId: string): Observable<SavedListDetail>;
+
+  /**
+   * loads saved lists for the current user.
+   */
+   abstract loadSavedListDetail(listId: string): void;
+
+   /**
+    * Returns the saved lists loading flag
+    */
+   abstract getSavedListDetailResultLoading(): Observable<boolean>;
+
+   /**
+    * Returns the saved lists success flag
+    */
+   abstract getSavedListDetailResultSuccess(): Observable<boolean>;
+
+   /**
+    * Returns the saved lists error flag
+    */
+   abstract getSavedListDetailResultError(): Observable<boolean>;
+
+
+  /**
+   * Adds a product to a custom product list
+   * @param listName list name
+   * @param productCode product code
+   */
+  abstract addProduct(listName: string, productCode: string): void;
+
+  /**
+   * Deletes a product for the list
+   * @param listName list name
+   * @param productCode product code
+   */
+  abstract deleteProduct(listId: string, productCode: string): void;
 }
