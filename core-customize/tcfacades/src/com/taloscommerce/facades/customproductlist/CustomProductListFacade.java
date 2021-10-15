@@ -1,8 +1,6 @@
 package com.taloscommerce.facades.customproductlist;
 
 import com.taloscommerce.facades.customproductlist.data.CustomProductListData;
-import de.hybris.platform.commercefacades.product.data.ProductData;
-import de.hybris.platform.commercefacades.user.data.CustomerData;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +16,9 @@ public interface CustomProductListFacade {
     /**
      * Get all products from a customProductList
      * @param customProductListId
-     * @return List<ProductData>
+     * @return CustomProductListData
      */
-    List<ProductData> getAllProductsForCustomList(String customProductListId);
+    CustomProductListData getAllProductsForCustomList(String customProductListId);
 
     /**
      * Return the product lists for user
