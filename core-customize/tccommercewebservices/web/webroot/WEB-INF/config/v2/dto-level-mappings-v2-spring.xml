@@ -552,11 +552,11 @@
         <property name="levelMapping">
             <map>
                 <entry key="BASIC"
-                       value="id,name"/>
+                       value="id,name,description"/>
                 <entry key="DEFAULT"
-                       value="id,name,description"/>
+                       value="id,name,description,products(DEFAULT)"/>
                 <entry key="FULL"
-                       value="id,name,description"/>
+                       value="id,name,description,products(FULL)"/>
             </map>
         </property>
     </bean>

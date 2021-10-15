@@ -2,7 +2,6 @@ package com.taloscommerce.core.customproductlist;
 
 import com.taloscommerce.core.model.CustomProductListModel;
 import de.hybris.platform.core.model.product.ProductModel;
-import de.hybris.platform.core.model.user.CustomerModel;
 
 import java.util.Collection;
 import java.util.Optional;
