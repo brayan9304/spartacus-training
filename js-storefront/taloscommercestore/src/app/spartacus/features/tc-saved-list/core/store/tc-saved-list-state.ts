@@ -1,4 +1,4 @@
-import { TC_SAVED_LIST_CORE_FEATURE } from '../../root';
+import { TC_SAVED_LIST_CORE_FEATURE, TC_SAVED_LIST_DETAIL_CORE_FEATURE } from '../../root';
 import { SavedList, SavedListDetail } from '../model';
 import { LoaderState } from '@spartacus/core/src/state/utils/loader';
 
@@ -11,7 +11,7 @@ export interface StateWithSavedLists {
 }
 
 export interface StateWithSavedListDetail {
-  [TC_SAVED_LIST_CORE_FEATURE]: SavedListDetailState;
+  [TC_SAVED_LIST_DETAIL_CORE_FEATURE]: SavedListDetailState;
 }
 
 export interface SavedListsState {

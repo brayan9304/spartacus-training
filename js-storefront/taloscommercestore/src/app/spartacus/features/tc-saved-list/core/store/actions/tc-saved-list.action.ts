@@ -105,7 +105,7 @@ export class DeleteSavedListSuccess extends StateUtils.LoaderSuccessAction {
 export class LoadSavedListDetail extends StateUtils.LoaderLoadAction {
   readonly type = LOAD_SAVED_LIST_DETAIL;
 
-  constructor(public payload: string) {
+  constructor(public payload: { userId: string, listId:string}) {
     super(SAVED_LIST_DETAIL);
   }
 }
@@ -133,7 +133,7 @@ export class ClearSavedListDetail implements Action {
 export class AddProduct extends StateUtils.LoaderLoadAction {
   readonly type = ADD_PRODUCT;
 
-  constructor(public payload: { userId: string, listId: string, productId: string }) {
+  constructor(public payload: { userId: string, listName: string, productCode: string }) {
     super(SAVED_LIST_DETAIL);
   }
 }
@@ -158,7 +158,7 @@ export class AddProductSuccess extends StateUtils.LoaderSuccessAction {
 export class DeleteProduct extends StateUtils.LoaderLoadAction {
   readonly type = DELETE_PRODUCT;
 
-  constructor(public payload: { userId: string, listName: string, productId: string }) {
+  constructor(public payload: { userId: string, listId: string, productCode: string }) {
     super(SAVED_LIST_DETAIL);
   }
 }

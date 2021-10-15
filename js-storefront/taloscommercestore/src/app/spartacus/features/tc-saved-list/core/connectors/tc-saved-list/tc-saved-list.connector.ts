@@ -27,8 +27,8 @@ export class TcSavedListConnector {
     return this.adapter.addProduct(userId, listName, productCode);
   }
 
-  public deleteProduct(userId: string, listName: string, productCode: string): Observable<{}> {
-    return this.adapter.deleteProduct(userId, listName, productCode);
+  public deleteProduct(userId: string, lisId: string, productCode: string): Observable<{}> {
+    return this.adapter.deleteProduct(userId, lisId, productCode);
   }
 
 }
