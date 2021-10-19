@@ -72,12 +72,12 @@ public class CustomProductListController extends BaseController {
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
-    @GetMapping(value = "/getCustomList/{listName}")
+    @GetMapping(value = "/getCustomListByName/{listName}")
     @ResponseBody
     @ApiOperation(nickname = "getCustomListByName", value = "Get Custom List By Name.", notes = "Returns a custom product list by name")
     @ApiBaseSiteIdAndUserIdParam
     @ApiResponse(code = 200, message = "Custom list with name")
-    public CustomProductListWsDTO getCustomProductList(@ApiParam(value = "List Name", required = true) @PathVariable("listName") final String listName,
+    public CustomProductListWsDTO getCustomProductListByName(@ApiParam(value = "List Name", required = true) @PathVariable("listName") final String listName,
                                                        @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final CustomerData customer = customerFacade.getCurrentCustomer();
         final String userId = customer.getCustomerId();
@@ -91,6 +91,24 @@ public class CustomProductListController extends BaseController {
         }
         throw new NoSuchElementException("List with name "+ listName +" not found for user " + customer.getName() );
 
+    }
+
+    @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
+    @GetMapping(value = "/getCustomList/{listId}")
+    @ResponseBody
+    @ApiOperation(nickname = "getCustomListById", value = "Get Custom List By Id.", notes = "Returns a custom product list by id")
+    @ApiBaseSiteIdAndUserIdParam
+    @ApiResponse(code = 200, message = "Custom list with id")
+    public CustomProductListWsDTO getCustomProductListById(@ApiParam(value = "List Id", required = true) @PathVariable("listId") final String listId,
+                                                             @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
+        final CustomerData customer = customerFacade.getCurrentCustomer();
+        final String userId = customer.getCustomerId();
+        if (StringUtils.isEmpty(userId)){
+            throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
+        }
+        final CustomProductListData customProductListData = customProductListFacade.getCustomProductListById(listId);
+
+        return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
