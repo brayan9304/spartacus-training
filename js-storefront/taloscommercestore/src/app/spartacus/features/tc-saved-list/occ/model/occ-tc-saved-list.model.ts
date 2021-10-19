@@ -22,11 +22,11 @@ export interface OccSavedLists {
  *
  * An interface representing a detail of saved list
  */
-export interface OccSavedListDetail {
-  currentPage:       number;
-  products:          Product[];
-  totalPageCount:    number;
-  totalProductCount: number;
+ export interface SavedListDetail {
+  description: string;
+  id: string;
+  name: string;
+  products: Product[];
 }
 
 
