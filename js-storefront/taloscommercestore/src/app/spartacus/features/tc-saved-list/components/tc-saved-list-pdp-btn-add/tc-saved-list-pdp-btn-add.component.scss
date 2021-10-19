@@ -1,0 +1,45 @@
+button {
+  display: flex;
+  background: var(--cx-color-primary);
+  min-width: 70px;
+  height: 47px;
+  padding: 10px;
+  color: var(--cx-color-inverse);
+  text-decoration: none;
+  justify-content: space-around;
+
+  &:hover {
+    color: currentColor;
+  }
+}
+
+.tmodal-hidden {
+  display: none;
+}
+
+.tmodal-visible {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#tmodal-content-wrapper {
+  width: 50%;
+  height: 50%;
+  z-index: 10;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  background-color: white;
+  border: 3px solid #000000;
+  border-radius: 10px;
+}
+
+#tmodal-title {
+  font-size: 22px;
+}
+
+#tmodal-footer {
+  align-self: center;
+  bottom: 0;
+}
