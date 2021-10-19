@@ -64,6 +64,9 @@ public class DefaultCustomProductListService implements CustomProductListService
                 productListModel.setCustomer(customer);
                 getModelService().save(productListModel);
             }
+            else {
+                throw new IllegalArgumentException("List with Name " +productListModel.getName() +" already exists");
+            }
         }
         return productListModel;
     }
