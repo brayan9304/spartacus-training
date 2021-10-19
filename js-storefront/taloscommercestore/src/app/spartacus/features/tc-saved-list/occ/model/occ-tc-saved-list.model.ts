@@ -1,10 +1,10 @@
-import { Product } from "@spartacus/core";
+import { Product } from '@spartacus/core';
 
 /**
  *
  * An interface representing a saved list
  */
- export interface OccSavedList {
+export interface OccSavedList {
   id?: string;
   name: string;
   description: string;
@@ -22,13 +22,9 @@ export interface OccSavedLists {
  *
  * An interface representing a detail of saved list
  */
- export interface SavedListDetail {
+export interface OccSavedListDetail {
   description: string;
   id: string;
   name: string;
   products: Product[];
 }
-
-
-
-
