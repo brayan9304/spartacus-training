@@ -96,6 +96,9 @@ public class DefaultCustomProductListService implements CustomProductListService
     @Override
     public void deleteCustomProductList(final String customProductListId) {
         final CustomProductListModel model = getCustomProductListById(customProductListId);
+        if (Objects.isNull(model)){
+            throw new UnknownIdentifierException("CustomProductList with Id "+customProductListId+" can not be removed, it did not exist");
+        }
         getModelService().remove(model);
     }
 
@@ -110,6 +113,9 @@ public class DefaultCustomProductListService implements CustomProductListService
                 productModels.remove(productModel);
                 productListModel.setProduct(productModels);
                 getModelService().save(productListModel);
+            }
+            else {
+                throw new IllegalArgumentException("List did not contain product "+productCode);
             }
         }
     }
