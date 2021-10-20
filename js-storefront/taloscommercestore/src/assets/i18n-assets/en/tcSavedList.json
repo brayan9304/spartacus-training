@@ -7,6 +7,17 @@
     "AddProductSuccess": "Add Product Success",
     "AddProductFail": "Add Product Fail",
     "DeleteProductSuccess": "Delete Product Success",
-    "DeleteProductFail": "Delete Product Fail"
+    "DeleteProductFail": "Delete Product Fail",
+    "addProductToList": "Add product to a list",
+    "listCreated": "List created",
+    "createNewList": "Create a new list",
+    "listRequired": "List is required",
+    "listName": "List name",
+    "writeListName": "Write list name",
+    "listNameRequired": "List name is required",
+    "listDescription": "List description",
+    "writeListDescription": "Write list description",
+    "addToList": "Add to list",
+    "createList": "Create list"
   }
 }

@@ -1,0 +1,105 @@
+<div *ngIf="modalType==1">
+    <ng-container *ngIf="product$ | async as product">
+        <div class="tc-modal__button">
+            <button class="btn btn-danger btn-block" (click)="openModal(modalData,product.code)">{{ 'savedListForm.addProductToList' | cxTranslate }}</button>
+        </div>
+        <ng-template #modalData let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">{{ 'savedListForm.addProductToList' | cxTranslate }}</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">
+                        <cx-icon [type]='iconTypes.CLOSE' class="close-icon"></cx-icon>
+                    </span>
+                </button>
+            </div>
+            <form [formGroup]="formList" (ngSubmit)="submitFormAddProduct(formList.value)"
+                *ngIf='savedLists$ | async as savedLists'>
+                <div class="modal-body">
+                    <div>
+                        <label>
+                            <span class="label-content">{{ 'savedListForm.listCreated' | cxTranslate }}</span>
+                            <select [formControl]="listId" [ngModel]="selectedList" name="listId" required
+                                class="form-control">
+                                <option value="1">{{ 'savedListForm.createNewList' | cxTranslate }}</option>
+                                <option *ngFor="let list of savedLists" [value]="list.name">{{ list.name }}
+                                </option>
+                            </select>
+                            <div *ngIf="listId.invalid && (listId.dirty || listId.touched)" class="error-container">
+                                <div *ngIf="listId.errors.required" class="error">
+                                    <cx-icon [type]='iconTypes.ERROR' class="error-icon"></cx-icon>
+                                    <p class="message-error">{{ 'savedListForm.listRequired' | cxTranslate }}</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div *ngIf="selectedList==1">
+                        <label>
+                            <span class="label-content">{{ 'savedListForm.listName' | cxTranslate }}</span>
+                            <input class="form-control" type="text" name="listName" placeholder="{{ 'savedListForm.writeListName' | cxTranslate }}"
+                                formControlName="listName" required />
+                            <div *ngIf="listName.invalid && (listName.dirty || listName.touched)"
+                                class="error-container">
+                                <div *ngIf="listName.errors.required" class="error">
+                                    <cx-icon [type]='iconTypes.ERROR' class="error-icon"></cx-icon>
+                                    <p class="message-error">{{ 'savedListForm.listNameRequired' | cxTranslate }}</p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <span class="label-content">{{ 'savedListForm.listDescription' | cxTranslate }}</span>
+                            <input class="form-control" type="text" name="listDescription"
+                                placeholder="{{ 'savedListForm.writeListDescription' | cxTranslate }}"formControlName="listDescription" />
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info" [disabled]="formList.invalid">{{ 'savedListForm.addToList' | cxTranslate }}</button>
+                </div>
+            </form>
+        </ng-template>
+    </ng-container>
+</div>
+
+<div *ngIf="modalType==2">
+    <ng-container *ngIf="product$ | async as product">
+        <div class="tc-modal__button">
+            <button class="btn btn-danger btn-block" (click)="openModal(modalData)">{{ 'savedListForm.createList' | cxTranslate }}</button>
+        </div>
+        <ng-template #modalData let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">{{ 'savedListForm.createList' | cxTranslate }}</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">
+                        <cx-icon [type]='iconTypes.CLOSE' class="close-icon"></cx-icon>
+                    </span>
+                </button>
+            </div>
+            <form [formGroup]="formList" (ngSubmit)="submitFormCreateList(formList.value)">
+                <div class="modal-body">
+                    <div>
+                        <label>
+                            <span class="label-content">{{ 'savedListForm.listName' | cxTranslate }}</span>
+                            <input class="form-control" type="text" name="listName" placeholder="{{ 'savedListForm.writeListName' | cxTranslate }}"
+                                formControlName="listName" required />
+                            <div *ngIf="listName.invalid && (listName.dirty || listName.touched)"
+                                class="error-container">
+                                <div *ngIf="listName.errors.required" class="error">
+                                    <cx-icon [type]='iconTypes.ERROR' class="error-icon"></cx-icon>
+                                    <p class="message-error">{{ 'savedListForm.listNameRequired' | cxTranslate }}</p>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <span class="label-content">{{ 'savedListForm.listDescription' | cxTranslate }}</span>
+                            <input class="form-control" type="text" name="listDescription"
+                                placeholder="{{ 'savedListForm.writeListDescription' | cxTranslate }}" formControlName="listDescription" />
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info" [disabled]="formList.invalid">{{ 'savedListForm.createList' | cxTranslate }}</button>
+                </div>
+            </form>
+        </ng-template>
+    </ng-container>
+</div>
