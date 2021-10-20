@@ -7,7 +7,9 @@
     "AddProductSuccess": "Add Product Success",
     "AddProductFail": "Add Product Fail",
     "DeleteProductSuccess": "Delete Product Success",
-    "DeleteProductFail": "Delete Product Fail",
+    "DeleteProductFail": "Delete Product Fail"
+  },
+  "savedListModal": {
     "addProductToList": "Add product to a list",
     "listCreated": "List created",
     "createNewList": "Create a new list",
