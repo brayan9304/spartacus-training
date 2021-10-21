@@ -19,7 +19,8 @@ export class TcSavedListDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.savedlistDetail$.subscribe(detail => this.products = detail.products);
-    this.tcSavedListDetailFacade.addProduct("Test 1", "1776948");
+    this.tcSavedListDetailFacade.addProduct("saved list 1", "4812254");
+    this.tcSavedListDetailFacade.addProduct("saved list 2", "3595723");
     //this.tcSavedListDetailFacade.deleteProduct("00000000", "1776948")
 
   }

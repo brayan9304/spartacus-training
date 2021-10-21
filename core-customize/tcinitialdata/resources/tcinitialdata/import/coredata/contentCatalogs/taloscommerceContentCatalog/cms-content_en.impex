@@ -37,6 +37,7 @@ UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]           ; ti
                   ;                          ; update-profile               ; "Update Profile"
                   ;                          ; updatePassword               ; "Update Forgotten Password"
                   ;                          ; referred-customers           ; "Referred Customers"
+                  ;                          ; saved-lists                  ; "Saved Lists"
                   ;                          ; saved-list-detail            ; "List Detail"
 
 # Category Pages

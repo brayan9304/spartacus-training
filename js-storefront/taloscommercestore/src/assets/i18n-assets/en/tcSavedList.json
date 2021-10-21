@@ -1,8 +1,8 @@
 {
   "savedListForm": {
-    "savedListAddSuccess": "Added List Success",
+    "savedListAddSuccess": "Added List Successfully",
     "savedListAddFail": "An error occurred. Please try again later",
-    "savedListDeleteSuccess": "Deleted List Success",
+    "savedListDeleteSuccess": "Deleted List Successfully",
     "savedListDeleteFail": "An error occurred. Please try again later",
     "AddProductSuccess": "Add Product Success",
     "AddProductFail": "Add Product Fail",
@@ -21,5 +21,8 @@
     "writeListDescription": "Write list description",
     "addToList": "Add to list",
     "createList": "Create list"
+  },
+  "savedListList": {
+    "createNewSavedList": "Create new list "
   }
 }
