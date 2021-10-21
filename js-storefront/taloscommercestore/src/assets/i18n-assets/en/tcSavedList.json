@@ -4,10 +4,23 @@
     "savedListAddFail": "An error occurred. Please try again later",
     "savedListDeleteSuccess": "Deleted List Successfully",
     "savedListDeleteFail": "An error occurred. Please try again later",
-    "AddProductSuccess": "Added Product Successfully",
-    "AddProductFail": "Add Product Failed",
-    "DeleteProductSuccess": "Deleted Product Successfully",
-    "DeleteProductFail": "Delete Product Failed"
+    "AddProductSuccess": "Add Product Success",
+    "AddProductFail": "Add Product Fail",
+    "DeleteProductSuccess": "Delete Product Success",
+    "DeleteProductFail": "Delete Product Fail"
+  },
+  "savedListModal": {
+    "addProductToList": "Add product to a list",
+    "listCreated": "List created",
+    "createNewList": "Create a new list",
+    "listRequired": "List is required",
+    "listName": "List name",
+    "writeListName": "Write list name",
+    "listNameRequired": "List name is required",
+    "listDescription": "List description",
+    "writeListDescription": "Write list description",
+    "addToList": "Add to list",
+    "createList": "Create list"
   },
   "savedListList": {
     "createNewSavedList": "Create new list "
