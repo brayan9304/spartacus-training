@@ -204,4 +204,4 @@ export type TcSavedListAction =
   | AddProductSuccess
   | DeleteProduct
   | DeleteProductFail
-  | DeleteProductSuccess
+  | DeleteProductSuccess;
