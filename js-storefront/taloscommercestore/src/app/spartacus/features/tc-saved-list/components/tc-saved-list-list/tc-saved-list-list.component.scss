@@ -1,7 +1,7 @@
 
 .saved-list__container{
   border-bottom: 1px solid #ccc;
-  padding: 10px;
+  padding: 30px;
   position: relative;
 
   .saved-list__name{
@@ -28,6 +28,10 @@
 
     a{
       color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
 
     }
     a:hover {
@@ -41,7 +45,10 @@
   }
 }
 
-/*.btn-block{
-  margin-top: 40px;
-  margin-bottom: 40px;
-}*/
+.create-new-list{
+  margin: 20px 0px 20px auto;
+  width: 20%;
+  tc-saved-list-modal .tc-modal__button{
+    padding-inline-end: 0px;
+  }
+}
