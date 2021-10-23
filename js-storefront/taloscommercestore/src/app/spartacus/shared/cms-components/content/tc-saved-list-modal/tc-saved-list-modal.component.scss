@@ -1,9 +1,11 @@
-.tc-modal__button {
+@media (min-width: 992px){
+  .tc-modal__button-add__product {
     padding-top: 20px;
     padding-inline-end: 20px;
     padding-bottom: 0px;
     padding-inline-start: 20px;
   }
+}
   
   label{
     width: 100%;

@@ -48,7 +48,10 @@
 .create-new-list{
   margin: 20px 0px 20px auto;
   width: 20%;
-  tc-saved-list-modal .tc-modal__button{
-    padding-inline-end: 0px;
+}
+
+@media (max-width: 992px){
+  .create-new-list{
+    width: 100%;
   }
 }
