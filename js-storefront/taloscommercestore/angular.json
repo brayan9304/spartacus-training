@@ -34,8 +34,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/spartacus/user.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles/spartacus/user.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -114,8 +113,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/spartacus/user.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles/spartacus/user.scss"
             ],
             "scripts": []
           }
