@@ -21,7 +21,7 @@ export class TcSavedListListComponent implements OnInit {
   constructor(protected tcSavedListFacade: TcSavedListFacade) { }
 
   ngOnInit(): void {
-    //this.tcSavedListFacade.createSavedList(this.list);
+    this.tcSavedListFacade.createSavedList(this.list);
     //this.tcSavedListFacade.deleteSavedList('00000008');
     //this.savedLists$.subscribe(data => console.log(data))
     //console.log(this.lists)
