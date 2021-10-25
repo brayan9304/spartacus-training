@@ -34,6 +34,7 @@ export class TcSavedListListComponent implements OnInit {
     // this.tcSavedListFacade.deleteSavedList('00000008');
     // this.savedLists$.subscribe(data => console.log(data))
     // console.log(this.lists)
+
   }
 
 }

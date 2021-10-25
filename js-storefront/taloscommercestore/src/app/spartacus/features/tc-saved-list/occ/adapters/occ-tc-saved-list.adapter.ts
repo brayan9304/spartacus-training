@@ -50,8 +50,8 @@ export class OccTcSavedListAdapter implements TcSavedListAdapter {
     return this.http.delete(url, { headers }).pipe(catchError((error: any) => throwError(error)));
   }
 
-  getSavedListDetail(userId: string, listId: string): Observable<SavedListDetail> {
-    const url = this.getEndpointForDetails('getDetailsFromSavedList', userId, listId);
+  getSavedListDetail(userId: string, listId: string, fields="FULL"): Observable<SavedListDetail> {
+    const url = this.getEndpointForDetails('getDetailsFromSavedList', userId, listId, fields);
 
     return this.http.get<OccSavedListDetail>(url).pipe(
       catchError((error) => throwError(normalizeHttpError(error))),
@@ -59,8 +59,8 @@ export class OccTcSavedListAdapter implements TcSavedListAdapter {
     );
   }
 
-  private getEndpointForDetails(endpoint: string, userId: string, listId: string): string {
-    return this.occEndpoints.getUrl(endpoint, { userId, listId });
+  private getEndpointForDetails(endpoint: string, userId: string, listId: string, fields="FULL"): string {
+    return this.occEndpoints.getUrl(endpoint, { userId, listId, fields });
   }
 
   addProduct(userId: string, listName: string, productCode: string): Observable<{}> {
