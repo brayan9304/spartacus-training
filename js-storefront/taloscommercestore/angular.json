@@ -34,10 +34,14 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/spartacus/user.scss"
+              "src/styles/spartacus/user.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/styles", "src/styles/scss"]
+              "includePaths": [
+                "src/styles",
+                "src/styles/scss"
+              ]
             },
             "scripts": []
           },
@@ -110,7 +114,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/spartacus/user.scss"
+              "src/styles/spartacus/user.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           }

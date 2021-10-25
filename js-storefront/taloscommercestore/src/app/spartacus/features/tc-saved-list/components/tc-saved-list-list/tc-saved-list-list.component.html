@@ -1,11 +1,27 @@
 
 <ng-container *ngIf='savedLists$ | async as savedLists'>
-  <div *ngFor=' let savedList of savedLists' >
-    {{savedList.id}}
-    {{savedList.name}}
-    {{savedList.description}}
+  <div class='container'>
+    <div class='saved-list__container' *ngFor=' let savedList of savedLists' >
+      <a [routerLink]="['/my-account/saved-lists/detail']" [queryParams]="{listId:savedList.id}" class='saved-list__name'>
+        {{savedList.name}}
+      </a>
+      <div class='saved-list__description'>
+        {{savedList.description}}
+      </div>
+      <div class='saved-list__btn-group'>
+        <a class='btn' [routerLink]="['/my-account/saved-lists/detail']" [queryParams]="{listId:savedList.id}">
+          <cx-icon [type]='iconTypes.PENCIL'></cx-icon>
+        </a>
+        <button type='button' class='btn'
+                (click)='handleDeleteSavedListAction(savedList.id)'>
+          <cx-icon [type]='iconTypes.TRASH'></cx-icon>
+        </button>
+      </div>
+    </div>
+    <div class='create-new-list'>
+      <tc-saved-list-modal [modalType]=2></tc-saved-list-modal>
+    </div>
   </div>
-
 </ng-container>
 
 

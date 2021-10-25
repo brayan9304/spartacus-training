@@ -10,6 +10,7 @@ import { SpartacusModule } from './spartacus/spartacus.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import localeEn from '@angular/common/locales/en';
 import { environment } from '@tc-env';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 registerLocaleData(localeEn);
 
@@ -28,6 +29,7 @@ if (!environment.production) {
     EffectsModule.forRoot([]),
     SpartacusModule,
     BrowserTransferStateModule,
+    NgbModule,
     // Dev Imports
     ...devImports,
   ],

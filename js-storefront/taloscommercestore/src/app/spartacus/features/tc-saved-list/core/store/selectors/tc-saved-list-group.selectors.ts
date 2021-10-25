@@ -1,1 +1,1 @@
-export * from './tc-saved-list.selectors'
+export * from './tc-saved-list.selectors';
