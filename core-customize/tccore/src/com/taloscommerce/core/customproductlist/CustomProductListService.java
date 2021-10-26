@@ -16,7 +16,7 @@ public interface CustomProductListService {
 
     /**
      * Get all products from a customProductList
-     * @param customProductListId
+     * @param customProductListId custom product list id
      * @return Collection<ProductModel>
      */
     Collection<ProductModel>  getAllProductsForCustomList(String customProductListId);
@@ -29,34 +29,33 @@ public interface CustomProductListService {
 
     /**
      * Get customerProductList by ID
-     * @param customProductListId
+     * @param customProductListId custom product list id
      * @return Optional<CustomProductListModel>
      */
     CustomProductListModel getCustomProductListById(String customProductListId);
 
     /**
      * Returns the specified list for the customer
-     * @param listName
-     * @param customerId
+     * @param listName list name
+     * @param customerId customer id
      * @return Optional<ProductModel>
      */
-    Optional<CustomProductListModel> getProductListForUserWithName(String listName, String customerId);
+    Optional<CustomProductListModel> getCustomProductListForUserWithName(String listName, String customerId);
 
     /**
      * Creates the product list for the user
-     * @param productListModel
-     * @param customerId
+     * @param customProductListModel custom product list
+     * @param customerId customer id
      * @return CustomProductListModel
      */
-    CustomProductListModel createProductListForUser(CustomProductListModel productListModel, String customerId);
+    CustomProductListModel createCustomProductListForUser(CustomProductListModel customProductListModel, String customerId);
 
     /**
      * Saves the product to specified list of customer
-     * @param product product
-     * @param listName list name
-     * @param customerId customer id
+     * @param productCode product code
+     * @param customProductListId list id
      */
-    CustomProductListModel addProductToList(String product, String listName, String customerId);
+    CustomProductListModel addProductToList(String productCode, String customProductListId);
 
     /**
      * delete the product list

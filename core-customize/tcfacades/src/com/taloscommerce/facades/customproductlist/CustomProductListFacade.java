@@ -1,7 +1,9 @@
 package com.taloscommerce.facades.customproductlist;
 
 import com.taloscommerce.facades.customproductlist.data.CustomProductListData;
+import de.hybris.platform.commercefacades.product.ProductOption;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,10 +17,11 @@ public interface CustomProductListFacade {
 
     /**
      * Get all products from a customProductList
-     * @param customProductListId
+     * @param customProductListId custom product list id
+     * @param productOptions product options
      * @return CustomProductListData
      */
-    CustomProductListData getAllProductsForCustomList(String customProductListId);
+    CustomProductListData getAllProductsForCustomList(String customProductListId, Collection<ProductOption> productOptions);
 
     /**
      * Return the product lists for user
@@ -29,34 +32,33 @@ public interface CustomProductListFacade {
 
     /**
      * Get customerProductList by ID
-     * @param customProductListId
+     * @param customProductListId custom product list id
      * @return Optional<CustomProductListData>
      */
     CustomProductListData getCustomProductListById(String customProductListId);
 
     /**
      * Returns the specified list for the customer
-     * @param listName
-     * @param customerId
+     * @param listName list name
+     * @param customerId customer id
      * @return Optional<ProductData>
      */
-    Optional<CustomProductListData> getProductListForUserWithName(String listName, String customerId);
+    Optional<CustomProductListData> getCustomProductListForUserWithName(String listName, String customerId);
 
     /**
      * Creates the product list for the user
-     * @param productListData
-     * @param customerId
+     * @param customProductListData custom product list
+     * @param customerId customer id
      * @return CustomProductListData
      */
-    CustomProductListData createProductListForUser(CustomProductListData productListData, String customerId);
+    CustomProductListData createCustomProductListForUser(CustomProductListData customProductListData, String customerId);
 
     /**
      * Saves the product to specified list of customer
-     * @param product
-     * @param listName
-     * @param customerId
+     * @param productCode product code
+     * @param customProductListId list id
      */
-    CustomProductListData addProductToList(String product, String listName, String customerId);
+    CustomProductListData addProductToList(String productCode, String customProductListId);
 
     /**
      * delete the product list

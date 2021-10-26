@@ -6,6 +6,7 @@ import com.taloscommerce.webservices.dto.productList.CustomProductListDataList;
 import com.taloscommerce.webservices.dto.productList.CustomProductListListWsDTO;
 import com.taloscommerce.webservices.dto.productList.CustomProductListWsDTO;
 import de.hybris.platform.commercefacades.customer.CustomerFacade;
+import de.hybris.platform.commercefacades.product.ProductOption;
 import de.hybris.platform.commercefacades.user.data.CustomerData;
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.RequestParameterException;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -27,6 +29,8 @@ import java.util.Optional;
 @Api(tags = "Saved Lists")
 @RequestMapping(value = "/{baseSiteId}/users/{userId}/saved-lists")
 public class CustomProductListController extends BaseController {
+
+    private static final EnumSet<ProductOption> PRODUCT_OPTIONS_SET = EnumSet.allOf(ProductOption.class);
 
     @Resource(name ="customerFacade")
     private CustomerFacade customerFacade;
@@ -67,7 +71,7 @@ public class CustomProductListController extends BaseController {
         if (StringUtils.isEmpty(userId)){
             throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
         }
-        customProductListFacade.createProductListForUser(customProductListData, userId);
+        customProductListFacade.createCustomProductListForUser(customProductListData, userId);
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
@@ -84,7 +88,7 @@ public class CustomProductListController extends BaseController {
         if (StringUtils.isEmpty(userId)){
             throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
         }
-        final Optional<CustomProductListData> customProductListData = customProductListFacade.getProductListForUserWithName(listName, userId);
+        final Optional<CustomProductListData> customProductListData = customProductListFacade.getCustomProductListForUserWithName(listName, userId);
 
         if (customProductListData.isPresent()){
             return getDataMapper().map(customProductListData.get(), CustomProductListWsDTO.class, fields);
@@ -119,26 +123,26 @@ public class CustomProductListController extends BaseController {
     @ApiResponse(code = 200, message = " CustomList's products")
     public CustomProductListWsDTO getProductsFromList(@ApiParam(value = "List Identifier", required = true) @PathVariable("listId") final String listId,
                                                 @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
-        final CustomProductListData customProductListData = customProductListFacade.getAllProductsForCustomList(listId);
+        final CustomProductListData customProductListData = customProductListFacade.getAllProductsForCustomList(listId, PRODUCT_OPTIONS_SET);
 
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
-    @PostMapping(value = "/addTo/{listName}/{productCode}")
+    @PostMapping(value = "/addTo/{customProductListId}/{productCode}")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     @ApiOperation(nickname = "addToProductToList", value = "Adds a product to a custom product list.", notes = "Adds a product to list for current user.")
     @ApiBaseSiteIdAndUserIdParam
-    public CustomProductListWsDTO addProductToList(@ApiParam(value = "List Name", required = true) @PathVariable final String listName,
-                                                   @ApiParam(value = "productCode", required = true) @PathVariable("productCode") final String product,
+    public CustomProductListWsDTO addProductToList(@ApiParam(value = "List Id", required = true) @PathVariable final String customProductListId,
+                                                   @ApiParam(value = "productCode", required = true) @PathVariable("productCode") final String productCode,
                                                    @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         final CustomerData customer = customerFacade.getCurrentCustomer();
         final String userId = customer.getCustomerId();
         if (StringUtils.isEmpty(userId)){
             throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
         }
-        final CustomProductListData customProductListData = customProductListFacade.addProductToList(product, listName, userId);
+        final CustomProductListData customProductListData = customProductListFacade.addProductToList(productCode, customProductListId);
         return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
     }
 
@@ -159,7 +163,7 @@ public class CustomProductListController extends BaseController {
     @ApiOperation(nickname = "removeFromList", value = "Delete product from custom product list.", notes = "Calls a method to delete a product from a list using the list id and product id")
     @ApiBaseSiteIdAndUserIdParam
     @ResponseStatus(HttpStatus.OK)
-    public void deleteCustomProductList(@ApiParam(value = "List identifier", required = true) @PathVariable final String listId,
+    public void deleteProductFromCustomProductList(@ApiParam(value = "List identifier", required = true) @PathVariable final String listId,
                                         @ApiParam(value = "Product identifier", required = true) @PathVariable final String productCode,
                                         @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields) {
         customProductListFacade.removeProductFromList(productCode, listId);
