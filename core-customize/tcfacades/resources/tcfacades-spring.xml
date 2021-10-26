@@ -247,6 +247,7 @@
 		<property name="customProductListReverseConverter" ref="customProductListReverseConverter"/>
 		<property name="productConverter" ref="carouselProductConverter"/>
 		<property name="customProductListService" ref="customProductListService"/>
+		<property name="productConfiguredPopulator" ref="productConfiguredPopulator"/>
 	</bean>
 
 </beans>

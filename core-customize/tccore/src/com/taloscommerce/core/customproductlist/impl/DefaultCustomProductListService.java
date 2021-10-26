@@ -50,47 +50,41 @@ public class DefaultCustomProductListService implements CustomProductListService
     }
 
     @Override
-    public Optional<CustomProductListModel> getProductListForUserWithName(final String listName, final String customerId) {
+    public Optional<CustomProductListModel> getCustomProductListForUserWithName(final String listName, final String customerId) {
         final CustomerModel customerModel = getCustomerService().getCustomerByCustomerId(customerId);
-        return getCustomProductListDao().getProductListForUserWithName(listName,customerModel);
+        return getCustomProductListDao().getCustomProductListForUserWithName(listName,customerModel);
     }
 
     @Override
-    public CustomProductListModel createProductListForUser(final CustomProductListModel productListModel, final String customerId) {
+    public CustomProductListModel createCustomProductListForUser(final CustomProductListModel customProductListModel, final String customerId) {
         final CustomerModel customer = getCustomerService().getCustomerByCustomerId(customerId);
         if (Objects.nonNull(customer)) {
-            if (getProductListForUserWithName(productListModel.getName(), customerId).isEmpty()) {
-                productListModel.setId(getCustomProductListIdGenerator().generate().toString());
-                productListModel.setCustomer(customer);
-                getModelService().save(productListModel);
+            if (getCustomProductListForUserWithName(customProductListModel.getName(), customerId).isEmpty()) {
+                customProductListModel.setId(getCustomProductListIdGenerator().generate().toString());
+                customProductListModel.setCustomer(customer);
+                getModelService().save(customProductListModel);
             }
             else {
-                throw new IllegalArgumentException("List with Name " +productListModel.getName() +" already exists");
+                throw new IllegalArgumentException("List with Name " +customProductListModel.getName() +" already exists");
             }
         }
-        return productListModel;
+        return customProductListModel;
     }
 
     @Override
-    public CustomProductListModel addProductToList(final String product, final String listName, final String customerId) {
-        final ProductModel productModel = getProductService().getProductForCode(product);
-        final Optional<CustomProductListModel> model = getProductListForUserWithName(listName, customerId);
-        final CustomProductListModel productListModel;
+    public CustomProductListModel addProductToList(final String productCode, final String customProductListId) {
+        final ProductModel productModel = getProductService().getProductForCode(productCode);
+        final CustomProductListModel customProductListModel = getCustomProductListById(customProductListId);
 
-        if (model.isEmpty()) {
-            final CustomProductListModel newProductListModel = new CustomProductListModel();
-            newProductListModel.setName(listName);
-            productListModel = createProductListForUser(newProductListModel, customerId);
-        } else {
-            productListModel = model.get();
+        final Set<ProductModel> productModelSet = new HashSet<>((customProductListModel.getProduct()));
+        if (productModelSet.contains(productModel)){
+            throw new IllegalArgumentException("Product with code " +productCode +" already exists in the list");
         }
-
-        final Set<ProductModel> productModelSet = new HashSet<>((productListModel.getProduct()));
         productModelSet.add(productModel);
-        productListModel.setProduct(productModelSet);
-        getModelService().save(productListModel);
+        customProductListModel.setProduct(productModelSet);
+        getModelService().save(customProductListModel);
 
-        return productListModel;
+        return customProductListModel;
     }
 
     @Override
