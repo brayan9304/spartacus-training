@@ -21,5 +21,4 @@
   <cx-add-to-cart *ngIf="product.stock?.stockLevelStatus !== 'outOfStock'" [showQuantity]="false" [product]="product">
   </cx-add-to-cart>
 </ng-template>
-<br>
 <tc-saved-list-modal [modalType]=3 [productId]="product.code"></tc-saved-list-modal>

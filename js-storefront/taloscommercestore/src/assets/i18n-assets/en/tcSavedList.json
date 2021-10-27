@@ -10,7 +10,7 @@
     "DeleteProductFail": "Delete Product Failed"
   },
   "savedListModal": {
-    "addProductToList": "Add product to a list",
+    "addProductToList": "Add product to list",
     "listCreated": "List created",
     "createNewList": "Create a new list",
     "listRequired": "List is required",

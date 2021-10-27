@@ -7,7 +7,7 @@
             </div>
         </ng-container>
     </div>
-    <div *ngIf="modalType==3">
+    <div *ngIf="modalType==3" class="tc-plp__btn-add">
         <button class="btn btn-info btn-block" (click)="openModal(modalData, productId)">{{
             'savedListModal.addProductToList' | cxTranslate }}</button>
     </div>
