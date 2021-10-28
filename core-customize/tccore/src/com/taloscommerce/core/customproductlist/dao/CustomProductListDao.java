@@ -17,30 +17,30 @@ public interface CustomProductListDao {
 
     /**
      * Get all products from a customProductList
-     * @param customProductList
+     * @param customProductList custom product list
      * @return Collection<ProductModel>
      */
     Collection<ProductModel>  getAllProductsForCustomList(CustomProductListModel customProductList);
 
     /** Get all product lists for the user.
-     * @param customer
+     * @param customer customer
      * @return Collection<CustomProductListModel>
      */
     Collection <CustomProductListModel> getCustomProductListsForUser(CustomerModel customer);
 
     /**
      * Get customerProductList by ID
-     * @param customProductListId
+     * @param customProductListId custom product list id
      * @return Optional<CustomProductListModel>
      */
     Optional<CustomProductListModel> getCustomProductListById(String customProductListId);
 
     /**
      * Returns the specified list for the customer
-     * @param listName
-     * @param customer
+     * @param listName list name
+     * @param customer customer
      * @return Optional<ProductModel>
      */
-    Optional<CustomProductListModel> getProductListForUserWithName(String listName, CustomerModel customer);
+    Optional<CustomProductListModel> getCustomProductListForUserWithName(String listName, CustomerModel customer);
 
 }
