@@ -15,6 +15,7 @@ import { Product } from '@spartacus/core';
 })
 export class TcSavedListModalComponent implements OnInit {
     @Input() modalType: number;
+    @Input() productId: number;
 
     iconTypes = ICON_TYPE;
     savedLists$: Observable<SavedList[]> = this.tcSavedListFacade.getSavedLists(true);
@@ -38,7 +39,7 @@ export class TcSavedListModalComponent implements OnInit {
 
 
     private getDismissReason(reason: any): string {
-        if (this.modalType == 1){
+        if (this.modalType == 1 || this.modalType == 3){
             this.listId.reset();
         }else{
             this.listName.reset();
@@ -54,7 +55,7 @@ export class TcSavedListModalComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.modalType == 1) {
+        if (this.modalType == 1 || this.modalType == 3) {
             this.formList = new FormGroup({
                 listId: new FormControl(false),
                 listName: new FormControl(false),

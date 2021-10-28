@@ -72,6 +72,7 @@ import { TcSplitViewBannerModule } from '@tc-shared';
 import { TcReferredCustomerFeatureModule } from './features/tc-referred-customer/tc-referred-customer-feature.module';
 import { TcSavedListFeatureModule } from './features/tc-saved-list/tc-saved-list-feature.module';
 import { TcSavedListModule } from './features/tc-saved-list/tc-saved-list.module';
+import { TcProductListModule } from './features/product/components/tc-product-list/tc-product-list.module';
 
 @NgModule({
   declarations: [],
@@ -161,7 +162,8 @@ import { TcSavedListModule } from './features/tc-saved-list/tc-saved-list.module
     TcSplitViewBannerModule,
     TcReferredCustomerFeatureModule,
     TcSavedListFeatureModule,
-    TcSavedListModule
+    TcSavedListModule,
+    TcProductListModule
 
   ],
 })
