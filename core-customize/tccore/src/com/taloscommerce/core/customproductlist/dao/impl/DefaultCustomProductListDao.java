@@ -82,7 +82,7 @@ public class DefaultCustomProductListDao extends DefaultGenericDao<CustomProduct
     }
 
     @Override
-    public Optional<CustomProductListModel> getProductListForUserWithName(final String listName, final CustomerModel customer) {
+    public Optional<CustomProductListModel> getCustomProductListForUserWithName(final String listName, final CustomerModel customer) {
         if (Objects.isNull(customer)) {
             return Optional.empty();
         }
