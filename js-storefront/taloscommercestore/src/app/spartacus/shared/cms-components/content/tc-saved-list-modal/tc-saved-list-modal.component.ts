@@ -39,9 +39,9 @@ export class TcSavedListModalComponent implements OnInit {
 
 
     private getDismissReason(reason: any): string {
-        if (this.modalType == 1 || this.modalType == 3){
+        if (this.modalType == 1 || this.modalType == 3) {
             this.listId.reset();
-        }else{
+        } else {
             this.listName.reset();
             this.listDescription.reset();
         }
@@ -104,11 +104,23 @@ export class TcSavedListModalComponent implements OnInit {
                 name: values["listName"],
                 description: values["listDescription"]
             }
-            this.selectedList = values["listName"];
             this.tcSavedListFacade.createSavedList(this.listCreate);
-        }
-        this.tcSavedListFacade.addProduct(this.selectedList, values["productId"]);
+            let list: SavedList;
+            this.savedLists$.subscribe(
+                savedLists => {
+                    savedLists.forEach(list => {
+                        if (list.name == values["listName"]) {
+                            this.selectedList = list.id;
+                            this.tcSavedListFacade.addProduct(this.selectedList, values["productId"]);
+                        }
+                    });
+                }
+            );
 
+        }else{
+            this.tcSavedListFacade.addProduct(this.selectedList, values["productId"]);
+        }
+        
         this.listId.reset();
         this.modalService.dismissAll();
     }
