@@ -74,13 +74,13 @@ export class TcSavedListEffects {
       );
     })
   );
-
-  // TODO: listName a listId
+  
   @Effect()
   addProduct$: Observable<TcSavedListActions.TcSavedListAction> = this.actions$.pipe(
     ofType(TcSavedListActions.ADD_PRODUCT),
     map((action: TcSavedListActions.AddProduct) => action.payload),
     mergeMap((payload) => {
+      this.getListId = payload.listId;
       return this.tcSavedListConnector.addProduct(payload.userId, payload.listId, payload.productCode).pipe(
         map((data: any) => {
           return new TcSavedListActions.AddProductSuccess(data);
