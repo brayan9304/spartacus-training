@@ -101,14 +101,14 @@ export abstract class TcSavedListFacade {
 
   /**
    * Adds a product to a custom product list
-   * @param listName list name
+   * @param customProductListId list id
    * @param productCode product code
    */
-  abstract addProduct(listName: string, productCode: string): void;
+  abstract addProduct(listId: string, productCode: string): void;
 
   /**
    * Deletes a product for the list
-   * @param listName list name
+   * @param listId list id
    * @param productCode product code
    */
   abstract deleteProduct(listId: string, productCode: string): void;

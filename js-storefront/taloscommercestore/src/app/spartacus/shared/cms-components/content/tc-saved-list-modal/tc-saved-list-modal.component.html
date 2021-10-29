@@ -31,7 +31,7 @@
                         <select [formControl]="listId" [ngModel]="selectedList" name="listId" required
                             class="form-control">
                             <option value="1">{{ 'savedListModal.createNewList' | cxTranslate }}</option>
-                            <option *ngFor="let list of savedLists" [value]="list.name">{{ list.name }}
+                            <option *ngFor="let list of savedLists" [value]="list.id">{{ list.name }}
                             </option>
                         </select>
                         <div *ngIf="listId.invalid && (listId.dirty || listId.touched)" class="error-container">

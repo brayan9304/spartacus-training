@@ -5,9 +5,9 @@ export const tcOccSavedListConfig: OccConfig = {
     occ: {
       endpoints: {
         getSavedLists: '/users/${userId}/saved-lists',
-        addProductToSavedList: '/users/${userId}/saved-lists/addTo/${listName}/${productCode}',
+        addProductToSavedList: '/users/${userId}/saved-lists/addTo/${customProductListId}/${productCode}',
         createSavedList: '/users/${userId}/saved-lists/create',
-        getSavedListByName: '/users/${userId}/saved-lists/getCustomList/${listName}',
+        getSavedListByName: '/users/${userId}/saved-lists/getCustomListByName/${listName}',
         getDetailsFromSavedList: '/users/${userId}/saved-lists/getProductsFromList/${listId}/?fields=${fields}',
         deleteSavedList: '/users/${userId}/saved-lists/remove/${listId}',
         deleteProductFromSavedList: '/users/${userId}/saved-lists/removeFrom/${listId}/${productCode}'

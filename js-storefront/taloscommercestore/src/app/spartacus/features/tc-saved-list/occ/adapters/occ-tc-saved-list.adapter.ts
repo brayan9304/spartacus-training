@@ -63,9 +63,9 @@ export class OccTcSavedListAdapter implements TcSavedListAdapter {
     return this.occEndpoints.getUrl(endpoint, { userId, listId, fields });
   }
 
-  addProduct(userId: string, listName: string, productCode: string): Observable<{}> {
+  addProduct(userId: string, customProductListId: string, productCode: string): Observable<{}> {
     const url = this.occEndpoints.buildUrl('addProductToSavedList', {
-      urlParams: { userId, listName, productCode },
+      urlParams: { userId, customProductListId, productCode },
     });
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

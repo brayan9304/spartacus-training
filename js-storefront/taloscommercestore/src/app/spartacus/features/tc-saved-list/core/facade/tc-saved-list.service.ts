@@ -135,9 +135,9 @@ export class TcSavedListService implements TcSavedListFacade {
     return this.storeDetail.pipe(select(TcSavedListSelectors.getSavedListDetailError));
   }
 
-  addProduct(listName: string, productCode: string): void {
+  addProduct(listId: string, productCode: string): void {
     this.userIdService.takeUserId(true).subscribe(
-      (userId) => this.storeDetail.dispatch(new TcSavedListActions.AddProduct({ userId, listName, productCode })),
+      (userId) => this.storeDetail.dispatch(new TcSavedListActions.AddProduct({ userId, listId, productCode })),
       () => {}
     );
   }

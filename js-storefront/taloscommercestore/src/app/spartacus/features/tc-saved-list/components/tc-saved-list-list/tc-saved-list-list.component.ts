@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TcSavedListFacade } from '../../root';
 import { Observable } from 'rxjs';
 import { SavedList, SavedListDetail } from '../../core';
 import { ICON_TYPE } from '@spartacus/storefront';
+import { TcSavedListFacade } from '../../root';
 
 @Component({
   selector: 'tc-saved-list-list',

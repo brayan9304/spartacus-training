@@ -133,7 +133,7 @@ export class ClearSavedListDetail implements Action {
 export class AddProduct extends StateUtils.LoaderLoadAction {
   readonly type = ADD_PRODUCT;
 
-  constructor(public payload: { userId: string, listName: string, productCode: string }) {
+  constructor(public payload: { userId: string, listId: string, productCode: string }) {
     super(SAVED_LIST_DETAIL);
   }
 }
