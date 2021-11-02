@@ -71,8 +71,8 @@ public class CustomProductListController extends BaseController {
         if (StringUtils.isEmpty(userId)){
             throw new RequestParameterException("User ID for " + customer.getName() + " = ", userId);
         }
-        customProductListFacade.createCustomProductListForUser(customProductListData, userId);
-        return getDataMapper().map(customProductListData, CustomProductListWsDTO.class, fields);
+        final CustomProductListData createdList = customProductListFacade.createCustomProductListForUser(customProductListData, userId);
+        return getDataMapper().map(createdList, CustomProductListWsDTO.class, fields);
     }
 
     @Secured({"ROLE_CUSTOMERGROUP", "ROLE_TRUSTED_CLIENT", "ROLE_CUSTOMERMANAGERGROUP"})
