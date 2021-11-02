@@ -11,7 +11,7 @@ export class TcSavedListConnector {
     return this.adapter.getSavedLists(userId);
   }
 
-  public createSavedList(userId: string, savedList: SavedList): Observable<{}> {
+  public createSavedList(userId: string, savedList: SavedList): Observable<SavedList> {
     return this.adapter.createSavedList(userId, savedList);
   }
 

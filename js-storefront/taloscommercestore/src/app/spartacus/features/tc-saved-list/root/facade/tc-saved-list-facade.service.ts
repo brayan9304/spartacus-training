@@ -63,7 +63,7 @@ export abstract class TcSavedListFacade {
    * Creates a saved list for the given user
    * @param savedList saved list
    */
-  abstract createSavedList(savedList: SavedList): void;
+  abstract createSavedList(savedList: SavedList): Observable<SavedList>;
 
   /**
    * Deletes a saved list for the given user

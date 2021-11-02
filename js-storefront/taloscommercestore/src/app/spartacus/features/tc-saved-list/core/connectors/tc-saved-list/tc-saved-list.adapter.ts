@@ -15,7 +15,7 @@ export abstract class TcSavedListAdapter {
    * @param userId user id
    * @param savedList saved list
    */
-   abstract createSavedList(userId: string, savedList: SavedList): Observable<{}>;
+   abstract createSavedList(userId: string, savedList: SavedList): Observable<SavedList>;
 
    /**
     * Deletes a saved list for the given user

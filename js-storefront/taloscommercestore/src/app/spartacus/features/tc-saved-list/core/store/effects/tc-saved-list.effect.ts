@@ -65,7 +65,6 @@ export class TcSavedListEffects {
     ofType(TcSavedListActions.LOAD_SAVED_LIST_DETAIL),
     map((action: any) => action.payload),
     mergeMap((payload) => {
-      this.getListId = payload.listId;
       return this.tcSavedListConnector.getSavedListDetail(payload.userId, payload.listId).pipe(
         map((data) => {
           return new TcSavedListActions.LoadSavedListDetailSuccess(data);

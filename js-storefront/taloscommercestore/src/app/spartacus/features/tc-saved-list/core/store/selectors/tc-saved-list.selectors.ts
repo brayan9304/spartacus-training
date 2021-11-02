@@ -1,9 +1,9 @@
 import { createSelector, MemoizedSelector } from '@ngrx/store';
 import { StateUtils } from '@spartacus/core';
 import { LoaderState } from '@spartacus/core/src/state/utils/loader';
-import { SavedListsState, StateWithSavedLists, SavedListDetailState, StateWithSavedListDetail } from '../tc-saved-list-state';
+import { SavedListsState, StateWithSavedLists, SavedListDetailState, StateWithSavedListDetail, StateWithSavedListCreate, SavedListCreateState } from '../tc-saved-list-state';
 import { SavedList, SavedListDetail } from '../../model';
-import { getStateWithSavedLists, getStateWithSavedListDetail } from './feature.selector';
+import { getStateWithSavedLists, getStateWithSavedListDetail, getStateWithSavedListCreate } from './feature.selector';
 
 export const getSavedListsState: MemoizedSelector<StateWithSavedLists, LoaderState<SavedList[]>> = createSelector(
   getStateWithSavedLists,
@@ -56,5 +56,31 @@ export const getSavedListDetailSuccess: MemoizedSelector<StateWithSavedListDetai
 
 export const getSavedListDetailError: MemoizedSelector<StateWithSavedListDetail, boolean> = createSelector(
   getSavedListDetailState,
+  StateUtils.loaderErrorSelector
+);
+
+export const getSavedListCreateState: MemoizedSelector<StateWithSavedListCreate, LoaderState<SavedList>> = createSelector(
+  getStateWithSavedListCreate,
+  (state: SavedListCreateState) => state.savedListCreate
+);
+
+export const getSavedListCreateValue: MemoizedSelector<StateWithSavedListCreate, SavedList> = createSelector(
+  getSavedListCreateState,
+  StateUtils.loaderValueSelector
+);
+
+
+export const getSavedListCreateLoading: MemoizedSelector<StateWithSavedListCreate, boolean> = createSelector(
+  getSavedListCreateState,
+  StateUtils.loaderLoadingSelector
+);
+
+export const getSavedListCreateSuccess: MemoizedSelector<StateWithSavedListCreate, boolean> = createSelector(
+  getSavedListCreateState,
+  StateUtils.loaderSuccessSelector
+);
+
+export const getSavedListCreateError: MemoizedSelector<StateWithSavedListCreate, boolean> = createSelector(
+  getSavedListCreateState,
   StateUtils.loaderErrorSelector
 );

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TcSavedListFacade } from '../../root';
 import { iif, Observable } from 'rxjs';
 import { SavedList, SavedListDetail } from '../model';
-import { StateWithSavedListDetail, StateWithSavedLists, TcSavedListActions, TcSavedListSelectors } from '../store';
+import { StateWithSavedListDetail, StateWithSavedLists, TcSavedListActions, TcSavedListSelectors, StateWithSavedListCreate } from '../store';
 import { select, Store } from '@ngrx/store';
 import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
 import { UserIdService } from '@spartacus/core';
@@ -12,6 +12,7 @@ export class TcSavedListService implements TcSavedListFacade {
   constructor(
     protected store: Store<StateWithSavedLists>,
     protected storeDetail: Store<StateWithSavedListDetail>,
+    protected storeCreate: Store<StateWithSavedListCreate>,
     protected userIdService: UserIdService
   ) {}
 
@@ -70,11 +71,13 @@ export class TcSavedListService implements TcSavedListFacade {
     return this.store.pipe(select(TcSavedListSelectors.getSavedListsError));
   }
 
-  createSavedList(savedList: SavedList): void {
+  createSavedList(savedList: SavedList): Observable<SavedList> {
     this.userIdService.takeUserId(true).subscribe(
       (userId) => this.store.dispatch(new TcSavedListActions.CreateSavedList({ userId, savedList })),
       () => {}
     );
+    //return this.store.pipe(select(TcSavedListSelectors.getSavedListCreateValue));
+    return this.storeCreate.pipe(select(TcSavedListSelectors.getSavedListCreateValue));
   }
 
   deleteSavedList(listId: string): void {

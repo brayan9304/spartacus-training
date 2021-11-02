@@ -100,27 +100,43 @@ export class TcSavedListModalComponent implements OnInit {
         values["productId"] = this.productSelected;
         if (this.selectedList == "1") {
             this.listCreate = {
-                id: 'string',
+                id: '123',
                 name: values["listName"],
                 description: values["listDescription"]
             }
-            this.tcSavedListFacade.createSavedList(this.listCreate);
-            let list: SavedList;
-            this.savedLists$.subscribe(
+            let listaCreada$: Observable<SavedList> = this.tcSavedListFacade.createSavedList(this.listCreate);
+            listaCreada$.subscribe(
+                savedListCreate => {
+                    if (savedListCreate.id == this.listCreate.id){
+                        console.log("entra");
+                    }
+                    console.log(savedListCreate.id);
+                    this.tcSavedListFacade.addProduct(savedListCreate.id, values["productId"]);  
+                    /*let id = savedListCreate.id;
+                    let name = savedListCreate.name;
+                    let description = savedListCreate.description;
+                    console.log(savedListCreate);
+                    console.log(id);
+                    if (id == this.listCreate.id ) {
+                        this.tcSavedListFacade.addProduct(id, values["productId"]);  
+                    }*/
+                }
+            );
+            /*this.savedLists$.subscribe(
                 savedLists => {
                     savedLists.forEach(list => {
                         if (list.name == values["listName"]) {
                             this.selectedList = list.id;
-                            this.tcSavedListFacade.addProduct(this.selectedList, values["productId"]);
+                            //this.tcSavedListFacade.addProduct(list.id, values["productId"]);
                         }
+                        console.log("valor: " + this.selectedList);
                     });
+                    
                 }
-            );
-
-        }else{
+            );*/
+        } else {
             this.tcSavedListFacade.addProduct(this.selectedList, values["productId"]);
         }
-        
         this.listId.reset();
         this.modalService.dismissAll();
     }

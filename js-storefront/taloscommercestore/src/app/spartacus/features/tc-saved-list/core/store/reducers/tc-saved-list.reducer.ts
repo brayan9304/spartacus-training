@@ -3,6 +3,7 @@ import { SavedList, SavedListDetail } from '../../model';
 
 
 export const initialStateSavedLists: SavedList[] = [];
+export const initialStateSavedListCreate: SavedList = {name: '',description:'',id:''};
 export let initialStateSavedListDetail: SavedListDetail  ;
 
 export function reducerSavedLists(state = initialStateSavedLists, action: TcSavedListActions.TcSavedListAction): SavedList[] {
@@ -17,6 +18,19 @@ export function reducerSavedLists(state = initialStateSavedLists, action: TcSave
 
     case TcSavedListActions.CLEAR_SAVED_LISTS: {
       return initialStateSavedLists;
+    }
+  }
+  return state;
+}
+
+export function reducerSavedListCreate(state = initialStateSavedListCreate, action: TcSavedListActions.TcSavedListAction): SavedList {
+  switch (action.type) {
+    case TcSavedListActions.ADD_SAVED_LIST_SUCCESS: {
+      return action.payload ? action.payload : initialStateSavedListCreate;
+    }
+
+    case TcSavedListActions.ADD_SAVED_LIST_FAIL: {
+      return initialStateSavedListCreate;
     }
   }
   return state;
