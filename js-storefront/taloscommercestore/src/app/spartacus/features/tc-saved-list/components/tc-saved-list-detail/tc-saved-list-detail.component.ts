@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TcSavedListFacade } from '../../root';
 import { Observable } from 'rxjs';
 import { SavedListDetail } from '../../core';
@@ -11,7 +11,7 @@ import { CurrentProductService, ICON_TYPE } from '@spartacus/storefront';
   templateUrl: './tc-saved-list-detail.component.html',
   styleUrls: ['./tc-saved-list-detail.component.scss'],
 })
-export class TcSavedListDetailComponent implements OnInit {
+export class TcSavedListDetailComponent implements OnInit, OnDestroy {
 
   iconTypes = ICON_TYPE;
   products: Product[] = [];
@@ -38,4 +38,9 @@ export class TcSavedListDetailComponent implements OnInit {
   handleDeleteProductAction(listId: string, productCode: string): void {
     this.tcSavedListDetailFacade.deleteProduct(listId, productCode);
   }
+
+  ngOnDestroy(): void {
+    location.reload();
+  }
+
 }

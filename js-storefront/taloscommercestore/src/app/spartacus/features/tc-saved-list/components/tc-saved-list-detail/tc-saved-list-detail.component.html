@@ -19,25 +19,25 @@
                   <cx-star-rating [rating]="product.averageRating">
                   </cx-star-rating>
                   <div class="row">
-                    <div class="col-12 col-md-8">
+                    <div class="col-12 col-md-6">
                       <div aria-label="Product Price" class="ld-product-price">
                         {{ product.price?.formattedValue }}
                       </div>
+                      <p class="ld-product-summary">
+                        {{product.summary}}
+                      </p>
                     </div>
-                    <div class="col-12 col-md-4">
-                      <button  type="button" class="btn btn-link ld-product-cart-button" >
-                        <cx-icon  [type]='iconTypes.CART'></cx-icon>
-                      </button>
-                      <!--<cx-add-to-cart [product]="product" [productCode]="product.code" ></cx-add-to-cart>-->
-                      <button type="button" class="btn btn-link"
-                        (click)="handleDeleteProductAction(listId, product.code)">
-                        <cx-icon [type]='iconTypes.TRASH'></cx-icon>
-                      </button>
+                    <div class="col-12 col-md-6">
+                      <cx-add-to-cart [showQuantity]="false" [product]="product" [productCode]="product.code">
+                      </cx-add-to-cart>
+                      <div class="ld-product-button-remove">
+                        <button class="btn btn-info btn-block"
+                          (click)="handleDeleteProductAction(listId, product.code)">
+                          {{ 'savedListDetail.removeProduct' | cxTranslate }}
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <p class="ld-product-summary">
-                    {{product.summary}}
-                  </p>
                 </div>
               </div>
             </div>
