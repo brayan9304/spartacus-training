@@ -24,5 +24,8 @@
   },
   "savedListList": {
     "createNewSavedList": "Create new list "
+  },
+  "savedListDetail": {
+    "removeProduct": "Remove Product For List"
   }
 }
