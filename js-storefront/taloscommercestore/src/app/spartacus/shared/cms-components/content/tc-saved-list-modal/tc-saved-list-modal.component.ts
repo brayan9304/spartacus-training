@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, Input } from '@angular/core';
 import { CurrentProductService, ICON_TYPE } from '@spartacus/storefront';
 import { TcSavedListFacade } from '../../../../features/tc-saved-list/root';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { SavedList } from '../../../../features/tc-saved-list/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -25,6 +25,7 @@ export class TcSavedListModalComponent implements OnInit {
     closeModal: string;
     formList: FormGroup;
     listCreate: SavedList;
+    subscrition: Subscription;
 
     constructor(protected tcSavedListFacade: TcSavedListFacade, private modalService: NgbModal, private currentProductService: CurrentProductService) { }
 
@@ -105,7 +106,28 @@ export class TcSavedListModalComponent implements OnInit {
                 description: values["listDescription"]
             }
             this.tcSavedListFacade.createSavedList(this.listCreate);
-            let list: SavedList;
+            this.subscrition = this.savedLists$.subscribe(
+                savedLists => {
+                    savedLists.forEach(list => {
+                        const id = list.id;
+                        const name = list.name;
+                        if (name == values["listName"]) {
+                            this.selectedList = id;
+                            this.tcSavedListFacade.addProduct(this.selectedList, values["productId"]);
+                            this.listId.reset();
+                            this.subscrition.unsubscribe();
+                        }
+                    });
+                }
+            );
+            
+            /*let savedListByName$: Observable<SavedList> = this.tcSavedListFacade.getSavedListByName(true,values["listName"]);
+            savedListByName$.subscribe(
+                savedList => {
+                    console.log(savedList.id);
+                }
+            );*/
+            /*let list: SavedList;
             this.savedLists$.subscribe(
                 savedLists => {
                     savedLists.forEach(list => {
@@ -115,7 +137,7 @@ export class TcSavedListModalComponent implements OnInit {
                         }
                     });
                 }
-            );
+            );*/
 
         }else{
             this.tcSavedListFacade.addProduct(this.selectedList, values["productId"]);
