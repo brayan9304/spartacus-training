@@ -1,7 +1,7 @@
 
 .saved-list__container{
   border-bottom: 1px solid #ccc;
-  padding: 30px;
+  padding: 40px;
   position: relative;
 
   .saved-list__name{
@@ -16,37 +16,17 @@
 
   .saved-list__btn-group{
     position: absolute;
-    top: calc(50% - 24px);
+    top: 15%;
     right: 0px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-
-    button:hover{
-      color:var(--cx-color-primary);
-    }
-
-    a{
-      color: black;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-
-    }
-    a:hover {
-      color: var(--cx-color-info);
-    }
-
-    .btn {
-      //padding: 0px;
-      //margin: 12px 11px 12px;
-    }
+    width: 20%;
   }
 }
 
 .create-new-list{
-  margin: 20px 0px 20px auto;
+  margin: 40px 0px 20px auto;
   width: 20%;
 }
 

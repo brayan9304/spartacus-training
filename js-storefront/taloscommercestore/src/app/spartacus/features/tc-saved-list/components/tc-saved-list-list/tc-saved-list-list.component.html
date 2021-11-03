@@ -9,12 +9,12 @@
         {{savedList.description}}
       </div>
       <div class='saved-list__btn-group'>
-        <a class='btn' [routerLink]="['/my-account/saved-lists/detail']" [queryParams]="{listId:savedList.id}">
-          <cx-icon [type]='iconTypes.PENCIL'></cx-icon>
+        <a class='btn btn-primary btn-block' [routerLink]="['/my-account/saved-lists/detail']" [queryParams]="{listId:savedList.id}">
+          {{ 'savedListList.editSavedList' | cxTranslate }}
         </a>
-        <button type='button' class='btn'
+        <button type='button' class='btn btn-info btn-block'
                 (click)='handleDeleteSavedListAction(savedList.id)'>
-          <cx-icon [type]='iconTypes.TRASH'></cx-icon>
+          {{ 'savedListList.deleteSavedList' | cxTranslate }}
         </button>
       </div>
     </div>
