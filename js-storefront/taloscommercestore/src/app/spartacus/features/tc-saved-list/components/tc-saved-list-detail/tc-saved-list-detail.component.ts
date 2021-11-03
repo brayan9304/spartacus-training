@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TcSavedListFacade } from '../../root';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { SavedListDetail } from '../../core';
-import { Product } from '@spartacus/core';
-import { CurrentProductService, ICON_TYPE } from '@spartacus/storefront';
-
+import { CurrentProductService } from '@spartacus/storefront';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'tc-saved-list-detail',
@@ -12,27 +12,24 @@ import { CurrentProductService, ICON_TYPE } from '@spartacus/storefront';
   styleUrls: ['./tc-saved-list-detail.component.scss'],
 })
 export class TcSavedListDetailComponent implements OnInit, OnDestroy {
-
-  iconTypes = ICON_TYPE;
-  products: Product[] = [];
-  savedlistDetail$: Observable<SavedListDetail>;
-  queryString = window.location.search;
-  urlParams = new URLSearchParams(this.queryString);
-  listId = this.urlParams.get('listId');
-  product$: Observable<Product> = this.currentProductService.getProduct();
+  detail$: SavedListDetail;
   imageProductFormat: number = 2;
+  subscription: Subscription;
+  loading$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultLoading();
+
 
   constructor(
     protected tcSavedListDetailFacade: TcSavedListFacade,
-    protected currentProductService: CurrentProductService
+    protected currentProductService: CurrentProductService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.savedlistDetail$ = this.tcSavedListDetailFacade.getSavedListDetail(true, this.listId);
-    this.savedlistDetail$.subscribe((detail) => (this.products = detail.products));
-    //this.savedlistDetail$.subscribe((detail) => console.log(detail));
-    //this.tcSavedListDetailFacade.addProduct("Test 2", "137220");
-    //this.tcSavedListDetailFacade.deleteProduct("00000000", "3357888")
+    this.route.queryParams.pipe(map((params) => params.listId)).subscribe((listId) => {
+      if(listId){
+       this.subscription = this.tcSavedListDetailFacade.getSavedListDetail(true, listId).subscribe((detail) => (this.detail$ = detail));
+      }
+    });
   }
 
   handleDeleteProductAction(listId: string, productCode: string): void {
@@ -40,7 +37,8 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+
+    this.subscription.unsubscribe();
     location.reload();
   }
-
 }
