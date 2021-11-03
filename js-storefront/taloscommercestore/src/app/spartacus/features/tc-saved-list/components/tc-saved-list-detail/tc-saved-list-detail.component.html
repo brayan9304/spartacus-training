@@ -1,10 +1,21 @@
-<div class="ld-page-layout">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-12">
-        <div class="ld-product-container">
-          <ng-container *ngIf="savedlistDetail$ | async as savedlistDetail">
-            <div *ngFor=" let product of products" class="ld-product-list">
+<div *ngIf="loading$ | async; else savedlistDetailProduct">
+  <div class='cx-spinner'>
+    <cx-spinner></cx-spinner>
+  </div>
+</div>
+
+
+<ng-template #savedlistDetailProduct>
+  <div class="ld-detail-title">
+    <h1> {{detail$.name | titlecase}} </h1>
+    <p> {{detail$.description | titlecase}} </p>
+  </div>
+  <div class="ld-page-layout">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-12">
+          <div class="ld-product-container">
+            <div *ngFor=" let product of detail$.products" class="ld-product-list">
               <div class="row ld-product-list-item">
                 <div class="col-12 col-md-4">
                   <a class="ld-product-image-container" href="/product/{{product.code}}/{{product.name}}">
@@ -41,9 +52,9 @@
                 </div>
               </div>
             </div>
-          </ng-container>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</ng-template>
