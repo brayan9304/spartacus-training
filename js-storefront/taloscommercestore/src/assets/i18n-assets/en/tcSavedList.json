@@ -25,7 +25,9 @@
   "savedListList": {
     "createNewSavedList": "Create new list ",
     "editSavedList": "Edit",
-    "deleteSavedList": "Delete"
+    "deleteSavedList": "Delete",
+    "noSavedLists": "You have not created a saved list yet",
+    "error": "An error has occurred!"
   },
   "savedListDetail": {
     "removeProduct": "Remove Product For List"
