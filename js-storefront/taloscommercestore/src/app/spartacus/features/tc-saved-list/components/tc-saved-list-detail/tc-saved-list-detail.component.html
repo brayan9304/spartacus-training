@@ -20,14 +20,15 @@
                 <div *ngFor=" let product of detail$.products" class="ld-product-list">
                   <div class="row ld-product-list-item">
                     <div class="col-12 col-md-4">
-                      <a class="ld-product-image-container" href="/product/{{product.code}}/{{product.name}}">
+                      <a class="ld-product-image-container"
+                        [routerLink]="{ cxRoute: 'product', params: product } | cxUrl">
                         <cx-media class="product-image" [container]="product.images[imageProductFormat]"
                           format="product">
                         </cx-media>
                       </a>
                     </div>
                     <div class="col-12 col-md-8">
-                      <a class="ld-product-name" href="/product/{{product.code}}/{{product.name}}">
+                      <a class="ld-product-name" [routerLink]="{ cxRoute: 'product', params: product } | cxUrl">
                         {{product.name}}
                       </a>
                       <cx-star-rating [rating]="product.averageRating">

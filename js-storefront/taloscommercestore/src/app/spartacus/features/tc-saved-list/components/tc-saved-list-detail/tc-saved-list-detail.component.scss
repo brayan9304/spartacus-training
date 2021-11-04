@@ -43,6 +43,10 @@
         text-decoration: none;
       }
 
+      .ld-product-name:hover {
+        color: var(--cx-color-primary);
+      }
+
       .ld-product-price {
         font-size: var(--cx-font-size, 1.375rem);
         font-weight: var(--cx-font-weight-semi);
@@ -56,8 +60,6 @@
         margin-bottom: 20px;
       }
     }
-
-
   }
 }
 
@@ -65,4 +67,3 @@
   margin: 20px 50px 0 50px;
   border-radius: 10px;
 }
-

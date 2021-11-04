@@ -19,7 +19,6 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
   success$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultSuccess();
   error$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultError();
 
-
   constructor(
     protected tcSavedListDetailFacade: TcSavedListFacade,
     protected currentProductService: CurrentProductService,
@@ -28,8 +27,10 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.queryParams.pipe(map((params) => params.listId)).subscribe((listId) => {
-      if(listId){
-       this.subscription = this.tcSavedListDetailFacade.getSavedListDetail(true, listId).subscribe((detail) => (this.detail$ = detail));
+      if (listId) {
+        this.subscription = this.tcSavedListDetailFacade
+          .getSavedListDetail(true, listId)
+          .subscribe((detail) => (this.detail$ = detail));
       }
     });
   }
@@ -39,7 +40,6 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
     this.subscription.unsubscribe();
     location.reload();
   }
