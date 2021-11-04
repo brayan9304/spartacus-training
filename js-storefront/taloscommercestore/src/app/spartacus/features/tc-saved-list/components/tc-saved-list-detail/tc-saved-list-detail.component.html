@@ -46,7 +46,7 @@
                           </cx-add-to-cart>
                           <div class="ld-product-button-remove">
                             <button class="btn btn-info btn-block"
-                              (click)="handleDeleteProductAction(listId, product.code)">
+                              (click)="handleDeleteProductAction(detail$.id, product.code)">
                               {{ 'savedListDetail.removeProduct' | cxTranslate }}
                             </button>
                           </div>
