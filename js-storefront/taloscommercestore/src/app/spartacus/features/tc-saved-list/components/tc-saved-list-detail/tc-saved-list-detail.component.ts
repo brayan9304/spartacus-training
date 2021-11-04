@@ -16,6 +16,8 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
   imageProductFormat: number = 2;
   subscription: Subscription;
   loading$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultLoading();
+  success$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultSuccess();
+  error$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultError();
 
 
   constructor(
