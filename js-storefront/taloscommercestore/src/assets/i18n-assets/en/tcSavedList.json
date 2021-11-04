@@ -11,7 +11,7 @@
   },
   "savedListModal": {
     "addProductToList": "Add product to list",
-    "listCreated": "List created",
+    "listCreated": "Select a saved list",
     "createNewList": "Create a new list",
     "listRequired": "List is required",
     "listName": "List name",
