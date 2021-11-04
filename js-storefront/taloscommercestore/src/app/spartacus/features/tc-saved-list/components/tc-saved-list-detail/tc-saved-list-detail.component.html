@@ -65,13 +65,13 @@
 
   <ng-template #emptySavedlistDetailProduct>
     <div class="alert alert-info ld-product-alert mb-5" role="alert">
-      You have no  products  in this list yet!
+      {{ 'savedListDetail.notProductsAlert' | cxTranslate }}
     </div>
   </ng-template>
 
   <ng-container *ngIf="error$ | async">
     <div class="alert alert-danger ld-product-alert mb-5" role="alert">
-      Error! There is not an existent list with that ID
+      {{ 'savedListDetail.errorIdAlert' | cxTranslate }}
     </div>
   </ng-container>
 
