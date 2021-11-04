@@ -1,27 +1,50 @@
 
 <ng-container *ngIf='savedLists$ | async as savedLists'>
-  <div class='container'>
-    <div class='saved-list__container' *ngFor=' let savedList of savedLists' >
-      <a [routerLink]="['/my-account/saved-lists/detail']" [queryParams]="{listId:savedList.id}" class='saved-list__name'>
-        {{savedList.name}}
-      </a>
-      <div class='saved-list__description'>
-        {{savedList.description}}
-      </div>
-      <div class='saved-list__btn-group'>
-        <a class='btn btn-primary btn-block' [routerLink]="['/my-account/saved-lists/detail']" [queryParams]="{listId:savedList.id}">
-          {{ 'savedListList.editSavedList' | cxTranslate }}
-        </a>
-        <button type='button' class='btn btn-info btn-block'
-                (click)='handleDeleteSavedListAction(savedList.id)'>
-          {{ 'savedListList.deleteSavedList' | cxTranslate }}
-        </button>
-      </div>
-    </div>
-    <div class='create-new-list'>
-      <tc-saved-list-modal [modalType]=2></tc-saved-list-modal>
+  <div *ngIf='loading$ | async; else savedListsList'>
+    <div class='cx-spinner'>
+      <cx-spinner></cx-spinner>
     </div>
   </div>
+
+  <ng-template #savedListsList>
+    <div class='container'>
+      <ng-container
+        *ngIf='savedLists?.length > 0; else emptySavedLists'>
+        <div class='saved-list__container' *ngFor=' let savedList of savedLists' >
+          <a [routerLink]="['/my-account/saved-lists/detail']" [queryParams]="{listId:savedList.id}" class='saved-list__name'>
+            {{savedList.name}}
+          </a>
+          <div class='saved-list__description'>
+            {{savedList.description}}
+          </div>
+          <div class='saved-list__btn-group'>
+            <a class='btn btn-primary btn-block' [routerLink]="['/my-account/saved-lists/detail']" [queryParams]="{listId:savedList.id}">
+              {{ 'savedListList.editSavedList' | cxTranslate }}
+            </a>
+            <button type='button' class='btn btn-info btn-block'
+                    (click)='handleDeleteSavedListAction(savedList.id)'>
+              {{ 'savedListList.deleteSavedList' | cxTranslate }}
+            </button>
+          </div>
+        </div>
+      </ng-container>
+        <div class='create-new-list'>
+          <tc-saved-list-modal [modalType]=2></tc-saved-list-modal>
+        </div>
+
+      <ng-template #emptySavedLists>
+        <div class='alert alert-info mb-5 noSavedLists' role='alert'>
+          {{ 'savedListList.noSavedLists' | cxTranslate }}
+        </div>
+      </ng-template>
+      <ng-container *ngIf='error$ | async'>
+        <div class='alert alert-danger mb-5' role='alert'>
+          {{ 'savedListList.error' | cxTranslate }}
+        </div>
+      </ng-container>
+
+    </div>
+  </ng-template>
 </ng-container>
 
 

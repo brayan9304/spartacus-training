@@ -13,28 +13,17 @@ export class TcSavedListListComponent implements OnInit {
   iconTypes = ICON_TYPE;
   lists: SavedList[];
   savedLists$: Observable<SavedList[]> = this.tcSavedListFacade.getSavedLists(true);
-
-    newList: SavedList = {
-      name: 'saved list 1',
-      description: 'This is a new list created through my page'
-    };
+  loading$: Observable<boolean> = this.tcSavedListFacade.getSavedListsResultLoading();
+  success$: Observable<boolean> = this.tcSavedListFacade.getSavedListsResultSuccess();
+  error$: Observable<boolean> = this.tcSavedListFacade.getSavedListsResultError();
 
   constructor(protected tcSavedListFacade: TcSavedListFacade) { }
-
-  handleCreateSavedListAction(): void {
-    this.tcSavedListFacade.createSavedList(this.newList);
-  }
 
   handleDeleteSavedListAction(listId: string): void {
     this.tcSavedListFacade.deleteSavedList(listId);
   }
 
   ngOnInit(): void {
-    // this.tcSavedListFacade.createSavedList(this.list);
-    // this.tcSavedListFacade.deleteSavedList('00000008');
-    // this.savedLists$.subscribe(data => console.log(data))
-    // console.log(this.lists)
-
   }
 
 }
