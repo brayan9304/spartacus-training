@@ -6,46 +6,51 @@
 
 
 <ng-template #savedlistDetailProduct>
-  <div class="ld-detail-title">
-    <h1> {{detail$.name | titlecase}} </h1>
-    <p> {{detail$.description | titlecase}} </p>
-  </div>
-  <div class="ld-page-layout">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-12">
-          <div class="ld-product-container">
-            <div *ngFor=" let product of detail$.products" class="ld-product-list">
-              <div class="row ld-product-list-item">
-                <div class="col-12 col-md-4">
-                  <a class="ld-product-image-container" href="/product/{{product.code}}/{{product.name}}">
-                    <cx-media class="product-image" [container]="product.images[imageProductFormat]" format="product">
-                    </cx-media>
-                  </a>
-                </div>
-                <div class="col-12 col-md-8">
-                  <a class="ld-product-name" href="/product/{{product.code}}/{{product.name}}">
-                    {{product.name}}
-                  </a>
-                  <cx-star-rating [rating]="product.averageRating">
-                  </cx-star-rating>
-                  <div class="row">
-                    <div class="col-12 col-md-6">
-                      <div aria-label="Product Price" class="ld-product-price">
-                        {{ product.price?.formattedValue }}
-                      </div>
-                      <p class="ld-product-summary">
-                        {{product.summary}}
-                      </p>
+  <ng-container *ngIf="success$ | async">
+    <div class="ld-detail-title">
+      <h1> {{detail$.name | titlecase}} </h1>
+      <p> {{detail$.description | titlecase}} </p>
+    </div>
+    <ng-container *ngIf=" detail$.products?.length > 0; else emptySavedlistDetailProduct">
+      <div class="ld-page-layout">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-lg-12">
+              <div class="ld-product-container">
+                <div *ngFor=" let product of detail$.products" class="ld-product-list">
+                  <div class="row ld-product-list-item">
+                    <div class="col-12 col-md-4">
+                      <a class="ld-product-image-container" href="/product/{{product.code}}/{{product.name}}">
+                        <cx-media class="product-image" [container]="product.images[imageProductFormat]"
+                          format="product">
+                        </cx-media>
+                      </a>
                     </div>
-                    <div class="col-12 col-md-6">
-                      <cx-add-to-cart [showQuantity]="false" [product]="product" [productCode]="product.code">
-                      </cx-add-to-cart>
-                      <div class="ld-product-button-remove">
-                        <button class="btn btn-info btn-block"
-                          (click)="handleDeleteProductAction(listId, product.code)">
-                          {{ 'savedListDetail.removeProduct' | cxTranslate }}
-                        </button>
+                    <div class="col-12 col-md-8">
+                      <a class="ld-product-name" href="/product/{{product.code}}/{{product.name}}">
+                        {{product.name}}
+                      </a>
+                      <cx-star-rating [rating]="product.averageRating">
+                      </cx-star-rating>
+                      <div class="row">
+                        <div class="col-12 col-md-6">
+                          <div aria-label="Product Price" class="ld-product-price">
+                            {{ product.price?.formattedValue }}
+                          </div>
+                          <p class="ld-product-summary">
+                            {{product.summary}}
+                          </p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <cx-add-to-cart [showQuantity]="false" [product]="product" [productCode]="product.code">
+                          </cx-add-to-cart>
+                          <div class="ld-product-button-remove">
+                            <button class="btn btn-info btn-block"
+                              (click)="handleDeleteProductAction(listId, product.code)">
+                              {{ 'savedListDetail.removeProduct' | cxTranslate }}
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -55,6 +60,20 @@
           </div>
         </div>
       </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #emptySavedlistDetailProduct>
+    <div class="alert alert-info ld-product-alert mb-5" role="alert">
+      You have no  products  in this list yet!
     </div>
-  </div>
+  </ng-template>
+
+  <ng-container *ngIf="error$ | async">
+    <div class="alert alert-danger ld-product-alert mb-5" role="alert">
+      Error! There is not an existent list with that ID
+    </div>
+  </ng-container>
+
+
 </ng-template>
