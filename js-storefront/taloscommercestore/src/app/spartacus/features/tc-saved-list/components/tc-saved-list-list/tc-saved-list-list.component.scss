@@ -23,6 +23,10 @@
     flex-direction: column;
     align-items: center;
     width: 20%;
+
+    .btn{
+      //font-size: 1.5vw
+    }
   }
 }
 
@@ -33,10 +37,57 @@
 
 .noSavedLists{
   margin-top: 20px;
+  border-radius: var(--cx-buttons-border-radius);
 }
+
 
 @media (max-width: 992px){
   .create-new-list{
     width: 100%;
   }
+}
+
+@media (min-width: 992px){
+  .btn{
+    font-size: 1.125rem;
+  }
+  .saved-list__container{
+    padding-right: 190px;
+  }
+}
+
+@media (min-width: 768px){
+  .btn{
+    font-size: 1rem;
+  }
+  .saved-list__container{
+    padding-right: 150px;
+  }
+}
+
+
+@media (max-width: 768px){
+  .btn{
+    font-size: 0.95rem;
+  }
+  a.btn{
+    padding-top: initial;
+  }
+  .saved-list__container{
+    padding-right: 110px;
+  }
+
+}
+
+@media (max-width: 440px){
+  .btn{
+    font-size: 0.7rem;
+  }
+  a.btn{
+    padding: 8px;
+  }
+  .saved-list__container{
+    padding-right: 110px;
+  }
+
 }

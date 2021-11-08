@@ -20,17 +20,17 @@
     "listDescription": "List description",
     "writeListDescription": "Write list description",
     "addToList": "Add to list",
-    "createList": "Create list"
+    "createList": "Create new list"
   },
   "savedListList": {
     "createNewSavedList": "Create new list ",
-    "editSavedList": "Edit",
+    "viewSavedList": "View products",
     "deleteSavedList": "Delete",
     "noSavedLists": "You have not created a saved list yet",
     "error": "An error has occurred!"
   },
   "savedListDetail": {
-    "removeProduct": "Remove Product For List",
+    "removeProduct": "Remove",
     "notProductsAlert": "You have no  products  in this list yet!",
     "errorIdAlert": "Error! There is not an existent list with that ID"
   }
