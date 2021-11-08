@@ -22,19 +22,26 @@
                     <div class="col-12 col-md-4">
                       <a class="ld-product-image-container"
                         [routerLink]="{ cxRoute: 'product', params: product } | cxUrl">
-                        <cx-media class="product-image" [container]="product.images[imageProductFormat]"
+                        <div *ngIf=" product.images; else imageMissing ">
+                          <cx-media class="product-image" [container]="product.images[imageProductFormat]" [alt]="product.name"
+                            format="product">
+                          </cx-media>
+                        </div>
+                        <ng-template #imageMissing>
+                          <cx-media class="product-image" [container]="product.images?.PRIMARY" [alt]="product.name"
                           format="product">
                         </cx-media>
+                        </ng-template>
                       </a>
                     </div>
                     <div class="col-12 col-md-8">
-                      <a class="ld-product-name" [routerLink]="{ cxRoute: 'product', params: product } | cxUrl">
-                        {{product.name}}
-                      </a>
-                      <cx-star-rating [rating]="product.averageRating">
-                      </cx-star-rating>
-                      <div class="row">
+                      <div class="row ld-product-detail-container">
                         <div class="col-12 col-md-6">
+                          <a class="ld-product-name" [routerLink]="{ cxRoute: 'product', params: product } | cxUrl">
+                            {{product.name}}
+                          </a>
+                          <cx-star-rating [rating]="product.averageRating">
+                          </cx-star-rating>
                           <div aria-label="Product Price" class="ld-product-price">
                             {{ product.price?.formattedValue }}
                           </div>
