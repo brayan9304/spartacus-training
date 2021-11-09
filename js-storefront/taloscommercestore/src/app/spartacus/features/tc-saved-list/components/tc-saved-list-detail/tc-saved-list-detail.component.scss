@@ -20,6 +20,8 @@
     margin: 0 0 25px 0;
 
     &-item {
+
+
       .ld-product-image-container {
         display: block;
         text-align: center;
@@ -30,6 +32,10 @@
           height: 100%;
           display: block;
         }
+      }
+
+      .ld-product-detail-container {
+        align-items: center;
       }
 
       .ld-product-name {

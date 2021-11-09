@@ -28,9 +28,10 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.queryParams.pipe(map((params) => params.listId)).subscribe((listId) => {
       if (listId) {
-        this.subscription = this.tcSavedListDetailFacade
-          .getSavedListDetail(true, listId)
-          .subscribe((detail) => (this.detail$ = detail));
+        this.subscription = this.tcSavedListDetailFacade.getSavedListDetail(true, listId).subscribe((detail) => {
+          this.detail$ = detail;
+          console.log(this.detail$);
+        });
       }
     });
   }
