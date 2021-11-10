@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-12 col-lg-12">
               <div class="ld-product-container">
-                <div *ngFor=" let product of products$ | filter:term" class="ld-product-list">
+                <div *ngFor=" let product of products$ | filter:term:searchType" class="ld-product-list">
                   <div class="row ld-product-list-item">
                     <div class="col-12 col-md-4">
                       <a class="ld-product-image-container"

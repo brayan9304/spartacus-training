@@ -21,6 +21,7 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
   success$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultSuccess();
   error$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultError();
   term: string = '';
+  searchType: string = "detail";
 
   constructor(
     protected tcSavedListDetailFacade: TcSavedListFacade,

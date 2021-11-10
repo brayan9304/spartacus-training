@@ -17,6 +17,7 @@ export class TcSavedListListComponent implements OnInit {
   success$: Observable<boolean> = this.tcSavedListFacade.getSavedListsResultSuccess();
   error$: Observable<boolean> = this.tcSavedListFacade.getSavedListsResultError();
   term: string = '';
+  searchType: string = "list";
 
   constructor(protected tcSavedListFacade: TcSavedListFacade) { }
 
