@@ -5,10 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: string, data: any): any {
-    if(value.length )
-
-    return ;
+  transform(items: any, arg: any): any {
+    const result = [];
+    for ( const item of items){
+      if ( item.name.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        result.push(item);
+      }
+    }
+    return result
   }
 
 }

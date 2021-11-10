@@ -8,6 +8,7 @@ import { FilterPipe } from './filter.pipe';
   declarations: [FilterPipe],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [FilterPipe]
 })
 export class PipesModule { }

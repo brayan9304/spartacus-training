@@ -9,10 +9,8 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./tc-saved-list-search-bar.component.scss']
 })
 export class TcSavedListSearchBarComponent implements OnInit {
-  @Output() onEnter: EventEmitter<string> = new EventEmitter();
-  @Output() onDebounce: EventEmitter<string> = new EventEmitter();
 
-  @Input() placeholder: string = '';
+  @Output() onDebounce: EventEmitter<string> = new EventEmitter();
 
   debouncer: Subject<string> = new Subject();
 
@@ -28,12 +26,10 @@ export class TcSavedListSearchBarComponent implements OnInit {
   }
 
   search() {
-    this.onEnter.emit(this.term);
+    this.debouncer.next(this.term);
   }
 
-  pressedKey() {
-    this.debouncer.next(this.term)
-  }
+
 
 
 }
