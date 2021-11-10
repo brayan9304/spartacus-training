@@ -18,7 +18,6 @@ import { tcSavedListTranslationChunksConfig } from 'src/app/spartacus/features/t
     NgSelectModule, 
     FormsModule,
     I18nModule,
-    IconModule,
   ],
   exports: [
     TcSavedListModalComponent

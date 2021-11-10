@@ -42,7 +42,6 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
 
   search(term: string) {
     this.term = term;
-    //console.log(this.term);
   }
 
   handleDeleteProductAction(listId: string, productCode: string): void {

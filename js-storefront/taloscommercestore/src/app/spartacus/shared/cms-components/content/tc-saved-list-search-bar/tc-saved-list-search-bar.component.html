@@ -1,5 +1,4 @@
-
-  <span>
-    <input type="text" pInputText name="term" (input)="search()" [(ngModel)]="term" />
-  </span>
-
+<label class="tc-search__box--container">
+  <input type="text" pInputText name="term" (input)="search()" [(ngModel)]="term" placeholder="Search here..." />
+  <cx-icon [type]='iconTypes.SEARCH' class="close-icon"></cx-icon>
+</label>

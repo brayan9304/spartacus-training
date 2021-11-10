@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ICON_TYPE } from '@spartacus/storefront';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -10,6 +11,7 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class TcSavedListSearchBarComponent implements OnInit {
 
+  iconTypes = ICON_TYPE;
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();
 
   debouncer: Subject<string> = new Subject();

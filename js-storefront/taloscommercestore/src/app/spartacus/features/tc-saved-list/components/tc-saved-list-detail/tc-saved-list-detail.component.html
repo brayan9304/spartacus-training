@@ -12,10 +12,11 @@
       <h1> {{detail$.name | titlecase}} </h1>
       <p> {{detail$.description | titlecase}} </p>
     </div>
-    <tc-saved-list-search-bar (onDebounce)="search($event)" ></tc-saved-list-search-bar>
+    
     <ng-container *ngIf=" products$?.length > 0; else emptySavedlistDetailProduct">
       <div class="ld-page-layout">
         <div class="container">
+          <tc-saved-list-search-bar (onDebounce)="search($event)" ></tc-saved-list-search-bar>
           <div class="row">
             <div class="col-12 col-lg-12">
               <div class="ld-product-container">

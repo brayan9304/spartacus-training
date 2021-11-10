@@ -5,12 +5,15 @@ import { AuthGuard, CmsConfig, I18nModule, provideDefaultConfig } from '@spartac
 import { RouterModule } from '@angular/router';
 import { IconModule, SpinnerModule } from '@spartacus/storefront';
 import { TcSavedListModalModule } from '../../../../shared/cms-components/content/tc-saved-list-modal/tc-saved-list-modal.module';
+import { PipesModule, TcSavedListSearchBarModule } from 'src/app/spartacus/shared';
 
 
 
 @NgModule({
   declarations: [TcSavedListListComponent],
   imports: [
+    PipesModule,
+    TcSavedListSearchBarModule,
     CommonModule,
     RouterModule,
     IconModule,

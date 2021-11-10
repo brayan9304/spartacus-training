@@ -1,7 +1,7 @@
 
 .saved-list__container{
   border-bottom: 1px solid #ccc;
-  padding: 40px;
+  padding: 40px 40px 40px 20px;
   position: relative;
 
   .saved-list__name{
@@ -23,11 +23,12 @@
     flex-direction: column;
     align-items: center;
     width: 20%;
-
-    .btn{
-      //font-size: 1.5vw
-    }
   }
+
+}
+
+.search-bar{
+  margin-top: 50px;
 }
 
 .create-new-list{
