@@ -1,0 +1,7 @@
+<p>tc-saved-list-search-bar works!</p>
+
+<form (ngSubmit)="search()">
+  <span>
+    <input type="text" pInputText name="term" (input)="pressedKey()" [(ngModel)]="term" />
+  </span>
+</form>

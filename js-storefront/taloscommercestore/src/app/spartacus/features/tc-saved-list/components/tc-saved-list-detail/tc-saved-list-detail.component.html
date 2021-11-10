@@ -4,6 +4,7 @@
   </div>
 </div>
 
+<tc-saved-list-search-bar (onDebounce)="search($event)" ></tc-saved-list-search-bar>
 
 <ng-template #savedlistDetailProduct>
   <ng-container *ngIf="success$ | async">

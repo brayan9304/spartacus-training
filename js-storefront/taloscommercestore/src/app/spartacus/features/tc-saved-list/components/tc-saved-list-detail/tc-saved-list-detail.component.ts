@@ -18,6 +18,7 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
   loading$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultLoading();
   success$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultSuccess();
   error$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultError();
+  term: string = '';
 
   constructor(
     protected tcSavedListDetailFacade: TcSavedListFacade,
@@ -34,6 +35,11 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
         });
       }
     });
+  }
+
+  search(term: string) {
+    this.term = term;
+    //console.log(this.term);
   }
 
   handleDeleteProductAction(listId: string, productCode: string): void {

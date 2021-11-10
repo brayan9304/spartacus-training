@@ -6,10 +6,12 @@ import { IconModule, MediaModule, SpinnerModule } from '@spartacus/storefront';
 import { StarRatingModule } from '@spartacus/storefront';
 import { AddToCartModule } from '@spartacus/storefront';
 import { RouterModule } from '@angular/router';
+import { TcSavedListSearchBarModule } from 'src/app/spartacus/shared';
 
 @NgModule({
   declarations: [TcSavedListDetailComponent],
   imports: [
+    TcSavedListSearchBarModule,
     AddToCartModule,
     CommonModule,
     MediaModule,
