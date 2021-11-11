@@ -33,5 +33,8 @@
     "removeProduct": "Remove",
     "notProductsAlert": "You have no  products  in this list yet!",
     "errorIdAlert": "Error! There is not an existent list with that ID"
+  },
+  "savedListSearchBar": {
+    "placeholder": "Search here..."
   }
 }
