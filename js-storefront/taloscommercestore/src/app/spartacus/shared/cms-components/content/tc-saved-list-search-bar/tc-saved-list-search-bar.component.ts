@@ -14,6 +14,8 @@ export class TcSavedListSearchBarComponent implements OnInit {
   iconTypes = ICON_TYPE;
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();
 
+  @Input() placeholder: any = "Search here..."
+
   debouncer: Subject<string> = new Subject();
 
   term: string = '';
@@ -21,9 +23,9 @@ export class TcSavedListSearchBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
     this.debouncer.pipe(debounceTime(300)).subscribe(( value ) => {
       this.onDebounce.emit( value );
-      console.log(value);
     });
   }
 

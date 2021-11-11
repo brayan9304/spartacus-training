@@ -35,7 +35,6 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
         this.subscription = this.tcSavedListDetailFacade.getSavedListDetail(true, listId).subscribe((detail) => {
           this.detail$ = detail;
           this.products$ = detail.products;
-          console.log(this.detail$);
         });
       }
     });

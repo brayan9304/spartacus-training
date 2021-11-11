@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TcSavedListSearchBarComponent } from './tc-saved-list-search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { IconModule } from '@spartacus/storefront';
+import { I18nModule, provideConfig } from '@spartacus/core';
+import { tcSavedListTranslationChunksConfig } from 'src/app/spartacus/features/tc-saved-list/assets';
 
 
 
@@ -11,8 +13,19 @@ import { IconModule } from '@spartacus/storefront';
   imports: [
     CommonModule,
     FormsModule,
-    IconModule
+    IconModule,
+    I18nModule
   ],
-  exports: [TcSavedListSearchBarComponent]
+  exports: [TcSavedListSearchBarComponent],
+  providers: [
+    provideConfig({
+      i18n: {
+        backend: {
+          loadPath: 'assets/i18n-assets/{{lng}}/{{ns}}.json',
+        },
+        chunks: tcSavedListTranslationChunksConfig,
+      },
+    }),
+  ],
 })
 export class TcSavedListSearchBarModule { }
