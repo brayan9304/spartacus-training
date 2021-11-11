@@ -16,11 +16,17 @@ export class TcSavedListListComponent implements OnInit {
   loading$: Observable<boolean> = this.tcSavedListFacade.getSavedListsResultLoading();
   success$: Observable<boolean> = this.tcSavedListFacade.getSavedListsResultSuccess();
   error$: Observable<boolean> = this.tcSavedListFacade.getSavedListsResultError();
+  term: string = '';
+  searchType: string = "list";
 
   constructor(protected tcSavedListFacade: TcSavedListFacade) { }
 
   handleDeleteSavedListAction(listId: string): void {
     this.tcSavedListFacade.deleteSavedList(listId);
+  }
+
+  search(term: string) {
+    this.term = term;
   }
 
   ngOnInit(): void {

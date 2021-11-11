@@ -5,6 +5,7 @@ import { SavedListDetail } from '../../core';
 import { CurrentProductService } from '@spartacus/storefront';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Product } from '@spartacus/core';
 
 @Component({
   selector: 'tc-saved-list-detail',
@@ -13,11 +14,14 @@ import { map } from 'rxjs/operators';
 })
 export class TcSavedListDetailComponent implements OnInit, OnDestroy {
   detail$: SavedListDetail;
+  products$: Product[];
   imageProductFormat: number = 2;
   subscription: Subscription;
   loading$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultLoading();
   success$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultSuccess();
   error$: Observable<boolean> = this.tcSavedListDetailFacade.getSavedListDetailResultError();
+  term: string = '';
+  searchType: string = "detail";
 
   constructor(
     protected tcSavedListDetailFacade: TcSavedListFacade,
@@ -30,10 +34,15 @@ export class TcSavedListDetailComponent implements OnInit, OnDestroy {
       if (listId) {
         this.subscription = this.tcSavedListDetailFacade.getSavedListDetail(true, listId).subscribe((detail) => {
           this.detail$ = detail;
+          this.products$ = detail.products;
           console.log(this.detail$);
         });
       }
     });
+  }
+
+  search(term: string) {
+    this.term = term;
   }
 
   handleDeleteProductAction(listId: string, productCode: string): void {

@@ -5,19 +5,22 @@
 </div>
 
 
+
 <ng-template #savedlistDetailProduct>
   <ng-container *ngIf="success$ | async">
     <div class="ld-detail-title">
       <h1> {{detail$.name | titlecase}} </h1>
       <p> {{detail$.description | titlecase}} </p>
     </div>
-    <ng-container *ngIf=" detail$.products?.length > 0; else emptySavedlistDetailProduct">
+    
+    <ng-container *ngIf=" products$?.length > 0; else emptySavedlistDetailProduct">
       <div class="ld-page-layout">
         <div class="container">
+          <tc-saved-list-search-bar (onDebounce)="search($event)" ></tc-saved-list-search-bar>
           <div class="row">
             <div class="col-12 col-lg-12">
               <div class="ld-product-container">
-                <div *ngFor=" let product of detail$.products" class="ld-product-list">
+                <div *ngFor=" let product of products$ | filter:term:searchType" class="ld-product-list">
                   <div class="row ld-product-list-item">
                     <div class="col-12 col-md-4">
                       <a class="ld-product-image-container"
