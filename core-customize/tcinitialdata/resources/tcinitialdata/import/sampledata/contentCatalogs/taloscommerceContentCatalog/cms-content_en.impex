@@ -346,7 +346,7 @@ UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; con
 
 # Site Logo Component
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-                            ;                          ; SiteLogoComponent ; /images/theme/logo_talos_responsive.svg
+                            ;                          ; SiteLogoComponent ; /images/theme/perficient-inc-logo.svg
 
 # DSLR Category Page
 # Section 1
