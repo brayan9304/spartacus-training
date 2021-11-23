@@ -73,6 +73,7 @@ import { TcReferredCustomerFeatureModule } from './features/tc-referred-customer
 import { TcSavedListFeatureModule } from './features/tc-saved-list/tc-saved-list-feature.module';
 import { TcSavedListModule } from './features/tc-saved-list/tc-saved-list.module';
 import { TcProductListModule } from './features/product/components/tc-product-list/tc-product-list.module';
+import { TcFooterCustomNavigationModule } from './shared/cms-components/content';
 
 @NgModule({
   declarations: [],
@@ -163,7 +164,8 @@ import { TcProductListModule } from './features/product/components/tc-product-li
     TcReferredCustomerFeatureModule,
     TcSavedListFeatureModule,
     TcSavedListModule,
-    TcProductListModule
+    TcProductListModule,
+    TcFooterCustomNavigationModule
 
   ],
 })
