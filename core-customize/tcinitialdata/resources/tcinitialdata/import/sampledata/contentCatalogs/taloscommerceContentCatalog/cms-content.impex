@@ -1165,16 +1165,16 @@ INSERT_UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique =
 # the order of children is the same as the display order on the site
 INSERT_UPDATE CMSNavigationNode; uid[unique = true]  ; $contentCV[unique = true]; name                ; parent(uid, $contentCV); &nodeRef            ; children(uid, $contentCV)
                                ; FooterNavNode       ;                          ; Footer Pages        ; ElectronicsNavNode     ; FooterNavNode       ; SAPCommerceNavNode,SAPCustomerExperienceNavNode,FollowUsNavNode
-                               ; FooterCustomNavNode ;                          ; Footer Custom Pages ; ElectronicsNavNode     ; FooterCustomNavNode ; GetToKnowUsNavNode,ExploreIndustriesNavNode,PerficientNavNode
+                               ; FooterCustomNavNode ;                          ; Footer Custom Pages ; ElectronicsNavNode     ; FooterCustomNavNode ; PerficientNavNode,GetToKnowUsNavNode,ExploreIndustriesNavNode
 
 # children of FooterNavNode #
 INSERT_UPDATE CMSNavigationNode; uid[unique = true]           ; $contentCV[unique = true]; name                          ; &nodeRef                     ; children(uid, $contentCV); links(&linkRef)
                                ; SAPCommerceNavNode           ;                          ; SAP Commerce Cloud Pages      ; SAPCommerceNavNode           ; AboutSAPCommerceNavNode,FAQNavNode
                                ; SAPCustomerExperienceNavNode ;                          ; SAP Customer Experience Pages ; SAPCustomerExperienceNavNode ; AboutSAPCustomerExperienceNavNode,ContactUsNavNode
                                ; FollowUsNavNode              ;                          ; Follow Us Pages               ; FollowUsNavNode              ; AgileCommerceBlogNavNode,LinkedInNavNode,FacebookNavNode,TwitterNavNode
+                               ; PerficientNavNode            ;                          ; Perficient                    ; PerficientNavNode            ; LinkedInPerficientNavNode,YoutubePerficientNavNode,TwitterPerficientNavNode,FacebookPerficientNavNode,BlogsPerficientNavNode
                                ; GetToKnowUsNavNode           ;                          ; Get To Know Us                ; GetToKnowUsNavNode           ; WhoWeAreNavNode,WhatWeDoNavNode,SuccessStoriesNavNode,InsighsNavNode,CareersNavNode,InvestorsNavNode,NewsRoomNavNode,ContactNavNode
                                ; ExploreIndustriesNavNode     ;                          ; Explore Industries            ; ExploreIndustriesNavNode     ; AutomotiveNavNode,ConsumerMarketsNavNode,EnergyPlusUtilitiesNavNode,FinancialServiceNavNode,HealthcareNavNode,LifeSciencesNavNode,ManufacturingNavNode,TelecommunicatiosNavNode
-                               ; PerficientNavNode            ;                          ; Perficient                    ; PerficientNavNode            ; LinkedInPerficientNavNode,YoutubePerficientNavNode,TwitterPerficientNavNode,FacebookPerficientNavNode,BlogsPerficientNavNode
 
 # children of above navigation nodes #
 INSERT_UPDATE CMSNavigationNode; uid[unique = true]                ; $contentCV[unique = true]; name                          ; &nodeRef; children(uid, $contentCV); links(&linkRef);
@@ -1596,8 +1596,8 @@ INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = tru
                                    ;                          ; NoticeTextParagraph ; Notice Text Paragraph ; NoticeTextParagraph ;
 
 UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid, $contentCV)
-    #              ;                          ; FooterSlot        ; FooterNavigationComponent,AnonymousConsentOpenDialogComponent,NoticeTextParagraph,AnonymousConsentManagementBannerComponent
-                  ;                          ; FooterSlot  ; FooterCustomNavigationComponent,AnonymousConsentOpenDialogComponent,NoticeTextParagraph,AnonymousConsentManagementBannerComponent
+#              ;                          ; FooterSlot        ; FooterNavigationComponent,AnonymousConsentOpenDialogComponent,NoticeTextParagraph,AnonymousConsentManagementBannerComponent
+                  ;                          ; FooterSlot        ; FooterCustomNavigationComponent,AnonymousConsentOpenDialogComponent,NoticeTextParagraph,AnonymousConsentManagementBannerComponent
 
 ###### My Company Menu Update ######
 ## MyCompanyComponent is not in HeaderLinksSlot any more
