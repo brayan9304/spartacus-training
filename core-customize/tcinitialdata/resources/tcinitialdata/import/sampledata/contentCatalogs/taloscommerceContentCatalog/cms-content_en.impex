@@ -80,6 +80,8 @@ UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]          
                        ;                          ; TwitterPerficientLink          ; "Twitter Perficient"
                        ;                          ; FacebookPerficientLink         ; "Facebook Perficient"
                        ;                          ; BlogsPerficientLink            ; "Blogs Perficient"
+                       ;                          ; PrivacyPolicyLink              ; "Privacy Policy"
+                       ;                          ; CustomerSecurityStatementLink  ; "Customer Security Statement"
 
 # Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; &imageRef                                ; folder(qualifier)[default = 'images']; altText
@@ -103,6 +105,7 @@ UPDATE FooterComponent; $contentCV[unique = true]; uid[unique = true]; notice[la
 # CMS Paragraph Component (Contact information)
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
                             ;                          ; ContactInfo       ; "Call us: +1 302 295 5067"
+#                            ;                          ; NoticeTextParagraph ; "© 2021 Perficient Inc, All Rights Reserved"
 
 # CMS ProductReferences Components
 UPDATE ProductReferencesComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
@@ -146,7 +149,7 @@ UPDATE CMSNavigationNode; $contentCV[unique = true]; uid[unique = true]         
                         ;                          ; GetToKnowUsNavNode           ; "Get To Know Us"
                         ;                          ; ExploreIndustriesNavNode     ; "Explore Industries"
                         ;                          ; PerficientNavNode            ; "Perficient"
-
+                        ;                          ; FooterBottomNavNode          ; "© 2021 Perficient Inc, All Rights Reserved"
 # Electronics FAQ Page 
 
 # CMS Paragraph Component (Contact information)

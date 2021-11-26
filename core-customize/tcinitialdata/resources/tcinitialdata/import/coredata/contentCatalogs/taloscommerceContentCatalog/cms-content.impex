@@ -595,7 +595,6 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]     ; n
                          ;                          ; ProductSummarySlot     ; Product Summary Slot            ; true
                          ;                          ; CheckoutHeaderSlot     ; Checkout Header Slot            ; true
                          ;                          ; CheckoutFooterSlot     ; Checkout Footer Slot            ; true
-#                     ;                          ; FooterCustomSlot       ; Footer Custom Slot              ; true
 
 
 
@@ -943,7 +942,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; HomepageLink-SavedListsPage           ; HomepageNavLink        ;                                                                                 ; HomepageNavLinkSlot                        ; true
                                     ;                          ; NavigationBar-SavedListsPage          ; NavigationBar          ;                                                                                 ; NavigationBarSlot                          ; true
                                     ;                          ; MiniCart-SavedListsPage               ; MiniCart               ;                                                                                 ; MiniCartSlot                               ; true
-                                    ;                          ; CustomFooter-SavedListsPage           ; Footer                 ;                                                                                 ; FooterCustomSlot                           ; true
+                                    ;                          ; Footer-SavedListsPage                 ; Footer                 ;                                                                                 ; FooterSlot                                 ; true
                                     ;                          ; HeaderLinks-SavedListsPage            ; HeaderLinks            ;                                                                                 ; HeaderLinksSlot                            ; true
                                     ;                          ; SearchBox-SavedListsPage              ; SearchBox              ;                                                                                 ; SearchBoxSlot                              ; true
                                     ;                          ; TopHeaderSlot-SavedListsPage          ; TopHeaderSlot          ;                                                                                 ; TopHeaderSlot                              ; true

@@ -7,10 +7,12 @@ import { CmsComponentData, FooterNavigationComponent, NavigationNode, Navigation
 @Component({
   selector: 'cx-footer-navigation',
   templateUrl: './tc-custom-footer.component.html',
+  styleUrls: ['./tc-custom-footer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterCustomNavigationComponent extends FooterNavigationComponent{
-  node$: Observable<NavigationNode> = this.service.getNavigationNode(
+export class FooterCustomNavigationComponent extends FooterNavigationComponent implements OnInit{
+  panelOpenState = false;
+  node$: Observable<any> = this.service.getNavigationNode(
     this.componentData.data$
   );
 
@@ -23,6 +25,8 @@ export class FooterCustomNavigationComponent extends FooterNavigationComponent{
     protected service: NavigationService
   ) {
     super(componentData,service);
+  }
+  ngOnInit(): void {
   }
 
 }

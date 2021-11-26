@@ -1,0 +1,17 @@
+<div class="tc-navigation__container">
+    <ng-container *ngFor="let child of node?.children">
+        <nav [ngClass]="child.title == 'Explore Industries' ? 'tc-nav__bar' : ''" class="tc-nav__option">
+            <h4 class="tc-navigation__child">{{ child.title }}</h4>
+            <ul>
+                <ng-container *ngFor="let baby of child?.children">
+                    <nav class="tc-navigation__option">
+                        <cx-generic-link *ngIf="baby.url" [url]="baby.url" [target]="baby.target"
+                            [style]="baby.styleAttributes" [class]="baby.styleClasses" class="tc-nav__node-link">
+                            <p class="tc-navigation__option-title">{{ baby.title }}</p>
+                        </cx-generic-link>
+                    </nav>
+                </ng-container>
+            </ul>
+        </nav>
+    </ng-container>
+</div>

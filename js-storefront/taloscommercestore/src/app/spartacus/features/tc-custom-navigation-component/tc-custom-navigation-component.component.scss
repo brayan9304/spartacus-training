@@ -1,0 +1,55 @@
+.tc-navigation__container{
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 20px;
+    max-width: 82.5rem;
+    margin: 0 auto;
+}
+
+.tc-navigation__child{
+    color: #b79967;
+    font-size: .875rem;
+    text-transform: uppercase;
+}
+
+.tc-navigation__option{
+    padding: 14px 0 0 0;
+}
+
+.tc-navigation__option-title{
+    color: #fff;
+}
+
+.tc-navigation__option-title:hover{
+    color: #b79967;
+    text-decoration: none;
+}
+
+ul{
+    padding: 0;
+    columns: 2;
+    margin: 0;
+}
+
+.tc-nav__option{
+    width: 33.33%;
+}
+
+.tc-navigation__social-networks{
+    display: flex;
+    flex-direction: row;
+}
+
+.tc-nav__bar{
+    border-left: 2px rgba(225,225,225,0.15) solid;
+    padding-left: 65px;
+}
+
+p{
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+svg{
+    fill: white;
+}

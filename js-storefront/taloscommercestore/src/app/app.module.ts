@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import localeEn from '@angular/common/locales/en';
 import { environment } from '@tc-env';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeEn);
 
@@ -32,6 +33,7 @@ if (!environment.production) {
     NgbModule,
     // Dev Imports
     ...devImports,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

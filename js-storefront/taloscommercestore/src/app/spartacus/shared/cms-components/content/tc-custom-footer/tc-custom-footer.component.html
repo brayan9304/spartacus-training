@@ -1,5 +1,17 @@
-<cx-navigation-ui
-  [node]="node$ | async"
-  [flyout]="false"
-  [ngClass]="styleClass$ | async"
-></cx-navigation-ui>
+<cx-custom-navigation-ui [node]="node$ | async">
+</cx-custom-navigation-ui>
+
+
+<!--<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion>-->

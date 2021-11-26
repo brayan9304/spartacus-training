@@ -74,6 +74,10 @@ import { TcSavedListFeatureModule } from './features/tc-saved-list/tc-saved-list
 import { TcSavedListModule } from './features/tc-saved-list/tc-saved-list.module';
 import { TcProductListModule } from './features/product/components/tc-product-list/tc-product-list.module';
 import { TcFooterCustomNavigationModule } from './shared/cms-components/content';
+import { TcCustomNavigationComponentModule } from './features/tc-custom-navigation-component/tc-custom-navigation-component.module';
+import { TcCutomFooterBottomNavigationModule } from './shared/cms-components/content/tc-custom-footer-bottom';
+import { TcFooterSocialLinkContainerModule } from './shared/cms-components/content/tc-footer-social-link-container/tc-footer-social-link-container.module';
+import { TcFooterSocialLinkModule } from './shared/cms-components/content/tc-footer-social-link/tc-footer-social-link.module';
 
 @NgModule({
   declarations: [],
@@ -165,7 +169,11 @@ import { TcFooterCustomNavigationModule } from './shared/cms-components/content'
     TcSavedListFeatureModule,
     TcSavedListModule,
     TcProductListModule,
-    TcFooterCustomNavigationModule
+    TcFooterCustomNavigationModule,
+    TcCustomNavigationComponentModule,
+    TcCutomFooterBottomNavigationModule,
+    TcFooterSocialLinkContainerModule,
+    TcFooterSocialLinkModule,
 
   ],
 })

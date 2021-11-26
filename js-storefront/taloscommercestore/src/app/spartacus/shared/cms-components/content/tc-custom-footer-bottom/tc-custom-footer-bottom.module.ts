@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CmsConfig, I18nModule, provideDefaultConfig } from '@spartacus/core';
-import { GenericLinkModule, NavigationModule } from '@spartacus/storefront';
+import { GenericLinkModule, IconModule, NavigationModule } from '@spartacus/storefront';
 import { TcCustomNavigationComponentModule } from 'src/app/spartacus/features/tc-custom-navigation-component';
 import { MaterialModule } from 'src/app/spartacus/material/material.module';
-import { FooterCustomNavigationComponent } from './tc-custom-footer.component';
+import { CustomFooterBottomComponent } from './tc-custom-footer-bottom.component';
 
 @NgModule({
   imports: [
@@ -16,17 +16,18 @@ import { FooterCustomNavigationComponent } from './tc-custom-footer.component';
     I18nModule,
     MaterialModule,
     TcCustomNavigationComponentModule,
+    IconModule,
   ],
   providers: [
     provideDefaultConfig(<CmsConfig>{
       cmsComponents: {
-        FooterNavigationComponent: {
-          component: FooterCustomNavigationComponent,
+        CustomFooterBottom: {
+          component: CustomFooterBottomComponent,
         },
       },
     }),
   ],
-  declarations: [FooterCustomNavigationComponent],
-  exports: [FooterCustomNavigationComponent],
+  declarations: [CustomFooterBottomComponent],
+  exports: [CustomFooterBottomComponent],
 })
-export class TcFooterCustomNavigationModule {}
+export class TcCutomFooterBottomNavigationModule {}
