@@ -5,10 +5,10 @@
                 <p>{{ child.title }}</p>
                 <ng-container *ngFor="let baby of child.children">
                     <nav class="bottom-link">
-                        <cx-generic-link *ngIf="baby.url" [url]="baby.url" [target]="baby.target"
-                            [style]="baby.styleAttributes" [class]="baby.styleClasses" class="tc-footer__bottom-link">
-                            <p>{{ baby.title }}</p>
-                        </cx-generic-link>
+                      <cx-generic-link *ngIf="baby.url" [url]="baby.url" [target]="baby.target"
+                                       [style]="baby.styleAttributes" [class]="baby.styleClasses" class="tc-nav__node">
+                        <p class="tc-navigation__option-title">{{ baby.title }}</p>
+                      </cx-generic-link>
                     </nav>
                 </ng-container>
             </nav>

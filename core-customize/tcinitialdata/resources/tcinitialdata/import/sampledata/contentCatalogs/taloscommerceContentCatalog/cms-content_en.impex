@@ -374,6 +374,7 @@ UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; con
 # Site Logo Component
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
                             ;                          ; SiteLogoComponent ; /images/theme/perficient-inc-logo.svg
+                            ;                          ; FooterLogoComponent ; /images/theme/perficient-logo.svg
 
 # DSLR Category Page
 # Section 1

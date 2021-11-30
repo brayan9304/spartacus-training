@@ -30,8 +30,9 @@ INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]             
                    ;                          ; /images/theme/logo-hybris_zh.png ; logo-hybris_zh.png ; $siteResource/images/theme/logo-hybris_zh.png                               ; image/png                   ; hybris Accelerator ;
 
 # Site Logo Component
-INSERT_UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; name                ; &componentRef     ; urlLink
-                                   ;                          ; SiteLogoComponent ; Site Logo Component ; SiteLogoComponent ; "/"
+INSERT_UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]  ; name                  ; &componentRef       ; urlLink
+                                   ;                          ; SiteLogoComponent   ; Site Logo Component   ; SiteLogoComponent   ; "/"
+                                   ;                          ; FooterLogoComponent ; Footer Logo Component ; FooterLogoComponent ; "/"
 
 # CMS Link Components
 INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]             ; name                               ; url                                                                                                                                                                                                                                          ; &linkRef                       ; &componentRef                  ; target(code)[default = 'sameWindow']; $category  ; $product;
@@ -242,6 +243,10 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]     ; c
                          ;                          ; UpSellingSlot          ; Similar
                          ;                          ; CrossSellingSlot       ; accessories
                          ;                          ; ProductLeftRefinements ; RefinementFacetComponent
+#                  ;                          ; SocialNetworkSlot      ; PerficientSocialNetworksContainer
+#                  ;                          ; GetToKnowUsSlot        ; GetToKnowUsComponent
+#                  ;                          ; ExploreIndustriesSlot  ; ExploreIndustriesComponent
+#                  ;                          ; FooterBottomSlot       ; CustomFooterBottomComponent
 
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]          ; mime     ; realfilename              ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; folder(qualifier)[default = 'images']
                    ;                          ; CamerasPagePreview           ; text/png ; CamerasPage.png           ; $jarResourceCms/preview-images/electronics/CamerasPage.png
@@ -825,6 +830,7 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]  ; name
 # Site Logo
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                   ; realfilename            ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText            ; folder(qualifier)[default = 'images']
                    ;                          ; /images/theme/perficient-inc-logo.svg ; perficient-inc-logo.svg ; $siteResource/images/theme/perficient-inc-logo.svg                          ; image/svg+xml                  ; hybris Accelerator ;
+                   ;                          ; /images/theme/perficient-logo.svg     ; perficient-logo.svg     ; $siteResource/images/theme/perficient-logo.svg                              ; image/svg+xml                  ; hybris Accelerator ;
 
 ###  Responsive Error page #######
 
@@ -1154,16 +1160,22 @@ INSERT_UPDATE FooterComponent; $contentCV[unique = true]; uid[unique = true]; wr
 # CMS Paragraph Component (Contact information)
 INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; name                ; &componentRef
                                    ;                          ; ContactInfo       ; Contact information ; ContactInfo
-
 ###### Footer Component Refactor Start ######
-INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; active ;cmsComponents(uid, $contentCV)
-#                      ;                          ; FooterSlot        ; FooterNavigationComponent
-                         ;                          ; FooterSlot        ; true ;PerficientSocialNetworksContainer,FooterCustomNavigationComponent,CustomFooterButtonComponent
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]    ; active; cmsComponents(uid, $contentCV)
+#                         ;                          ; FooterSlot            ; FooterNavigationComponent
+                         ;                          ; FooterSlot            ; true  ; FooterCustomNavigationComponent,CustomFooterButtonComponent
+#                         ;                          ; FooterSlot            ; true  ; FooterLogoComponent, CustomFooterButtonComponent
 #                         ;                          ; FooterSlot        ; true ;FooterCustomNavigationComponent,CustomFooterBottomComponent
-
+                         ;                          ; SocialNetworkSlot     ; true  ; PerficientSocialNetworksContainer
+                         ;                          ; GetToKnowUsSlot       ; true  ; GetToKnowUsComponent
+                         ;                          ; ExploreIndustriesSlot ; true  ; ExploreIndustriesComponent
+                         ;                          ; FooterBottomSlot      ; true  ; CustomFooterBottomComponent
+                         ;
 INSERT_UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]              ; wrapAfter; &componentRef                   ; showLanguageCurrency; navigationNode(&nodeRef)
-                                       ;                          ; FooterNavigationComponent       ; 4        ; FooterNavigationComponent       ; true                ; FooterNavNode       ;
-                                       ;                          ; FooterCustomNavigationComponent ; 4        ; FooterCustomNavigationComponent ; true                ; FooterCustomNavNode ;
+                                       ;                          ; FooterNavigationComponent       ; 4        ; FooterNavigationComponent       ; true                ; FooterNavNode            ;
+                                       ;                          ; FooterCustomNavigationComponent ; 4        ; FooterCustomNavigationComponent ; true                ; FooterCustomNavNode      ;
+                                       ;                          ; GetToKnowUsComponent            ; 4        ; GetToKnowUsComponent            ; true                ; GetToKnowUsNavNode       ;
+                                       ;                          ; ExploreIndustriesComponent      ; 4        ; ExploreIndustriesComponent      ; true                ; ExploreIndustriesNavNode ;
 
 INSERT_UPDATE CustomFooterBottom; $contentCV[unique = true]; uid[unique = true]          ; wrapAfter; &componentRef               ; showLanguageCurrency; navigationNode(&nodeRef)
                                 ;                          ; CustomFooterBottomComponent ; 4        ; CustomFooterBottomComponent ; true                ; CustomFooterBottomNavNode ;

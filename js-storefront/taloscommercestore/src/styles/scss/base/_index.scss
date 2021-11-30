@@ -1,1 +1,11 @@
 @use 'icons';
+
+.mat-expansion-panel-header-description, .mat-expansion-indicator::after {
+    color: white;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type,
+.mat-accordion .mat-expansion-panel:first-of-type{
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}

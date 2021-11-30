@@ -522,6 +522,11 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                             ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                             ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                             ;                          ;
+                             ; SocialNetwork          ;                                                                             ;                          ; footer
+                             ; GetToKnowUs            ;                                                                             ;                          ; footer
+                             ; ExploreIndustries      ;                                                                             ;                          ; footer
+                             ; FooterBottom           ;                                                                             ;                          ; footer
+
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'SavedListDetailPageTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo               ;                                                                                  ;                          ; logo
                              ; SiteContext            ;                                                                                  ; CMSSiteContextComponent  ;
@@ -948,6 +953,10 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-SavedListsPage          ; TopHeaderSlot          ;                                                                                 ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-SavedListsPage       ; BottomHeaderSlot       ;                                                                                 ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-SavedListsPage ; PlaceholderContentSlot ;                                                                                 ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-SavedListPage       ; SocialNetwork          ;                                                                                 ; SocialNetworkSlot                          ; true
+                                    ;                          ; GetToKnowUsSlot-SavedListPage         ; GetToKnowUs            ;                                                                                 ; GetToKnowUsSlot                            ; true
+                                    ;                          ; ExploreIndustriesSlot-SavedListPage   ; ExploreIndustries      ;                                                                                 ; ExploreIndustriesSlot                      ; true
+                                    ;                          ; FooterBottomSlot-SavedListPage        ; FooterBottom           ;                                                                                 ; FooterBottomSlot                           ; true
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                    ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SavedListDetailPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-SaveDetailPage               ; SiteLogo               ;                                                                                      ; SiteLogoSlot                               ; true
