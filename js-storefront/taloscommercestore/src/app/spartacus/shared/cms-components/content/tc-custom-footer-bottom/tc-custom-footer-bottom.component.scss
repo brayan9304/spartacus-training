@@ -21,11 +21,11 @@ p{
         display: flex;
         justify-content: flex-start;
         padding: 16px 0;
-    }
 
-    .bottom-link {
-        margin-left: 1rem;
-        padding-left: 1rem;
-        border-left: 1px #fff solid;
+        nav{
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 1px #fff solid;
+        }
     }
 }

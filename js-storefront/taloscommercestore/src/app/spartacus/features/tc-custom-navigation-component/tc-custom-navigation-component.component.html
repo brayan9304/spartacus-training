@@ -1,5 +1,4 @@
 <ng-container *ngIf="flag; else bigScreen">
-    <div class="tc-accordion__container">
         <div class="tc-container">
             <i>
                 <svg xmlns="http://www.w3.org/2000/svg" width="140.003" height="31.001" viewBox="0 0 140.003 31.001"
@@ -27,7 +26,7 @@
                                 <cx-generic-link *ngIf="baby.url" [url]="baby.url" [target]="baby.target"
                                     [style]="baby.styleAttributes" [class]="baby.styleClasses"
                                     class="tc-nav__node-link">
-                                    <p class="tc-navigation__option-title">{{ baby.title }}</p>
+                                    <p>{{ baby.title }}</p>
                                 </cx-generic-link>
                             </nav>
                         </ng-container>
@@ -38,12 +37,10 @@
         <div class="tc-container">
             <cx-page-slot position="SocialNetwork"></cx-page-slot>
         </div>
-    </div>
 </ng-container>
 <ng-template #bigScreen>
     <div class="tc-navigation__container">
-        <div class="tc-social__networks">
-            <div class="tc-footer__logo">
+        <div class="tc-nav__option">
                 <i>
                     <svg xmlns="http://www.w3.org/2000/svg" width="140.003" height="31.001" viewBox="0 0 140.003 31.001"
                         class="icon white">
@@ -54,8 +51,7 @@
                             transform="translate(-12835.999 203.001)"></path>
                     </svg>
                 </i>
-            </div>
-            <div class="tc-social__networks--container">
+            <div class="tc-social__networks--links">
                 <cx-page-slot position="SocialNetwork"></cx-page-slot>
             </div>
         </div>
@@ -67,7 +63,7 @@
                         <nav class="tc-navigation__option">
                             <cx-generic-link *ngIf="baby.url" [url]="baby.url" [target]="baby.target"
                                 [style]="baby.styleAttributes" [class]="baby.styleClasses" class="tc-nav__node-link">
-                                <p class="tc-navigation__option-title">{{ baby.title }}</p>
+                                <p>{{ baby.title }}</p>
                             </cx-generic-link>
                         </nav>
                     </ng-container>
