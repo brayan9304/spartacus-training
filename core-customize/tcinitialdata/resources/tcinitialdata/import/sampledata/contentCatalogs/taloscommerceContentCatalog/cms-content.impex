@@ -829,7 +829,7 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]  ; name
 
 # Site Logo
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                   ; realfilename            ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText            ; folder(qualifier)[default = 'images']
-                   ;                          ; /images/theme/perficient-inc-logo.svg ; perficient-inc-logo.svg ; $siteResource/images/theme/perficient-inc-logo.svg                          ; image/svg+xml                  ; hybris Accelerator ;
+ #                  ;                          ; /images/theme/perficient-inc-logo.svg ; perficient-inc-logo.svg ; $siteResource/images/theme/perficient-inc-logo.svg                          ; image/svg+xml                  ; hybris Accelerator ;
                    ;                          ; /images/theme/perficient-logo.svg     ; perficient-logo.svg     ; $siteResource/images/theme/perficient-logo.svg                              ; image/svg+xml                  ; hybris Accelerator ;
 
 ###  Responsive Error page #######
