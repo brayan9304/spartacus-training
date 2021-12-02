@@ -95,6 +95,8 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; BottomHeaderSlot       ;                                                                        ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                        ;                          ;
                              ; TopContent             ;                                                                        ;                          ; wide
+                             ; SocialNetwork          ;                                                                        ;                          ; footer
+
 
 # Product Details Page Template
 # The CrossSelling and UpSelling slots are designed for related products, cross-sells and up-sells.
@@ -118,6 +120,8 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; BottomHeaderSlot       ;                                                                                 ;                                                                            ; wide
                              ; PlaceholderContentSlot ;                                                                                 ;                                                                            ;
                              ; Summary                ;                                                                                 ; CMSFlexComponent,ProductVariantSelectorComponent,ProductAddToCartComponent ;
+                             ; SocialNetwork          ;                                                                                 ;                                                                            ; footer
+
 
 # Product List / Grid are two layouts for Category Browsing pages
 
@@ -137,6 +141,8 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                              ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                              ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                              ;                          ;
+                             ; SocialNetwork          ;                                                                              ;                          ; footer
+
 
 # Product Grid Page Template
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'ProductGridPageTemplate']; validComponentTypes(code); compTypeGroup(code)
@@ -154,6 +160,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                              ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                              ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                              ;                          ;
+                             ; SocialNetwork          ;                                                                              ;                          ; footer
 
 
 # Search Result List / Grid are two layouts for Search Result pages
@@ -174,6 +181,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                                    ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                                    ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                                    ;                          ;
+                             ; SocialNetwork          ;                                                                                    ;                          ; footer
 
 
 # Search Results Grid Page Template
@@ -191,6 +199,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                                    ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                                    ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                                    ;                          ;
+                             ; SocialNetwork          ;                                                                                    ;                          ; footer
 
 
 # Search Results Empty Page Template
@@ -209,6 +218,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                                     ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                                     ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                                     ;                          ;
+                             ; SocialNetwork          ;                                                                                     ;                          ; footer
 
 
 # Category and Landing Pages are various layouts for a Category Landing page
@@ -231,6 +241,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
 
 
 # Landing Page Templates
@@ -253,6 +264,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
 
 
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'LandingPage2Template']; validComponentTypes(code); compTypeGroup(code)
@@ -274,6 +286,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
 
 
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'LandingPage3Template']; validComponentTypes(code); compTypeGroup(code)
@@ -295,6 +308,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
 
 
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'LandingPage4Template']; validComponentTypes(code); compTypeGroup(code)
@@ -316,6 +330,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
 
 
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'LandingPage5Template']; validComponentTypes(code); compTypeGroup(code)
@@ -335,6 +350,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
 
 
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'LandingPage6Template']; validComponentTypes(code); compTypeGroup(code)
@@ -354,6 +370,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
 
 
 # Simple Content Page Templates
@@ -373,6 +390,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
 
 
 # Cart Page Template
@@ -393,6 +411,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; CenterRightContentSlot ;                                                                       ;                          ; narrow
                              ; BottomContentSlot      ;                                                                       ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                       ;                          ;
+                             ; SocialNetwork          ;                                                                       ;                          ; footer
 
 
 # Login Page Template
@@ -410,6 +429,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; LeftContentSlot        ;                                                                        ;                          ; wide
                              ; RightContentSlot       ;                                                                        ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                        ;                          ;
+                             ; SocialNetwork          ;                                                                        ;                          ; footer
 
 
 # Checkout Login Page Template
@@ -430,6 +450,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; RightContentSlot       ;                                                                                ;                          ; wide
                              ; CenterContentSlot      ;                                                                                ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                                ;                          ;
+                             ; SocialNetwork          ;                                                                                ;                          ; footer
 
 
 # Multi Step Checkout Summary Page Templates
@@ -449,6 +470,8 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; BodyContent            ;                                                                                           ;                          ; wide
                              ; TopContent             ;                                                                                           ;                          ;
                              ; BottomContent          ;                                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                                           ;                          ; footer
+
 
 # Order Confirmation Page Template
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'OrderConfirmationPageTemplate']; validComponentTypes(code); compTypeGroup(code)
@@ -466,6 +489,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; BottomHeaderSlot       ;                                                                                    ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                                    ;                          ;
                              ; BodyContent            ;                                                                                    ;                          ;
+                             ; SocialNetwork          ;                                                                                    ;                          ; footer
 
 
 # Account Page Template
@@ -486,6 +510,8 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                          ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                          ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                          ;                          ;
+                             ; SocialNetwork          ;                                                                          ;                          ; footer
+
 
 # Account Page Template
 # Template used for all of the Account pages
@@ -505,6 +531,8 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                           ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                           ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                           ;                          ;
+                             ; SocialNetwork          ;                                                                           ;                          ; footer
+
 
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'SavedListsPageTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo               ;                                                                             ;                          ; logo
@@ -522,6 +550,11 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                             ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                             ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                             ;                          ;
+                             ; SocialNetwork          ;                                                                             ;                          ; footer
+                             ; GetToKnowUs            ;                                                                             ;                          ; footer
+                             ; ExploreIndustries      ;                                                                             ;                          ; footer
+                             ; FooterBottom           ;                                                                             ;                          ; footer
+
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'SavedListDetailPageTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo               ;                                                                                  ;                          ; logo
                              ; SiteContext            ;                                                                                  ; CMSSiteContextComponent  ;
@@ -538,6 +571,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; TopHeaderSlot          ;                                                                                  ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                                  ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                                  ;                          ;
+                             ; SocialNetwork          ;                                                                                  ;                          ; footer
 
 
 # Store Finder/Locator Page Template
@@ -556,6 +590,7 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; MiddleContent          ;                                                                              ;                          ; wide
                              ; BottomHeaderSlot       ;                                                                              ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                              ;                          ;
+                             ; SocialNetwork          ;                                                                              ;                          ; footer
 
 
 # Create Content Slots
@@ -616,6 +651,8 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; BottomHeaderSlot-ProductDetails       ; BottomHeaderSlot       ;                                                                                     ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-ProductDetails ; PlaceholderContentSlot ;                                                                                     ; PlaceholderContentSlot                     ; true
                                     ;                          ; Summary-ProductDetails                ; Summary                ;                                                                                     ; ProductSummarySlot                         ; true
+                                    ;                          ; SocialNetworkSlot-ProductDetails      ; SocialNetwork          ;                                                                                     ; SocialNetworkSlot                          ; true
+
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                       ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SearchResultsListPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-SearchResultsList               ; SiteLogo               ;                                                                                        ; SiteLogoSlot                               ; true
@@ -632,6 +669,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; ProductLeftRefinements-SearchResultsList ; ProductLeftRefinements ;                                                                                        ; ProductLeftRefinements                     ; true
                                     ;                          ; SearchResultsListSlot-SearchResultsList  ; SearchResultsListSlot  ;                                                                                        ; SearchResultsListSlot                      ; true
                                     ;                          ; PlaceholderContentSlot-SearchResultsList ; PlaceholderContentSlot ;                                                                                        ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-SearchResultsList      ; SocialNetwork          ;                                                                                        ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                       ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SearchResultsGridPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -649,6 +687,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; ProductLeftRefinements-SearchResultsGrid ; ProductLeftRefinements ;                                                                                        ; ProductLeftRefinements                     ; true
                                     ;                          ; SearchResultsGridSlot-SearchResultsGrid  ; SearchResultsGridSlot  ;                                                                                        ; SearchResultsGridSlot                      ; true
                                     ;                          ; PlaceholderContentSlot-SearchResultsGrid ; PlaceholderContentSlot ;                                                                                        ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-SearchResultsGrid      ; SocialNetwork          ;                                                                                        ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                        ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SearchResultsEmptyPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -664,6 +703,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-SearchResultsEmpty          ; TopHeaderSlot          ;                                                                                         ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-SearchResultsEmpty       ; BottomHeaderSlot       ;                                                                                         ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-SearchResultsEmpty ; PlaceholderContentSlot ;                                                                                         ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-SearchResultsEmpty      ; SocialNetwork          ;                                                                                         ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'CategoryPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -679,6 +719,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-CategoryPage          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-CategoryPage       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-CategoryPage ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-CategoryPage      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'LandingPage1Template']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -694,6 +735,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-LandingPage1          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-LandingPage1       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-LandingPage1 ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-LandingPage1      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'LandingPage2Template']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -709,6 +751,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-LandingPage2          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-LandingPage2       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-LandingPage2 ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-LandingPage2      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'LandingPage3Template']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -724,6 +767,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-LandingPage3          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-LandingPage3       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-LandingPage3 ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-LandingPage3      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'LandingPage4Template']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -739,6 +783,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-LandingPage4          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-LandingPage4       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-LandingPage4 ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-LandingPage4      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'LandingPage5Template']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -754,6 +799,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-LandingPage5          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-LandingPage5       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-LandingPage5 ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-LandingPage5      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'LandingPage6Template']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -769,6 +815,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-LandingPage6          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-LandingPage6       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-LandingPage6 ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-LandingPage6      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'ContentPage1Template']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -784,6 +831,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-ContentPage1          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-ContentPage1       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-ContentPage1 ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-ContentPage1      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                     ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'ProductGridPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -801,6 +849,8 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; ProductLeftRefinemnts-ProductGridPage  ; ProductLeftRefinements ;                                                                                  ; ProductLeftRefinements                     ; true
                                     ;                          ; ProductGridSlot-ProductGridPage        ; ProductGridSlot        ;                                                                                  ; ProductGridSlot                            ; true
                                     ;                          ; PlaceholderContentSlot-ProductGridPage ; PlaceholderContentSlot ;                                                                                  ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-ProductGridPage      ; SocialNetwork          ;                                                                                  ; SocialNetworkSlot                          ; true
+
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                     ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'ProductListPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-ProductListPage               ; SiteLogo               ; ProductListPageTemplate                                                          ; SiteLogoSlot                               ; true
@@ -817,6 +867,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; ProductLeftRefinemnts-ProductListPage  ; ProductLeftRefinements ;                                                                                  ; ProductLeftRefinements                     ; true
                                     ;                          ; ProductListSlot-ProductListPage        ; ProductListSlot        ;                                                                                  ; ProductListSlot                            ; true
                                     ;                          ; PlaceholderContentSlot-ProductListPage ; PlaceholderContentSlot ;                                                                                  ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-ProductListPage      ; SocialNetwork          ;                                                                                  ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]              ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'CartPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -836,6 +887,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; CenterLeftContentSlot-CartPage  ; CenterLeftContentSlot  ;                                                                           ; CenterLeftContentSlot                      ; true
                                     ;                          ; EmptyCartMiddleContent-CartPage ; EmptyCartMiddleContent ;                                                                           ; EmptyCartMiddleContent                     ; true
                                     ;                          ; PlaceholderContentSlot-CartPage ; PlaceholderContentSlot ;                                                                           ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-CartPage      ; SocialNetwork          ;                                                                           ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]               ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'LoginPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -853,6 +905,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; LeftContentSlot-LoginPage        ; LeftContentSlot        ;                                                                            ; LeftContentSlot                            ; true
                                     ;                          ; RightContentSlot-LoginPage       ; RightContentSlot       ;                                                                            ; RightContentSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-LoginPage ; PlaceholderContentSlot ;                                                                            ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-LoginPage      ; SocialNetwork          ;                                                                            ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                       ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'CheckoutLoginPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -871,6 +924,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; RightContentSlot-CheckoutLoginPage       ; RightContentSlot       ;                                                                                    ; RightContentSlot                           ; true
                                     ;                          ; CenterContentSlot-CheckoutLoginPage      ; CenterContentSlot      ;                                                                                    ; CenterContentSlot                          ; true
                                     ;                          ; PlaceholderContentSlot-CheckoutLoginPage ; PlaceholderContentSlot ;                                                                                    ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-CheckoutPage           ; SocialNetwork          ;                                                                                    ; SocialNetworkSlot                          ; true
 
 
 # Bind Content Slots to Multi Step Checkout Summary Page Templates
@@ -889,6 +943,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; PlaceholderContentSlot-MultiStepCheckoutSummaryPage ; PlaceholderContentSlot ;                                                                                               ; PlaceholderContentSlot                     ; true
                                     ;                          ; CheckoutHeader-MultiStepCheckoutSummaryPage         ; TopContent             ;                                                                                               ; CheckoutHeaderSlot                         ; true
                                     ;                          ; CheckoutFooter-MultiStepCheckoutSummaryPage         ; BottomContent          ;                                                                                               ; CheckoutFooterSlot                         ; true
+                                    ;                          ; SocialNetworkSlot-SummaryPage                       ; SocialNetwork          ;                                                                                               ; SocialNetworkSlot                          ; true
 
 
 
@@ -905,6 +960,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-OrderConfirmationPage          ; TopHeaderSlot          ;                                                                                        ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-OrderConfirmationPage       ; BottomHeaderSlot       ;                                                                                        ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-OrderConfirmationPage ; PlaceholderContentSlot ;                                                                                        ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-OrderConnfirmationPage     ; SocialNetwork          ;                                                                                        ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                 ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'AccountPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -920,6 +976,8 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-AccountPage          ; TopHeaderSlot          ;                                                                              ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-AccountPage       ; BottomHeaderSlot       ;                                                                              ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-AccountPage ; PlaceholderContentSlot ;                                                                              ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-AccountPage      ; SocialNetwork          ;                                                                              ; SocialNetworkSlot                          ; true
+
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                  ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'TrainingPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-TrainingPage               ; SiteLogo               ;                                                                               ; SiteLogoSlot                               ; true
@@ -934,6 +992,8 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-TrainingPage          ; TopHeaderSlot          ;                                                                               ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-TrainingPage       ; BottomHeaderSlot       ;                                                                               ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-TrainingPage ; PlaceholderContentSlot ;                                                                               ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-TrainingPage      ; SocialNetwork          ;                                                                               ; SocialNetworkSlot                          ; true
+
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                    ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SavedListsPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-SavedListsPage               ; SiteLogo               ;                                                                                 ; SiteLogoSlot                               ; true
@@ -948,6 +1008,10 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-SavedListsPage          ; TopHeaderSlot          ;                                                                                 ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-SavedListsPage       ; BottomHeaderSlot       ;                                                                                 ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-SavedListsPage ; PlaceholderContentSlot ;                                                                                 ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-SavedListPage       ; SocialNetwork          ;                                                                                 ; SocialNetworkSlot                          ; true
+                                    ;                          ; GetToKnowUsSlot-SavedListPage         ; GetToKnowUs            ;                                                                                 ; GetToKnowUsSlot                            ; true
+                                    ;                          ; ExploreIndustriesSlot-SavedListPage   ; ExploreIndustries      ;                                                                                 ; ExploreIndustriesSlot                      ; true
+                                    ;                          ; FooterBottomSlot-SavedListPage        ; FooterBottom           ;                                                                                 ; FooterBottomSlot                           ; true
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                    ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SavedListDetailPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-SaveDetailPage               ; SiteLogo               ;                                                                                      ; SiteLogoSlot                               ; true
@@ -962,9 +1026,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-SaveDetailPage          ; TopHeaderSlot          ;                                                                                      ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-SaveDetailPage       ; BottomHeaderSlot       ;                                                                                      ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-SaveDetailPage ; PlaceholderContentSlot ;                                                                                      ; PlaceholderContentSlot                     ; true
-
-
-
+                                    ;                          ; SocialNetworkSlot-SavedDetailPage     ; SocialNetwork          ;                                                                                      ; SocialNetworkSlot                          ; true
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                     ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'StoreFinderPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-StoreFinderPage               ; SiteLogo               ;                                                                                  ; SiteLogoSlot                               ; true
@@ -980,6 +1042,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; MiddleContentSlot-StoreFinderPage      ; MiddleContent          ;                                                                                  ; MiddleContentSlot                          ; true
                                     ;                          ; BottomHeaderSlot-StoreFinderPage       ; BottomHeaderSlot       ;                                                                                  ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-StoreFinderPage ; PlaceholderContentSlot ;                                                                                  ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-StoreFinderPage      ; SocialNetwork          ;                                                                                  ; SocialNetworkSlot                          ; true
 
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]               ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'ErrorPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
@@ -995,6 +1058,7 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-ErrorPage          ; TopHeaderSlot          ;                                                                            ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-ErrorPage       ; BottomHeaderSlot       ;                                                                            ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-ErrorPage ; PlaceholderContentSlot ;                                                                            ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-ErrorPage      ; SocialNetwork          ;                                                                            ; SocialNetworkSlot                          ; true
 
 
 # Create Content Pages
@@ -1081,6 +1145,8 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; BottomHeaderSlot       ;                                                                             ;                          ; wide
                              ; TopContent             ;                                                                             ;                          ; wide
                              ; PlaceholderContentSlot ;                                                                             ;                          ;
+                             ; SocialNetwork          ;                                                                             ;                          ; footer
+
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                    ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'QuickOrderPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-QuickOrderPage               ; SiteLogo               ;                                                                                 ; SiteLogoSlot                               ; true
@@ -1093,6 +1159,8 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; TopHeaderSlot-QuickOrderPage          ; TopHeaderSlot          ;                                                                                 ; TopHeaderSlot                              ; true
                                     ;                          ; BottomHeaderSlot-QuickOrderPage       ; BottomHeaderSlot       ;                                                                                 ; BottomHeaderSlot                           ; true
                                     ;                          ; PlaceholderContentSlot-QuickOrderPage ; PlaceholderContentSlot ;                                                                                 ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-QuickOrderPage      ; SocialNetwork          ;                                                                                 ; SocialNetworkSlot                          ; true
+
 
 INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]; name                  ; masterTemplate(uid, $contentCV); label; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
                          ;                          ; sale              ; Sale Information Page ; ContentPage1Template           ; /sale

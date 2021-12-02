@@ -1,0 +1,13 @@
+<ng-container *ngIf="containerData$ | async as data">
+  <div class="tc-icon__content">
+    <ng-container *ngIf="links$ | async as links">
+      <ul>
+        <ng-container *ngFor="let link of links" [cxComponentWrapper]="{ 
+                      flexType: link.typeCode,
+                      typeCode: link.typeCode,
+                      uid: link?.uid}">
+        </ng-container>
+      </ul>
+    </ng-container>
+  </div>
+</ng-container>

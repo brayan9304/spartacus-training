@@ -29,6 +29,11 @@
             <targetElement type="CustomProductList" qualifier="customProductList" cardinality="many"/>
         </relation>
 
+        <relation code="FooterSocialLinkContainer2FooterSocialLink" generate="true" localized="false" autocreate="true">
+            <sourceElement type="FooterSocialLinkContainer" qualifier="linkContainer" cardinality="one"/>
+            <targetElement type="FooterSocialLink" qualifier="links" cardinality="many" ordered="true"/>
+        </relation>
+
     </relations>
 
     <itemtypes>
@@ -128,6 +133,42 @@
                         <persistence type="property"/>
                     </attribute>
                 </attributes>
+            </itemtype>
+        </typegroup>
+
+
+        <typegroup name="CustomFooter">
+            <itemtype code="CustomFooterNavNode" extends="CMSNavigationNode">
+                <attributes>
+                    <attribute qualifier="media" type="localized:Media">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="CustomFooterBottom" extends="FooterNavigationComponent">
+            </itemtype>
+        </typegroup>
+        <typegroup name="footerSocialNetwork">
+            <itemtype code="FooterSocialLink" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.FooterSocialLink"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="url" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="text" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="media" type="Media">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+           <itemtype code="FooterSocialLinkContainer" extends="SimpleCMSComponent"
+                     jaloclass="com.taloscommerce.core.jalo.FooterSocialLinkContainer"
+                      autocreate="true" generate="true">
             </itemtype>
         </typegroup>
     </itemtypes>

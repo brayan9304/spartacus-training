@@ -1,0 +1,17 @@
+<div class="tc-footer__bottom-container">
+    <ng-container *ngIf="node$ | async as node">
+        <ng-container *ngFor="let child of node.children">
+            <nav class="tc-footer__bottom">
+                <p>{{ child.title }}</p>
+                <ng-container *ngFor="let baby of child.children">
+                    <nav class="bottom-link">
+                      <cx-generic-link *ngIf="baby.url" [url]="baby.url" [target]="baby.target"
+                                       [style]="baby.styleAttributes" [class]="baby.styleClasses" class="tc-nav__node">
+                        <p>{{ baby.title }}</p>
+                      </cx-generic-link>
+                    </nav>
+                </ng-container>
+            </nav>
+        </ng-container>
+    </ng-container>
+</div>

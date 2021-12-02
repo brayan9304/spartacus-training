@@ -59,6 +59,29 @@ UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]          
                        ;                          ; VisitSAPLink                   ; "Visit SAP"
                        ;                          ; HelpLink                       ; "Help"
                        ;                          ; StoreFinderLink                ; "Find a Store"
+                       ;                          ; WhoWeAreLink                   ; "Who We Are"
+                       ;                          ; WhatWeDoLink                   ; "What We Do"
+                       ;                          ; SuccessStoriesLink             ; "Success Stories"
+                       ;                          ; InsightsLink                   ; "Insights"
+                       ;                          ; CareersLink                    ; "Careers"
+                       ;                          ; InvestorsLink                  ; "Investors"
+                       ;                          ; NewsRoomLink                   ; "News Room"
+                       ;                          ; ContactLink                    ; "Contact"
+                       ;                          ; AutomotiveLink                 ; "Automotive"
+                       ;                          ; ConsumerMarketsLink            ; "Consumer Markets"
+                       ;                          ; EnergyPlusUtilitiesLink        ; "Energy Plus Utilities"
+                       ;                          ; FinancialServiceLink           ; "Financial Service"
+                       ;                          ; HealthcareLink                 ; "Healthcare"
+                       ;                          ; LifeSciencesLink               ; "Life Sciences"
+                       ;                          ; ManufacturingLink              ; "Manufacturing"
+                       ;                          ; TelecommunicatiosLink          ; "Telecommunicatios"
+                       ;                          ; LinkedInPerficientLink         ; "Linked In Perficient"
+                       ;                          ; YoutubePerficientLink          ; "Youtube Perficient"
+                       ;                          ; TwitterPerficientLink          ; "Twitter Perficient"
+                       ;                          ; FacebookPerficientLink         ; "Facebook Perficient"
+                       ;                          ; BlogsPerficientLink            ; "Blogs Perficient"
+                       ;                          ; PrivacyPolicyLink              ; "Privacy Policy"
+                       ;                          ; CustomerSecurityStatementLink  ; "Customer Security Statement"
 
 # Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']; &imageRef                                ; folder(qualifier)[default = 'images']; altText
@@ -82,6 +105,7 @@ UPDATE FooterComponent; $contentCV[unique = true]; uid[unique = true]; notice[la
 # CMS Paragraph Component (Contact information)
 UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; content[lang = $lang]
                             ;                          ; ContactInfo       ; "Call us: +1 302 295 5067"
+#                            ;                          ; NoticeTextParagraph ; "© 2021 Perficient Inc, All Rights Reserved"
 
 # CMS ProductReferences Components
 UPDATE ProductReferencesComponent; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]
@@ -122,7 +146,10 @@ UPDATE CMSNavigationNode; $contentCV[unique = true]; uid[unique = true]         
                         ;                          ; SiteRootNode                 ; "SiteRoot"
                         ;                          ; SuppliesNavNode              ; "Supplies"
                         ;                          ; WebcamsNavNode               ; "Webcams"
-
+                        ;                          ; GetToKnowUsNavNode           ; "Get To Know Us"
+                        ;                          ; ExploreIndustriesNavNode     ; "Explore Industries"
+                        ;                          ; PerficientNavNode            ; "Perficient"
+                        ;                          ; FooterBottomNavNode          ; "© 2021 Perficient Inc, All Rights Reserved"
 # Electronics FAQ Page 
 
 # CMS Paragraph Component (Contact information)
@@ -346,7 +373,8 @@ UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; con
 
 # Site Logo Component
 UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]; $picture[lang = $lang]
-                            ;                          ; SiteLogoComponent ; /images/theme/perficient-inc-logo.svg
+                            ;                          ; SiteLogoComponent ; /images/theme/perficient-logo.svg
+                            ;                          ; FooterLogoComponent ; /images/theme/perficient-logo.svg
 
 # DSLR Category Page
 # Section 1
@@ -495,8 +523,9 @@ INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[un
                                              ;                          ; ElectronicsErrorpageBannerComponent ; electronics-errorpage-pagenotfound ; Electronics Error Page Banner Component ; ElectronicsErrorpageBannerComponent
 
 # CMS Footer Navigation Component
-UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]        ; notice[lang = en][translator = de.hybris.platform.acceleratorservices.dataimport.batch.converter.CopyrightTranslator, dateFormat = yyyy]
-                                ;                          ; FooterNavigationComponent ; "Copyright © {0} SAP SE or an SAP affiliate company. All rights reserved."
+UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]              ; notice[lang = en][translator = de.hybris.platform.acceleratorservices.dataimport.batch.converter.CopyrightTranslator, dateFormat = yyyy]
+                                ;                          ; FooterNavigationComponent       ; "Copyright © {0} SAP SE or an SAP affiliate company. All rights reserved."
+                                ;                          ; FooterCustomNavigationComponent ; "Copyright © {0} SAP SE or an SAP affiliate company. All rights reserved."
 
 INSERT_UPDATE MediaContainer; qualifier[unique = true]           ; name[lang = $lang]           ; $medias                                                                                                                                                              ; $contentCV[unique = true]
                             ; split-banner-referred-customers_en ; Split Banner Media Container ; splitview-referred-customers-mobile.jpg,splitview-referred-customers-tablet.jpg,splitview-referred-customers-desktop.jpg,splitview-referred-customers-widescreen.jpg ;
