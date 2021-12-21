@@ -78,6 +78,8 @@ import { TcCustomNavigationComponentModule } from './features/tc-custom-navigati
 import { TcCutomFooterBottomNavigationModule } from './shared/cms-components/content/tc-custom-footer-bottom';
 import { TcFooterSocialLinkContainerModule } from './shared/cms-components/content/tc-footer-social-link-container/tc-footer-social-link-container.module';
 import { TcFooterSocialLinkModule } from './shared/cms-components/content/tc-footer-social-link/tc-footer-social-link.module';
+import { TcCollageContainerModule } from './features/tc-collage-component/tc-collage-container-component/tc-collage-container-component.module';
+import { TcCollageItemModule } from './features/tc-collage-component/tc-collage-item-component/tc-collage-item-component.module';
 
 @NgModule({
   declarations: [],
@@ -174,6 +176,8 @@ import { TcFooterSocialLinkModule } from './shared/cms-components/content/tc-foo
     TcCutomFooterBottomNavigationModule,
     TcFooterSocialLinkContainerModule,
     TcFooterSocialLinkModule,
+    TcCollageContainerModule,
+    TcCollageItemModule
 
   ],
 })

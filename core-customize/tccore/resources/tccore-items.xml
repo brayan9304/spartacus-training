@@ -34,6 +34,11 @@
             <targetElement type="FooterSocialLink" qualifier="links" cardinality="many" ordered="true"/>
         </relation>
 
+        <relation code="SimpleItemContainer2SimpleItem" generate="true" localized="false" autocreate="true">
+            <sourceElement type="SimpleItemContainer" qualifier="itemContainer" cardinality="one"/>
+            <targetElement type="SimpleItem" qualifier="items" cardinality="many" ordered="true"/>
+        </relation>
+
     </relations>
 
     <itemtypes>
@@ -168,6 +173,25 @@
 
            <itemtype code="FooterSocialLinkContainer" extends="SimpleCMSComponent"
                      jaloclass="com.taloscommerce.core.jalo.FooterSocialLinkContainer"
+                      autocreate="true" generate="true">
+            </itemtype>
+        </typegroup>
+
+        <typegroup name="extraPages">
+            <itemtype code="SimpleItem" extends="SimpleCMSComponent" jaloclass="com.taloscommerce.core.jalo.SimpleItem"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="media" type="Media">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="SimpleItemContainer" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.SimpleItemContainer"
                       autocreate="true" generate="true">
             </itemtype>
         </typegroup>

@@ -28,3 +28,12 @@ export interface TcFooterSocialLinkModel extends CmsComponent {
   text?: string;
   media?: Media;
 }
+
+export interface TcCollageContainerModel extends CmsComponent {
+  items?: TcCollageItemModel;
+}
+
+export interface TcCollageItemModel extends CmsComponent {
+  title?: string;
+  media?: Media;
+}

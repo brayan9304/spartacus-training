@@ -828,9 +828,9 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]  ; name
                          ;                          ; TopContent-cartPage ; Top Slot for Cart Page ; true  ; CartComponent
 
 # Site Logo
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                   ; realfilename            ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText            ; folder(qualifier)[default = 'images']
- #                  ;                          ; /images/theme/perficient-inc-logo.svg ; perficient-inc-logo.svg ; $siteResource/images/theme/perficient-inc-logo.svg                          ; image/svg+xml                  ; hybris Accelerator ;
-                   ;                          ; /images/theme/perficient-logo.svg     ; perficient-logo.svg     ; $siteResource/images/theme/perficient-logo.svg                              ; image/svg+xml                  ; hybris Accelerator ;
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]               ; realfilename        ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText            ; folder(qualifier)[default = 'images']
+#                  ;                          ; /images/theme/perficient-inc-logo.svg ; perficient-inc-logo.svg ; $siteResource/images/theme/perficient-inc-logo.svg                          ; image/svg+xml                  ; hybris Accelerator ;
+                   ;                          ; /images/theme/perficient-logo.svg ; perficient-logo.svg ; $siteResource/images/theme/perficient-logo.svg                              ; image/svg+xml                  ; hybris Accelerator ;
 
 ###  Responsive Error page #######
 
@@ -1160,6 +1160,10 @@ INSERT_UPDATE FooterComponent; $contentCV[unique = true]; uid[unique = true]; wr
 # CMS Paragraph Component (Contact information)
 INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]; name                ; &componentRef
                                    ;                          ; ContactInfo       ; Contact information ; ContactInfo
+
+REMOVE ContentSlot; $contentCV[unique = true]; uid[unique = true]; active; cmsComponents(uid, $contentCV)
+                  ;                          ; Container1Slot    ; true  ; Container1ExtraPage1
+
 ###### Footer Component Refactor Start ######
 INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]    ; active; cmsComponents(uid, $contentCV)
 #                         ;                          ; FooterSlot            ; FooterNavigationComponent
@@ -1170,7 +1174,33 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]    ; ac
                          ;                          ; GetToKnowUsSlot       ; true  ; GetToKnowUsComponent
                          ;                          ; ExploreIndustriesSlot ; true  ; ExploreIndustriesComponent
                          ;                          ; FooterBottomSlot      ; true  ; CustomFooterBottomComponent
-                         ;
+#                         ;                          ; Container1Slot        ; true  ; Container1ExtraPage1
+
+INSERT_UPDATE SimpleItemContainer; uid[unique = true]   ; $contentCV[unique = true]; &componentRef        ; items(&componentRef)
+                                 ; Container1ExtraPage1 ;                          ; Container1ExtraPage1 ; Item1ExtraPage1,Item2ExtraPage1,Item3ExtraPage1,Item4ExtraPage1
+
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]        ; realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText              ; folder(qualifier)[default = 'images']
+                   ;                          ; /images/extraPages/dog.png ; dog.png     ; $siteResource/images/extraPages/dog.png                                     ; image/svg+xml                  ; "hybris Accelerator" ;
+
+INSERT_UPDATE SimpleItem; uid[unique = true]; $contentCV[unique = true]; name                ; &componentRef   ; title    ; $media
+                        ; Item1ExtraPage1   ;                          ; Item 1 Extra Page 1 ; Item1ExtraPage1 ; "Item 1" ; /images/extraPages/dog.png
+                        ; Item2ExtraPage1   ;                          ; Item 2 Extra Page 1 ; Item2ExtraPage1 ; "Item 2" ; /images/extraPages/dog.png
+                        ; Item3ExtraPage1   ;                          ; Item 3 Extra Page 1 ; Item3ExtraPage1 ; "Item 3" ; /images/extraPages/dog.png
+                        ; Item4ExtraPage1   ;                          ; Item 4 Extra Page 1 ; Item4ExtraPage1 ; "Item 4" ; /images/extraPages/dog.png
+
+
+###### Account Extra Page 1
+
+# ContentSlot
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]       ; name                                       ; active; cmsComponents(&componentRef); ; ;
+                         ;                          ; BodyContent-extra-page-1 ; Body Content Slot for Account Extra Page 1 ; true  ; Container1ExtraPage1        ; ; ;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]       ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'extra-page-1']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; BodyContent-extra-page-1 ; BodyContent            ;                                                               ; BodyContent-extra-page-1                   ; ; ;
+
+
+
 INSERT_UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]              ; wrapAfter; &componentRef                   ; showLanguageCurrency; navigationNode(&nodeRef)
                                        ;                          ; FooterNavigationComponent       ; 4        ; FooterNavigationComponent       ; true                ; FooterNavNode            ;
                                        ;                          ; FooterCustomNavigationComponent ; 4        ; FooterCustomNavigationComponent ; true                ; FooterCustomNavNode      ;
