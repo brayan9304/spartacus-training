@@ -1,0 +1,30 @@
+.tc-container__item{
+
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 1px 	#DCDCDC; 
+    border-radius: 5px; 
+    padding: 20px; 
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+    cx-media{
+        width: 200px;
+        height: 200px;
+        margin: auto;
+    }
+
+    .custom-width{
+        width: 500px;
+    }
+
+    @media(max-width: 1390px){
+        button{
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<ng-container *ngIf="containerData$ | async as data">
+    <ng-container *ngIf="items$ | async as items">
+        <ng-container *ngFor="let item of items" [cxComponentWrapper]="{ 
+            flexType: item.typeCode,
+            typeCode: item.typeCode,
+            uid: item?.uid}">
+        </ng-container>
+    </ng-container>
+</ng-container>

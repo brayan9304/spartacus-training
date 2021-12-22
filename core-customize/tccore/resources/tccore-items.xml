@@ -39,6 +39,36 @@
             <targetElement type="SimpleItem" qualifier="items" cardinality="many" ordered="true"/>
         </relation>
 
+        <relation code="CardComponent2SimpleItemComponent" generate="true" localized="false" autocreate="true">
+            <sourceElement type="CardComponent" qualifier="card" cardinality="one"/>
+            <targetElement type="SimpleItemComponent" qualifier="items" cardinality="many" ordered="true"/>
+        </relation>
+
+        <relation code="CustomBannerComponent2CustomSimpleItemComponent" generate="true" localized="false" autocreate="true">
+            <sourceElement type="CustomBannerComponent" qualifier="bannerContainer" cardinality="one"/>
+            <targetElement type="CustomSimpleItemComponent" qualifier="containerItems" cardinality="many" ordered="true"/>
+        </relation>
+
+        <relation code="CustomIIBannerComponent2CustomSimpleItemComponent" generate="true" localized="false" autocreate="true">
+            <sourceElement type="CustomIIBannerComponent" qualifier="bannerContainer" cardinality="one"/>
+            <targetElement type="CustomSimpleItemComponent" qualifier="containerItems" cardinality="many" ordered="true"/>
+        </relation>
+
+        <relation code="BannerComponentII2CustomSimpleItemComponent" generate="true" localized="false" autocreate="true">
+            <sourceElement type="BannerComponentII" qualifier="bannerContainer" cardinality="one"/>
+            <targetElement type="CustomSimpleItemComponent" qualifier="containerItems" cardinality="many" ordered="true"/>
+        </relation>
+
+
+
+
+
+        <relation code="CBComponent2CSIComponent" generate="true" localized="false" autocreate="true">
+            <sourceElement type="CBComponent" qualifier="BC" cardinality="one"/>
+            <targetElement type="CSIComponent" qualifier="CI" cardinality="many" ordered="true"/>
+        </relation>
+
+
     </relations>
 
     <itemtypes>
@@ -194,6 +224,79 @@
                       jaloclass="com.taloscommerce.core.jalo.SimpleItemContainer"
                       autocreate="true" generate="true">
             </itemtype>
+
+            <itemtype code="SimpleItemComponent" extends="SimpleCMSComponent" jaloclass="com.taloscommerce.core.jalo.SimpleItemComponent"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="media" type="Media">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="CardComponent" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.CardComponent"
+                      autocreate="true" generate="true">
+            </itemtype>
+
+            <itemtype code="CustomSimpleItemComponent" extends="SimpleCMSComponent" jaloclass="com.taloscommerce.core.jalo.CustomSimpleItemComponent"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="media" type="Media">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="CustomBannerComponent" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.CustomBannerComponent"
+                      autocreate="true" generate="true">
+            </itemtype>
+
+            <itemtype code="CustomIIBannerComponent" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.CustomIIBannerComponent"
+                      autocreate="true" generate="true">
+            </itemtype>
+
+            <itemtype code="BannerComponentII" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.BannerComponentII"
+                      autocreate="true" generate="true">
+            </itemtype>
+
+
+
+
+
+            <itemtype code="CSIComponent" extends="SimpleCMSComponent" jaloclass="com.taloscommerce.core.jalo.CSIComponent"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="media" type="Media">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="CBComponent" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.CBComponent"
+                      autocreate="true" generate="true">
+            </itemtype>
+
+
         </typegroup>
     </itemtypes>
 </items>

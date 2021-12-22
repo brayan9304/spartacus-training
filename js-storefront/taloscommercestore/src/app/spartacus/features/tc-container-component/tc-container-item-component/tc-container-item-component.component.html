@@ -1,0 +1,13 @@
+<ng-container *ngIf="componentData$ | async as data">
+    <div class="tc-container__item">
+        <div class="custom-width">
+            <cx-media *ngIf="data.media" [container]="data.media" class="tc-icon">
+            </cx-media>
+        </div>
+        <div class="custom-width">
+            <h1>{{ data.title }}</h1>
+            <p>{{ data.description }}</p>
+            <button class="btn btn-action">Learn more about BUSTER Collars</button>
+        </div>
+    </div>
+</ng-container>

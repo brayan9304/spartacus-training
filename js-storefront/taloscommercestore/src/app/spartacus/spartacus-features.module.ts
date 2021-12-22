@@ -78,8 +78,13 @@ import { TcCustomNavigationComponentModule } from './features/tc-custom-navigati
 import { TcCutomFooterBottomNavigationModule } from './shared/cms-components/content/tc-custom-footer-bottom';
 import { TcFooterSocialLinkContainerModule } from './shared/cms-components/content/tc-footer-social-link-container/tc-footer-social-link-container.module';
 import { TcFooterSocialLinkModule } from './shared/cms-components/content/tc-footer-social-link/tc-footer-social-link.module';
-import { TcCollageContainerModule } from './features/tc-collage-component/tc-collage-container-component/tc-collage-container-component.module';
-import { TcCollageItemModule } from './features/tc-collage-component/tc-collage-item-component/tc-collage-item-component.module';
+import { TcCardItemModule } from './features/tc-card-component/tc-card-item-component/tc-card-item-component.module';
+import { TcCardContainerModule } from './features/tc-card-component/tc-card-container-component/tc-card-container-component.module';
+import { TcContainertemModule } from './features/tc-container-component/tc-container-item-component/tc-container-item-component.module';
+import { TcContainerModule } from './features/tc-container-component/tc-container-component/tc-container-component.module';
+import { TcCBCModule } from './features/tc-CBC/tc-CBC-component/tc-CBC.module';
+import { TcCSIModule } from './features/tc-CBC/tc-CSI-component/tc-CSI.module';
+
 
 @NgModule({
   declarations: [],
@@ -176,9 +181,12 @@ import { TcCollageItemModule } from './features/tc-collage-component/tc-collage-
     TcCutomFooterBottomNavigationModule,
     TcFooterSocialLinkContainerModule,
     TcFooterSocialLinkModule,
-    TcCollageContainerModule,
-    TcCollageItemModule
-
+    TcCardItemModule,
+    TcCardContainerModule,
+    TcContainertemModule,
+    TcContainerModule,
+    TcCBCModule,
+    TcCSIModule
   ],
 })
 export class SpartacusFeaturesModule {}

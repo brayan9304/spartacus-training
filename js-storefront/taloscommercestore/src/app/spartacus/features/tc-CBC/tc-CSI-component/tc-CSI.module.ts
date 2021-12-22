@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TcCollageItemComponent } from './tc-collage-item-component.component';
+import { TcCSI } from './tc-CSI.component';
 import { MediaModule, PageComponentModule } from '@spartacus/storefront';
 import { CmsConfig, ConfigModule } from '@spartacus/core';
 
 
 
 @NgModule({
-  declarations: [TcCollageItemComponent],
+  declarations: [TcCSI],
   imports: [
     PageComponentModule,
     CommonModule,
     MediaModule,
     ConfigModule.withConfig({
       cmsComponents: {
-        SimpleItem: {
-          component: TcCollageItemComponent,
+        CSIComponent: {
+          component: TcCSI,
         },
       },
     } as CmsConfig),
   ],
-  entryComponents: [TcCollageItemComponent],
-  exports: [TcCollageItemComponent],
+  entryComponents: [TcCSI],
+  exports: [TcCSI],
 })
-export class TcCollageItemModule { }
+export class TcCSIModule { }
