@@ -93,11 +93,12 @@ INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]   
                               ;                          ; LifeSciencesLink               ; Life Sciences Link                 ; "https://www.perficient.com/industries/life-sciences"                                                                                                                                                                                        ; LifeSciencesLink               ; LifeSciencesLink               ; newWindow                           ;            ;         ;
                               ;                          ; ManufacturingLink              ; Manu facturing Link                ; "https://www.perficient.com/industries/manufacturing"                                                                                                                                                                                        ; ManufacturingLink              ; ManufacturingLink              ; newWindow                           ;            ;         ;
                               ;                          ; TelecommunicatiosLink          ; Telecommunicatios Link             ; "https://www.perficient.com/industries/telecommunications"                                                                                                                                                                                   ; TelecommunicatiosLink          ; TelecommunicatiosLink          ; newWindow                           ;            ;         ;
-#                             ;                          ; LinkedInPerficientLink         ; Linked In Perficient Link          ; "https://www.linkedin.com/company/perficient/"                                                                                                                                                                                               ; LinkedInPerficientLink         ; LinkedInPerficientLink         ; newWindow                           ;            ;         ;
-#                             ;                          ; YoutubePerficientLink          ; Youtube  Perficient Link           ; "https://www.youtube.com/Perficient"                                                                                                                                                                                                         ; YoutubePerficientLink          ; YoutubePerficientLink          ; newWindow                           ;            ;         ;
-#                             ;                          ; TwitterPerficientLink          ; Twitter Perficien tLink            ; "https://twitter.com/perficient"                                                                                                                                                                                                             ; TwitterPerficientLink          ; TwitterPerficientLink          ; newWindow                           ;            ;         ;
-#                             ;                          ; FacebookPerficientLink         ; Facebook Perficient Link           ; "https://www.facebook.com/perficient/"                                                                                                                                                                                                       ; FacebookPerficientLink         ; FacebookPerficientLink         ; newWindow                           ;            ;         ;
-#                             ;                          ; BlogsPerficientLink            ; Blogs Perficient Link              ; "https://blogs.perficient.com/"                                                                                                                                                                                                              ; BlogsPerficientLink            ; BlogsPerficientLink            ; newWindow                           ;            ;         ;
+
+                              ;                          ; LinkedInPerficientLink         ; Linked In Perficient Link          ; "https://www.linkedin.com/company/perficient/"                                                                                                                                                                                               ; LinkedInPerficientLink         ; LinkedInPerficientLink         ; newWindow                           ;            ;         ;
+                              ;                          ; YoutubePerficientLink          ; Youtube  Perficient Link           ; "https://www.youtube.com/Perficient"                                                                                                                                                                                                         ; YoutubePerficientLink          ; YoutubePerficientLink          ; newWindow                           ;            ;         ;
+                              ;                          ; TwitterPerficientLink          ; Twitter Perficien tLink            ; "https://twitter.com/perficient"                                                                                                                                                                                                             ; TwitterPerficientLink          ; TwitterPerficientLink          ; newWindow                           ;            ;         ;
+                              ;                          ; FacebookPerficientLink         ; Facebook Perficient Link           ; "https://www.facebook.com/perficient/"                                                                                                                                                                                                       ; FacebookPerficientLink         ; FacebookPerficientLink         ; newWindow                           ;            ;         ;
+                              ;                          ; BlogsPerficientLink            ; Blogs Perficient Link              ; "https://blogs.perficient.com/"                                                                                                                                                                                                              ; BlogsPerficientLink            ; BlogsPerficientLink            ; newWindow                           ;            ;         ;
                               ;                          ; PrivacyPolicyLink              ; Privacy Policy Link                ; "https://www.perficient.com/privacy-policy"                                                                                                                                                                                                  ; PrivacyPolicyLink              ; PrivacyPolicyLink              ; newWindow                           ;            ;         ;
                               ;                          ; CustomerSecurityStatementLink  ; Customer Security Statement Link   ; "https://www.perficient.com/customer-security-statement"                                                                                                                                                                                     ; CustomerSecurityStatementLink  ; CustomerSecurityStatementLink  ; newWindow                           ;            ;         ;
 
@@ -243,10 +244,6 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]     ; c
                          ;                          ; UpSellingSlot          ; Similar
                          ;                          ; CrossSellingSlot       ; accessories
                          ;                          ; ProductLeftRefinements ; RefinementFacetComponent
-#                  ;                          ; SocialNetworkSlot      ; PerficientSocialNetworksContainer
-#                  ;                          ; GetToKnowUsSlot        ; GetToKnowUsComponent
-#                  ;                          ; ExploreIndustriesSlot  ; ExploreIndustriesComponent
-#                  ;                          ; FooterBottomSlot       ; CustomFooterBottomComponent
 
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]          ; mime     ; realfilename              ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; folder(qualifier)[default = 'images']
                    ;                          ; CamerasPagePreview           ; text/png ; CamerasPage.png           ; $jarResourceCms/preview-images/electronics/CamerasPage.png
@@ -828,9 +825,9 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]  ; name
                          ;                          ; TopContent-cartPage ; Top Slot for Cart Page ; true  ; CartComponent
 
 # Site Logo
-INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                   ; realfilename            ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText            ; folder(qualifier)[default = 'images']
- #                  ;                          ; /images/theme/perficient-inc-logo.svg ; perficient-inc-logo.svg ; $siteResource/images/theme/perficient-inc-logo.svg                          ; image/svg+xml                  ; hybris Accelerator ;
-                   ;                          ; /images/theme/perficient-logo.svg     ; perficient-logo.svg     ; $siteResource/images/theme/perficient-logo.svg                              ; image/svg+xml                  ; hybris Accelerator ;
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]               ; realfilename        ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText            ; folder(qualifier)[default = 'images']
+#                  ;                          ; /images/theme/perficient-inc-logo.svg ; perficient-inc-logo.svg ; $siteResource/images/theme/perficient-inc-logo.svg                          ; image/svg+xml                  ; hybris Accelerator ;
+                   ;                          ; /images/theme/perficient-logo.svg ; perficient-logo.svg ; $siteResource/images/theme/perficient-logo.svg                              ; image/svg+xml                  ; hybris Accelerator ;
 
 ###  Responsive Error page #######
 
@@ -1162,15 +1159,12 @@ INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = tru
                                    ;                          ; ContactInfo       ; Contact information ; ContactInfo
 ###### Footer Component Refactor Start ######
 INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]    ; active; cmsComponents(uid, $contentCV)
-#                         ;                          ; FooterSlot            ; FooterNavigationComponent
-                         ;                          ; FooterSlot            ; true  ; FooterCustomNavigationComponent,CustomFooterButtonComponent
-#                         ;                          ; FooterSlot            ; true  ; FooterLogoComponent, CustomFooterButtonComponent
-#                         ;                          ; FooterSlot        ; true ;FooterCustomNavigationComponent,CustomFooterBottomComponent
+                         ;                          ; FooterSlot            ; true  ; FooterCustomNavigationComponent,CustomFooterBottomComponent
                          ;                          ; SocialNetworkSlot     ; true  ; PerficientSocialNetworksContainer
                          ;                          ; GetToKnowUsSlot       ; true  ; GetToKnowUsComponent
                          ;                          ; ExploreIndustriesSlot ; true  ; ExploreIndustriesComponent
                          ;                          ; FooterBottomSlot      ; true  ; CustomFooterBottomComponent
-                         ;
+
 INSERT_UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]              ; wrapAfter; &componentRef                   ; showLanguageCurrency; navigationNode(&nodeRef)
                                        ;                          ; FooterNavigationComponent       ; 4        ; FooterNavigationComponent       ; true                ; FooterNavNode            ;
                                        ;                          ; FooterCustomNavigationComponent ; 4        ; FooterCustomNavigationComponent ; true                ; FooterCustomNavNode      ;
@@ -1185,7 +1179,7 @@ INSERT_UPDATE CustomFooterBottom; $contentCV[unique = true]; uid[unique = true] 
 # the order of children is the same as the display order on the site
 INSERT_UPDATE CMSNavigationNode; uid[unique = true]        ; $contentCV[unique = true]; name                       ; parent(uid, $contentCV); &nodeRef                  ; children(uid, $contentCV)
                                ; FooterNavNode             ;                          ; Footer Pages               ; ElectronicsNavNode     ; FooterNavNode             ; SAPCommerceNavNode,SAPCustomerExperienceNavNode,FollowUsNavNode
-#                           ; FooterCustomNavNode ;                          ; Footer Custom Pages ; ElectronicsNavNode     ; FooterCustomNavNode ; PerficientNavNode,GetToKnowUsNavNode,ExploreIndustriesNavNode,FooterBottomNavNode
+
                                ; FooterCustomNavNode       ;                          ; Footer Custom Pages        ; ElectronicsNavNode     ; FooterCustomNavNode       ; GetToKnowUsNavNode,ExploreIndustriesNavNode
                                ; CustomFooterBottomNavNode ;                          ; Custom Footer Bottom Pages ; ElectronicsNavNode     ; CustomFooterBottomNavNode ; FooterBottomNavNode
 # children of FooterNavNode #
@@ -1194,7 +1188,8 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]           ; $contentCV[uniqu
                                ; SAPCommerceNavNode           ;                          ; SAP Commerce Cloud Pages      ; SAPCommerceNavNode           ; AboutSAPCommerceNavNode,FAQNavNode
                                ; SAPCustomerExperienceNavNode ;                          ; SAP Customer Experience Pages ; SAPCustomerExperienceNavNode ; AboutSAPCustomerExperienceNavNode,ContactUsNavNode
                                ; FollowUsNavNode              ;                          ; Follow Us Pages               ; FollowUsNavNode              ; AgileCommerceBlogNavNode,LinkedInNavNode,FacebookNavNode,TwitterNavNode
-#                             ; PerficientNavNode            ;                          ; Perficient                    ; PerficientNavNode            ; LinkedInPerficientCustomNavNode,YoutubePerficientCustomNavNode,TwitterPerficientCustomNavNode,FacebookPerficientCustomNavNode,BlogsPerficientCustomNavNode
+
+                               ; PerficientNavNode            ;                          ; Perficient                    ; PerficientNavNode            ; LinkedInPerficientCustomNavNode,YoutubePerficientCustomNavNode,TwitterPerficientCustomNavNode,FacebookPerficientCustomNavNode,BlogsPerficientCustomNavNode
                                ; GetToKnowUsNavNode           ;                          ; Get To Know Us                ; GetToKnowUsNavNode           ; WhoWeAreNavNode,WhatWeDoNavNode,SuccessStoriesNavNode,InsighsNavNode,CareersNavNode,InvestorsNavNode,NewsRoomNavNode,ContactNavNode
                                ; ExploreIndustriesNavNode     ;                          ; Explore Industries            ; ExploreIndustriesNavNode     ; AutomotiveNavNode,ConsumerMarketsNavNode,EnergyPlusUtilitiesNavNode,FinancialServiceNavNode,HealthcareNavNode,LifeSciencesNavNode,ManufacturingNavNode,TelecommunicatiosNavNode
                                ; FooterBottomNavNode          ;                          ; Footer Bottom                 ; FooterBottomNavNode          ; PrivacyPolicyNavNode,CustomerSecurityStatementNavNode
@@ -1226,20 +1221,23 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]                ; $contentCV[
                                ; LifeSciencesNavNode               ;                          ; Life Sciences Page               ; LifeSciencesNavNode
                                ; ManufacturingNavNode              ;                          ; Manufacturing Page               ; ManufacturingNavNode
                                ; TelecommunicatiosNavNode          ;                          ; Telecommunicatios Page           ; TelecommunicatiosNavNode
-#                               ; LinkedInPerficientNavNode         ;                          ; Linked In Perficient Page        ; LinkedInPerficientNavNode
-#                               ; YoutubePerficientNavNode          ;                          ; Youtube Perficient Page          ; YoutubePerficientNavNode
-#                               ; TwitterPerficientNavNode          ;                          ; Twitter Perficient Page          ; TwitterPerficientNavNode
-#                               ; FacebookPerficientNavNode         ;                          ; Facebook Perficient Page         ; FacebookPerficientNavNode
-#                               ; BlogsPerficientNavNode            ;                          ; Blogs Perficient Page            ; BlogsPerficientNavNode
+
+                               ; LinkedInPerficientNavNode         ;                          ; Linked In Perficient Page        ; LinkedInPerficientNavNode
+                               ; YoutubePerficientNavNode          ;                          ; Youtube Perficient Page          ; YoutubePerficientNavNode
+                               ; TwitterPerficientNavNode          ;                          ; Twitter Perficient Page          ; TwitterPerficientNavNode
+                               ; FacebookPerficientNavNode         ;                          ; Facebook Perficient Page         ; FacebookPerficientNavNode
+                               ; BlogsPerficientNavNode            ;                          ; Blogs Perficient Page            ; BlogsPerficientNavNode
                                ; PrivacyPolicyNavNode              ;                          ; Privacy Policy Page              ; PrivacyPolicyNavNode
                                ; CustomerSecurityStatementNavNode  ;                          ; Customer Security Statement Page ; CustomerSecurityStatementNavNode
 
-#INSERT_UPDATE CustomFooterNavNode; uid[unique = true]              ; $contentCV[unique = true]; name                      ; &nodeRef                        ; children(uid, $contentCV); links(&linkRef); $media
-#                                 ; LinkedInPerficientCustomNavNode ;                          ; Linked In Perficient Page ; LinkedInPerficientCustomNavNode ;                          ;                ; /images/customFooter/linkedIn-logo.svg
-#                                 ; YoutubePerficientCustomNavNode  ;                          ; Youtube Perficient Page   ; YoutubePerficientCustomNavNode  ;                          ;                ; /images/customFooter/youtube-logo.svg
-#                                 ; TwitterPerficientCustomNavNode  ;                          ; Twitter Perficient Page   ; TwitterPerficientCustomNavNode  ;                          ;                ; /images/customFooter/twitter-logo.svg
-#                                 ; FacebookPerficientCustomNavNode ;                          ; Facebook Perficient Page  ; FacebookPerficientCustomNavNode ;                          ;                ; /images/customFooter/facebook-logo.svg
-#                                 ; BlogsPerficientCustomNavNode    ;                          ; Blogs Perficient Page     ; BlogsPerficientCustomNavNode    ;                          ;                ; /images/customFooter/blog-logo.svg
+
+INSERT_UPDATE CustomFooterNavNode; uid[unique = true]              ; $contentCV[unique = true]; name                      ; &nodeRef                        ; children(uid, $contentCV); links(&linkRef); $media
+                                 ; LinkedInPerficientCustomNavNode ;                          ; Linked In Perficient Page ; LinkedInPerficientCustomNavNode ;                          ;                ; /images/customFooter/linkedIn-logo.svg
+                                 ; YoutubePerficientCustomNavNode  ;                          ; Youtube Perficient Page   ; YoutubePerficientCustomNavNode  ;                          ;                ; /images/customFooter/youtube-logo.svg
+                                 ; TwitterPerficientCustomNavNode  ;                          ; Twitter Perficient Page   ; TwitterPerficientCustomNavNode  ;                          ;                ; /images/customFooter/twitter-logo.svg
+                                 ; FacebookPerficientCustomNavNode ;                          ; Facebook Perficient Page  ; FacebookPerficientCustomNavNode ;                          ;                ; /images/customFooter/facebook-logo.svg
+                                 ; BlogsPerficientCustomNavNode    ;                          ; Blogs Perficient Page     ; BlogsPerficientCustomNavNode    ;                          ;                ; /images/customFooter/blog-logo.svg
+
 
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                    ; realfilename      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText              ; folder(qualifier)[default = 'images']
                    ;                          ; /images/customFooter/linkedIn-logo.svg ; linkedIn-logo.svg ; $siteResource/images/customFooter/linkedIn-logo.svg                         ; image/svg+xml                  ; "hybris Accelerator" ;
@@ -1276,11 +1274,12 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]                     ; $cont
                                 ; LifeSciencesNavNodeEntry               ;                          ; Life Sciences Node Entry                       ; LifeSciencesNavNode               ; LifeSciencesLink                                       ;
                                 ; ManufacturingNavNodeEntry              ;                          ; Manufacturing Node Entry                       ; ManufacturingNavNode              ; ManufacturingLink                                      ;
                                 ; TelecommunicatiosNavNodeEntry          ;                          ; Telecommunicatios Node Entry                   ; TelecommunicatiosNavNode          ; TelecommunicatiosLink                                  ;
-#                              ; LinkedInPerficientNavNodeEntry         ;                          ; Linked In Perficient Node Entry                ; LinkedInPerficientCustomNavNode   ; LinkedInPerficientLink                                 ;
-#                              ; YoutubePerficientNavNodeEntry          ;                          ; Youtube Perficient Node Entry                  ; YoutubePerficientCustomNavNode    ; YoutubePerficientLink                                  ;
-#                              ; TwitterPerficientNavNodeEntry          ;                          ; Twitter Perficient Node Entry                  ; TwitterPerficientCustomNavNode    ; TwitterPerficientLink                                  ;
-#                              ; FacebookPerficientNavNodeEntry         ;                          ; Facebook  Perficient Node Entry                ; FacebookPerficientCustomNavNode   ; FacebookPerficientLink                                 ;
-#                              ; BlogsPerficientNavNodeEntry            ;                          ; Blogs Perficient Node Entry                    ; BlogsPerficientCustomNavNode      ; BlogsPerficientLink                                    ;
+
+                                ; LinkedInPerficientNavNodeEntry         ;                          ; Linked In Perficient Node Entry                ; LinkedInPerficientCustomNavNode   ; LinkedInPerficientLink                                 ;
+                                ; YoutubePerficientNavNodeEntry          ;                          ; Youtube Perficient Node Entry                  ; YoutubePerficientCustomNavNode    ; YoutubePerficientLink                                  ;
+                                ; TwitterPerficientNavNodeEntry          ;                          ; Twitter Perficient Node Entry                  ; TwitterPerficientCustomNavNode    ; TwitterPerficientLink                                  ;
+                                ; FacebookPerficientNavNodeEntry         ;                          ; Facebook  Perficient Node Entry                ; FacebookPerficientCustomNavNode   ; FacebookPerficientLink                                 ;
+                                ; BlogsPerficientNavNodeEntry            ;                          ; Blogs Perficient Node Entry                    ; BlogsPerficientCustomNavNode      ; BlogsPerficientLink                                    ;
                                 ; PrivacyPolicyNavNodeEntry              ;                          ; Privacy Policy Node Entry                      ; PrivacyPolicyNavNode              ; PrivacyPolicyLink                                      ;
                                 ; CustomerSecurityStatementNavNodeEntry  ;                          ; Customer Security Statement Node Entry         ; CustomerSecurityStatementNavNode  ; CustomerSecurityStatementLink                          ;
 

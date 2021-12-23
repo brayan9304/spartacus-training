@@ -19,7 +19,7 @@ import { CustomFooterBottomComponent } from './tc-custom-footer-bottom.component
     IconModule,
   ],
   providers: [
-    provideDefaultConfig(<CmsConfig>{
+    provideDefaultConfig(<CmsConfig> {
       cmsComponents: {
         CustomFooterBottom: {
           component: CustomFooterBottomComponent,
