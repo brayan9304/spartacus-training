@@ -1,5 +1,6 @@
 <ng-container *ngIf="componentData$ | async as data">
-    <div class="tc-container__item">
+    {{ data.position }}
+    <div [ngClass]="data.position == '1' ? 'tc-container__row' : 'tc-container__reverse'" class="tc-container__item">
         <div class="custom-width">
             <cx-media *ngIf="data.media" [container]="data.media" class="tc-icon">
             </cx-media>
@@ -8,7 +9,9 @@
             <h1>{{ data.title }}</h1>
             <p>{{ data.description }}</p>
             <button class="btn btn-primary">Learn more</button>
-            <button class="btn btn-action button">See insights on Bracs</button>
+            <ng-container *ngIf="data.position == '2'">
+                <button class="btn btn-action button">See insights on Bracs</button>
+            </ng-container>
         </div>
     </div>
 </ng-container>

@@ -14,7 +14,7 @@ import { CmsConfig, ConfigModule } from '@spartacus/core';
     MediaModule,
     ConfigModule.withConfig({
       cmsComponents: {
-        SimpleItemComponent: {
+        ItemComponent: {
           component: TcCardItemComponent,
         },
       },

@@ -80,10 +80,7 @@ import { TcFooterSocialLinkContainerModule } from './shared/cms-components/conte
 import { TcFooterSocialLinkModule } from './shared/cms-components/content/tc-footer-social-link/tc-footer-social-link.module';
 import { TcCardItemModule } from './features/tc-card-component/tc-card-item-component/tc-card-item-component.module';
 import { TcCardContainerModule } from './features/tc-card-component/tc-card-container-component/tc-card-container-component.module';
-import { TcContainertemModule } from './features/tc-container-component/tc-container-item-component/tc-container-item-component.module';
-import { TcContainerModule } from './features/tc-container-component/tc-container-component/tc-container-component.module';
-import { TcCBCModule } from './features/tc-CBC/tc-CBC-component/tc-CBC.module';
-import { TcCSIModule } from './features/tc-CBC/tc-CSI-component/tc-CSI.module';
+import { TcCustomItemModule } from './features/tc-custom-item-component/tc-custom-item-component.module';
 
 
 @NgModule({
@@ -183,10 +180,7 @@ import { TcCSIModule } from './features/tc-CBC/tc-CSI-component/tc-CSI.module';
     TcFooterSocialLinkModule,
     TcCardItemModule,
     TcCardContainerModule,
-    TcContainertemModule,
-    TcContainerModule,
-    TcCBCModule,
-    TcCSIModule
+    TcCustomItemModule
   ],
 })
 export class SpartacusFeaturesModule {}

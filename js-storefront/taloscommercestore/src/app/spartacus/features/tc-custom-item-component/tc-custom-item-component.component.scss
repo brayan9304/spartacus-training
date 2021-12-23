@@ -1,3 +1,11 @@
+.tc-container__reverse{
+    flex-direction: row-reverse;
+}
+
+.tc-container__row{
+    flex-direction: row;
+}
+
 .tc-container__item{
 
     width: 75%;
@@ -8,9 +16,9 @@
     border-radius: 5px; 
     padding: 20px; 
     justify-content: space-around;
-    flex-direction: row-reverse;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+
 
     cx-media{
         width: 200px;

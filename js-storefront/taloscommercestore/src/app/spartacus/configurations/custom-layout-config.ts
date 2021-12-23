@@ -28,7 +28,7 @@ export const customLayoutConfig: LayoutConfig = {
     SavedListDetailPageTemplate: {
       slots: ['BodyContent']
     },
-    ExtraPage1Template: {
+    Page1Template: {
       slots: ['BodyContent']
     },
   },

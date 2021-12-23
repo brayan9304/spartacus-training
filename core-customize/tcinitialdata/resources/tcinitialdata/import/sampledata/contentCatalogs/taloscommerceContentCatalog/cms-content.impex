@@ -908,7 +908,8 @@ INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]   
                               ;                          ; AddressBookLink       ; AddressBookLink       ; /my-account/address-book       ; AddressBookLink       ;
                               ;                          ; ReferredCustomersLink ; ReferredCustomersLink ; /my-account/referred-customers ; ReferredCustomersLink ;
                               ;                          ; SavedListsLink        ; SavedListsLink        ; /my-account/saved-lists        ; SavedListsLink        ;
-                              ;                          ; Page1Link             ; Page1Link             ; /my-account/extra-page-1       ; Page1Link
+                              ;                          ; Page1Link             ; Page1Link             ; /my-account/page-1             ; Page1Link             ;
+                              ;                          ; ExtraaPage1Link       ; ExtraPage1Link        ; /my-account/extra-page-1       ; ExtraPage1Link        ;
                               ;                          ; PaymentDetailsLink    ; PaymentDetailsLink    ; /my-account/payment-details    ; PaymentDetailsLink    ;
                               ;                          ; OrderHistoryLink      ; OrderHistoryLink      ; /my-account/orders             ; OrderHistoryLink      ;
                               ;                          ; SavedCartsLink        ; SavedCartsLink        ; /my-account/saved-carts        ; SavedCartsLink        ;
@@ -927,6 +928,7 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]       ; $contentCV[unique = 
                                ; ReferredCustomersNavNode ;                          ; ReferredCustomers  ; MyAccountNavNode       ;                ; ReferredCustomersNavNode
                                ; SavedListsNavNode        ;                          ; SavedLists         ; MyAccountNavNode       ;                ; SavedListsNavNode
                                ; Page1NavNode             ;                          ; ExtraPage1         ; MyAccountNavNode       ;                ; Page1NavNode
+                               ; ExtraPage1NavNode        ;                          ; Extra Page 1       ; MyAccountNavNode       ;                ; ExtraPage1NavNode
                                ; AddressBookNavNode       ;                          ; Address Book       ; MyAccountNavNode       ;                ; AddressBookNavNode
                                ; SavedCartsNavNode        ;                          ; Saved Carts        ; MyAccountNavNode       ;                ; SavedCartsNavNode
                                ; ConsentManagementNavNode ;                          ; Consent Management ; MyAccountNavNode       ;                ; ConsentManagementNavNode
@@ -939,7 +941,8 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]            ; $contentCV[uni
                                 ; ChangePasswordNavNodeEntry    ;                          ; ChangePasswordNavNodeEntry    ; ChangePasswordNavNode    ; UpdatePasswordLink    ;
                                 ; ReferredCustomersNavNodeEntry ;                          ; ReferredCustomersNavNodeEntry ; ReferredCustomersNavNode ; ReferredCustomersLink ;
                                 ; SavedListsNavNodeEntry        ;                          ; SavedListsNavNodeEntry        ; SavedListsNavNode        ; SavedListsLink        ;
-                                ; Page1NavNodeEntry             ;                          ; Page1NavNodeEntry             ; Page1NavNode             ; Page1Link
+                                ; Page1NavNodeEntry             ;                          ; Page1NavNodeEntry             ; Page1NavNode             ; Page1Link             ;
+                                ; ExtraPage1NavNodeEntry        ;                          ; ExtraPage1NavNodeEntry        ; ExtraPage1NavNode        ; ExtraPage1Link        ;
                                 ; AddressBookNavNodeEntry       ;                          ; AddressBookNavNodeEntry       ; AddressBookNavNode       ; AddressBookLink       ;
                                 ; PaymentDetailsNavNodeEntry    ;                          ; PaymentDetailsNavNodeEntry    ; PaymentDetailsNavNode    ; PaymentDetailsLink    ;
                                 ; OrderHistoryNavNodeEntry      ;                          ; OrderHistoryNavNodeEntry      ; OrderHistoryNavNode      ; OrderHistoryLink      ;
@@ -1172,43 +1175,35 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]    ; ac
                          ;                          ; ExploreIndustriesSlot ; true  ; ExploreIndustriesComponent
                          ;                          ; FooterBottomSlot      ; true  ; CustomFooterBottomComponent
 
-INSERT_UPDATE CardComponent; uid[unique = true]; $contentCV[unique = true]; &componentRef ; items(&componentRef)
-                           ; CardComponent     ;                          ; CardComponent ; Item1Page1,Item2Page1,Item3Page1,Item4Page1,Item5Page1
-
-INSERT_UPDATE CustomBannerComponent; uid[unique = true]; $contentCV[unique = true]; &componentRef; containerItems(&componentRef)
-                                   ; Container1        ;                          ; Container1   ; Container1Item1
-
-INSERT_UPDATE CBComponent; uid[unique = true]; $contentCV[unique = true]; &componentRef; CI(&componentRef)
-                         ; CBC2              ;                          ; CBC2         ; CSI1
-
+INSERT_UPDATE CardContainer; uid[unique = true]; $contentCV[unique = true]; &componentRef ; items(&componentRef)
+                           ; CardContainer     ;                          ; CardContainer ; Item1Card,Item2Card,Item3Card,Item4Card,Item5Card
 
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]        ; realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText              ; folder(qualifier)[default = 'images']
                    ;                          ; /images/extraPages/dog.png ; dog.png     ; $siteResource/images/extraPages/dog.png                                     ; image/svg+xml                  ; "hybris Accelerator" ;
 
-INSERT_UPDATE SimpleItemComponent; uid[unique = true]; $contentCV[unique = true]; name                ; &componentRef; title    ; $media
-                                 ; Item1Page1        ;                          ; Item 1 Extra Page 1 ; Item1Page1   ; "Item 1" ; /images/extraPages/dog.png
-                                 ; Item2Page1        ;                          ; Item 2 Extra Page 1 ; Item2Page1   ; "Item 2" ; /images/extraPages/dog.png
-                                 ; Item3Page1        ;                          ; Item 3 Extra Page 1 ; Item3Page1   ; "Item 3" ; /images/extraPages/dog.png
-                                 ; Item4Page1        ;                          ; Item 4 Extra Page 1 ; Item4Page1   ; "Item 4" ; /images/extraPages/dog.png
-                                 ; Item5Page1        ;                          ; Item 5 Extra Page 1 ; Item5Page1   ; "Item 5" ; /images/extraPages/dog.png
+INSERT_UPDATE ItemComponent; uid[unique = true]; $contentCV[unique = true]; name               ; &componentRef; title    ; $media
+                           ; Item1Card         ;                          ; Item 1 Card Page 1 ; Item1Card    ; "Item 1" ; /images/extraPages/dog.png
+                           ; Item2Card         ;                          ; Item 2 Card Page 1 ; Item2Card    ; "Item 2" ; /images/extraPages/dog.png
+                           ; Item3Card         ;                          ; Item 3 Card Page 1 ; Item3Card    ; "Item 3" ; /images/extraPages/dog.png
+                           ; Item4Card         ;                          ; Item 4 Card Page 1 ; Item4Card    ; "Item 4" ; /images/extraPages/dog.png
+                           ; Item5Card         ;                          ; Item 5 Card Page 1 ; Item5Card    ; "Item 5" ; /images/extraPages/dog.png
 
-INSERT_UPDATE CustomSimpleItemComponent; uid[unique = true]; $contentCV[unique = true]; name                      ; &componentRef   ; title                             ; description                                                                                                                                                 ; $media
-                                       ; Container1Item1   ;                          ; Item 1 Container 1 Page 1 ; Container1Item1 ; "Choose the right BUSTER Collar!" ; "The BUSTER Collar is comprehensive and counts more than 15 collars in various sizes to cover every need and breed. Follow this guide to the right collar!" ; /images/extraPages/dog.png
-
-INSERT_UPDATE CSIComponent; uid[unique = true]; $contentCV[unique = true]; name ; &componentRef; title                             ; description                                                                                                                                                 ; $media
-                          ; CSI1              ;                          ; CSI1 ; CSI1         ; "Choose the right BUSTER Collar!" ; "The BUSTER Collar is comprehensive and counts more than 15 collars in various sizes to cover every need and breed. Follow this guide to the right collar!" ; /images/extraPages/dog.png
+INSERT_UPDATE CustomItemComponent; uid[unique = true]; $contentCV[unique = true]; name                 ; &componentRef; title                             ; $media                     ; description                                                                                                                                                 ; position
+                                 ; CustomItem1       ;                          ; Custom Item 1 Page 1 ; CustomItem1  ; "Choose the right BUSTER Collar!" ; /images/extraPages/dog.png ; "The BUSTER Collar is comprehensive and counts more than 15 collars in various sizes to cover every need and breed. Follow this guide to the right collar!" ; "1"
+                                 ; CustomItem2       ;                          ; Custom Item 2 Page 1 ; CustomItem2  ; "Choose the right BUSTER Collar!" ; /images/extraPages/dog.png ; "The BUSTER Collar is comprehensive and counts more than 15 collars in various sizes to cover every need and breed. Follow this guide to the right collar!" ; "2"
 
 ###### Account Extra Page 1
 
 # ContentSlot
-INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]       ; name                                       ; active; cmsComponents(&componentRef)  ; ; ;
-                         ;                          ; BodyContent-extra-page-1 ; Body Content Slot for Account Extra Page 1 ; true  ; Container1,CardComponent,CBC2 ; ; ;
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true] ; name                                 ; active; cmsComponents(&componentRef)          ; ; ;
+                         ;                          ; BodyContent-page-1 ; Body Content Slot for Account Page 1 ; true  ; CustomItem1,CardContainer,CustomItem2 ; ; ;
 
 # ContentSlotForPage
 INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]       ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'extra-page-1']; contentSlot(uid, $contentCV)[unique = true]; ; ;
                                 ;                          ; BodyContent-extra-page-1 ; BodyContent            ;                                                               ; BodyContent-extra-page-1                   ; ; ;
 
-
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true] ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'page-1']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; BodyContent-page-1 ; BodyContent            ;                                                         ; BodyContent-page-1                         ; ; ;
 
 INSERT_UPDATE FooterNavigationComponent; $contentCV[unique = true]; uid[unique = true]              ; wrapAfter; &componentRef                   ; showLanguageCurrency; navigationNode(&nodeRef)
                                        ;                          ; FooterNavigationComponent       ; 4        ; FooterNavigationComponent       ; true                ; FooterNavNode            ;
@@ -1224,7 +1219,6 @@ INSERT_UPDATE CustomFooterBottom; $contentCV[unique = true]; uid[unique = true] 
 # the order of children is the same as the display order on the site
 INSERT_UPDATE CMSNavigationNode; uid[unique = true]        ; $contentCV[unique = true]; name                       ; parent(uid, $contentCV); &nodeRef                  ; children(uid, $contentCV)
                                ; FooterNavNode             ;                          ; Footer Pages               ; ElectronicsNavNode     ; FooterNavNode             ; SAPCommerceNavNode,SAPCustomerExperienceNavNode,FollowUsNavNode
-#                           ; FooterCustomNavNode ;                          ; Footer Custom Pages ; ElectronicsNavNode     ; FooterCustomNavNode ; PerficientNavNode,GetToKnowUsNavNode,ExploreIndustriesNavNode,FooterBottomNavNode
                                ; FooterCustomNavNode       ;                          ; Footer Custom Pages        ; ElectronicsNavNode     ; FooterCustomNavNode       ; GetToKnowUsNavNode,ExploreIndustriesNavNode
                                ; CustomFooterBottomNavNode ;                          ; Custom Footer Bottom Pages ; ElectronicsNavNode     ; CustomFooterBottomNavNode ; FooterBottomNavNode
 # children of FooterNavNode #
@@ -1233,7 +1227,6 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]           ; $contentCV[uniqu
                                ; SAPCommerceNavNode           ;                          ; SAP Commerce Cloud Pages      ; SAPCommerceNavNode           ; AboutSAPCommerceNavNode,FAQNavNode
                                ; SAPCustomerExperienceNavNode ;                          ; SAP Customer Experience Pages ; SAPCustomerExperienceNavNode ; AboutSAPCustomerExperienceNavNode,ContactUsNavNode
                                ; FollowUsNavNode              ;                          ; Follow Us Pages               ; FollowUsNavNode              ; AgileCommerceBlogNavNode,LinkedInNavNode,FacebookNavNode,TwitterNavNode
-#                             ; PerficientNavNode            ;                          ; Perficient                    ; PerficientNavNode            ; LinkedInPerficientCustomNavNode,YoutubePerficientCustomNavNode,TwitterPerficientCustomNavNode,FacebookPerficientCustomNavNode,BlogsPerficientCustomNavNode
                                ; GetToKnowUsNavNode           ;                          ; Get To Know Us                ; GetToKnowUsNavNode           ; WhoWeAreNavNode,WhatWeDoNavNode,SuccessStoriesNavNode,InsighsNavNode,CareersNavNode,InvestorsNavNode,NewsRoomNavNode,ContactNavNode
                                ; ExploreIndustriesNavNode     ;                          ; Explore Industries            ; ExploreIndustriesNavNode     ; AutomotiveNavNode,ConsumerMarketsNavNode,EnergyPlusUtilitiesNavNode,FinancialServiceNavNode,HealthcareNavNode,LifeSciencesNavNode,ManufacturingNavNode,TelecommunicatiosNavNode
                                ; FooterBottomNavNode          ;                          ; Footer Bottom                 ; FooterBottomNavNode          ; PrivacyPolicyNavNode,CustomerSecurityStatementNavNode
@@ -1265,20 +1258,8 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]                ; $contentCV[
                                ; LifeSciencesNavNode               ;                          ; Life Sciences Page               ; LifeSciencesNavNode
                                ; ManufacturingNavNode              ;                          ; Manufacturing Page               ; ManufacturingNavNode
                                ; TelecommunicatiosNavNode          ;                          ; Telecommunicatios Page           ; TelecommunicatiosNavNode
-#                               ; LinkedInPerficientNavNode         ;                          ; Linked In Perficient Page        ; LinkedInPerficientNavNode
-#                               ; YoutubePerficientNavNode          ;                          ; Youtube Perficient Page          ; YoutubePerficientNavNode
-#                               ; TwitterPerficientNavNode          ;                          ; Twitter Perficient Page          ; TwitterPerficientNavNode
-#                               ; FacebookPerficientNavNode         ;                          ; Facebook Perficient Page         ; FacebookPerficientNavNode
-#                               ; BlogsPerficientNavNode            ;                          ; Blogs Perficient Page            ; BlogsPerficientNavNode
                                ; PrivacyPolicyNavNode              ;                          ; Privacy Policy Page              ; PrivacyPolicyNavNode
                                ; CustomerSecurityStatementNavNode  ;                          ; Customer Security Statement Page ; CustomerSecurityStatementNavNode
-
-#INSERT_UPDATE CustomFooterNavNode; uid[unique = true]              ; $contentCV[unique = true]; name                      ; &nodeRef                        ; children(uid, $contentCV); links(&linkRef); $media
-#                                 ; LinkedInPerficientCustomNavNode ;                          ; Linked In Perficient Page ; LinkedInPerficientCustomNavNode ;                          ;                ; /images/customFooter/linkedIn-logo.svg
-#                                 ; YoutubePerficientCustomNavNode  ;                          ; Youtube Perficient Page   ; YoutubePerficientCustomNavNode  ;                          ;                ; /images/customFooter/youtube-logo.svg
-#                                 ; TwitterPerficientCustomNavNode  ;                          ; Twitter Perficient Page   ; TwitterPerficientCustomNavNode  ;                          ;                ; /images/customFooter/twitter-logo.svg
-#                                 ; FacebookPerficientCustomNavNode ;                          ; Facebook Perficient Page  ; FacebookPerficientCustomNavNode ;                          ;                ; /images/customFooter/facebook-logo.svg
-#                                 ; BlogsPerficientCustomNavNode    ;                          ; Blogs Perficient Page     ; BlogsPerficientCustomNavNode    ;                          ;                ; /images/customFooter/blog-logo.svg
 
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]                    ; realfilename      ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText              ; folder(qualifier)[default = 'images']
                    ;                          ; /images/customFooter/linkedIn-logo.svg ; linkedIn-logo.svg ; $siteResource/images/customFooter/linkedIn-logo.svg                         ; image/svg+xml                  ; "hybris Accelerator" ;
@@ -1315,11 +1296,6 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]                     ; $cont
                                 ; LifeSciencesNavNodeEntry               ;                          ; Life Sciences Node Entry                       ; LifeSciencesNavNode               ; LifeSciencesLink                                       ;
                                 ; ManufacturingNavNodeEntry              ;                          ; Manufacturing Node Entry                       ; ManufacturingNavNode              ; ManufacturingLink                                      ;
                                 ; TelecommunicatiosNavNodeEntry          ;                          ; Telecommunicatios Node Entry                   ; TelecommunicatiosNavNode          ; TelecommunicatiosLink                                  ;
-#                              ; LinkedInPerficientNavNodeEntry         ;                          ; Linked In Perficient Node Entry                ; LinkedInPerficientCustomNavNode   ; LinkedInPerficientLink                                 ;
-#                              ; YoutubePerficientNavNodeEntry          ;                          ; Youtube Perficient Node Entry                  ; YoutubePerficientCustomNavNode    ; YoutubePerficientLink                                  ;
-#                              ; TwitterPerficientNavNodeEntry          ;                          ; Twitter Perficient Node Entry                  ; TwitterPerficientCustomNavNode    ; TwitterPerficientLink                                  ;
-#                              ; FacebookPerficientNavNodeEntry         ;                          ; Facebook  Perficient Node Entry                ; FacebookPerficientCustomNavNode   ; FacebookPerficientLink                                 ;
-#                              ; BlogsPerficientNavNodeEntry            ;                          ; Blogs Perficient Node Entry                    ; BlogsPerficientCustomNavNode      ; BlogsPerficientLink                                    ;
                                 ; PrivacyPolicyNavNodeEntry              ;                          ; Privacy Policy Node Entry                      ; PrivacyPolicyNavNode              ; PrivacyPolicyLink                                      ;
                                 ; CustomerSecurityStatementNavNodeEntry  ;                          ; Customer Security Statement Node Entry         ; CustomerSecurityStatementNavNode  ; CustomerSecurityStatementLink                          ;
 

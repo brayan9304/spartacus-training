@@ -33,27 +33,14 @@ export interface TcCardContainerModel extends CmsComponent {
   items?: TcCardItemModel;
 }
 
-export interface TcContainerModel extends CmsComponent {
-  containerItems?: TcCustomSimpleItemModel;
-}
-
-export interface TcCBCModel extends CmsComponent {
-  containerItems?: TcCSIModel;
-}
-
 export interface TcCardItemModel extends CmsComponent {
   title?: string;
   media?: Media;
 }
 
-export interface TcCustomSimpleItemModel extends CmsComponent {
+export interface TcCustomItemModel extends CmsComponent {
   title?: string;
-  description?: string;
   media?: Media;
-}
-
-export interface TcCSIModel extends CmsComponent {
-  title?: string;
   description?: string;
-  media?: Media;
+  position?: string;
 }
