@@ -905,6 +905,9 @@ INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]   
                               ;                          ; AddressBookLink       ; AddressBookLink       ; /my-account/address-book       ; AddressBookLink       ;
                               ;                          ; ReferredCustomersLink ; ReferredCustomersLink ; /my-account/referred-customers ; ReferredCustomersLink ;
                               ;                          ; SavedListsLink        ; SavedListsLink        ; /my-account/saved-lists        ; SavedListsLink        ;
+                              ;                          ; Page1Link             ; Page1Link             ; /my-account/page-1             ; Page1Link             ;
+                              ;                          ; Page2Link             ; Page2Link             ; /my-account/page-2             ; Page2Link             ;
+                              ;                          ; ExtraaPage1Link       ; ExtraPage1Link        ; /my-account/extra-page-1       ; ExtraPage1Link        ;
                               ;                          ; PaymentDetailsLink    ; PaymentDetailsLink    ; /my-account/payment-details    ; PaymentDetailsLink    ;
                               ;                          ; OrderHistoryLink      ; OrderHistoryLink      ; /my-account/orders             ; OrderHistoryLink      ;
                               ;                          ; SavedCartsLink        ; SavedCartsLink        ; /my-account/saved-carts        ; SavedCartsLink        ;
@@ -922,6 +925,8 @@ INSERT_UPDATE CMSNavigationNode; uid[unique = true]       ; $contentCV[unique = 
                                ; OrderHistoryNavNode      ;                          ; Order History      ; MyAccountNavNode       ;                ; OrderHistoryNavNode
                                ; ReferredCustomersNavNode ;                          ; ReferredCustomers  ; MyAccountNavNode       ;                ; ReferredCustomersNavNode
                                ; SavedListsNavNode        ;                          ; SavedLists         ; MyAccountNavNode       ;                ; SavedListsNavNode
+                               ; Page1NavNode             ;                          ; Page1              ; MyAccountNavNode       ;                ; Page1NavNode
+                               ; Page2NavNode             ;                          ; Page2              ; MyAccountNavNode       ;                ; Page2NavNode
                                ; AddressBookNavNode       ;                          ; Address Book       ; MyAccountNavNode       ;                ; AddressBookNavNode
                                ; SavedCartsNavNode        ;                          ; Saved Carts        ; MyAccountNavNode       ;                ; SavedCartsNavNode
                                ; ConsentManagementNavNode ;                          ; Consent Management ; MyAccountNavNode       ;                ; ConsentManagementNavNode
@@ -934,6 +939,8 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]            ; $contentCV[uni
                                 ; ChangePasswordNavNodeEntry    ;                          ; ChangePasswordNavNodeEntry    ; ChangePasswordNavNode    ; UpdatePasswordLink    ;
                                 ; ReferredCustomersNavNodeEntry ;                          ; ReferredCustomersNavNodeEntry ; ReferredCustomersNavNode ; ReferredCustomersLink ;
                                 ; SavedListsNavNodeEntry        ;                          ; SavedListsNavNodeEntry        ; SavedListsNavNode        ; SavedListsLink        ;
+                                ; Page1NavNodeEntry             ;                          ; Page1NavNodeEntry             ; Page1NavNode             ; Page1Link             ;
+                                ; Page2NavNodeEntry             ;                          ; Page2NavNodeEntry             ; Page2NavNode             ; Page2Link             ;
                                 ; AddressBookNavNodeEntry       ;                          ; AddressBookNavNodeEntry       ; AddressBookNavNode       ; AddressBookLink       ;
                                 ; PaymentDetailsNavNodeEntry    ;                          ; PaymentDetailsNavNodeEntry    ; PaymentDetailsNavNode    ; PaymentDetailsLink    ;
                                 ; OrderHistoryNavNodeEntry      ;                          ; OrderHistoryNavNodeEntry      ; OrderHistoryNavNode      ; OrderHistoryLink      ;
@@ -1359,7 +1366,7 @@ INSERT_UPDATE CMSNavigationEntry; uid[unique = true]                 ; $contentC
 
 # Set the order or the items in the My Account Menu
 UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; children(uid, $contentCV)
-                        ; MyAccountNavNode  ;                          ; OrderHistoryNavNode,WishListNavNode,SavedCartsNavNode,ReferredCustomersNavNode,SavedListsNavNode,AddressBookNavNode,PaymentDetailsNavNode,PersonalDetailsNavNode,ChangePasswordNavNode,UpdateEmailNavNode,ConsentManagementNavNode,CloseAccountNavNode,MyInterestsNavNode,NotificationPreferenceNavNode,MyCouponsNavNode,SignOutNavNode
+                        ; MyAccountNavNode  ;                          ; OrderHistoryNavNode,WishListNavNode,SavedCartsNavNode,ReferredCustomersNavNode,SavedListsNavNode,Page1NavNode,Page2NavNode,AddressBookNavNode,PaymentDetailsNavNode,PersonalDetailsNavNode,ChangePasswordNavNode,UpdateEmailNavNode,ConsentManagementNavNode,CloseAccountNavNode,MyInterestsNavNode,NotificationPreferenceNavNode,MyCouponsNavNode,SignOutNavNode
 
 ###### Create Forgot/Reset Password Pages and Components ######
 INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]             ; name                                  ; active; cmsComponents(&componentRef)
@@ -1711,36 +1718,71 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]        
                          ;                          ; BodyContent-savedCartDetailsPage ; Body content for Saved Carts Details Slot ; SavedCartDetailsOverviewComponent,SavedCartDetailsItemsComponent,ExportOrderEntriesComponent,SavedCartDetailsActionComponent
 
 
-
-# create cms link components for my account pages
-INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; name                  ; url                            ; &linkRef              ; target(code)[default = 'sameWindow']
-                              ;                          ; PersonalDetailsLink   ; PersonalDetailsLink   ; /my-account/update-profile     ; PersonalDetailsLink   ;
-                              ;                          ; UpdateEmailLink       ; UpdateEmailLink       ; /my-account/update-email       ; UpdateEmailLink       ;
-                              ;                          ; UpdatePasswordLink    ; UpdatePasswordLink    ; /my-account/update-password    ; UpdatePasswordLink    ;
-                              ;                          ; AddressBookLink       ; AddressBookLink       ; /my-account/address-book       ; AddressBookLink       ;
-                              ;                          ; ReferredCustomersLink ; ReferredCustomersLink ; /my-account/referred-customers ; ReferredCustomersLink ;
-                              ;                          ; SavedListsLink        ; SavedListsLink        ; /my-account/saved-lists        ; SavedListsLink        ;
-                              ;                          ; Page1Link             ; Page1Link             ; /my-account/page-1             ; Page1Link             ;
-                              ;                          ; ExtraaPage1Link       ; ExtraPage1Link        ; /my-account/extra-page-1       ; ExtraPage1Link        ;
-                              ;                          ; PaymentDetailsLink    ; PaymentDetailsLink    ; /my-account/payment-details    ; PaymentDetailsLink    ;
-                              ;                          ; OrderHistoryLink      ; OrderHistoryLink      ; /my-account/orders             ; OrderHistoryLink      ;
-                              ;                          ; SavedCartsLink        ; SavedCartsLink        ; /my-account/saved-carts        ; SavedCartsLink        ;
-                              ;                          ; ConsentManagementLink ; ConsentManagementLink ; /my-account/consents           ; ConsentManagementLink ;
-                              ;                          ; CloseAccountLink      ; CloseAccountLink      ; /my-account/close-account      ; CloseAccountLink      ;
-
-
 INSERT_UPDATE CardContainer; uid[unique = true]; $contentCV[unique = true]; &componentRef ; items(&componentRef)
                            ; CardContainer     ;                          ; CardContainer ; Item1Card,Item2Card,Item3Card,Item4Card,Item5Card
+
+
+INSERT_UPDATE SidebarLink; uid[unique = true]; $contentCV[unique = true]; &componentRef; title           ; level; link    ;
+                         ; LinkCard1         ;                          ; LinkCard1    ; "Card number 1" ; "1"  ; "card1" ;
+                         ; LinkCard2         ;                          ; LinkCard2    ; "Card number 2" ; "1"  ; "card2" ;
+                         ; LinkCard3         ;                          ; LinkCard3    ; "Card number 3" ; "1"  ; "card3" ;
+                         ; LinkCard4         ;                          ; LinkCard4    ; "Card number 4" ; "1"  ; "card4" ;
+                         ; LinkCard5         ;                          ; LinkCard5    ; "Card number 5" ; "1"  ; "card5" ;
+                         ; LinkCard6         ;                          ; LinkCard6    ; "Card number 6" ; "1"  ; "card6" ;
+                         ; LinkCard7         ;                          ; LinkCard7    ; "Card number 7" ; "1"  ; "card7" ;
+
+
+INSERT_UPDATE SidebarContainer; uid[unique = true]; $contentCV[unique = true]; &componentRef    ; title          ; links(&componentRef)
+                              ; SidebarContainer  ;                          ; SidebarContainer ; "Publications" ; LinkCard1,LinkCard2,LinkCard3,LinkCard4,LinkCard5,LinkCard6,LinkCard7
+
+
+INSERT_UPDATE ContainerPage; uid[unique = true]; $contentCV[unique = true]; &componentRef ; description                                                                                                                                                 ; cards(&componentRef)                                                                                                                               ; sidebars(&componentRef)
+                           ; PageContainer     ;                          ; PageContainer ; "The BUSTER Collar is comprehensive and counts more than 15 collars in various sizes to cover every need and breed. Follow this guide to the right collar!" ; CustomCardContainer1,CustomCardContainer2,CustomCardContainer3,CustomCardContainer4,CustomCardContainer5,CustomCardContainer6,CustomCardContainer7 ; SidebarContainer
+#                           ; PageContainer     ;                          ; PageContainer ; "The BUSTER Collar is comprehensive and counts more than 15 collars in various sizes to cover every need and breed. Follow this guide to the right collar!" ; CustomCardContainer1 ; SidebarContainer
+
+INSERT_UPDATE CustomCardContainer; uid[unique = true]   ; $contentCV[unique = true]; &componentRef        ; title           ; id      ; page2Items(&componentRef)
+                                 ; CustomCardContainer1 ;                          ; CustomCardContainer1 ; "Card number 1" ; "card1" ; Item1Card1-II,Item2Card1-II,Item3Card1-II,Item4Card1-II
+                                 ; CustomCardContainer2 ;                          ; CustomCardContainer2 ; "Card number 2" ; "card2" ; Item1Card2-II,Item2Card2-II,Item3Card2-II,Item4Card2-II
+                                 ; CustomCardContainer3 ;                          ; CustomCardContainer3 ; "Card number 3" ; "card3" ; Item1Card3-II,Item2Card3-II
+                                 ; CustomCardContainer4 ;                          ; CustomCardContainer4 ; "Card number 4" ; "card4" ; Item1Card4-II,Item2Card4-II,Item3Card4-II
+                                 ; CustomCardContainer5 ;                          ; CustomCardContainer5 ; "Card number 5" ; "card5" ; Item1Card5-II,Item2Card5-II,Item3Card5-II,Item4Card5-II
+                                 ; CustomCardContainer6 ;                          ; CustomCardContainer6 ; "Card number 6" ; "card6" ; Item1Card6-II,Item2Card6-II
+                                 ; CustomCardContainer7 ;                          ; CustomCardContainer7 ; "Card number 7" ; "card7" ; Item1Card7-II,Item2Card7-II,Item3Card7-II
+
 
 INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]        ; realfilename; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/svg+xml']; altText              ; folder(qualifier)[default = 'images']
                    ;                          ; /images/extraPages/dog.png ; dog.png     ; $siteResource/images/extraPages/dog.png                                     ; image/svg+xml                  ; "hybris Accelerator" ;
 
-INSERT_UPDATE ItemComponent; uid[unique = true]; $contentCV[unique = true]; name               ; &componentRef; title    ; $media
-                           ; Item1Card         ;                          ; Item 1 Card Page 1 ; Item1Card    ; "Item 1" ; /images/extraPages/dog.png
-                           ; Item2Card         ;                          ; Item 2 Card Page 1 ; Item2Card    ; "Item 2" ; /images/extraPages/dog.png
-                           ; Item3Card         ;                          ; Item 3 Card Page 1 ; Item3Card    ; "Item 3" ; /images/extraPages/dog.png
-                           ; Item4Card         ;                          ; Item 4 Card Page 1 ; Item4Card    ; "Item 4" ; /images/extraPages/dog.png
-                           ; Item5Card         ;                          ; Item 5 Card Page 1 ; Item5Card    ; "Item 5" ; /images/extraPages/dog.png
+INSERT_UPDATE ItemComponent; uid[unique = true]; $contentCV[unique = true]; name               ; &componentRef ; title           ; $media
+                           ; Item1Card         ;                          ; Item 1 Card Page 1 ; Item1Card     ; "Item 1"        ; /images/extraPages/dog.png
+                           ; Item2Card         ;                          ; Item 2 Card Page 1 ; Item2Card     ; "Item 2"        ; /images/extraPages/dog.png
+                           ; Item3Card         ;                          ; Item 3 Card Page 1 ; Item3Card     ; "Item 3"        ; /images/extraPages/dog.png
+                           ; Item4Card         ;                          ; Item 4 Card Page 1 ; Item4Card     ; "Item 4"        ; /images/extraPages/dog.png
+                           ; Item5Card         ;                          ; Item 5 Card Page 1 ; Item5Card     ; "Item 5"        ; /images/extraPages/dog.png
+                           ; Item1Card1-II     ;                          ; Item 1 Card 1 - II ; Item1Card1-II ; "Item 1 Card 1" ; /images/extraPages/dog.png
+                           ; Item2Card1-II     ;                          ; Item 2 Card 1 - II ; Item2Card1-II ; "Item 2 Card 1" ; /images/extraPages/dog.png
+                           ; Item3Card1-II     ;                          ; Item 3 Card 1 - II ; Item3Card1-II ; "Item 3 Card 1" ; /images/extraPages/dog.png
+                           ; Item4Card1-II     ;                          ; Item 4 Card 1 - II ; Item4Card1-II ; "Item 4 Card 1" ; /images/extraPages/dog.png
+                           ; Item1Card2-II     ;                          ; Item 1 Card 2 - II ; Item1Card2-II ; "Item 1 Card 2" ; /images/extraPages/dog.png
+                           ; Item2Card2-II     ;                          ; Item 2 Card 2 - II ; Item2Card2-II ; "Item 2 Card 2" ; /images/extraPages/dog.png
+                           ; Item3Card2-II     ;                          ; Item 3 Card 2 - II ; Item3Card2-II ; "Item 3 Card 2" ; /images/extraPages/dog.png
+                           ; Item4Card2-II     ;                          ; Item 4 Card 2 - II ; Item4Card2-II ; "Item 4 Card 2" ; /images/extraPages/dog.png
+                           ; Item1Card3-II     ;                          ; Item 1 Card 3 - II ; Item1Card3-II ; "Item 1 Card 3" ; /images/extraPages/dog.png
+                           ; Item2Card3-II     ;                          ; Item 2 Card 3 - II ; Item2Card3-II ; "Item 2 Card 3" ; /images/extraPages/dog.png
+                           ; Item1Card4-II     ;                          ; Item 1 Card 4 - II ; Item1Card4-II ; "Item 1 Card 4" ; /images/extraPages/dog.png
+                           ; Item2Card4-II     ;                          ; Item 2 Card 4 - II ; Item2Card4-II ; "Item 2 Card 4" ; /images/extraPages/dog.png
+                           ; Item3Card4-II     ;                          ; Item 3 Card 4 - II ; Item3Card4-II ; "Item 3 Card 4" ; /images/extraPages/dog.png
+                           ; Item1Card5-II     ;                          ; Item 1 Card 5 - II ; Item1Card5-II ; "Item 1 Card 5" ; /images/extraPages/dog.png
+                           ; Item2Card5-II     ;                          ; Item 2 Card 5 - II ; Item2Card5-II ; "Item 2 Card 5" ; /images/extraPages/dog.png
+                           ; Item3Card5-II     ;                          ; Item 3 Card 5 - II ; Item3Card5-II ; "Item 3 Card 5" ; /images/extraPages/dog.png
+                           ; Item4Card5-II     ;                          ; Item 4 Card 5 - II ; Item4Card5-II ; "Item 4 Card 5" ; /images/extraPages/dog.png
+                           ; Item1Card6-II     ;                          ; Item 1 Card 6 - II ; Item1Card6-II ; "Item 1 Card 6" ; /images/extraPages/dog.png
+                           ; Item2Card6-II     ;                          ; Item 2 Card 6 - II ; Item2Card6-II ; "Item 2 Card 6" ; /images/extraPages/dog.png
+                           ; Item1Card7-II     ;                          ; Item 1 Card 7 - II ; Item1Card7-II ; "Item 1 Card 7" ; /images/extraPages/dog.png
+                           ; Item2Card7-II     ;                          ; Item 2 Card 7 - II ; Item2Card7-II ; "Item 2 Card 7" ; /images/extraPages/dog.png
+                           ; Item3Card7-II     ;                          ; Item 3 Card 7 - II ; Item3Card7-II ; "Item 3 Card 7" ; /images/extraPages/dog.png
+
+
 
 INSERT_UPDATE CustomItemComponent; uid[unique = true]; $contentCV[unique = true]; name                 ; &componentRef; title                             ; $media                     ; description                                                                                                                                                 ; position
                                  ; CustomItem1       ;                          ; Custom Item 1 Page 1 ; CustomItem1  ; "Choose the right BUSTER Collar!" ; /images/extraPages/dog.png ; "The BUSTER Collar is comprehensive and counts more than 15 collars in various sizes to cover every need and breed. Follow this guide to the right collar!" ; "1"
@@ -1754,3 +1796,10 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true] ; name 
 
 INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true] ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'page-1']; contentSlot(uid, $contentCV)[unique = true]; ; ;
                                 ;                          ; BodyContent-page-1 ; BodyContent            ;                                                         ; BodyContent-page-1                         ; ; ;
+
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true] ; name                                 ; active; cmsComponents(&componentRef); ; ;
+                         ;                          ; BodyContent-page-2-II ; Body Content Slot for Account Page 2 ; true  ; PageContainer               ; ; ;
+
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true] ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'page-2']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; BodyContent-page-2-II ; BodyContent            ;                                                         ; BodyContent-page-2-II                         ; ; ;

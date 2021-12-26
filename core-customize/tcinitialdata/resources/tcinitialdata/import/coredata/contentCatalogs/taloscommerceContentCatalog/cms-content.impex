@@ -37,6 +37,7 @@ INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]       
                           ;                          ; SavedListDetailPageTemplate          ; Saved List Detail Page Template           ; training/savedListDetailLayoutPage ; ContentPage
                           ;                          ; ExtraPage1Template                   ; Extra Page 1 Page Template                ; training/extraPage1LayoutPage      ; ContentPage
                           ;                          ; Page1Template                        ; Page 1 Page Template                      ; training/page1LayoutPage           ; ContentPage
+                          ;                          ; Page2Template                        ; Page 2 Page Template                      ; training/page2LayoutPage           ; ContentPage
 
 # Templates without a frontendTemplateName
                           ;                          ; CartPageTemplate                     ; Cart Page Template                        ;                                    ; ContentPage              ; false ;
@@ -70,6 +71,7 @@ UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]              
                    ;                          ; SavedListsPageTemplate               ; $jarResourceCms/structure-view/structure_savedListsPageTemplate.vm
                    ;                          ; ExtraPage1Template                   ; $jarResourceCms/structure-view/structure_extraPage1PageTemplate.vm
                    ;                          ; Page1Template                        ; $jarResourceCms/structure-view/structure_page1PageTemplate.vm
+                   ;                          ; Page2Template                        ; $jarResourceCms/structure-view/structure_page2PageTemplate.vm
                    ;                          ; StoreFinderPageTemplate              ; $jarResourceCms/structure-view/structure_storefinderSearchTemplate.vm
                    ;                          ; ErrorPageTemplate                    ; $jarResourceCms/structure-view/structure_errorPageTemplate.vm
                    ;                          ; SearchResultsEmptyPageTemplate       ; $jarResourceCms/structure-view/structure_errorPageTemplate.vm
@@ -602,6 +604,27 @@ INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV
                              ; ExploreIndustries      ;                                                                    ;                          ; footer
                              ; FooterBottom           ;                                                                    ;                          ; footer
 
+INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'Page2Template']; validComponentTypes(code); compTypeGroup(code)
+                             ; SiteLogo               ;                                                                    ;                          ; logo
+                             ; SiteContext            ;                                                                    ; CMSSiteContextComponent  ;
+                             ; SiteLinks              ;                                                                    ; CMSLinkComponent         ;
+                             ; HeaderLinks            ;                                                                    ;                          ; headerlinks
+                             ; SearchBox              ;                                                                    ;                          ; searchbox
+                             ; MiniCart               ;                                                                    ;                          ; minicart
+                             ; NavigationBar          ;                                                                    ;                          ; navigation
+                             ; TopContent             ;                                                                    ;                          ; wide
+                             ; SideContent            ;                                                                    ;                          ; narrow
+                             ; BodyContent            ;                                                                    ;                          ; wide
+                             ; BottomContent          ;                                                                    ;                          ; wide
+                             ; Footer                 ;                                                                    ;                          ; footer
+                             ; TopHeaderSlot          ;                                                                    ;                          ; wide
+                             ; BottomHeaderSlot       ;                                                                    ;                          ; wide
+                             ; PlaceholderContentSlot ;                                                                    ;                          ;
+                             ; SocialNetwork          ;                                                                    ;                          ; footer
+                             ; GetToKnowUs            ;                                                                    ;                          ; footer
+                             ; ExploreIndustries      ;                                                                    ;                          ; footer
+                             ; FooterBottom           ;                                                                    ;                          ; footer
+
 
 INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'SavedListDetailPageTemplate']; validComponentTypes(code); compTypeGroup(code)
                              ; SiteLogo               ;                                                                                  ;                          ; logo
@@ -1098,7 +1121,23 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
                                     ;                          ; ExploreIndustriesSlot-Page1  ; ExploreIndustries      ;                                                                        ; ExploreIndustriesSlot                      ; true
                                     ;                          ; FooterBottomSlot-Page1       ; FooterBottom           ;                                                                        ; FooterBottomSlot                           ; true
 
-
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]           ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'Page2Template']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-Page2               ; SiteLogo               ;                                                                        ; SiteLogoSlot                               ; true
+                                    ;                          ; SiteContextSlot-Page2        ; SiteContext            ;                                                                        ; SiteContextSlot                            ; true
+                                    ;                          ; SiteLinksSlot-Page2          ; SiteLinks              ;                                                                        ; SiteLinksSlot                              ; true
+                                    ;                          ; HomepageLink-Page2           ; HomepageNavLink        ;                                                                        ; HomepageNavLinkSlot                        ; true
+                                    ;                          ; NavigationBar-Page2          ; NavigationBar          ;                                                                        ; NavigationBarSlot                          ; true
+                                    ;                          ; MiniCart-Page2               ; MiniCart               ;                                                                        ; MiniCartSlot                               ; true
+                                    ;                          ; Footer-Page2                 ; Footer                 ;                                                                        ; FooterSlot                                 ; true
+                                    ;                          ; HeaderLinks-Page2            ; HeaderLinks            ;                                                                        ; HeaderLinksSlot                            ; true
+                                    ;                          ; SearchBox-Page2              ; SearchBox              ;                                                                        ; SearchBoxSlot                              ; true
+                                    ;                          ; TopHeaderSlot-Page2          ; TopHeaderSlot          ;                                                                        ; TopHeaderSlot                              ; true
+                                    ;                          ; BottomHeaderSlot-Page2       ; BottomHeaderSlot       ;                                                                        ; BottomHeaderSlot                           ; true
+                                    ;                          ; PlaceholderContentSlot-Page2 ; PlaceholderContentSlot ;                                                                        ; PlaceholderContentSlot                     ; true
+                                    ;                          ; SocialNetworkSlot-Page2      ; SocialNetwork          ;                                                                        ; SocialNetworkSlot                          ; true
+                                    ;                          ; GetToKnowUsSlot-Page2        ; GetToKnowUs            ;                                                                        ; GetToKnowUsSlot                            ; true
+                                    ;                          ; ExploreIndustriesSlot-Page2  ; ExploreIndustries      ;                                                                        ; ExploreIndustriesSlot                      ; true
+                                    ;                          ; FooterBottomSlot-Page2       ; FooterBottom           ;                                                                        ; FooterBottomSlot                           ; true
 
 INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                    ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'SavedListDetailPageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
                                     ;                          ; SiteLogo-SaveDetailPage               ; SiteLogo               ;                                                                                      ; SiteLogoSlot                               ; true
@@ -1168,6 +1207,7 @@ INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]        
                          ;                          ; saved-lists                  ; Saved Lists Page               ; SavedListsPageTemplate               ; /my-account/saved-lists
                          ;                          ; extra-page-1                 ; Extra Page 1                   ; ExtraPage1Template                   ; /my-account/extra-page-1
                          ;                          ; page-1                       ; Page 1                         ; Page1Template                        ; /my-account/page-1
+                         ;                          ; page-2                       ; Page 2                         ; Page2Template                        ; /my-account/page-2
                          ;                          ; saved-list-detail            ; Saved List Detail Page         ; SavedListDetailPageTemplate          ; /my-account/saved-lists/detail
                          ;                          ; address-book                 ; Address Book Page              ; AccountPageTemplate                  ; /my-account/address-book
                          ;                          ; payment-details              ; Payment Details Page           ; AccountPageTemplate                  ; /my-account/payment-details

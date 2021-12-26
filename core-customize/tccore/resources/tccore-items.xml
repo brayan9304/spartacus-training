@@ -39,6 +39,26 @@
             <targetElement type="ItemComponent" qualifier="items" cardinality="many" ordered="true"/>
         </relation>
 
+        <relation code="ContainerPage2CustomCardContainer" generate="true" localized="false" autocreate="true">
+            <sourceElement type="ContainerPage" qualifier="containerPage" cardinality="one"/>
+            <targetElement type="CustomCardContainer" qualifier="cards" cardinality="many" ordered="true"/>
+        </relation>
+
+        <relation code="CustomCardContainer2ItemComponent" generate="true" localized="false" autocreate="true">
+            <sourceElement type="CustomCardContainer" qualifier="customCard" cardinality="one"/>
+            <targetElement type="ItemComponent" qualifier="page2Items" cardinality="many" ordered="true"/>
+        </relation>
+
+        <relation code="ContainerPage2SidebarContainer" generate="true" localized="false" autocreate="true">
+            <sourceElement type="ContainerPage" qualifier="containerPage" cardinality="one"/>
+            <targetElement type="SidebarContainer" qualifier="sidebars" cardinality="many" ordered="true"/>
+        </relation>
+
+        <relation code="SidebarContainer2SidebarLink" generate="true" localized="false" autocreate="true">
+            <sourceElement type="SidebarContainer" qualifier="sidebarContainer" cardinality="one"/>
+            <targetElement type="SidebarLink" qualifier="links" cardinality="many" ordered="true"/>
+        </relation>
+
 
     </relations>
 
@@ -196,6 +216,65 @@
                       jaloclass="com.taloscommerce.core.jalo.CardContainer"
                       autocreate="true" generate="true">
             </itemtype>
+
+            <!-- New card container -->
+            <itemtype code="CustomCardContainer" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.CustomCardContainer"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="title" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="id" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <!-- End New Card Container -->
+
+            <!-- New container -->
+            <itemtype code="ContainerPage" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.ContainerPage"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="description" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <!-- End New Container -->
+
+            <!-- Sidebar container -->
+            <itemtype code="SidebarContainer" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.SidebarContainer"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="title" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <!-- End Sidebar container -->
+
+            <!-- Sidebar link -->
+            <itemtype code="SidebarLink" extends="SimpleCMSComponent"
+                      jaloclass="com.taloscommerce.core.jalo.SidebarLink"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="title" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="level" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="link" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <!-- End Sidebar link -->
+
+
 
             <itemtype code="CustomItemComponent" extends="ItemComponent"
                       jaloclass="com.taloscommerce.core.jalo.CustomItemComponent"

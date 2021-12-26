@@ -31,5 +31,8 @@ export const customLayoutConfig: LayoutConfig = {
     Page1Template: {
       slots: ['BodyContent']
     },
+    Page2Template: {
+      slots: ['BodyContent']
+    },
   },
 };

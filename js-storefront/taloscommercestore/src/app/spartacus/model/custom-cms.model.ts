@@ -33,6 +33,12 @@ export interface TcCardContainerModel extends CmsComponent {
   items?: TcCardItemModel;
 }
 
+export interface TcCustomCardContainerModel extends CmsComponent {
+  title?: string;
+  id?: string;
+  page2items?: TcCardItemModel;
+}
+
 export interface TcCardItemModel extends CmsComponent {
   title?: string;
   media?: Media;
@@ -43,4 +49,21 @@ export interface TcCustomItemModel extends CmsComponent {
   media?: Media;
   description?: string;
   position?: string;
+}
+
+export interface TcPageContainerModel extends CmsComponent{
+  description?: string;
+  cards?: TcCustomCardContainerModel;
+  sidebars?: TcSidebarContainerModel;
+}
+
+export interface TcSidebarContainerModel extends CmsComponent{
+  title?: string;
+  links?: TcSidebarLink;
+}
+
+export interface TcSidebarLink extends CmsComponent{
+  title?: string;
+  level?: string;
+  link?: string;
 }

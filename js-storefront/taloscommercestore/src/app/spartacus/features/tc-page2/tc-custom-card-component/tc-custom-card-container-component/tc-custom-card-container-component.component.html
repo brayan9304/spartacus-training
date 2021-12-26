@@ -1,0 +1,15 @@
+<ng-container *ngIf="containerData$ | async as data">
+  <div id="{{ data.id }}" style="border: solid 1px red; margin: 5px;">
+    <p>Title: {{ data.title }}</p>
+    <p>Id: {{ data.id }}</p>
+    <ng-container *ngIf="items$ | async as items">
+      <div class="tc-collage__container">
+        <ng-container *ngFor="let item of items" [cxComponentWrapper]="{ 
+            flexType: item.typeCode,
+            typeCode: item.typeCode,
+            uid: item?.uid}">
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

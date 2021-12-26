@@ -1,0 +1,39 @@
+<!--<a (click)="onClick('red')">Ir a red</a>
+<a (click)="onClick('green')">Ir a green</a>
+<a (click)="onClick('yellow')">Ir a yellow</a>
+<a (click)="onClick('blue')">Ir a blue</a>-->
+<ng-container *ngIf="containerData$ | async as data">
+    {{ data.description }}
+    <ng-container *ngIf="cards$ | async as cards">
+        <div class="tc-collage__container">
+          <ng-container *ngFor="let card of cards" [cxComponentWrapper]="{ 
+            flexType: card.typeCode,
+            typeCode: card.typeCode,
+            uid: card?.uid}">
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="sidebars$ | async as sidebars">
+        <div class="tc-collage__container">
+          <ng-container *ngFor="let sidebar of sidebars" [cxComponentWrapper]="{ 
+            flexType: sidebar.typeCode,
+            typeCode: sidebar.typeCode,
+            uid: sidebar?.uid}">
+          </ng-container>
+        </div>
+      </ng-container>
+    <!--<div [ngClass]="data.position == '1' ? 'tc-container__row' : 'tc-container__reverse'" class="tc-container__item">
+        <div class="custom-width">
+            <cx-media *ngIf="data.media" [container]="data.media" class="tc-icon">
+            </cx-media>
+        </div>
+        <div class="custom-width">
+            <h1>{{ data.title }}</h1>
+            <p>{{ data.description }}</p>
+            <button class="btn btn-primary">Learn more</button>
+            <ng-container *ngIf="data.position == '2'">
+                <button class="btn btn-action button">See insights on Bracs</button>
+            </ng-container>
+        </div>
+    </div>-->
+</ng-container>

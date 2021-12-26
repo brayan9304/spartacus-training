@@ -14,8 +14,4 @@ export class TcCustomItemComponent implements OnInit {
   constructor(private componentData: CmsComponentData<TcCustomItemModel>) {}
 
   ngOnInit(): void {}
-  inView(ele:any){
-    ele.scrollIntoView({behavior:"smooth",block:"start",inline:"start"});
-  }
-
 }
