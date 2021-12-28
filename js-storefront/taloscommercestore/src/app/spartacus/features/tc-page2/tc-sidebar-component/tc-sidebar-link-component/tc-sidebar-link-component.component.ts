@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, OnInit, VERSION } from '@angular/core';
+import { Router } from '@angular/router';
 import { CmsComponentData } from '@spartacus/storefront';
 import { TcSidebarLink } from '@tc-model';
 import { Observable } from 'rxjs';
@@ -11,16 +13,13 @@ import { Observable } from 'rxjs';
 export class TcSidebarLinkComponent implements OnInit {
 
   componentData$: Observable<TcSidebarLink> = this.componentData.data$;
-  constructor(private componentData: CmsComponentData<TcSidebarLink>) {}
+  constructor(private componentData: CmsComponentData<TcSidebarLink>, private scroller: ViewportScroller, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+  }
 
-  onClick(id: string): void {
-    const el: HTMLElement|null = document.getElementById(id);
-    if (el) {
-      setTimeout(() =>
-        el.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'}), 0);
-    }
+  goCard(id) {
+    this.router.navigate([], { fragment: id });
   }
 
 }

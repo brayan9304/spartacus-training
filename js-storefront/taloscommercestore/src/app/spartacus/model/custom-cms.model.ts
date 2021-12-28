@@ -42,6 +42,7 @@ export interface TcCustomCardContainerModel extends CmsComponent {
 export interface TcCardItemModel extends CmsComponent {
   title?: string;
   media?: Media;
+  cardType?: string;
 }
 
 export interface TcCustomItemModel extends CmsComponent {

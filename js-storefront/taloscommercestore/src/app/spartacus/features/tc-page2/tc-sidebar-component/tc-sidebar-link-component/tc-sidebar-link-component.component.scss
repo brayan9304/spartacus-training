@@ -1,15 +1,10 @@
-/*.tc-collage__item{
-    border: solid 1px 	#DCDCDC; 
-    border-radius: 5px; 
-    padding: 20px; 
-    margin: 20px 0;
-
-    cx-media{
-        width: 200px;
-        height: 200px;
-    }
-
-    p{
-        margin: 0 0 10px 0;
-    }
-}*/
+.tc-link{
+    display: block;
+    position: relative;
+    padding: 15px;
+    border: solid 1px #d8d8d8;
+    margin-bottom: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #213c65;
+}

@@ -1,47 +1,22 @@
-/*.tc-container__reverse{
-    flex-direction: row-reverse;
-}
+.tc-container{
 
-.tc-container__row{
-    flex-direction: row;
-}
+    margin: 0 5%;
 
-.tc-container__item{
-
-    width: 75%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    border: solid 1px 	#DCDCDC; 
-    border-radius: 5px; 
-    padding: 20px; 
-    justify-content: space-around;
-    margin-top: 10px;
-    margin-bottom: 20px;
-
-
-    cx-media{
-        width: 200px;
-        height: 200px;
-        margin: auto;
+    .tc-container__description{
+       margin: 3% 0 0 0; 
     }
 
-    .custom-width{
-        width: 500px;
-    }
-
-    .button{
-        margin-left: 15px;
-    }
-
-    @media(max-width: 1390px){
-        button{
-            width: 100%;
+    @media(min-width:768px){
+        .tc-sidebar{
+            float: left;
+            width: 30%;
+            margin: 3% 5%;
         }
 
-        .button{
-            margin-left: 0;
-            margin-top: 15px;
+        .tc-cards{
+            float: right;
+            width: 60%;
+            margin: 7% 0;
         }
     }
-}*/
+}

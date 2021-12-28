@@ -1,7 +1,9 @@
-/*.tc-collage__container{
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: space-around;
-    width: 75%;
-    margin: auto;
-}*/
+.tc-card__container{
+    margin: 5% 0;
+
+    div{
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: flex-start;
+    }
+}

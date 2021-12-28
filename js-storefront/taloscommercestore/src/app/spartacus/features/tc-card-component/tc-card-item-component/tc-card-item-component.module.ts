@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TcCardItemComponent } from './tc-card-item-component.component';
-import { MediaModule, PageComponentModule } from '@spartacus/storefront';
+import { IconModule, MediaModule, PageComponentModule } from '@spartacus/storefront';
 import { CmsConfig, ConfigModule } from '@spartacus/core';
 
 
@@ -12,6 +12,7 @@ import { CmsConfig, ConfigModule } from '@spartacus/core';
     PageComponentModule,
     CommonModule,
     MediaModule,
+    IconModule,
     ConfigModule.withConfig({
       cmsComponents: {
         ItemComponent: {

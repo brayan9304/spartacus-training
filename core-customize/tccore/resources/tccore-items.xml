@@ -209,6 +209,9 @@
                     <attribute qualifier="media" type="Media">
                         <persistence type="property"/>
                     </attribute>
+                    <attribute qualifier="cardType" type="java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
                 </attributes>
             </itemtype>
 

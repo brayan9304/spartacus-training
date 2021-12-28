@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CmsComponentData } from '@spartacus/storefront';
+import { CmsComponentData, ICON_TYPE } from '@spartacus/storefront';
 import { TcCardItemModel } from '@tc-model';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./tc-card-item-component.component.scss']
 })
 export class TcCardItemComponent implements OnInit {
-
+  iconTypes = ICON_TYPE;
   componentData$: Observable<TcCardItemModel> = this.componentData.data$;
   constructor(private componentData: CmsComponentData<TcCardItemModel>) {}
 

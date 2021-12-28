@@ -39,6 +39,8 @@ UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]           ; ti
                   ;                          ; referred-customers           ; "Referred Customers"
                   ;                          ; saved-lists                  ; "Saved Lists"
                   ;                          ; saved-list-detail            ; "List Detail"
+                  ;                          ; page-1                       ; "Page 1"
+                  ;                          ; page-2                       ; "Page 2"
 
 # Category Pages
 UPDATE CategoryPage; $contentCV[unique = true]; uid[unique = true]; title[lang = $lang]

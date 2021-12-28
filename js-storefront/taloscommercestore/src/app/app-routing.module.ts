@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
       anchorScrolling: 'enabled',
       relativeLinkResolution: 'corrected',
       initialNavigation: 'enabled',
+      scrollOffset: [0, 30],
     }),
   ],
 })

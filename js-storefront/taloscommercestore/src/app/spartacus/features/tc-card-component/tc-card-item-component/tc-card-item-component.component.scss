@@ -2,7 +2,7 @@
     border: solid 1px 	#DCDCDC; 
     border-radius: 5px; 
     padding: 20px; 
-    margin: 20px 0;
+    margin: 10px 20px 10px 0;
 
     cx-media{
         width: 200px;
@@ -11,5 +11,10 @@
 
     p{
         margin: 0 0 10px 0;
+    }
+
+    .tc-info__flex{
+        display: flex; 
+        justify-content: space-between;
     }
 }

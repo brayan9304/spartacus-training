@@ -1,8 +1,9 @@
-<!--<div style="background: red; width: 1000px; height: 100px;" id="red"></div>
-<div style="background: green; width:2000px; height: 2000px;" id="green"></div>
-<div style="background: yellow; width: 500px; height: 500px;" id="yellow"></div>
-<div style="background: blue; width: 200px; height: 200px;" id="blue"></div>-->
 <ng-container *ngIf="containerData$ | async as data">
+    <div class="tc-dropDow">
+      <h1>{{ data.title }}</h1>
+      <cx-icon [type]='iconTypes.CARET_DOWN' (click)="onClick()" *ngIf="size < 768"></cx-icon>
+    </div>
+    <div *ngIf="dropDown">
       <ng-container *ngIf="items$ | async as items">
         <div class="tc-collage__container">
           <ng-container *ngFor="let item of items" [cxComponentWrapper]="{ 
@@ -12,4 +13,5 @@
           </ng-container>
         </div>
       </ng-container>
-  </ng-container>
+    </div>
+</ng-container>

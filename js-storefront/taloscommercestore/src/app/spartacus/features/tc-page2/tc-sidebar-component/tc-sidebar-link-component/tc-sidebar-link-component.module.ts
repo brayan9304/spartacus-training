@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TcSidebarLinkComponent } from './tc-sidebar-link-component.component';
 import { MediaModule, PageComponentModule } from '@spartacus/storefront';
 import { CmsConfig, ConfigModule } from '@spartacus/core';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,6 +13,7 @@ import { CmsConfig, ConfigModule } from '@spartacus/core';
     PageComponentModule,
     CommonModule,
     MediaModule,
+    RouterModule,
     ConfigModule.withConfig({
       cmsComponents: {
         SidebarLink: {

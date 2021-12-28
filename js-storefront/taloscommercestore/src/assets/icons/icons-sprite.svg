@@ -16,6 +16,11 @@
   <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
 
 </symbol>
+<symbol id="icon-arrow-right" viewBox="0 0 32 32">
+<defs><style>.cls-1{fill:none;}</style></defs>
+<title/><g data-name="Layer 2" id="Layer_2">
+<path d="M19,26a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42L26.59,16l-8.3-8.29a1,1,0,0,1,1.42-1.42l9,9a1,1,0,0,1,0,1.42l-9,9A1,1,0,0,1,19,26Z"/><path d="M28,17H4a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"/></g><g id="frame"><rect class="cls-1" height="32" width="32"/></g>
+</symbol>
 <symbol id="icon-bars" viewBox="0 0 24 24">
   <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
 
