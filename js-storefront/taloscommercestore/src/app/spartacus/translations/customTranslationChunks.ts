@@ -1,5 +1,5 @@
 import { TranslationChunksConfig } from '@spartacus/assets';
 
 export const customTranslationChunksConfig: TranslationChunksConfig = {
-  tcReferral: ['tcReferredCustomers', 'tcReferredCustomerDetails'],
+  tcReferral: ['tcReferredCustomers', 'tcReferredCustomerDetails', 'tcAddToCompare'],
 };

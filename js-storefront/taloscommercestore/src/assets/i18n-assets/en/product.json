@@ -81,6 +81,10 @@
     "remove": "Remove from Wish List",
     "anonymous": "Sign in to add to wish list"
   },
+  "addToCompare": {
+    "compare": "Compare",
+    "remove": "No Compare"
+  },
   "stockNotification": {
     "notifyMe": "NOTIFY ME",
     "stopNotify": "STOP NOTIFICATION",
