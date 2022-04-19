@@ -23,7 +23,10 @@ export function reducer(
     }
 
     case TcProductCompareActions.DELETE_PRODUCT: {
-      return state.filter((item) => item.code !== action.payload.productCode);
+      let products = state.filter((item) => item.code !== action.payload.productCode);
+      console.log(products);
+      
+      return products;
     }
 
     case TcProductCompareActions.CLEAR_PRODUCTS: {

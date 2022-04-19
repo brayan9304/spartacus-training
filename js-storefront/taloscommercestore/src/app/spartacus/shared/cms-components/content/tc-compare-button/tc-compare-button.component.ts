@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '@spartacus/core';
+import { TcProductCompareFacade } from 'src/app/spartacus/features/tc-product-compare/root';
 
 @Component({
   selector: 'tc-compare-button',
@@ -12,14 +13,18 @@ export class TcCompareButtonComponent implements OnInit {
 
   productInCompare: boolean = false;
 
-  constructor() { }
+  constructor(protected tcProductCompareFacade: TcProductCompareFacade) { }
 
   ngOnInit(): void {
   }
 
   addProductToCompare(){
+    if (!this.productInCompare) {
+      this.tcProductCompareFacade.addProductsToCompare( this.product );
+    } else{
+      this.tcProductCompareFacade.deleteProductToCompare( this.product.code );
+    }
     this.productInCompare = !this.productInCompare;
-    console.log(this.product);
   }
 
 }
