@@ -17,15 +17,14 @@ export function reducer(
         ...state,
         action.payload.product
       ]
-      console.log(products);
-      
+      if (products.length == 5) {
+        products.shift()
+      }
       return products;
     }
 
     case TcProductCompareActions.DELETE_PRODUCT: {
       let products = state.filter((item) => item.code !== action.payload.productCode);
-      console.log(products);
-      
       return products;
     }
 

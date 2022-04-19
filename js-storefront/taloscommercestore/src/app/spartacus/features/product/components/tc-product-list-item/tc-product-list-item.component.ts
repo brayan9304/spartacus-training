@@ -32,7 +32,6 @@ export class TcProductListItemComponent implements OnChanges {
   ) {}
 
   ngOnChanges(changes?: SimpleChanges): void {
-    console.log(changes?.product);
     
     if (changes?.product) {
       this.productListItemContextSource.product$.next(this.product);

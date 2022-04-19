@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CmsConfig, I18nModule, provideDefaultConfig, UrlModule } from '@spartacus/core';
-import { IconModule, SpinnerModule } from '@spartacus/storefront';
+import { AddToCartModule, IconModule, MediaModule, OutletModule, SpinnerModule, StarRatingModule } from '@spartacus/storefront';
 import { TcProductCompareComponent } from './tc-product-compare/tc-product-compare.component';
 import { RouterModule } from '@angular/router';
 import { TcProductCompareCoreModule } from '../core';
@@ -9,7 +9,6 @@ import { TcProductCompareCoreModule } from '../core';
 
 
 @NgModule({
-  declarations: [TcProductCompareComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -17,7 +16,11 @@ import { TcProductCompareCoreModule } from '../core';
     UrlModule,
     I18nModule,
     IconModule,
-    TcProductCompareCoreModule
+    MediaModule,
+    StarRatingModule,
+    TcProductCompareCoreModule,
+    AddToCartModule,
+    OutletModule,
   ],
   providers: [
     provideDefaultConfig({
@@ -28,6 +31,7 @@ import { TcProductCompareCoreModule } from '../core';
       }
     } as CmsConfig)
   ],
+  declarations: [TcProductCompareComponent],
   exports: [TcProductCompareComponent],
   entryComponents: [TcProductCompareComponent]
 })

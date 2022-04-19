@@ -1,3 +1,14 @@
 ::ng-deep cx-page-layout.ProductListPageTemplate{
     flex-wrap: wrap;
 }
+
+.compare-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+    .compare-item {
+        width: 100%;
+        margin: 0 10px;
+    }
+}
