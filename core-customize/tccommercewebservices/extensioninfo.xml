@@ -2,18 +2,39 @@
 <!--
  Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
 --><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
-
+            
+    
     <extension abstractclassprefix="Generated" classprefix="Ycommercewebservices" name="tccommercewebservices" usemaven="false">
+                        
+        
         <requires-extension name="acceleratorwebservicesaddon"/>
         <requires-extension name="cmsoccaddon"/>
+                
+                
+        
+        
         <requires-extension name="commercefacades"/>
+                        
+        
         <requires-extension name="commercewebservicescommons"/>
+                        
+        
         <requires-extension name="ordermanagementfacades"/>
+                        
+        
         <requires-extension name="tcfacades"/>
-
+                        
+        
         <coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="com.taloscommerce.webservices"/>
+                        
+        
         <webmodule jspcompile="false" webroot="/occ"/>
+                        
+        
         <meta key="modulegen-name" value="commercewebservices"/>
+                    
+    
     </extension>
+        
 
 </extensioninfo>

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { TcProductCompareComponentsModule } from './components/tc-product-compare-components.module';
+import { TcProductCompareAdapter, TcProductCompareCoreModule } from './core';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    TcProductCompareComponentsModule
+    TcProductCompareComponentsModule,
+    TcProductCompareCoreModule
   ]
 })
 export class TcProductCompareModule { }

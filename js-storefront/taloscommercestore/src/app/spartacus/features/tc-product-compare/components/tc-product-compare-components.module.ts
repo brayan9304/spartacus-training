@@ -4,6 +4,7 @@ import { CmsConfig, I18nModule, provideDefaultConfig, UrlModule } from '@spartac
 import { IconModule, SpinnerModule } from '@spartacus/storefront';
 import { TcProductCompareComponent } from './tc-product-compare/tc-product-compare.component';
 import { RouterModule } from '@angular/router';
+import { TcProductCompareCoreModule } from '../core';
 
 
 
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
     UrlModule,
     I18nModule,
     IconModule,
+    TcProductCompareCoreModule
   ],
   providers: [
     provideDefaultConfig({
