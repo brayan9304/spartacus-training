@@ -31,6 +31,10 @@ export function reducer(
     case TcProductCompareActions.CLEAR_PRODUCTS: {
       return initialState;
     }
+
+    case TcProductCompareActions.GET_PRODUCT_BY_CODE: {
+      return state;
+    }
   }
   return state;
 }

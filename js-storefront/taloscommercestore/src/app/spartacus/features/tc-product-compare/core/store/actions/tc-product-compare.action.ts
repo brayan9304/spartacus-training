@@ -6,6 +6,7 @@ export const LOAD_PRODUCTS = '[ProductCompare] Load Products';
 export const CLEAR_PRODUCTS = '[ProductCompare] Clear Products';
 export const ADD_PRODUCT = '[ProductCompare] Add Product';
 export const DELETE_PRODUCT = '[ProductCompare] Delete Product';
+export const GET_PRODUCT_BY_CODE = '[ProductCompare] Get Product By Code';
 
 export class LoadProducts implements Action {
   readonly type = LOAD_PRODUCTS;
@@ -28,8 +29,15 @@ export class DeleteProduct implements Action {
   constructor(public payload: { productCode: string }) {}
 }
 
+export class GetProductByCode implements Action {
+  readonly type = GET_PRODUCT_BY_CODE;
+
+  constructor(public payload: { productCode: string }) {}
+}
+
 export type TcProductCompareAction =
   | LoadProducts
   | ClearProducts
   | AddProduct
+  | GetProductByCode
   | DeleteProduct;

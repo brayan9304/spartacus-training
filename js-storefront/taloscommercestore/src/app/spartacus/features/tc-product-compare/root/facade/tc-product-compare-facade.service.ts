@@ -15,6 +15,7 @@ export function tcProductCompareFacadeFactory(): TcProductCompareFacade {
       'getProductsToCompareResultError',
       'addProductsToCompare',
       'deleteProductToCompare',
+      'getProductByCode'
     ],
   });
 }
@@ -30,6 +31,11 @@ export abstract class TcProductCompareFacade {
    * The default value is `false`.
    */
   abstract getProductsToCompare(loadIfMissing: boolean): Observable<Product[]>;
+
+  /**
+   * loads products to compare by code.
+   */
+  abstract getProductByCode(productCode: string): Observable<Product[]>;
 
   /**
    * loads products to compare for the current user.

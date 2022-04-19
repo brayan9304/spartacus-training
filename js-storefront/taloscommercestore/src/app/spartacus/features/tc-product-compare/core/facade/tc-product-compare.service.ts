@@ -38,6 +38,33 @@ export class TcProductCompareService implements TcProductCompareFacade {
     );
   }
 
+  /**
+   * @param productCode
+   */
+    getProductByCode(productCode: string): Observable<Product[]> {
+      return iif(
+        () => true,
+        this.store.pipe(
+          select(TcProductCompareSelectors.getProductCompareValue),
+          withLatestFrom(this.getProductsToCompareResultLoading(), this.getProductsToCompareResultSuccess()),
+          filter(([, loading]) => !loading),
+          tap(([products, , success]) => {
+            if (!products || products.length === 0) {
+              // avoid infinite loop - if we've already attempted to load referred customers and we got an empty array as the response
+              if (!success) {
+                this.store.dispatch(new TcProductCompareActions.GetProductByCode({ productCode }));
+              }
+            }
+          }),
+          filter(([products]) => Boolean(products)),
+          map(([products]) => {
+            return [products.find( item => item.code === productCode )];
+          }),
+        ),
+        this.store.pipe(select(TcProductCompareSelectors.getProductCompareValue)),
+      );
+    }
+
   loadProducts(): void {
     this.store.dispatch(new TcProductCompareActions.LoadProducts());
   }
