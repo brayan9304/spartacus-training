@@ -22,5 +22,12 @@ export const customLayoutConfig: LayoutConfig = {
     TrainingPageTemplate: {
       slots: ['BodyContent', 'SideContent'],
     },
+    ProductListPageTemplate : {
+      slots: [
+        'ProductCompare',
+        'ProductLeftRefinements',
+        'ProductListSlot',
+      ]
+    }
   },
 };

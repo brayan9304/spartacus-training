@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TcCompareButtonComponent } from './tc-compare-button.component';
 import { I18nModule, provideConfig } from '@spartacus/core';
 import { customTranslationChunksConfig } from 'src/app/spartacus/translations';
+import { TcProductCompareCoreModule } from 'src/app/spartacus/features/tc-product-compare/core';
 
 
 
@@ -11,6 +12,7 @@ import { customTranslationChunksConfig } from 'src/app/spartacus/translations';
   imports: [
     CommonModule,
     I18nModule,
+    TcProductCompareCoreModule
   ],
   exports: [TcCompareButtonComponent],
   providers: [

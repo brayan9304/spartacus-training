@@ -1,0 +1,56 @@
+<div class="product_compare" *ngIf="products$ | async as products">
+  <div class="compare-container" *ngIf="products.length >= 2">
+    <cx-carousel [items]="products" class="compare-item" [template]="product" [itemWidth]="'265px'">
+    </cx-carousel>
+    <ng-template #product let-item="item">
+        <div class="compare-item">
+            <div class="product-info">
+              <div class="product-image">
+                <a
+                  [routerLink]="{ cxRoute: 'product', params: item } | cxUrl"
+                  class="cx-product-image-container"
+                  tabindex="-1"
+                >
+                  <cx-media
+                    class="cx-product-image"
+                    [container]="item.images?.PRIMARY"
+                    format="product"
+                    [alt]="item.summary"
+                  >
+                  </cx-media>
+                </a>
+              </div>
+              <a [routerLink]="{ cxRoute: 'product', params: item } | cxUrl" class="cx-product-name">
+                <h2 [innerHtml]="item.nameHtml"></h2>
+              </a>
+      
+              <cx-star-rating *ngIf="item.averageRating" [rating]="item?.averageRating"></cx-star-rating>
+              <div *ngIf="!item.averageRating" class="cx-product-no-review">
+                {{ 'productDetails.noReviews' | cxTranslate }}
+              </div>
+              <div class="cx-product-price" [attr.aria-label]="'productDetails.productPrice' | cxTranslate">
+                {{ item.price?.formattedValue }}
+              </div>
+              <div>
+                <p class="cx-product-summary" [innerHtml]="item.summary">
+                  {{ item.summary }}
+                </p>
+              </div>
+            </div>
+            <div class="product-actions">
+              <tc-compare-button [product]="item"></tc-compare-button>
+              <ng-template [cxOutlet]="ProductListOutlets.ITEM_ACTIONS">
+                <cx-add-to-cart
+                  *ngIf="product.stock?.stockLevelStatus !== 'outOfStock'"
+                  [showQuantity]="false"
+                  [product]="item"
+                ></cx-add-to-cart>
+              </ng-template>
+            </div>
+        </div>
+    </ng-template>
+  </div>
+  <div *ngIf="products.length == 1">
+    <p>You should select at least 2 products to compare</p>
+  </div>
+</div>

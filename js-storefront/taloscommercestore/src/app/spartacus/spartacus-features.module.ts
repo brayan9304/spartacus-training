@@ -71,6 +71,7 @@ import { SmartEditFeatureModule } from './features/smartedit/smart-edit-feature.
 import { TcSplitViewBannerModule } from '@tc-shared';
 import { TcReferredCustomerFeatureModule } from './features/tc-referred-customer/tc-referred-customer-feature.module';
 import { TcSavedListModule } from './features/tc-saved-list/tc-saved-list.module';
+import { TcProductCompareFeatureModule } from './features/tc-product-compare/tc-product-compare-feature.module';
 import { TcProductListModule } from './features/product/components/tc-product-list.module';
 
 @NgModule({
@@ -161,6 +162,7 @@ import { TcProductListModule } from './features/product/components/tc-product-li
     TcSplitViewBannerModule,
     TcReferredCustomerFeatureModule,
     TcSavedListModule,
+    TcProductCompareFeatureModule,
     TcProductListModule
   ],
 })
