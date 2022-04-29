@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { provideConfig } from '@spartacus/core';
-
-const TC_CART_FEATURE = 'tcCart';
+import { TcCartRootModule, TC_CART_FEATURE } from './root';
 
 @NgModule({
+  imports: [TcCartRootModule],
   providers: [
     provideConfig({
       featureModules: {
