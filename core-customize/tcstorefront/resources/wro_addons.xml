@@ -7,6 +7,8 @@
       <js>/_ui/addons/smarteditaddon/shared/common/js/adjustComponentRenderingToSE.js</js>
       <js>/_ui/addons/smarteditaddon/responsive/common/js/smarteditaddon.js</js>
       <css>/_ui/addons/smarteditaddon/responsive/common/css/smarteditaddon.css</css>
+      <js>/_ui/addons/selectivecartaddon/responsive/common/js/selectivecartaddon.js</js>
+      <css>/_ui/addons/selectivecartaddon/responsive/common/css/selectivecartaddon.css</css>
    </group>
 </groups>
 
