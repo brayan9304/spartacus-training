@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { provideConfig } from '@spartacus/core';
+import { tcCartTranslationChunksConfig } from './assets';
 import { TcCartRootModule, TC_CART_FEATURE } from './root';
 
 @NgModule({
@@ -15,7 +16,13 @@ import { TcCartRootModule, TC_CART_FEATURE } from './root';
         selectiveCart: {
           enabled: true,
         }
-      }
+      },
+      i18n: {
+        backend: {
+          loadPath: 'assets/i18n-assets/{{lng}}/{{ns}}.json',
+        },
+        chunks: tcCartTranslationChunksConfig,
+      },
     })
   ]
 })

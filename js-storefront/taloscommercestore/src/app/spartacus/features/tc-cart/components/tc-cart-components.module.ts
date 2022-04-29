@@ -2,14 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TcCartComponent } from './tc-cart/tc-cart.component';
 import { TcWishListComponent } from './tc-wish-list/tc-wish-list.component';
-import { provideDefaultConfig } from '@spartacus/core';
+import { CartModule, CheckoutModule, CmsConfig, I18nModule, provideDefaultConfig } from '@spartacus/core';
+import { PromotionsModule } from '@spartacus/storefront';
 
 
 
 @NgModule({
   declarations: [TcCartComponent, TcWishListComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    I18nModule,
+    PromotionsModule,
+    CheckoutModule,
+    CartModule
   ],
   providers: [
     provideDefaultConfig({
@@ -18,7 +23,7 @@ import { provideDefaultConfig } from '@spartacus/core';
           component: TcCartComponent,
         }
       }
-    })
+    } as CmsConfig)
   ]
 })
 export class TcCartComponentsModule { }
