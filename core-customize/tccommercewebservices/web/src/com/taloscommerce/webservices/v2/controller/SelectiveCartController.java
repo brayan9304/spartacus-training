@@ -50,7 +50,7 @@ public class SelectiveCartController {
 
     }
 
-    @PostMapping(value = "/addToWishLis/{productCodes}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PostMapping(value = "/addToWishList/{productCodes}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(value = HttpStatus.OK)
     @ApiOperation(nickname = "addToWishListFromCart", value = "Removes various products of the cart and add the products to the wishlist")
     @ApiBaseSiteIdParam
@@ -77,7 +77,7 @@ public class SelectiveCartController {
 
     @GetMapping(value = "/getWishList", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
-    @ApiOperation(nickname = "getWishList", value = "get the wishlist")
+    @ApiOperation(nickname = "getWishList", value = "get the wishlist of the current cart")
     @ApiBaseSiteIdParam
     public void getWishList(@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
             throws CommerceCartModificationException
