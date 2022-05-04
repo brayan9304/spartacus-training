@@ -1,7 +1,9 @@
 package com.taloscommerce.webservices.v2.controller;
 
 
+import com.taloscommerce.webservices.dto.wishlist.WishListWsDTO;
 import de.hybris.platform.commerceservices.order.CommerceCartModificationException;
+import de.hybris.platform.selectivecartfacades.data.Wishlist2Data;
 import de.hybris.platform.selectivecartfacades.impl.DefaultSelectiveCartFacade;
 import de.hybris.platform.servicelayer.user.impl.DefaultUserService;
 import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
@@ -82,14 +84,16 @@ public class SelectiveCartController extends BaseCommerceController {
 
     }
 
-    @GetMapping(value = "/getWishList", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getWishList")
     @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
     @ApiOperation(nickname = "getWishList", value = "get the wishlist of the current cart")
-    @ApiBaseSiteIdParam
-    public void getWishList(@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
+    @ApiBaseSiteIdUserIdAndCartIdParam
+    public WishListWsDTO getWishList(@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
             throws CommerceCartModificationException
     {
-
+        final Wishlist2Data wishlist2Data =  defaultSelectiveCartFacade.getWishlistForSelectiveCart();
+        return getDataMapper().map(wishlist2Data, WishListWsDTO.class, fields);
     }
 
 }
