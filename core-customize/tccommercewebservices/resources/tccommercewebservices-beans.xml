@@ -264,6 +264,18 @@
         </property>
     </bean>
 
+    <bean class="com.taloscommerce.webservices.dto.wishlist.Wishlist2EntryWsDTO">
+        <property name="product" type="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO"/>
+        <property name="addedDate" type="java.util.Date"/>
+        <property name="quantity" type="Integer"/>
+    </bean>
+
+    <bean class="com.taloscommerce.webservices.dto.wishlist.WishListWsDTO">
+        <property name="name" type="String"/>
+        <property name="entries"
+                  type="java.util.List&lt;com.taloscommerce.webservices.dto.wishlist.Wishlist2EntryWsDTO>"/>
+    </bean>
+
     <bean class="com.taloscommerce.webservices.dto.productList.CustomProductListDataList">
         <property name="customProductLists" type="java.util.List&lt;com.taloscommerce.facades.customproductlist.data.CustomProductListData>"/>
     </bean>
