@@ -32,16 +32,16 @@ public class SelectiveCartController extends BaseCommerceController {
     @Resource(name = "defaultSelectiveCartFacade")
     private DefaultSelectiveCartFacade defaultSelectiveCartFacade;
 
-    @PostMapping(value = "/addToCart/{productCode}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PostMapping(value = "/addToCart/{productCode}")
     @ResponseStatus(value = HttpStatus.OK)
     @ApiOperation(nickname = "addToCartFromWishList", value = "Removes the product of the wishlist and add the product to the cart")
-    @ApiBaseSiteIdParam
+    @ApiBaseSiteIdUserIdAndCartIdParam
     public void addToCartFromWishList(
             @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,
             @ApiParam(value = "productCode", required = true) @PathVariable final String productCode)
         throws CommerceCartModificationException
     {
-
+        this.defaultSelectiveCartFacade.addToCartFromWishlist(productCode);
     }
 
     @PostMapping(value = "/addToWishList/{entryNumber}")
