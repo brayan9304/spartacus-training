@@ -2,6 +2,7 @@
   "cartDetails": {
     "id": "ID",
     "proceedToCheckout": "Proceed to Checkout",
+    "selectProductsToSave": "Select Products to Save",
     "cartName": "Cart #{{code}}"
   },
   "cartItems": {
@@ -44,6 +45,7 @@
     "itemTotal_plural": "Saved for later ({{count}} items)",
     "cartTitle": "Cart",
     "saveForLater": "Save For Later",
+    "saveForLaterCount": "Save For Later ({{count}})",
     "moveToCart": "Move To Cart",
     "stock": "Stock",
     "forceInStock": "In Stock"
