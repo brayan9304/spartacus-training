@@ -6,7 +6,6 @@ import { AuthModule, CartModule, CheckoutModule, CmsConfig, FeaturesConfigModule
 import { CartSharedModule, PromotionsModule } from '@spartacus/storefront';
 import { TcCartTotalsComponent } from './tc-cart-totals/tc-cart-totals.component';
 import { TcCartItemListComponent } from './tc-cart-item-list/tc-cart-item-list.component';
-import { TcCartCoreModule } from '../core';
 
 
 
@@ -21,7 +20,6 @@ import { TcCartCoreModule } from '../core';
     CartSharedModule,
     FeaturesConfigModule,
     UrlModule,
-    TcCartCoreModule
   ],
   providers: [
     provideDefaultConfig({
