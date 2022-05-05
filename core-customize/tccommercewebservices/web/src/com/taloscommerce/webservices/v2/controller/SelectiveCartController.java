@@ -30,10 +30,6 @@ public class SelectiveCartController extends BaseCommerceController {
     @Resource(name = "defaultSelectiveCartFacade")
     private DefaultSelectiveCartFacade defaultSelectiveCartFacade;
 
-    @Resource(name = "defaultUserService")
-    private DefaultUserService defaultUserService;
-
-
     @PostMapping(value = "/addToCart/{productCode}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(value = HttpStatus.OK)
     @ApiOperation(nickname = "addToCartFromWishList", value = "Removes the product of the wishlist and add the product to the cart")
