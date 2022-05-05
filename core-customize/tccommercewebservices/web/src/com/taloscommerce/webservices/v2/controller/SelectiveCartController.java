@@ -68,16 +68,16 @@ public class SelectiveCartController extends BaseCommerceController {
         this.defaultSelectiveCartFacade.addToWishlistFromCart(productCodes);
     }
 
-    @DeleteMapping(value = "/deleteProduct/{productCode}")
+    @DeleteMapping(value = "/removeProduct/{productCode}")
     @ResponseStatus(value = HttpStatus.OK)
-    @ApiOperation(nickname = "deleteProductFromWishList", value = "Removes the product from the wishlist")
+    @ApiOperation(nickname = "removeProductFromWishList", value = "Removes the product from the wishlist")
     @ApiBaseSiteIdUserIdAndCartIdParam
-    public void deleteProductFromWishList(
+    public void removeProductFromWishList(
             @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,
-            @ApiParam(value = "productCode", required = true) @PathVariable final String productCode)
+            @ApiParam(value = "productCode: it is the code of the product to delete", required = true) @PathVariable final String productCode)
             throws CommerceCartModificationException
     {
-
+            this.defaultSelectiveCartFacade.removeWishlistEntryForProduct(productCode);
     }
 
     @GetMapping(value = "/getWishList")
