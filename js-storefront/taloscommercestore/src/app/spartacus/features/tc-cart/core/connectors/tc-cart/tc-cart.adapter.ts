@@ -3,5 +3,5 @@ import { Observable } from "rxjs";
 
 export abstract class TcCartAdapter {
 
-  abstract saveManyForLater(userId: string, products: OrderEntry[]): Observable<{}>;
+  abstract saveManyForLater(userId: string, products: string): Observable<{}>;
 }

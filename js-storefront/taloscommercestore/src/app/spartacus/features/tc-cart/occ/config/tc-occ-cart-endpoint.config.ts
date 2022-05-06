@@ -4,7 +4,7 @@ export const tcOccCartConfig: OccConfig = {
   backend: {
     occ: {
       endpoints: {
-        //TODO: Add Endpoint
+        saveForLater: '/users/${userId}/carts/${cartId}/selective-cart/addToWishList/productCodes/${productCodes}',
       },
     },
   },

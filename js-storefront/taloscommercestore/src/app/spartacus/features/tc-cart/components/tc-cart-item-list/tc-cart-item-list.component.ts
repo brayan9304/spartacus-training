@@ -96,8 +96,16 @@ export class TcCartItemListComponent implements OnInit, OnDestroy {
     }
   }
 
-  async saveForLater() {
-    this.tcCartFacade.saveManyForLater(this.productSelectedArray);
+  saveForLater() {
+    let productCodes = '';
+    this.productSelectedArray.forEach((element, index) => {
+      if (index == 0) {
+        productCodes += element.product.code
+      } else {
+        productCodes += ',' + element.product.code
+      }
+    });
+    this.tcCartFacade.saveManyForLater(productCodes);
     this.productSelectedArray = [];
     this.tcCartStateService.changeProductsSelect();
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { ActiveCartService, GlobalMessageService, GlobalMessageType, normalizeHttpError, SelectiveCartService } from '@spartacus/core';
+import { ActiveCartService, CartActions, GlobalMessageService, GlobalMessageType, normalizeHttpError, SelectiveCartService } from '@spartacus/core';
+import { LoadCart } from '@spartacus/core/src/cart/store/actions/cart.action';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { TcCartFacade } from '../../../root';
@@ -16,12 +17,25 @@ export class TcCartEffects {
     mergeMap((payload) => {
       return this.tcCartConnector.saveManyForLater(payload.userId, payload.products).pipe(
         map((response: any) => {
-          return new TcCartActions.SaveManyForLaterSuccess(response);
+          return new TcCartActions.SaveManyForLaterSuccess(payload);
         }),
         catchError((error) => of(new TcCartActions.SaveManyForLaterFail(normalizeHttpError(error)))),
       )
     })
   );
+
+  @Effect()
+  saveManyForLaterSuccess$: Observable<LoadCart> = this.actions$.pipe(
+    ofType(TcCartActions.SAVE_MANY_FOR_LATER_SUCCESS),
+    map((action: TcCartActions.SaveManyForLaterSuccess) => action.payload),
+    map((payload) => {
+      let cart_payload = {
+        ...payload,
+        cartId: 'current'
+      }
+      return new CartActions.LoadCart(cart_payload)
+    })
+  )
 
   /**
    *  Notify about save success
@@ -50,7 +64,8 @@ export class TcCartEffects {
     private actions$: Actions,
     private tcCartConnector: TcCartConnector,
     private tcCartFacade: TcCartFacade,
-    private messageService: GlobalMessageService
+    private messageService: GlobalMessageService,
+    private activeCartService: ActiveCartService
   ) {
   }
 

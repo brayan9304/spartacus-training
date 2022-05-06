@@ -7,7 +7,7 @@ import { TcCartAdapter } from './tc-cart.adapter';
 export class TcCartConnector {
   constructor(protected adapter: TcCartAdapter) {}
 
-  public saveManyForLater(userId: string, products: OrderEntry[]): Observable<{}> {
+  public saveManyForLater(userId: string, products: string): Observable<{}> {
     return this.adapter.saveManyForLater(userId, products);
   }
 }

@@ -17,5 +17,5 @@ export function tcCartFacadeFactory(): TcCartFacade {
   useFactory: tcCartFacadeFactory,
 })
 export abstract class TcCartFacade {
-  abstract saveManyForLater(products: OrderEntry[]): void;
+  abstract saveManyForLater(products: string): void;
 }

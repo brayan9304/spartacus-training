@@ -8,7 +8,7 @@ export const SAVE_MANY_FOR_LATER_FAIL = '[Cart] Save Many For Later Fail';
 export class SaveManyForLater extends StateUtils.LoaderLoadAction {
   readonly type = SAVE_MANY_FOR_LATER;
 
-  constructor(public payload: { userId: string, products: OrderEntry[]}) {
+  constructor(public payload: { userId: string, products: string}) {
     super(CART);
   }
 }

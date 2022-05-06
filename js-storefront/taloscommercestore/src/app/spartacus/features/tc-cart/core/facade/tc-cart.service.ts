@@ -9,7 +9,7 @@ export class TcCartService implements TcCartFacade {
   constructor(protected store: Store<StateWithCart>, protected userIdService: UserIdService) {
   }
 
-  saveManyForLater(products: OrderEntry[]): void {
+  saveManyForLater(products: string): void {
     this.userIdService.takeUserId(true).subscribe(
       (userId) => this.store.dispatch(new TcCartActions.SaveManyForLater({ userId, products })),
       () => {

@@ -13,15 +13,15 @@ export class OccTcCartAdapter implements TcCartAdapter {
     protected converter: ConverterService
   ) {}
 
-  public saveManyForLater(userId: string, products: OrderEntry[]): Observable<{}> {
+  public saveManyForLater(userId: string, productCodes: string): Observable<{}> {
     // TODO: Change Endpoint
-    const url = this.occEndpoints.buildUrl('Endpoint', {
-      urlParams: { userId },
+    const url = this.occEndpoints.buildUrl('saveForLater', {
+      urlParams: { userId, cartId:'current', productCodes },
     });
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
 
-    return this.http.post(url, products, { headers }).pipe(catchError((error: any) => throwError(error)));
+    return this.http.post(url, { headers }).pipe(catchError((error: any) => throwError(error)));
   }
 }
