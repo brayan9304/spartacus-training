@@ -7,7 +7,7 @@ export function defaultTcCartComponentsConfig(): CmsConfig {
   return {
     featureModules: {
       [TC_CART_FEATURE]: {
-        cmsComponents: ['CartComponent'],
+        cmsComponents: ['CartComponent', 'SaveForLaterComponent', 'cartTotalsComponent'],
       },
       // by default core is bundled together with components
       [TC_CART_CORE_FEATURE]: TC_CART_FEATURE,
