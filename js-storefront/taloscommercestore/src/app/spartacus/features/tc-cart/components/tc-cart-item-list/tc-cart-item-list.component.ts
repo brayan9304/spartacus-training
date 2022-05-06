@@ -19,6 +19,7 @@ import { CartItemComponentOptions } from '@spartacus/storefront';
 import { Observable, range, Subscription } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 import { TcCartStateService } from '../../core/services/tc-cart-state.service';
+import { TcCartFacade } from '../../root';
 
 @Component({
   selector: 'tc-cart-item-list',
@@ -72,6 +73,7 @@ export class TcCartItemListComponent implements OnInit, OnDestroy {
     protected userIdService: UserIdService,
     protected multiCartService: MultiCartService,
     protected tcCartStateService: TcCartStateService,
+    protected tcCartFacade: TcCartFacade
   ) {}
 
   get productsSelect(): Observable<boolean> {
@@ -95,11 +97,7 @@ export class TcCartItemListComponent implements OnInit, OnDestroy {
   }
 
   async saveForLater() {
-    this.productSelectedArray = this.productSelectedArray.sort((a,b) => b.entryNumber - a.entryNumber);
-    for await (const item of this.productSelectedArray) {
-      this.activeCartService.removeEntry(item);
-      this.selectiveCartService.addEntry(item.product.code, item.quantity);
-    }
+    this.tcCartFacade.saveManyForLater(this.productSelectedArray);
     this.productSelectedArray = [];
     this.tcCartStateService.changeProductsSelect();
   }
