@@ -1,0 +1,95 @@
+package com.taloscommerce.webservices.v2.controller;
+
+
+import com.taloscommerce.webservices.dto.wishlist.WishListWsDTO;
+import de.hybris.platform.commerceservices.order.CommerceCartModificationException;
+import de.hybris.platform.selectivecartfacades.data.Wishlist2Data;
+import de.hybris.platform.selectivecartfacades.impl.DefaultSelectiveCartFacade;
+import de.hybris.platform.servicelayer.user.impl.DefaultUserService;
+import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdAndUserIdParam;
+import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdParam;
+import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdUserIdAndCartIdParam;
+import de.hybris.platform.webservicescommons.swagger.ApiFieldsParam;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+
+import java.util.List;
+
+import static com.taloscommerce.webservices.v2.controller.BaseController.DEFAULT_FIELD_SET;
+
+@Controller
+@RequestMapping(value = "/{baseSiteId}/users/{userId}/carts/{cartId}/selective-cart")
+@Api(tags = "Selective cart")
+public class SelectiveCartController extends BaseCommerceController {
+
+    @Resource(name = "defaultSelectiveCartFacade")
+    private DefaultSelectiveCartFacade defaultSelectiveCartFacade;
+
+    @PostMapping(value = "/addToCart/{productCode}")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ApiOperation(nickname = "addToCartFromWishList", value = "Removes the product of the wishlist and add the product to the cart")
+    @ApiBaseSiteIdUserIdAndCartIdParam
+    public void addToCartFromWishList(
+            @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,
+            @ApiParam(value = "productCode", required = true) @PathVariable final String productCode)
+        throws CommerceCartModificationException
+    {
+        this.defaultSelectiveCartFacade.addToCartFromWishlist(productCode);
+    }
+
+    @PostMapping(value = "/addToWishList/{entryNumber}")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ApiOperation(nickname = "addToWishListFromCart", value = "Removes the product of the cart and add the product to the wishlist")
+    @ApiBaseSiteIdUserIdAndCartIdParam
+    public void addToWishListFromCart(
+            @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,
+            @ApiParam(value = "entryNumber: product position in cart ex(0)", required = true) @PathVariable final Integer entryNumber)
+            throws CommerceCartModificationException
+    {
+        this.defaultSelectiveCartFacade.addToWishlistFromCart(entryNumber);
+    }
+
+    @PostMapping(value = "/addToWishList/productCodes/{productCodes}")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ApiOperation(nickname = "addToWishListFromCart", value = "Removes various products of the cart and add the products to the wishlist")
+    @ApiBaseSiteIdUserIdAndCartIdParam
+    public void addToWishListFromCart(
+            @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,
+            @ApiParam(value = "productCodes: list of strings comma separated ex(123,345)", required = true) @PathVariable final List<String> productCodes)
+            throws CommerceCartModificationException
+    {
+        this.defaultSelectiveCartFacade.addToWishlistFromCart(productCodes);
+    }
+
+    @DeleteMapping(value = "/removeProduct/{productCode}")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ApiOperation(nickname = "removeProductFromWishList", value = "Removes the product from the wishlist")
+    @ApiBaseSiteIdUserIdAndCartIdParam
+    public void removeProductFromWishList(
+            @ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields,
+            @ApiParam(value = "productCode: it is the code of the product to delete", required = true) @PathVariable final String productCode)
+            throws CommerceCartModificationException
+    {
+            this.defaultSelectiveCartFacade.removeWishlistEntryForProduct(productCode);
+    }
+
+    @GetMapping(value = "/getWishList")
+    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    @ApiOperation(nickname = "getWishList", value = "get the wishlist of the current cart")
+    @ApiBaseSiteIdUserIdAndCartIdParam
+    public WishListWsDTO getWishList(@ApiFieldsParam @RequestParam(defaultValue = DEFAULT_FIELD_SET) final String fields)
+            throws CommerceCartModificationException
+    {
+        final Wishlist2Data wishlist2Data =  defaultSelectiveCartFacade.getWishlistForSelectiveCart();
+        return getDataMapper().map(wishlist2Data, WishListWsDTO.class, fields);
+    }
+
+}

@@ -11,6 +11,8 @@
         <requires-extension name="ordermanagementfacades"/>
         <requires-extension name="tcfacades"/>
 
+        <requires-extension name="selectivecartfacades"/>
+
         <coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="com.taloscommerce.webservices"/>
         <webmodule jspcompile="false" webroot="/occ"/>
         <meta key="modulegen-name" value="commercewebservices"/>
