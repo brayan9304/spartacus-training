@@ -5,6 +5,10 @@
 #	ImpEx for Email related paragraphs
 #
 
+$contentCatalog=taloscommerceContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$lang=en
+
 INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]            ; content[lang = $lang]
                                    ;                          ; CustomerRegistrationEmailBody ; "
 #macro(genHtmlLinkStartTag $url)
@@ -34,6 +38,9 @@ INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = tru
     <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>$instructionsContactUs</font></p>
     <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.complimentaryClosing}</font></p>
     <p><font color='#666666' size='2' face='Arial, Helvetica, sans-serif'>${ctx.messages.signature}</font></p>"
+
+INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]               ; content[lang = $lang]
+                                   ;                          ; SendOldProductInWishListEmailBody ; ""
 
 INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]    ; content[lang = $lang]
                                    ;                          ; DeliverySentEmailBody ; "

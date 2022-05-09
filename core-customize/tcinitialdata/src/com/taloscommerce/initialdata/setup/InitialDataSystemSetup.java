@@ -115,6 +115,28 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 		getSampleDataImportService().execute(this, context, importDataList);
 		getEventService().publishEvent(new SampleDataImportedEvent(context, importDataList));
 
+		getSetupImpexService()
+				.importImpexFile(String.format(
+						"/%s/import/sampledata/contentCatalogs/taloscommerceContentCatalog/email-paragraphs.impex",
+						context.getExtensionName()), false);
+
+		getSetupImpexService()
+				.importImpexFile(String.format(
+						"/%s/import/sampledata/contentCatalogs/taloscommerceContentCatalog/email-contentslots.impex",
+						context.getExtensionName()), false);
+
+		getSetupImpexService()
+				.importImpexFile(String.format(
+						"/%s/import/coredata/contentCatalogs/taloscommerceContentCatalog/email-content.impex",
+						context.getExtensionName()), false);
+
+		getSetupImpexService()
+				.importImpexFile(String.format(
+						"/%s/import/coredata/contentCatalogs/taloscommerceContentCatalog/email-content_en.impex",
+						context.getExtensionName()), false);
+
+		executeCatalogSyncJob(context, "taloscommerceContentCatalog");
+
 	}
 
 	public CoreDataImportService getCoreDataImportService()

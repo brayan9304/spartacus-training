@@ -29,6 +29,16 @@
             <targetElement type="CustomProductList" qualifier="customProductList" cardinality="many"/>
         </relation>
 
+        <relation code="SendOldProductInWishList2P" localized="false">
+            <sourceElement type="SendOldProductInWishListProcess" qualifier="sendOldProdProcess" cardinality="one">
+                <modifiers optional="true" read="true" write="true" search="true"></modifiers>
+            </sourceElement>
+
+            <targetElement type="Product" qualifier="oldProducts" cardinality="many">
+                <modifiers optional="true" read="true" write="true" search="true"></modifiers>
+            </targetElement>
+        </relation>
+
     </relations>
 
     <itemtypes>
@@ -109,6 +119,17 @@
                 </attributes>
             </itemtype>
         </typegroup>
+
+        <typegroup name="WishList">
+            <itemtype code="SendOldProductInWishListProcess" extends="StoreFrontCustomerProcess"
+                      autocreate="true" generate="true"
+                      jaloclass="com.taloscommerce.core.jalo.SendOldProductInWishListProcess">
+                <attributes>
+                </attributes>
+            </itemtype>
+        </typegroup>
+
+
         <typegroup name="CustomList">
             <itemtype code="CustomProductList" extends="GenericItem">
                 <deployment table="CustomProductList" typecode="12002"/>
