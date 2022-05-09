@@ -72,6 +72,7 @@ import { TcSplitViewBannerModule } from '@tc-shared';
 import { TcReferredCustomerFeatureModule } from './features/tc-referred-customer/tc-referred-customer-feature.module';
 import { TcSavedListModule } from './features/tc-saved-list/tc-saved-list.module';
 import { TcProductListModule } from './features/product/components/tc-product-list.module';
+import { TcCartFeatureModule } from './features/tc-cart/tc-cart-feature.module';
 
 @NgModule({
   declarations: [],
@@ -161,7 +162,8 @@ import { TcProductListModule } from './features/product/components/tc-product-li
     TcSplitViewBannerModule,
     TcReferredCustomerFeatureModule,
     TcSavedListModule,
-    TcProductListModule
+    TcProductListModule,
+    TcCartFeatureModule
   ],
 })
 export class SpartacusFeaturesModule {}
