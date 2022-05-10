@@ -7,11 +7,12 @@ import { CartSharedModule, PromotionsModule } from '@spartacus/storefront';
 import { TcCartTotalsComponent } from './tc-cart-totals/tc-cart-totals.component';
 import { TcCartItemListComponent } from './tc-cart-item-list/tc-cart-item-list.component';
 import { TcSaveForLaterComponent } from './tc-save-for-later/tc-save-for-later.component';
+import { TcCartItemComponent } from './tc-cart-item/tc-cart-item.component';
 
 
 
 @NgModule({
-  declarations: [TcCartComponent, TcWishListComponent, TcCartTotalsComponent, TcCartItemListComponent, TcSaveForLaterComponent],
+  declarations: [TcCartComponent, TcWishListComponent, TcCartTotalsComponent, TcCartItemListComponent, TcSaveForLaterComponent, TcCartItemComponent],
   imports: [
     CommonModule,
     I18nModule,
