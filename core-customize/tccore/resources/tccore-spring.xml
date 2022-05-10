@@ -558,4 +558,16 @@
     <bean name="customWishListService" class="com.taloscommerce.core.service.wishlist.impl.CustomDefaultWishListService">
         <constructor-arg name="wishListDao" ref="customWishListDao"/>
     </bean>
+
+    <alias name="SendOldProductInWishListEventListener" alias="SendOldProductInWishListEventListener"/>
+    <bean name="SendOldProductInWishListEventListener" class="com.taloscommerce.core.event.SendOldProductInWishListEventListener"
+          parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+
+    </bean>
+
+
+
+
 </beans>
