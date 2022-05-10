@@ -547,4 +547,15 @@
         <property name="customProductListIdGenerator" ref="customProductListIdGenerator"/>
         <property name="customerService" ref="customerService"/>
     </bean>
+
+    <!-- WishList -->
+    <alias name="customWishListDao" alias="customWishListDao"/>
+    <bean name="customWishListDao"
+          class="com.taloscommerce.core.dao.wishlist.impl.DefaultCustomWishListDao">
+    </bean>
+
+    <alias name="customWishListService" alias="customWishListService"/>
+    <bean name="customWishListService" class="com.taloscommerce.core.service.wishlist.impl.CustomDefaultWishListService">
+        <constructor-arg name="wishListDao" ref="customWishListDao"/>
+    </bean>
 </beans>
