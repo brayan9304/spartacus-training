@@ -24,8 +24,8 @@ public class CustomWishListEntryPopulator implements Populator<Wishlist2EntryMod
     @Override
     public void populate(final Wishlist2EntryModel source, final CustomWishListEntryData target) throws ConversionException {
         if ( Objects.nonNull(source.getProduct()) ) target.setProduct( productConverter.convert(source.getProduct()) );
-        if (Objects.nonNull(source.getWishlist().getUser()) ) target.setUser(  customerConverter.convert(source.getWishlist().getUser()) );
-        if ( null != source.getAddedDate() ) target.setAddedDate( source.getAddedDate() );
-        if ( null != source.getQuantity() ) target.setQuantity( source.getQuantity() );
+        if ( Objects.nonNull(source.getWishlist().getUser()) ) target.setUser(  customerConverter.convert(source.getWishlist().getUser()) );
+        if ( Objects.nonNull(source.getAddedDate()) ) target.setAddedDate( source.getAddedDate() );
+        if ( Objects.nonNull(source.getQuantity()) ) target.setQuantity( source.getQuantity() );
     }
 }

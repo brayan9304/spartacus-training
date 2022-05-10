@@ -10,7 +10,8 @@ import java.util.List;
 
 public class DefaultCustomWishListDao extends DefaultGenericDao<Wishlist2EntryModel> implements CustomWishListDao {
 
-    private static final String REF_QUERY_WISHLIST2ENTRIES = "select {PK} from {wishlist2entry} where DATEDIFF('dd', {addeddate},  CURRENT_DATE) > 1";
+    private static final String REF_QUERY_WISHLIST2_OLD_ENTRIES = "SELECT {"+Wishlist2EntryModel.PK+"} FROM {"+Wishlist2EntryModel._TYPECODE+"} " +
+            "WHERE DATEDIFF('dd', {"+Wishlist2EntryModel.ADDEDDATE+"},  CURRENT_DATE) > 1";
 
     public DefaultCustomWishListDao() {
         super(Wishlist2EntryModel._TYPECODE);
@@ -18,7 +19,7 @@ public class DefaultCustomWishListDao extends DefaultGenericDao<Wishlist2EntryMo
 
     @Override
     public List<Wishlist2EntryModel> getAllExpiredWishListEntries() {
-        FlexibleSearchQuery fsq = new FlexibleSearchQuery(REF_QUERY_WISHLIST2ENTRIES);
+        FlexibleSearchQuery fsq = new FlexibleSearchQuery(REF_QUERY_WISHLIST2_OLD_ENTRIES);
         SearchResult<Wishlist2EntryModel> result = this.getFlexibleSearchService().search(fsq);
         return result.getResult();
     }
