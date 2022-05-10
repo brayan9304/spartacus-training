@@ -250,6 +250,12 @@
         <property name="resource" value="classpath:/tccore/processes/sendNotPickedUpConsignmentCanceledEmailProcess.xml"/>
     </bean>
 
+    <bean id="sendOldProductInWishListEmailProcessDefinitionResource"
+          class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+        <property name="resource" value="classpath:/tccore/processes/sendOldProductInWishListEmailProcess.xml"/>
+    </bean>
+
+
     <!-- Actions -->
     <bean id="abstractAction" class="de.hybris.platform.processengine.action.AbstractAction"
           abstract="true">
@@ -307,6 +313,10 @@
     </bean>
     <bean id="generateNotPickedUpConsignmentCanceledEmail" parent="abstractGenerateEmailAction">
         <property name="frontendTemplateName" value="NotPickedUpConsignmentCanceledEmailTemplate"/>
+    </bean>
+
+    <bean id="generateSendOldProductInWishListEmail" parent="abstractGenerateEmailAction">
+        <property name="frontendTemplateName" value="SendOldProductInWishListEmailTemplate"/>
     </bean>
 
     <bean id="removeSentEmail"

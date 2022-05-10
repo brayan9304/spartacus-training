@@ -150,6 +150,11 @@
 		<property name="priceDataFactory" ref="priceDataFactory"/>
 	</bean>
 
+	<bean id="sendOldProductInWishListEmailContext" class="com.taloscommerce.facades.process.email.context.SendOldProductInWishListEmailContext"
+		  parent = "abstractEmailContext" scope="prototype">
+		<constructor-arg name="productConverter" ref="productConverter"/>
+	</bean>
+
 	<alias name="yacceleratorSearchPagePointOfServiceDistancePopulator" alias="searchPagePointOfServiceDistancePopulator" />
 	<bean id="yacceleratorSearchPagePointOfServiceDistancePopulator" class="com.taloscommerce.facades.storefinder.populators.SearchPagePointOfServiceDistancePopulator" >
 		<property name="pointOfServiceDistanceConverter" ref="pointOfServiceDistanceConverter"/>
