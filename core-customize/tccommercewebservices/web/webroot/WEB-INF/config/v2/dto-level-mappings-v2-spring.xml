@@ -1565,6 +1565,31 @@
         </property>
     </bean>
 
+
+    <bean parent="fieldSetLevelMapping" id="wishList2EntryWsDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.taloscommerce.webservices.dto.wishlist.Wishlist2EntryWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="product(BASIC),addedDate, quantity"/>
+                <entry key="DEFAULT" value="product(DEFAULT),addedDate, quantity"/>
+                <entry key="FULL" value="product(FULL),addedDate, quantity"/>
+            </map>
+        </property>
+    </bean>
+
+
+    <bean parent="fieldSetLevelMapping" id="wishListWsDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.taloscommerce.webservices.dto.wishlist.WishListWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="name, entries(BASIC)"/>
+                <entry key="DEFAULT" value="name, entries(DEFAULT)"/>
+                <entry key="FULL" value="name, entries(FULL)"/>
+            </map>
+        </property>
+    </bean>
     <!-- Errors -->
 
     <bean parent="fieldSetLevelMapping" id="errorWsDTOFieldSetLevelMapping">
