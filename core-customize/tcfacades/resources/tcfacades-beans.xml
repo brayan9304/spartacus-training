@@ -32,4 +32,11 @@
         <property name="description" type="java.lang.String"/>
         <property name="products" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>"/>
     </bean>
+
+    <bean class="com.taloscommerce.facades.wishlist.data.CustomWishListEntryData">
+        <property name="product" type="de.hybris.platform.commercefacades.product.data.ProductData"/>
+        <property name="addedDate" type="java.util.Date"/>
+        <property name="user" type="de.hybris.platform.commercefacades.user.data.CustomerData"/>
+        <property name="quantity" type="java.lang.Integer"/>
+    </bean>
 </beans>

@@ -15,7 +15,8 @@
                 		
         
         <requires-extension name="tccore"/>
-                		
+
+        <requires-extension name="selectivecartfacades"/>
         
         <coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="com.taloscommerce.facades"/>
                 		

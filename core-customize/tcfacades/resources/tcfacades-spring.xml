@@ -250,4 +250,24 @@
 		<property name="productConfiguredPopulator" ref="productConfiguredPopulator"/>
 	</bean>
 
+	<!-- WishList -->
+
+	<bean name="customWishListEntryPopulator" class="com.taloscommerce.facades.populators.CustomWishListEntryPopulator">
+		<constructor-arg name="productConverter" ref="productConverter" />
+		<constructor-arg name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<bean id="customWishListEntryConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.taloscommerce.facades.wishlist.data.CustomWishListEntryData"/>
+		<property name="populators">
+			<list>
+				<ref bean="customWishListEntryPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="customWishListFacade" class="com.taloscommerce.facades.wishlist.impl.CustomDefaultWishListFacade">
+		<constructor-arg name="wishListService" ref="customWishListService"/>
+		<constructor-arg name="wishlistConverter" ref="customWishListEntryConverter"/>
+	</bean>
 </beans>
