@@ -20,7 +20,7 @@ export interface CartItemComponentOptions {
 export class TcCartItemComponent implements OnChanges{
 
   @Input() compact = false;
-  @Input() item: OrderEntry;
+  @Input() item: any;
   @Input() readonly = false;
   @Input() quantityControl: FormControl;
 
