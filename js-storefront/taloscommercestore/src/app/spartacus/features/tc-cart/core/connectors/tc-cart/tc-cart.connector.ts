@@ -10,4 +10,8 @@ export class TcCartConnector {
   public saveManyForLater(userId: string, products: string): Observable<{}> {
     return this.adapter.saveManyForLater(userId, products);
   }
+
+  public getSavedForLater(userId: string): Observable<{}> {
+    return this.adapter.getSavedForLater(userId);
+  }
 }

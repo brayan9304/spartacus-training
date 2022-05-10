@@ -20,7 +20,7 @@
 
 <div class="cx-item-list-row" *ngFor="let item of items; let i = index">
   <div
-    *ngIf="getControl(item) | async as control"
+    *ngIf="!wishList && getControl(item) | async as control"
     class="cx-item-list-items"
     [class.is-changed]="control.get('quantity').disabled"
   >

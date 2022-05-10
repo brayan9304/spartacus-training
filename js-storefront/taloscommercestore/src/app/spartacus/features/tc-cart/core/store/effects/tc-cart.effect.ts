@@ -35,7 +35,21 @@ export class TcCartEffects {
       }
       return new CartActions.LoadCart(cart_payload)
     })
-  )
+  );
+
+  @Effect()
+  getSavedForLater$: Observable<TcCartActions.TcCartAction> = this.actions$.pipe(
+    ofType(TcCartActions.GET_SAVED_FOR_LATER),
+    map((action: TcCartActions.GetSavedForLater) => action.payload),
+    mergeMap((payload) => {
+      return this.tcCartConnector.getSavedForLater(payload.userId).pipe(
+        map((response: any) => {
+          return new TcCartActions.GetSavedForLaterSuccess(response);
+        }),
+        catchError((error) => of(new TcCartActions.GetSavedForLaterFail(normalizeHttpError(error)))),
+      )
+    })
+  );
 
   /**
    *  Notify about save success

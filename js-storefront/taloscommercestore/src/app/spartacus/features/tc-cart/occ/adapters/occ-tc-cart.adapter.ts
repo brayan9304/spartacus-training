@@ -14,7 +14,6 @@ export class OccTcCartAdapter implements TcCartAdapter {
   ) {}
 
   public saveManyForLater(userId: string, productCodes: string): Observable<{}> {
-    // TODO: Change Endpoint
     const url = this.occEndpoints.buildUrl('saveForLater', {
       urlParams: { userId, cartId:'current', productCodes },
     });
@@ -23,5 +22,16 @@ export class OccTcCartAdapter implements TcCartAdapter {
     });
 
     return this.http.post(url, { headers }).pipe(catchError((error: any) => throwError(error)));
+  }
+
+  public getSavedForLater(userId: string): Observable<{}> {
+    const url = this.occEndpoints.buildUrl('getSavedForLater', {
+      urlParams: { userId, cartId:'current'},
+    });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.get(url, { headers }).pipe(catchError((error: any) => throwError(error)));
   }
 }

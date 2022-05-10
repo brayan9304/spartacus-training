@@ -3,10 +3,11 @@ import { ActionReducerMap } from '@ngrx/store';
 import { Cart, StateUtils } from '@spartacus/core';
 import * as fromCart from './tc-cart.reducer';
 import { CART, CartState } from '../tc-cart-state';
+import { WishList } from '../../model';
 
 export function getReducers(): ActionReducerMap<CartState> {
   return {
-    cart: StateUtils.loaderReducer<Cart[]>(CART, fromCart.reducer),
+    wishList: StateUtils.loaderReducer<WishList>(CART, fromCart.reducer),
   };
 }
 
