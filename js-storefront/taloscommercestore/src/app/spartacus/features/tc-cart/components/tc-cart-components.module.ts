@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TcCartComponent } from './tc-cart/tc-cart.component';
 import { TcWishListComponent } from './tc-wish-list/tc-wish-list.component';
 import { AuthModule, CartModule, CheckoutModule, CmsConfig, FeaturesConfigModule, I18nModule, provideDefaultConfig, UrlModule } from '@spartacus/core';
-import { CartSharedModule, PromotionsModule } from '@spartacus/storefront';
+import { CartSharedModule, ItemCounterModule, OutletModule, PromotionsModule } from '@spartacus/storefront';
 import { TcCartTotalsComponent } from './tc-cart-totals/tc-cart-totals.component';
 import { TcCartItemListComponent } from './tc-cart-item-list/tc-cart-item-list.component';
 import { TcSaveForLaterComponent } from './tc-save-for-later/tc-save-for-later.component';
@@ -22,6 +22,8 @@ import { TcCartItemComponent } from './tc-cart-item/tc-cart-item.component';
     CartSharedModule,
     FeaturesConfigModule,
     UrlModule,
+    OutletModule,
+    ItemCounterModule
   ],
   providers: [
     provideDefaultConfig({

@@ -4,6 +4,7 @@ import { OrderEntry, PromotionLocation, ActiveCartService, SelectiveCartService,
 import { CartItemComponentOptions } from '@spartacus/storefront';
 import { Subscription, Observable } from 'rxjs';
 import { startWith, tap, map } from 'rxjs/operators';
+import { WishListEntry } from '../../core/model';
 import { TcCartStateService } from '../../core/services/tc-cart-state.service';
 import { TcCartFacade } from '../../root';
 
@@ -27,15 +28,15 @@ export class TcWishListComponent implements OnInit, OnDestroy {
 
   @Input() cartId: string;
 
-  protected _items: OrderEntry[] = [];
+  protected _items: WishListEntry[] = [];
   form: FormGroup = new FormGroup({});
 
   @Input('items')
-  set items(items: OrderEntry[]) {
+  set items(items: WishListEntry[]) {
     this._items = items;
     this.createForm();
   }
-  get items(): OrderEntry[] {
+  get items(): WishListEntry[] {
     return this._items;
   }
 
@@ -86,14 +87,22 @@ export class TcWishListComponent implements OnInit, OnDestroy {
 
       // If we disable form group before adding, disabled status will reset
       // Which forces us to disable control after including to form object
-      if (!item.updateable || this.readonly) {
+      if (this.readonly) {
         this.form.controls[controlName].disable();
       }
     });
   }
 
-  protected getControlName(item: OrderEntry): string {
+  protected getControlName(item: WishListEntry): string {
     return item.product.code.toString();
+  }
+
+  getControl(item: WishListEntry): Observable<FormGroup> {
+    return this.form.get(this.getControlName(item)).valueChanges.pipe(
+      // eslint-disable-next-line import/no-deprecated
+      startWith(null),
+      map(() => <FormGroup>this.form.get(this.getControlName(item)))
+    );
   }
 
   ngOnDestroy(): void {
