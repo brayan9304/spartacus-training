@@ -1,0 +1,17 @@
+@use 'variables' as var;
+@use 'mixins';
+
+.cx-link{
+  h2{
+    color: var(--cx-color-text);
+    font-size: var(--cx-font-size, 1rem);
+    font-weight: var(--cx-font-weight-bold);
+    line-height: var(--cx-line-height, 1.2222222222);
+    overflow-wrap: break-word;
+  }
+}
+.cx-actions{
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+}
