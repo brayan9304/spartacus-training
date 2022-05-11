@@ -7,7 +7,6 @@ import de.hybris.platform.servicelayer.event.impl.AbstractEventListener;
 import de.hybris.platform.servicelayer.model.ModelService;
 
 
-import javax.annotation.Resource;
 import java.util.List;
 
 public class SendOldProductInWishListEventListener extends AbstractEventListener<SendOldProductInWishListEvent> {
@@ -17,14 +16,19 @@ public class SendOldProductInWishListEventListener extends AbstractEventListener
 
     private BusinessProcessService businessProcessService;
 
+    public SendOldProductInWishListEventListener(ModelService modelService, BusinessProcessService businessProcessService){
+        this.modelService = modelService;
+        this.businessProcessService = businessProcessService;
+    }
+
 
     @Override
     protected void onEvent(final SendOldProductInWishListEvent sendOldProductInWishListEvent) {
-        final List<ProductModel> products = sendOldProductInWishListEvent.getProducts();
+        final List<ProductModel> oldProducts = sendOldProductInWishListEvent.getOldProducts();
         final SendOldProductInWishListProcessModel processModel = this.businessProcessService.
                 createProcess("sendOldProductInWishListProcess-"  + System.currentTimeMillis(), "sendOldProductInWishListProcess");
 
-        processModel.setOldProducts(products);
+        processModel.setOldProducts(oldProducts);
         processModel.setSite(sendOldProductInWishListEvent.getSite());
         processModel.setCurrency(sendOldProductInWishListEvent.getCurrency());
         processModel.setCustomer(sendOldProductInWishListEvent.getCustomer());
@@ -36,11 +40,4 @@ public class SendOldProductInWishListEventListener extends AbstractEventListener
     }
 
 
-    public void setModelService(ModelService modelService) {
-        this.modelService = modelService;
-    }
-
-    public void setBusinessProcessService(BusinessProcessService businessProcessService) {
-        this.businessProcessService = businessProcessService;
-    }
 }

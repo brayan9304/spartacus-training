@@ -562,8 +562,8 @@
     <alias name="SendOldProductInWishListEventListener" alias="SendOldProductInWishListEventListener"/>
     <bean name="SendOldProductInWishListEventListener" class="com.taloscommerce.core.event.SendOldProductInWishListEventListener"
           parent="abstractEventListener">
-        <property name="modelService" ref="modelService"/>
-        <property name="businessProcessService" ref="businessProcessService"/>
+        <constructor-arg name="modelService" ref="modelService"/>
+        <constructor-arg name="businessProcessService" ref="businessProcessService"/>
 
     </bean>
 

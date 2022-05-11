@@ -9,18 +9,18 @@ import java.util.List;
 
 public class SendOldProductInWishListEvent extends AbstractCommerceUserEvent<BaseSiteModel> {
 
-    private List<ProductModel> products;
+    private List<ProductModel> oldProducts;
 
     public SendOldProductInWishListEvent(final SendOldProductInWishListProcessModel processModel){
         super();
-        products = (List<ProductModel>) processModel.getOldProducts();
+        oldProducts = (List<ProductModel>) processModel.getOldProducts();
     }
 
-    public List<ProductModel> getProducts() {
-        return products;
+    public List<ProductModel> getOldProducts() {
+        return oldProducts;
     }
 
-    public void setProducts(List<ProductModel> products) {
-        this.products = products;
+    public void setOldProducts(List<ProductModel> oldProducts) {
+        this.oldProducts = oldProducts;
     }
 }
