@@ -16,9 +16,8 @@
               | cxTranslate: { count: saveForLater.totalItems }
           }}
         </div>
-        <tc-cart-item-list
+        <tc-wish-list
           [items]="entries"
-          [wishList]="true"
           [readonly]="false"
           [cartIsLoading]="!(cartLoaded$ | async)"
           [promotionLocation]="CartLocation.SaveForLater"
@@ -26,7 +25,7 @@
             isSaveForLater: true,
             optionalBtn: moveToCartBtn
           }"
-        ></tc-cart-item-list>
+        ></tc-wish-list>
       </div>
     </ng-container>
   </ng-container>

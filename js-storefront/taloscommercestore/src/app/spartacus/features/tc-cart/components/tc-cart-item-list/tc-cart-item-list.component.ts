@@ -31,8 +31,6 @@ export class TcCartItemListComponent implements OnInit, OnDestroy {
   protected subscription = new Subscription();
   protected userId: string;
 
-  @Input() wishList: boolean = false;
-
   @Input() readonly: boolean = false;
 
   @Input() hasHeader: boolean = true;
@@ -173,7 +171,6 @@ export class TcCartItemListComponent implements OnInit, OnDestroy {
   }
 
   protected getControlName(item: OrderEntry): string {
-    return '1';
     return item.entryNumber.toString();
   }
 

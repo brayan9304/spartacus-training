@@ -1,6 +1,12 @@
-import { OrderEntry } from "@spartacus/core";
+import { OrderEntry, Product } from "@spartacus/core";
+
+export interface WishListEntry {
+    addedDate: string;
+    product: Product;
+    quantity: number;
+}
 
 export interface WishList {
-    entries: OrderEntry[];
+    entries: WishListEntry[];
     name: string;
 }
