@@ -14,7 +14,7 @@
         tabindex="-1"
       >
         <cx-media
-          [container]="item.product.images?.PRIMARY"
+          [container]="item.product.images[0]"
           format="cartIcon"
         ></cx-media>
       </a>
@@ -139,7 +139,7 @@
 
       <!-- Actions -->
       <div
-        *ngIf="(!readonly || options.isSaveForLater) && item.updateable"
+        *ngIf="!readonly || options.isSaveForLater"
         class="cx-actions col-12"
       >
         <ng-container *ngIf="!isProductOutOfStock(item.product)">
