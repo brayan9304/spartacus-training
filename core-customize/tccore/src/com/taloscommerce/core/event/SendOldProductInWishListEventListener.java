@@ -26,7 +26,7 @@ public class SendOldProductInWishListEventListener extends AbstractEventListener
     protected void onEvent(final SendOldProductInWishListEvent sendOldProductInWishListEvent) {
         final List<ProductModel> oldProducts = sendOldProductInWishListEvent.getOldProducts();
         final SendOldProductInWishListProcessModel processModel = this.businessProcessService.
-                createProcess("sendOldProductInWishListProcess-"  + System.currentTimeMillis(), "sendOldProductInWishListProcess");
+                createProcess("sendOldProductInWishListEmailProcess-"  + System.currentTimeMillis(), "sendOldProductInWishListEmailProcess");
 
         processModel.setOldProducts(oldProducts);
         processModel.setSite(sendOldProductInWishListEvent.getSite());
