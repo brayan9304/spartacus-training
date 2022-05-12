@@ -157,7 +157,7 @@
           <button
             class="link cx-action-link"
             [disabled]="quantityControl.disabled"
-            (click)="removeItem()"
+            (click)="removeItem(item)"
             attr.aria-label="{{ 'addToCart.removeFromCart' | cxTranslate }}"
           >
             {{ 'common.remove' | cxTranslate }}

@@ -6,28 +6,26 @@
     ></p>
   </ng-container>
   
-  <ng-container *ngIf="saveForLater$ | async as saveForLater">
-    <ng-container *ngIf="entries$ | async as entries">
-      <!-- <p>{{entries | json}}</p> -->
-      <div *ngIf="saveForLater.totalItems > 0" class="cart-details-wrapper">
-        <div class="cx-total">
-          {{
-            'saveForLaterItems.itemTotal'
-              | cxTranslate: { count: saveForLater.totalItems }
-          }}
-        </div>
-        <tc-wish-list
-          [items]="entries"
-          [readonly]="false"
-          [cartIsLoading]="!(cartLoaded$ | async)"
-          [promotionLocation]="CartLocation.SaveForLater"
-          [options]="{
-            isSaveForLater: true,
-            optionalBtn: moveToCartBtn
-          }"
-        ></tc-wish-list>
+  <ng-container *ngIf="entries$ | async as entries">
+    <!-- <p>{{entries | json}}</p> -->
+    <div *ngIf="entries.length > 0" class="cart-details-wrapper">
+      <div class="cx-total">
+        {{
+          'saveForLaterItems.itemTotal'
+            | cxTranslate: { count: entries.length }
+        }}
       </div>
-    </ng-container>
+      <tc-wish-list
+        [items]="entries"
+        [readonly]="false"
+        [cartIsLoading]="!(cartLoaded$ | async)"
+        [promotionLocation]="CartLocation.SaveForLater"
+        [options]="{
+          isSaveForLater: true,
+          optionalBtn: moveToCartBtn
+        }"
+      ></tc-wish-list>
+    </div>
   </ng-container>
   
   <ng-template let-ctx #moveToCartBtn>

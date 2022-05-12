@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { OrderEntry, PromotionLocation, ActiveCartService, SelectiveCartService, UserIdService, MultiCartService, ConsignmentEntry } from '@spartacus/core';
 import { CartItemComponentOptions } from '@spartacus/storefront';
@@ -11,7 +11,8 @@ import { TcCartFacade } from '../../root';
 @Component({
   selector: 'tc-wish-list',
   templateUrl: './tc-wish-list.component.html',
-  styleUrls: ['./tc-wish-list.component.scss']
+  styleUrls: ['./tc-wish-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TcWishListComponent implements OnInit, OnDestroy {
   protected subscription = new Subscription();

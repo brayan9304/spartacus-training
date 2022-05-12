@@ -13,8 +13,19 @@ export class OccTcCartAdapter implements TcCartAdapter {
     protected converter: ConverterService
   ) {}
 
-  public saveManyForLater(userId: string, productCodes: string): Observable<{}> {
+  public saveForLater(userId:string, entryNumber: number): Observable<{}> {
     const url = this.occEndpoints.buildUrl('saveForLater', {
+      urlParams: { userId, cartId:'current', entryNumber },
+    });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.post(url, { headers }).pipe(catchError((error: any) => throwError(error)));
+  }
+
+  public saveManyForLater(userId: string, productCodes: string): Observable<{}> {
+    const url = this.occEndpoints.buildUrl('saveManyForLater', {
       urlParams: { userId, cartId:'current', productCodes },
     });
     const headers = new HttpHeaders({
@@ -33,5 +44,27 @@ export class OccTcCartAdapter implements TcCartAdapter {
     });
 
     return this.http.get(url, { headers }).pipe(catchError((error: any) => throwError(error)));
+  }
+
+  public removeFromWishList(userId: string, productCode: string): Observable<{}> {
+    const url = this.occEndpoints.buildUrl('removeFromWishList', {
+      urlParams: { userId, productCode, cartId:'current' }
+    });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    
+    return this.http.delete(url, { headers }).pipe(catchError((error: any) => throwError(error)));
+  }
+
+  public moveToCart(userId: string, productCode: string): Observable<{}> {
+    const url = this.occEndpoints.buildUrl('moveToCart', {
+      urlParams: { userId, productCode, cartId:'current' }
+    });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    
+    return this.http.post(url, { headers }).pipe(catchError((error: any) => throwError(error)));
   }
 }

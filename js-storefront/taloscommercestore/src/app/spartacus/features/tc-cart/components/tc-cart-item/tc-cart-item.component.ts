@@ -2,6 +2,8 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { OrderEntry, PromotionLocation } from '@spartacus/core';
 import { CartItemContext, CartItemContextSource, CartOutlets, ICON_TYPE } from '@spartacus/storefront';
+import { TcCartService } from '../../core';
+import { WishListEntry } from '../../core/model';
 
 export interface CartItemComponentOptions {
   isSaveForLater?: boolean;
@@ -35,7 +37,8 @@ export class TcCartItemComponent implements OnChanges{
   iconTypes = ICON_TYPE;
   readonly CartOutlets = CartOutlets;
 
-  constructor(protected cartItemContextSource: CartItemContextSource) {}
+  constructor(protected cartItemContextSource: CartItemContextSource,
+              protected tcCartService: TcCartService) {}
 
   ngOnChanges(changes?: SimpleChanges) {
     if (changes?.compact) {
@@ -67,9 +70,8 @@ export class TcCartItemComponent implements OnChanges{
     );
   }
 
-  removeItem() {
-    this.quantityControl.setValue(0);
-    this.quantityControl.markAsDirty();
+  removeItem(item: WishListEntry) {
+    this.tcCartService.removeFromWishList(item.product.code)
   }
 
 }

@@ -21,4 +21,8 @@ export abstract class TcCartFacade {
   abstract saveManyForLater(products: string): void;
 
   abstract getSavedForLater(): void;
+
+  abstract removeFromWishList(productCode: string): void;
+
+  abstract moveToCart(productCode: string): void;
 }

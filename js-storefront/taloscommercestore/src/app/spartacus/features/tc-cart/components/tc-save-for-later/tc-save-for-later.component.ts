@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   ActiveCartService,
   Cart,
@@ -14,7 +14,8 @@ import { TcCartService } from '../../core';
 @Component({
   selector: 'tc-save-for-later',
   templateUrl: './tc-save-for-later.component.html',
-  styleUrls: ['./tc-save-for-later.component.scss']
+  styleUrls: ['./tc-save-for-later.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TcSaveForLaterComponent implements OnInit {
   saveForLater$: Observable<Cart>;
@@ -33,15 +34,9 @@ export class TcSaveForLaterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isCartEmpty$ = this.cartService
-      .getActive()
-      .pipe(map((cart) => !(cart && cart.totalItems && cart.totalItems > 0)));
-    this.saveForLater$ = this.selectiveCartService.getCart();
-    this.entries$ = this.selectiveCartService
-      .getEntries()
-      .pipe(filter((entries) => entries.length > 0),
-      tap(elements => {console.log(elements);
-      }));
+    this.isCartEmpty$ = this.tcCartService
+      .getSavedForLater()
+      .pipe(map((entries) => !(entries.length > 0)));
     this.entries$ = this.tcCartService
       .getSavedForLater()
       .pipe(filter((entries) => entries.length > 0),
@@ -57,7 +52,6 @@ export class TcSaveForLaterComponent implements OnInit {
   }
 
   moveToCart(item: OrderEntry) {
-    this.selectiveCartService.removeEntry(item);
-    this.cartService.addEntry(item.product.code, item.quantity);
+    this.tcCartService.moveToCart(item.product.code);
   }
 }
