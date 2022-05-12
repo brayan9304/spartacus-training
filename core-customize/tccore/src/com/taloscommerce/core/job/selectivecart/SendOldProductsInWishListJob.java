@@ -65,33 +65,40 @@ public class SendOldProductsInWishListJob extends AbstractJobPerformable<CronJob
 	@Override
 	public PerformResult perform(CronJobModel cronJobModel) {
 		if (customWishListService.getAllExpiredWishListEntries().size() > 0) {
-			final BaseStoreModel baseStoreModel = baseStoreService.getCurrentBaseStore() != null ?
-					baseStoreService.getCurrentBaseStore() : baseStoreService.getAllBaseStores().get(0);
-			final BaseSiteModel baseSiteModel = baseSiteService.getCurrentBaseSite() != null ?
-					baseSiteService.getCurrentBaseSite() : (BaseSiteModel) baseSiteService.getAllBaseSites().toArray()[0];
-			final SendOldProductInWishListProcessModel processModel = new SendOldProductInWishListProcessModel();
-			final SendOldProductInWishListEvent event = new SendOldProductInWishListEvent(processModel);
-			event.setBaseStore(baseStoreModel);
-			event.setSite(baseSiteModel);
-			event.setCurrency(commonI18NService.getCurrentCurrency());
-			event.setLanguage(commonI18NService.getCurrentLanguage());
 			setData(customWishListService.getAllExpiredWishListEntries());
-			this.eventService.publishEvent(event);
 		}
 		return new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED);
 	}
 
 	private void setData(List<Wishlist2EntryModel> entries) {
 		HashMap<UserModel, ArrayList<ProductModel>> userProductsRelation = new HashMap<>();
-		List<UserModel> users = this.customWishListService.getAllExpiredWishListEntries()
-				.stream().map(e -> e.getWishlist().getUser()).collect(Collectors.toList());
-		this.customWishListService.getAllExpiredWishListEntries()
-				.forEach(e -> {
-					userProductsRelation.put(e.getWishlist().getUser(), new ArrayList<>());
-				});
-		this.customWishListService.getAllExpiredWishListEntries().forEach(
-				e -> userProductsRelation.get(e.getWishlist().getUser()).add(e.getProduct())
-		);
+		entries.forEach(e -> {
+			if (!userProductsRelation.containsKey(e.getWishlist().getUser())) {
+				userProductsRelation.put(e.getWishlist().getUser(), new ArrayList<>());
+				userProductsRelation.get(e.getWishlist().getUser()).add(e.getProduct());
+			}else {
+				userProductsRelation.get(e.getWishlist().getUser()).add(e.getProduct());
+			}
+		});
+		publishEvents(userProductsRelation);
+	}
+
+	private void publishEvents(HashMap<UserModel, ArrayList<ProductModel>> userProductsRelation) {
+		final BaseStoreModel baseStoreModel = baseStoreService.getCurrentBaseStore() != null ?
+				baseStoreService.getCurrentBaseStore() : baseStoreService.getAllBaseStores().get(0);
+		final BaseSiteModel baseSiteModel = baseSiteService.getCurrentBaseSite() != null ?
+				baseSiteService.getCurrentBaseSite() : (BaseSiteModel) baseSiteService.getAllBaseSites().toArray()[0];
+		final SendOldProductInWishListProcessModel processModel = new SendOldProductInWishListProcessModel();
+		final SendOldProductInWishListEvent event = new SendOldProductInWishListEvent(processModel);
+		userProductsRelation.forEach((key, value) -> {
+			event.setBaseStore(baseStoreModel);
+			event.setSite(baseSiteModel);
+			event.setCurrency(commonI18NService.getCurrentCurrency());
+			event.setCustomer((CustomerModel) key);
+			event.setLanguage(commonI18NService.getCurrentLanguage());
+			event.setOldProducts(value);
+			this.eventService.publishEvent(event);
+		});
 	}
 
 	public void setCustomWishListService(CustomWishListService customWishListService) {
