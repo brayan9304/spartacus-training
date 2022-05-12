@@ -567,7 +567,16 @@
 
     </bean>
 
-
+    <bean id="sendOldProductsInWishListJob" class="com.taloscommerce.core.job.selectivecart.SendOldProductsInWishListJob" parent="abstractJobPerformable">
+        <constructor-arg name="customWishListService" ref="customWishListService"/>
+        <constructor-arg name="eventService" ref="eventService"/>
+        <constructor-arg name="modelService" ref="modelService"/>
+        <constructor-arg name="configurationService" ref="configurationService"/>
+        <constructor-arg name="baseStoreService" ref="baseStoreService"/>
+        <constructor-arg name="baseSiteService" ref="baseSiteService"/>
+        <constructor-arg name="userService" ref="userService"/>
+        <constructor-arg name="commonI18NService" ref="commonI18NService"/>
+    </bean>
 
 
 </beans>

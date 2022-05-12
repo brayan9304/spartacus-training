@@ -79,6 +79,7 @@ INSERT_UPDATE ServicelayerJob; code[unique = true]             ; springId[unique
                              ; siteMapMediaJob                 ; siteMapMediaJob
                              ; quoteToExpireSoonJobPerformable ; quoteToExpireSoonJobPerformable
                              ; quoteExpiredJobPerformable      ; quoteExpiredJobPerformable
+                             ; sendOldProductsInWishListJob    ; sendOldProductsInWishListJob
 
 # Deactivate Frontend Restriction on category by default for perfomance purposes
 UPDATE SearchRestriction; code[unique = true]; active[default = false]

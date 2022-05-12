@@ -10,8 +10,8 @@ import java.util.List;
 
 public class DefaultCustomWishListDao extends DefaultGenericDao<Wishlist2EntryModel> implements CustomWishListDao {
 
-    private static final String REF_QUERY_WISHLIST2_OLD_ENTRIES = "SELECT {"+Wishlist2EntryModel.PK+"} FROM {"+Wishlist2EntryModel._TYPECODE+"} " +
-            "WHERE DATEDIFF('dd', {"+Wishlist2EntryModel.ADDEDDATE+"},  CURRENT_DATE) > 1";
+    private static final String REF_QUERY_WISHLIST2_OLD_ENTRIES = "SELECT {"+Wishlist2EntryModel.PK+"} FROM {"+Wishlist2EntryModel._TYPECODE+"} ";
+//          + "WHERE DATEDIFF('dd', {"+Wishlist2EntryModel.ADDEDDATE+"},  CURRENT_DATE) > 0";
 
     public DefaultCustomWishListDao() {
         super(Wishlist2EntryModel._TYPECODE);
