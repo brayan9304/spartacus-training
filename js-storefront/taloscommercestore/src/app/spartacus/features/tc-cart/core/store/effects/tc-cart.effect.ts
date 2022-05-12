@@ -140,28 +140,6 @@ export class TcCartEffects {
     })
   );
 
-  /**
-   *  Notify about save success
-   */
-   @Effect({ dispatch: false })
-   showGlobalMessageOnSaveManySuccess$ = this.actions$.pipe(
-     ofType(TcCartActions.SAVE_MANY_FOR_LATER_SUCCESS),
-     tap(() => {
-       this.showGlobalMessage('cartForm.saveManyForLaterSuccess');
-     }),
-   );
-
-   /**
-   *  Notify about save failure
-   */
-  @Effect({ dispatch: false })
-  showGlobalMessageOnSaveManyFail$ = this.actions$.pipe(
-    ofType(TcCartActions.SAVE_MANY_FOR_LATER_FAIL),
-    tap(() => {
-      this.showGlobalMessage('cartForm.saveManyForLaterFail');
-    }),
-  );
-
 
   constructor(
     private actions$: Actions,
@@ -170,12 +148,5 @@ export class TcCartEffects {
     private messageService: GlobalMessageService,
     private activeCartService: ActiveCartService
   ) {
-  }
-
-  /**
-   * Show global confirmation message with provided text
-   */
-  private showGlobalMessage(text: string): void {
-    this.messageService.add({ key: text }, GlobalMessageType.MSG_TYPE_CONFIRMATION);
   }
 }
