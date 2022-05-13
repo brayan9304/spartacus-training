@@ -38,10 +38,7 @@ export class TcSaveForLaterComponent implements OnInit {
       .getSavedForLater()
       .pipe(map((entries) => !(entries.length > 0)));
     this.entries$ = this.tcCartService
-      .getSavedForLater()
-      .pipe(filter((entries) => entries.length > 0),
-      tap(elements => {console.log(elements);
-      }));
+      .getSavedForLater();
     this.cartLoaded$ = combineLatest([
       this.cartService.isStable(),
       this.selectiveCartService.isStable(),

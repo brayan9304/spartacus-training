@@ -78,8 +78,12 @@ export class TcCartEffects {
     mergeMap((payload) => {
       return this.tcCartConnector.getSavedForLater(payload.userId).pipe(
         map((response: WishList) => {
-          console.log(response);
-          
+          if (response == null) {
+            response = {
+              name: 'wishList',
+              entries: []
+            };
+          }
           return new TcCartActions.GetSavedForLaterSuccess(response);
         }),
         catchError((error) => of(new TcCartActions.GetSavedForLaterFail(normalizeHttpError(error)))),

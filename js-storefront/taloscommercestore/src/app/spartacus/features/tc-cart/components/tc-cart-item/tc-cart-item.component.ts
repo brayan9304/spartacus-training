@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { OrderEntry, PromotionLocation } from '@spartacus/core';
 import { CartItemContext, CartItemContextSource, CartOutlets, ICON_TYPE } from '@spartacus/storefront';
@@ -18,6 +18,8 @@ export interface CartItemComponentOptions {
     CartItemContextSource,
     { provide: CartItemContext, useExisting: CartItemContextSource },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class TcCartItemComponent implements OnChanges{
 
