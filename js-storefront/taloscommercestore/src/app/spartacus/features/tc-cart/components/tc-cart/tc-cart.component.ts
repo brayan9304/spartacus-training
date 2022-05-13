@@ -10,6 +10,7 @@ import {
 } from '@spartacus/core';
 import { combineLatest, Observable, of } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
+import { TcCartService } from '../../core';
 @Component({
   selector: 'tc-cart',
   templateUrl: './tc-cart.component.html',
@@ -28,7 +29,8 @@ export class TcCartComponent implements OnInit {
     protected activeCartService: ActiveCartService,
     protected selectiveCartService: SelectiveCartService,
     protected authService: AuthService,
-    protected routingService: RoutingService
+    protected routingService: RoutingService,
+    protected tcCartService: TcCartService
   ) {}
 
   ngOnInit() {
@@ -58,8 +60,7 @@ export class TcCartComponent implements OnInit {
 
   saveForLater(item: OrderEntry) {
     if (this.loggedIn) {
-      this.activeCartService.removeEntry(item);
-      this.selectiveCartService.addEntry(item.product.code, item.quantity);
+      this.tcCartService.saveForLater(item.entryNumber);
     } else {
       this.routingService.go({ cxRoute: 'login' });
     }

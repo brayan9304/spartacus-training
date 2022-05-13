@@ -4,4 +4,8 @@
     padding-bottom: 2rem;
     padding-inline-start: 3rem;
     flex: none;
+
+    @media (max-width: 991.98px) {
+        padding-inline-start: 0;
+    }
 }

@@ -1,1 +1,32 @@
-<p>tc-save-for-later works!</p>
+<ng-container *ngIf="entries$ | async as entries" #entriesTemplate>
+    <div *ngIf="entries.length > 0" class="cart-details-wrapper">
+      <div class="cx-total">
+        {{
+          'saveForLaterItems.itemTotal'
+            | cxTranslate: { count: entries.length }
+        }}
+      </div>
+      <tc-wish-list
+        [items]="entries"
+        [readonly]="false"
+        [cartIsLoading]="!(cartLoaded$ | async)"
+        [promotionLocation]="CartLocation.SaveForLater"
+        [options]="{
+          isSaveForLater: true,
+          optionalBtn: moveToCartBtn
+        }"
+      ></tc-wish-list>
+    </div>
+  </ng-container>
+  
+  <ng-template let-ctx #moveToCartBtn>
+    <div class="col-md-3 col-lg-3 col-xl-3 cx-sfl-btn">
+      <button
+        class="link cx-action-link"
+        (click)="moveToCart(ctx.item)"
+        type="button"
+      >
+        {{ 'saveForLaterItems.moveToCart' | cxTranslate }}
+      </button>
+    </div>
+  </ng-template>
