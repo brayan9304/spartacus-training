@@ -28,6 +28,22 @@ public class SendOldProductInWishListEmailContext extends AbstractEmailContext<S
         this.oldProducts = this.productConverter.convertAll(sendOldProductInWishListProcessModel.getOldProducts());
     }
 
+    public Converter<ProductModel, ProductData> getProductConverter() {
+        return productConverter;
+    }
+
+    public void setProductConverter(Converter<ProductModel, ProductData> productConverter) {
+        this.productConverter = productConverter;
+    }
+
+    public List<ProductData> getOldProducts() {
+        return oldProducts;
+    }
+
+    public void setOldProducts(List<ProductData> oldProducts) {
+        this.oldProducts = oldProducts;
+    }
+
     @Override
     protected BaseSiteModel getSite(SendOldProductInWishListProcessModel businessProcessModel) {
         return businessProcessModel.getSite();
