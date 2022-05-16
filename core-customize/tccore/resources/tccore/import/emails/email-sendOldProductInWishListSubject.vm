@@ -1,1 +1,1 @@
-﻿${ctx.messages.getMessage('', ${ctx})}
+﻿${ctx.messages.getMessage('emailSubject', ${ctx})}
